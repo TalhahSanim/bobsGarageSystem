@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="336 64 500 500" width="512" height="512">
+  <!-- Bob's Garage favicon: the logo emblem without the wordmark, simplified for 16–64px -->
+  <defs>
+    <clipPath id="inner">
+      <circle cx="600" cy="300" r="200"/>
+    </clipPath>
+  </defs>
+
+  <!-- Offset backing discs -->
+  <circle cx="574" cy="326" r="236" fill="#3567d1"/>
+  <circle cx="618" cy="336" r="214" fill="#1b3a5e"/>
+
+  <!-- Inner scene -->
+  <g clip-path="url(#inner)">
+    <rect x="380" y="80" width="440" height="440" fill="#62b2e6"/>
+    <path d="M380 150 C 480 118, 590 150, 690 250 L 690 330 L 380 330 Z" fill="#3a66d4"/>
+    <path d="M380 330 C 500 300, 690 290, 820 300 L 820 520 L 380 520 Z" fill="#102640"/>
+
+    <!-- tilted plate -->
+    <g transform="rotate(-9 600 290)">
+      <rect x="400" y="236" width="400" height="116" rx="8" fill="#b13a42"/>
+      <g stroke="#f4d4d6" stroke-width="12" stroke-linecap="round">
+        <line x1="440" y1="276" x2="540" y2="276"/>
+        <line x1="440" y1="312" x2="540" y2="312"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Red rings, thickened so they survive at tab size -->
+  <circle cx="600" cy="300" r="222" fill="none" stroke="#9a141c" stroke-width="26"/>
+  <circle cx="600" cy="300" r="198" fill="none" stroke="#9a141c" stroke-width="10"/>
+</svg>

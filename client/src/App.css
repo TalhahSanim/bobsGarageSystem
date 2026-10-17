@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Custom theme which adds our page colors to tailwind */
+@theme {
+  --color-garage: #2377ed;
+  --color-garage-dark: #09203f;
+  --background-image-garage-gradient: linear-gradient(
+    to bottom right,
+    #67b2f9,
+    #2563eb
+  );
+}
+/* Reusable tailwind utility class- component class */
+
+@utility card {
+  @apply w-full max-w-sm overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md;
+}
+
+@utility btn-primary {
+  @apply inline-block  bg-garage px-4 py-2 text-white transition-colors  hover:bg-garage-dark focus-visible:outline-2;
+}
