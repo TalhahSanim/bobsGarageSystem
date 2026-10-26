@@ -44,11 +44,11 @@ export const GarageContextProvider = ({ children }) => {
         service.serviceId === id
           ? {
               serviceId: id,
-              name: updatedService.name,
-              type: updatedService.type,
-              description: updatedService.description,
-              image: updatedService.image,
-              fee: updatedService.fee,
+              name: updateService.name,
+              type: updateService.type,
+              description: updateService.description,
+              image: updateService.image,
+              fee: updateService.fee,
             }
           : service,
       );
