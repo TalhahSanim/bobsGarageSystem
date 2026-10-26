@@ -38,7 +38,7 @@ export default function AddServices() {
   };
 
   // runs when the fomr is submited
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     // By default the submit button will refresh page
     e.preventDefault();
     // Check the function is being invoked
@@ -191,9 +191,18 @@ export default function AddServices() {
     };
 
     console.log(newService);
-    // send the new product to our state then redirect
-    addService(newService);
-    navigate("/services");
+    // send the new service to the api and only leave if saved
+    const saved = await addService(newService);
+    if (saved) {
+      navigate("/services");
+    } else {
+      setFormData({
+        ...formData,
+        error: {
+          name: "Sorry but this service could not be saved. Please try again.",
+        },
+      });
+    }
   };
 
   return (

@@ -91,13 +91,21 @@ app.put("/api/services/edit/:id", async (req, res) => {
   // the update method takes in two objects:
   // 1.] the data we wish to save
   // 2.] the where object so we know which record we are chanaging
-  const service = await Service.update(
+  const updated = await Service.update(
     { name, type, description, image, fee },
     { where: { serviceId: id } },
   );
   // update() returns and array with the number of rows altered eg. [1]
-  console.log(service);
-  res.status(204).send(service);
+
+  console.log(updated);
+  // Send back upon sucessful update
+  if (updated) {
+    console.log("Service Updated...");
+    // get the updated service.
+    const service = await Service.findByPk(id);
+    // send updated service to the client
+    res.status(200).send(service);
+  }
 });
 
 // Delete Service

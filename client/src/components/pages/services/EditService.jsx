@@ -44,7 +44,7 @@ export default function EditService() {
   };
 
   // runs when the fomr is submited
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     // By default the submit button will refresh page
     e.preventDefault();
     // Check the function is being invoked
@@ -185,7 +185,7 @@ export default function EditService() {
       setFormData({ ...formData, errors: { fee: "" } });
     }
 
-    const updatedService = {
+    const updateService = {
       serviceId,
       name,
       description,
@@ -194,8 +194,18 @@ export default function EditService() {
       fee,
     };
     console.log(updatedService);
-    updateService(updatedService);
-    navigate("/services");
+    // send updated service to the API. only leave if it is saved
+    const saved = await updateService(updateService);
+    if (saved) {
+      navigate("/services");
+    } else {
+      setFormData({
+        ...formData,
+        errors: {
+          name: "Sorry, the changes could not be saved. Please try again.",
+        },
+      });
+    }
   };
   useEffect(() => {
     const loadService = async () => {

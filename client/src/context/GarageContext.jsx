@@ -9,6 +9,8 @@ export const GarageContextDelete = createContext();
 export const GarageContextAdd = createContext();
 export const GarageContextGetById = createContext();
 export const GarageGetAllContext = createContext();
+// holds {status, error} for services list
+export const GarageStatusContext = createContext();
 
 // create custom hooks to use the context in our components
 // this will enable us to access the context values without an import
@@ -20,3 +22,5 @@ export const useServicesAdd = () => useContext(GarageContextAdd);
 export const useGetServiceById = () => useContext(GarageContextGetById);
 // custom hook: gives a component the getAllServices function
 export const useGetAll = () => useContext(GarageGetAllContext);
+// custom hook is the list loading , loaded or failed or any other error message
+export const useServiceStatus = () => useContext(GarageStatusContext);
