@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // react router dom imports
-import { useState } from "react";
 import "./App.css";
 // Import custom components
 import Header from "./components/layout/Header";

@@ -9,7 +9,7 @@ export default {
     // database name
     database: process.env.DB_NAME,
     // database user
-    user: process.env.DB_NAME,
+    user: process.env.DB_USER,
     // database password
     password: process.env.DB_PASS,
     // database options

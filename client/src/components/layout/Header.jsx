@@ -24,7 +24,7 @@ export default function Header() {
   };
 
   // Class shared for every every nave to  prevent repetition
-  const linkClass = "flex items-center gap-1 hover:bborder-pink-700 w";
+  const linkClass = "flex items-center gap-1 hover:b-border-pink-700 w";
   const itemClass = "block w-full px-4 py-2 text-left hover:bg-garage-dark";
   return (
     <nav className="mb-4 bg-gradient text-white ">
@@ -129,7 +129,7 @@ export default function Header() {
             </li>
           </ul>
           <ul
-            className={`${menuOn ? "flex" : "hidden"}w-full flex-col gap-2 pt-3 md:flex md:w-auto md:flex-row md:items-center   md:gap-4 md:pt-0`}
+            className={`${menuOn ? "flex" : "hidden"} w-full flex-col gap-2 pt-3 md:flex md:w-auto md:flex-row md:items-center   md:gap-4 md:pt-0`}
           >
             <li>
               <NavLink
