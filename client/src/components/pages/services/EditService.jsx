@@ -185,7 +185,7 @@ export default function EditService() {
       setFormData({ ...formData, errors: { fee: "" } });
     }
 
-    const updateService = {
+    const updService = {
       serviceId,
       name,
       description,
@@ -193,9 +193,9 @@ export default function EditService() {
       image: defaultImage,
       fee,
     };
-    console.log(updatedService);
+    console.log(updService);
     // send updated service to the API. only leave if it is saved
-    const saved = await updateService(updateService);
+    const saved = await updateService(updService);
     if (saved) {
       navigate("/services");
     } else {
