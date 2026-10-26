@@ -48,7 +48,7 @@ export const Service = sequelize.define("Service", {
     type: DataTypes.STRING,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   image: {
     type: DataTypes.STRING,
