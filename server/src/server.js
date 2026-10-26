@@ -119,7 +119,7 @@ app.delete("/api/services/edit/:id", async (req, res) => {
 // we use the sync() method
 // we need to careful here as this method can delete all data in the database
 
-db.sequelize.sync({ alter: true }).then(() => {
+db.sequelize.sync().then(() => {
   app.listen(config.port, () =>
     console.log(
       `Bob's Garage Server is running on http://localhost:${config.port}`,

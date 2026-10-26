@@ -30,8 +30,8 @@ export const GarageContextProvider = ({ children }) => {
   };
 
   // Update an existing service from the list
-  const updateService = async (updatedService) => {
-    console.log("updateService -> GarageContextComponent.jsx", updatedService);
+  const updateService = async (updateService) => {
+    console.log("updateService -> GarageContextComponent.jsx", updateService);
     const id = Number(updateService.serviceId);
 
     const result = await axios.put(

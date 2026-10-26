@@ -35,10 +35,6 @@ export default function EditService() {
   const updateService = useServicesUpdate();
   const getServiceById = useGetServiceById();
 
-  // retrieve service being edited
-  const service = getServiceById(id);
-  console.log(service);
-
   // Destructure data of form
   const { serviceId, name, type, description, image, fee, errors } = formData;
 
