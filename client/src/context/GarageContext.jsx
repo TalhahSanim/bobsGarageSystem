@@ -8,6 +8,7 @@ export const GarageContextUpdate = createContext();
 export const GarageContextDelete = createContext();
 export const GarageContextAdd = createContext();
 export const GarageContextGetById = createContext();
+export const GarageGetAllContext = createContext();
 
 // create custom hooks to use the context in our components
 // this will enable us to access the context values without an import
@@ -17,3 +18,5 @@ export const useServicesUpdate = () => useContext(GarageContextUpdate);
 export const useServicesDelete = () => useContext(GarageContextDelete);
 export const useServicesAdd = () => useContext(GarageContextAdd);
 export const useGetServiceById = () => useContext(GarageContextGetById);
+// custom hook: gives a component the getAllServices function
+export const useGetAll = () => useContext(GarageGetAllContext);

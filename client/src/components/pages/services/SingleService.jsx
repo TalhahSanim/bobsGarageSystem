@@ -23,7 +23,7 @@ export default function SingleService({ service }) {
   };
 
   // Destructure Service
-  const { id, name, type, description, image, fee } = service;
+  const { serviceId, name, type, description, image, fee } = service;
   return (
     <>
       <div className="card bg-blue-100">
@@ -46,7 +46,7 @@ export default function SingleService({ service }) {
         <div className="flex justify-center gap-12 bg-blue-400 p-4">
           {/* Every icon same sizing */}
           <IconContext.Provider value={{ size: "2em" }}>
-            <Link to={`/edit/${id}`} className="grid">
+            <Link to={`/edit/${serviceId}`} className="grid">
               <button type="button" className="btn-warning p-3 font-bold">
                 <FaRegEdit /> Edit
               </button>
@@ -55,7 +55,7 @@ export default function SingleService({ service }) {
             <button
               type="button"
               className="btn-info p-3 text-shadow-pink-950"
-              onClick={(e) => onDelete(id, e)}
+              onClick={(e) => onDelete(serviceId, e)}
             >
               <RiDeleteBin6Line /> Delete
             </button>

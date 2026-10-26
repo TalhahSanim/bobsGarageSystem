@@ -12,7 +12,6 @@ import { FaPlus } from "react-icons/fa";
 export default function AddServices() {
   //  build the state from our form and set intial state
   const [formData, setFormData] = useState({
-    id: "",
     name: "",
     type: "",
     description: "",
@@ -184,7 +183,6 @@ export default function AddServices() {
     // create newService object using es6 shorthand
     // crypto.randomUUID is built in so no libary required
     const newService = {
-      id: crypto.randomUUID(),
       name,
       type,
       description,

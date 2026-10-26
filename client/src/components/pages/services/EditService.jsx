@@ -19,12 +19,12 @@ export default function EditService() {
 
   //  build the state from our form and set intial state
   const [formData, setFormData] = useState({
-    id: "",
+    serviceId: "",
     name: "",
     description: "",
     type: "",
     image: "",
-    fee: 0.0,
+    fee: "",
     errors: {},
   });
 
@@ -40,7 +40,7 @@ export default function EditService() {
   console.log(service);
 
   // Destructure data of form
-  const { name, type, description, image, fee, errors } = formData;
+  const { serviceId, name, type, description, image, fee, errors } = formData;
 
   // controlled component
   const onChange = (e) => {
@@ -190,7 +190,7 @@ export default function EditService() {
     }
 
     const updatedService = {
-      id,
+      serviceId,
       name,
       description,
       type,
@@ -202,22 +202,26 @@ export default function EditService() {
     navigate("/services");
   };
   useEffect(() => {
-    if (service) {
-      setFormData({
-        id: service.id,
-        name: service.name,
-        type: service.type,
-        description: service.description,
-        image: service.image,
-        fee: service.fee,
-        errors: {},
-      });
-    }
-  }, [service]);
+    const loadService = async () => {
+      const service = await getServiceById(Number(id));
+      if (service) {
+        setFormData({
+          serviceId: service.serviceId,
+          name: service.name,
+          type: service.type,
+          description: service.description,
+          image: service.image,
+          fee: service.fee,
+          errors: {},
+        });
+      }
+    };
+    loadService();
+  }, [id]);
 
   return (
     <>
-      <title>Update a new Car Service</title>
+      <title>Update a Car Service</title>
       <h1 className="my-6 flex item-center gap-2 text-3xl font-bold text-red-600">
         <FaEdit /> Update a Car Service
       </h1>
