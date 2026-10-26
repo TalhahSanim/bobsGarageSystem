@@ -146,7 +146,6 @@ export default function EditService() {
         ...formData,
         image: defaultImage,
       });
-      return;
     } else {
       defaultImage = image;
       console.log(`image: ${defaultImage}`);

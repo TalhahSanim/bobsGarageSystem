@@ -1,5 +1,5 @@
 import { useState } from "react"; // import use state
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import the useServicesAdd hook from the context
 import { useServicesAdd } from "../../../context/GarageContext";
 
@@ -138,7 +138,6 @@ export default function AddServices() {
         ...formData,
         image: defaultImage,
       });
-      return;
     } else {
       defaultImage = image;
       console.log(`image: ${defaultImage}`);
@@ -290,7 +289,7 @@ export default function AddServices() {
                 Service Fee:
               </label>
               <input
-                className={`form-input ${errors.image ? "is-invalid" : "is-valid"}`}
+                className={`form-input ${errors.fee ? "is-invalid" : "is-valid"}`}
                 type="text"
                 id="fee"
                 placeholder="120.99"

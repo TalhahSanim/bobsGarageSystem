@@ -32,7 +32,7 @@ export default function SingleService({ service }) {
           <h5 className="text-lg font-semibold">{name}</h5>
           <p className="text-sm text-gray-700">{type}</p>
           <p className="text-blue-600">{description}</p>
-          <p className="my-2 text-end font-bold">{fee}</p>
+          <p className="my-2 text-end font-bold">${fee}</p>
           <div className="flex gap-4">
             <a href="#" className=" btn-primary">
               More Details
