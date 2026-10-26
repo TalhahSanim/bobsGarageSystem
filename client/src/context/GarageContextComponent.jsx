@@ -31,7 +31,7 @@ export const GarageContextProvider = ({ children }) => {
     try {
       const res = await axios.get(serviceURL);
       setServiceList(res.data);
-      setStatus("sucess");
+      setStatus("success");
       setError(null);
     } catch (err) {
       console.log(err.message);
@@ -83,15 +83,10 @@ export const GarageContextProvider = ({ children }) => {
     console.log("updateService -> GarageContextComponent.jsx", updateService);
     const id = Number(updateService.serviceId);
     try {
-      const res = await axios.put(
-        `${serviceURL}/edit/${id}`,
-        updateService,
-        // sever sendback service saved
-        setServiceList((prev) =>
-          prev.map((service) =>
-            service.serviceId === id ? res.data : service,
-          ),
-        ),
+      const res = await axios.put(`${serviceURL}/edit/${id}`, updateService);
+      // seRver sendback service saved
+      setServiceList((prev) =>
+        prev.map((service) => (service.serviceId === id ? res.data : service)),
       );
       return true;
     } catch (err) {

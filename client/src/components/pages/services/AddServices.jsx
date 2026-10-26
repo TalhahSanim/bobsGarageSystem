@@ -198,7 +198,7 @@ export default function AddServices() {
     } else {
       setFormData({
         ...formData,
-        error: {
+        errors: {
           name: "Sorry but this service could not be saved. Please try again.",
         },
       });
