@@ -30,17 +30,10 @@ export default function Home() {
       </ul>
 
       <div className="grid gird-cols-1 justify-items-center gap-6 md:grid-cols-3">
-        <Card />
+        <Card src="https://placehold.co/600x400" />
         <Card />
         <Card />
       </div>
-
-      {/* Photo by Joseph Pillado on Unsplash: https://unsplash.com/photos/n99UTGfbvFQ */}
-      <img
-        src="https://images.unsplash.com/photo-1711386689622-1cda23e10217?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-        alt="Mechanic lying on a garage floor using a red floor jack to lift a red car, with tools and socket sets laid out beside them"
-        className="mt-6 w-full rounded-lg"
-      />
     </>
   );
 }

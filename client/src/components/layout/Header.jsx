@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import { BiSolidCarMechanic } from "react-icons/bi";
-import { RiFileInfoFill } from "react-icons/ri";
+import { GrStatusInfo } from "react-icons/gr";
+
 import { IconContext } from "react-icons/lib";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaPlus } from "react-icons/fa";
 import { MdPalette } from "react-icons/md";
+import { RiLoginBoxLine } from "react-icons/ri";
 
 import logo from "../../assets/bobsLog.png";
 
@@ -22,14 +24,14 @@ export default function Header() {
   };
 
   // Class shared for every every nave to  prevent repetition
-  const linkClass = "flex items-center gap-1 hover:text-blue-200";
+  const linkClass = "flex items-center gap-1 hover:bborder-pink-700 w";
   const itemClass = "block w-full px-4 py-2 text-left hover:bg-garage-dark";
   return (
-    <nav className="mb-4 bg-garage/50 text-white ">
+    <nav className="mb-4 bg-gradient text-white ">
       <IconContext.Provider
         value={{ size: "2.5rem", className: "react-icons " }}
       >
-        <div className="flex flex-wrap items-center justify-between px-4 py-7 gap-11">
+        <div className="flex flex-wrap items-center justify-between px-4 py-7 gap-11 ">
           <NavLink to="/" className="text-xl font-semibold" onClick={menuClose}>
             <img
               src={logo}
@@ -40,7 +42,7 @@ export default function Header() {
 
           {/* Hamburger only on the small screens like tablets and mobile */}
           <button
-            className="rounded border border-white/40 px-3 py-1 md:hidden"
+            className="rounded border border-white/40 px-3 py-1 md:hidden pointer-"
             onClick={() => setMenuOn(!menuOn)}
             aria-label="Toggle Navigation Element"
             aria-expanded={menuOn}
@@ -50,13 +52,13 @@ export default function Header() {
 
           {/* Links will be hidden on mobile unless menuON set to always shown on md+ */}
           <ul
-            className={`${menuOn ? "flex" : "hidden"} w-full flex-col gap-2 pt-3 md:flex md:w-auto md:flex-row md:items-center md:gap-4 md:pt-0`}
+            className={`${menuOn ? "flex" : "hidden"} w-full flex-col gap-2 pt-3 md:flex md:w-auto md:flex-row md:items-center md:gap-4 md:pt-0 bg- px-4 p-6`}
           >
             <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold border-b-2 border-b-red-700" : ""}`
+                  `${linkClass} ${isActive ? "font-bold border-b-5 border-b-pink-700" : ""}`
                 }
                 onClick={menuClose}
               >
@@ -66,26 +68,37 @@ export default function Header() {
             </li>
             <li>
               <NavLink
-                to="/products"
+                to="/services"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold border-b-2 border-b-red-700" : ""}`
+                  `${linkClass} ${isActive ? "font-bold border-b-5 border-b-pink-700" : ""}`
                 }
                 onClick={menuClose}
               >
                 {" "}
                 <BiSolidCarMechanic />
-                Products
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/add-service"
+                className={({ isActive }) =>
+                  `${linkClass} ${isActive ? "font-bold border-b-5 border-b-pink-700" : ""}`
+                }
+                onClick={menuClose}
+              >
+                <FaPlus /> Add New Service
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold border-b-2 border-b-red-700" : ""}`
+                  `${linkClass} ${isActive ? "font-bold border-b-5 border-b-pink-700" : ""}`
                 }
                 onClick={menuClose}
               >
-                <RiFileInfoFill />
+                <GrStatusInfo />
                 About
               </NavLink>
             </li>
@@ -120,21 +133,22 @@ export default function Header() {
           >
             <li>
               <NavLink
-                className="hover:text-red-800 text-3xl bg-blue-800 px-10.5 py-4  "
+                className="hover:text-pink-400 text-3xl  px-10.5 py-4  "
                 onClick={menuClose}
                 to="/"
               >
-                login
+                <RiLoginBoxLine />
+                Login
               </NavLink>
             </li>
             <li>
-              <a
-                className="hover:text-red-600 text-3xl bg-blue-800 px-4.5 py-3.5  "
+              <NavLink
+                className="hover:text-pink-600 text-3xl bg-pink-800 px-4.5 py-3.5 "
                 to="/products"
                 onClick={menuClose}
               >
-                register
-              </a>
+                Register
+              </NavLink>
             </li>
           </ul>
         </div>
