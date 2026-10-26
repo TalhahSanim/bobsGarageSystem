@@ -218,11 +218,11 @@ export default function EditService() {
   return (
     <>
       <title>Update a new Car Service</title>
-      <h1 className="my-6 text-3xl font-bold text-red-600">
-        <FaEdit /> Update A new Car Service
+      <h1 className="my-6 flex item-center gap-2 text-3xl font-bold text-red-600">
+        <FaEdit /> Update a Car Service
       </h1>
       <div className="panel">
-        <div className="panel-header">Add the new Car Service Below:</div>
+        <div className="panel-header">Update the Car Service Below:</div>
         <div className="panel-body">
           {/* Form */}
           <form onSubmit={(e) => handleSubmit(e)}>

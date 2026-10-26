@@ -201,7 +201,7 @@ export default function AddServices() {
   return (
     <>
       <title>Add a Car Service</title>
-      <h1 className="my-6 text-3xl font-bold text-pink-600">
+      <h1 className="mmy-6 flex item-center gap-2 text-3xl font-bold text-red-600">
         <FaPlus />
         Add A new Car Service
       </h1>

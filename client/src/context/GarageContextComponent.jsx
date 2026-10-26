@@ -1,5 +1,5 @@
 // Bring in the useState hook from react
-import { Children, useState } from "react";
+import { useState } from "react";
 
 // import the context defined in GarageContext.jsx
 import {

@@ -42,7 +42,7 @@ export default function Header() {
 
           {/* Hamburger only on the small screens like tablets and mobile */}
           <button
-            className="rounded border border-white/40 px-3 py-1 md:hidden pointer-"
+            className="rounded border border-white/40 px-3 py-1 md:hidden cursor-pointer"
             onClick={() => setMenuOn(!menuOn)}
             aria-label="Toggle Navigation Element"
             aria-expanded={menuOn}
