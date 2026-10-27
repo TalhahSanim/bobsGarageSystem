@@ -7,13 +7,17 @@
   --background-image-garage-gradient: linear-gradient(
     to bottom right,
     #dfecf8,
-    #2563eb
+    #2563eb,
+    --animate-fade-up: fade-up 0.4s ease-out both; @keyframes fade-up{from
+      {opacity: 0; transform: translateY(12px) ;} to{opacity: 1;
+      transform: none}}
   );
 }
 /* Reusable tailwind utility class- component class */
 
 @utility card {
   @apply w-full max-w-sm overflow-hidden  border-none bg-white shadow-md;
+  @apply transition duration-200 hover:-translate-y-1 hover:shadow-xl;
 }
 
 /* Full-size cardfor forms */
@@ -49,7 +53,7 @@
 
 /* Loading spinner */
 .spinner {
-  @apply inline-block size-7 animate-bounce border-solid border-4 border-gray-400 border-t-garage;
+  @apply inline-block size-7 animate-spin  border-4 border-gray-400 border-t-garage;
 }
 
 /* Alert box for errors */
