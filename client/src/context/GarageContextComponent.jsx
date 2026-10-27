@@ -35,7 +35,7 @@ export const GarageContextProvider = ({ children }) => {
       setError(null);
     } catch (err) {
       console.log(err.message);
-      setStatus("Failed");
+      setStatus("failed");
       setError(err.message);
     }
   };
