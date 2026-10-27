@@ -71,6 +71,11 @@
 .alert-danger {
   @apply rounded-none border border-red-200 bg-red-50 p-4 text-red-700;
 }
+
+/* Pill link class */
+@utility link-pill {
+  @apply rounded-xl bg-cyan-100 px-2 py-1 font-medium text-cyan-800 no-underline transition-colors hover:bg-yellow-100;
+}
 @utility btn-primary {
   @apply inline-flex items-center justify-center gap-2  px-4 py-2 font-medium  transition-colors bg-blue-400 text-white hover:bg-blue-700 cursor-pointer;
 }

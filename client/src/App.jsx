@@ -8,6 +8,8 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import AddServices from "./components/pages/services/AddServices";
 import EditService from "./components/pages/services/EditService";
+import Login from "./components/pages/auth/Login";
+import Register from "./components/pages/auth/Register";
 
 // import GarageContext Provider from GarageContent Component
 import { GarageContextProvider } from "./context/GarageContextComponent";
@@ -31,7 +33,8 @@ function App() {
                 <Route path="/services" element={<Services />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/add-service" element={<AddServices />} />
-                <Route path="/edit/:id" element={<EditService />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
               </Routes>
             </main>
           </div>

@@ -29,7 +29,7 @@ export default function Header() {
   const leave = () => {
     console.log("Logout Clicked");
     logout();
-    closeMenus();
+    menuClose();
   };
 
   // console.log(branding);  // test to see if it is functional
@@ -155,7 +155,7 @@ export default function Header() {
               <NavLink
                 className="hover:text-pink-400 text-3xl  px-10.5 py-4  "
                 onClick={menuClose}
-                to="/"
+                to="/login"
               >
                 <RiLoginBoxLine />
                 Login
@@ -164,10 +164,11 @@ export default function Header() {
             <li>
               <NavLink
                 className="hover:text-pink-600 text-3xl bg-pink-800 px-4.5 py-3.5 "
-                to="/products"
+                to="/register"
                 onClick={menuClose}
               >
                 Register
+                <FaDoorOpen />
               </NavLink>
             </li>
             <li>
