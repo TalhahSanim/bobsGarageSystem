@@ -24,7 +24,8 @@ export default function Header() {
   };
 
   // Class shared for every every nave to  prevent repetition
-  const linkClass = "flex items-center gap-1 hover:b-border-pink-700 w";
+  const linkClass =
+    "relative flex items-center gap-1 pb-1 after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-pink-700 after:transition-all after:duration-300 hover:after:w-full motion-reduce:after:transition-none";
   const itemClass = "block w-full px-4 py-2 text-left hover:bg-garage-dark";
   return (
     <nav className="mb-4 bg-gradient text-white ">
@@ -58,7 +59,7 @@ export default function Header() {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold border-b-5 border-b-pink-700" : ""}`
+                  `${linkClass} ${isActive ? "font-bold after-w-full " : "after:w-0"}`
                 }
                 onClick={menuClose}
               >
@@ -70,7 +71,7 @@ export default function Header() {
               <NavLink
                 to="/services"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold border-b-5 border-b-pink-700" : ""}`
+                  `${linkClass} ${isActive ? "font-bold after-w-full " : "after:w-0"}`
                 }
                 onClick={menuClose}
               >
@@ -83,7 +84,7 @@ export default function Header() {
               <NavLink
                 to="/add-service"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold border-b-5 border-b-pink-700" : ""}`
+                  `${linkClass} ${isActive ? "font-bold after-w-full " : "after:w-0"}`
                 }
                 onClick={menuClose}
               >
@@ -94,7 +95,7 @@ export default function Header() {
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold border-b-5 border-b-pink-700" : ""}`
+                  `${linkClass} ${isActive ? "font-bold after-w-full " : "after:w-0"}`
                 }
                 onClick={menuClose}
               >
@@ -106,7 +107,7 @@ export default function Header() {
             {/* Theme options */}
             <li className="relative">
               <button
-                className={linkClass}
+                className={`${linkClass} after:w-0`}
                 onClick={() => setThemeOn(!themeOn)}
                 aria-expanded={themeOn}
               >

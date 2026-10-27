@@ -16,7 +16,7 @@ export default function Services() {
     content = (
       // Placeholder cards on load
       <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3].map((n) => {
+        {[1, 2, 3].map((n) => (
           <div key={n} className="card animate-pulse">
             <div className="h-48 bg-gray-300"></div>
             <div className="space-y-3 p-4">
@@ -24,8 +24,8 @@ export default function Services() {
               <div className="h-4 w-full bg-gray-200"></div>
               <div className="h-4 w-1/2 bg-gray-200"></div>
             </div>
-          </div>;
-        })}
+          </div>
+        ))}
       </div>
       // <p className="flex items-center gap-3 text-gray-600">
       //   <span className="spinner" aria-hidden="true"></span> Loading ...
