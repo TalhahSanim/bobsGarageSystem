@@ -59,7 +59,7 @@ export default function Header() {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold after-w-full " : "after:w-0"}`
+                  `${linkClass} ${isActive ? "font-bold:after:w-full " : "after:w-0"}`
                 }
                 onClick={menuClose}
               >
@@ -71,7 +71,7 @@ export default function Header() {
               <NavLink
                 to="/services"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold after-w-full " : "after:w-0"}`
+                  `${linkClass} ${isActive ? "font-bold:after:w-full " : "after:w-0"}`
                 }
                 onClick={menuClose}
               >
@@ -84,7 +84,7 @@ export default function Header() {
               <NavLink
                 to="/add-service"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold after-w-full " : "after:w-0"}`
+                  `${linkClass} ${isActive ? "font-bold:after:w-full " : "after:w-0"}`
                 }
                 onClick={menuClose}
               >
@@ -95,7 +95,7 @@ export default function Header() {
               <NavLink
                 to="/about"
                 className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold after-w-full " : "after:w-0"}`
+                  `${linkClass} ${isActive ? "font-bold:after:w-full " : "after:w-0"}`
                 }
                 onClick={menuClose}
               >
