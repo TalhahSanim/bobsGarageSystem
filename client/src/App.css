@@ -28,7 +28,7 @@
 @utility card {
   @apply w-full max-w-sm overflow-hidden  border-none bg-white shadow-md;
   @apply animate-fade-up transition duration-200 hover:-translate-y-1 hover:shadow-xl;
-  @apply motion-reduce:animaate-none motion-reduce:transition-none;
+  @apply motion-reduce:animate-none motion-reduce:transition-none;
 }
 
 /* Full-size cardfor forms */
