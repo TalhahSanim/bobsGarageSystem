@@ -31,12 +31,12 @@ export default function Login() {
 
     // validation
     if (is_Empty(email)) {
-      setFormData({ ...FormData, errors: { email: "Email is required" } });
+      setFormData({ ...formData, errors: { email: "Email is required" } });
       return;
     }
     if (is_Empty(password)) {
       setFormData({
-        ...FormData,
+        ...formData,
         errors: { password: "password is required" },
       });
       return;
@@ -46,7 +46,7 @@ export default function Login() {
     if (result.ok) {
       navigate("/services");
     } else {
-      setFormData({ ...FormData, errors: { email: result.msg } });
+      setFormData({ ...formData, errors: { email: result.msg } });
     }
   };
   return (
@@ -90,7 +90,7 @@ export default function Login() {
                 onChange={(e) => onChange(e)}
               />
               {errors.password && (
-                <div className="invalid-feeback">{errors.password}</div>
+                <div className="invalid-feedback">{errors.password}</div>
               )}
             </div>
 

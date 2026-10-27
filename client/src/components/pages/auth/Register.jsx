@@ -42,7 +42,7 @@ export default function Register() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   // were only save if have firstname and email and were not saving
-  const canSave = firstName !== "" && email !== "" && registerStatus !== "idle";
+  const canSave = firstName !== "" && email !== "" && registerStatus === "idle";
 
   // runs when form submits and check every field then register
   const handleSubmit = async (e) => {
@@ -142,6 +142,10 @@ export default function Register() {
         <div className="panel-body">
           {/* Form */}
           <form onSubmit={(e) => handleSubmit(e)}>
+            <div className="grid gap-x-6 md:grid-cols-2">
+              {field("firstName", "First Name")}
+              {field("lastName", "Last Name")}
+            </div>
             <div className="grid gap-x-6 md:grid-cols-2">
               {field("email", "Email", "email", "email@someplace.com")}
               {field("image", "Image", "text", "https://imagelocale.url")}
