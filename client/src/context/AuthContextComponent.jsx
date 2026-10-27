@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "./AuthContext";
 // adds or removes the x-auth-token header on each axios request
-// import setAuthToken from "../utils/setAuthToken"; // ! to be created
+import setAuthToken from "../utils/setAuthToken"; // ! to be created
 
 const authURL = "http://localhost:3000/api/auth";
 

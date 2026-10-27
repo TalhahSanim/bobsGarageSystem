@@ -5,8 +5,14 @@ import "dotenv/config";
 import db from "./models/models.js";
 import express from "express"; // bring in express and required mmodules
 import cors from "cors";
+// bring in bcrypt  which hashes and salts password and compare them upon login
+import bcrypt from "bcrypt";
+
+// bring in jsonwebtoken which creates the token we send back after login and register
+import jwt from "jsonwebtoken";
+
 import config from "./config/config.js";
-// intialise express ap variable
+// intialise express app variable
 
 // Descructure the models from our db so we use them in our routes
 const { Service, User } = db.sequelize.models;
@@ -24,9 +30,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Routes
+
 // can be post,get,put,delete
 // rember the route takes a path and callback function
-
+// ! Service Routes
 // Add a New Service
 app.post("/api/services/add", async (req, res) => {
   // log the path and request
@@ -121,6 +128,112 @@ app.delete("/api/services/edit/:id", async (req, res) => {
   //we must send through a where clause with the id
   await Service.destroy({ where: { serviceId: id } });
   res.status(204).send(`Id: ${id} deleted`);
+});
+
+// Auth Routes
+// Name -> Register
+// path -> /api/auth/register
+// request -> POST
+// type -> PUBLIC
+// Description -> Saves a new user with a hashed password and then sends back a token
+app.post("/api/auth/register", async (req, res) => {
+  console.log("/api/auth/register -> POST");
+  // Destructure req.body. NOT isAdmin as user never have capcity make themselves admin
+  const { firstName, lastName, email, image, password } = req.body;
+  try {
+    //  First: does the user with this email already exist?
+    const user = await User.findOne({ where: { email: email } });
+    if (user) {
+      return res
+        .status(400)
+        .json({ msg: "Error occured while registering this user" });
+    }
+
+    //  create a new user object
+    const newUser = { firstName, lastName, email, image, password };
+    // hash and salt the password before saving -> 12 rounds
+    const salt = await bcrypt.genSalt(12);
+    newUser.password = await bcrypt.hash(password, salt);
+
+    // save to the database
+    const userRes = await User.create(newUser);
+
+    //  Token payload -> never put the password in here
+    const payload = {
+      user: {
+        userId: userRes.userId,
+        firstName: userRes.firstName,
+        email: userRes.email,
+        isAdmin: userRes.isAdmin,
+      },
+    };
+
+    // Sign the token -> jwt.sign(paylaod,key, [options,callback])
+    // registering logs you in straight away
+    jwt.sign(
+      payload,
+      config.auth.jwtSecret,
+      { expiresIn: "7d", algorithm: "HS512" },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      },
+    );
+  } catch (err) {
+    // Fail gracefully-> database error sends a 500 instead of crashing
+    console.err(err);
+    res.status(500).json({ msg: "Server error", error: err.message });
+  }
+});
+
+// ! Login Route
+// Name -> Login
+// path -> /api/auth/login
+// request -> POST
+// Type -> Public
+// Description -> Checks the email and password , then sends back a token
+app.post("/api/auth/login", async (req, res) => {
+  console.log("/api/auth/login -> POST");
+  // Destruture req.body
+  const { email, password } = req.body;
+  try {
+    // is user in the database
+    const user = await User.findOne({ where: { email: email } });
+    //  Keep the message general like dont tell attackers it exists
+    if (!user) {
+      return res.status(400).json({ msg: "Invalid Credentails" });
+    }
+
+    // Does the typed password match the hashed password in the database
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ msg: "Invalid Credentials" });
+    }
+
+    //  Token payload -> Never put password here
+    const payload = {
+      user: {
+        userId: user.userId,
+        firstName: user.firstName,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
+    };
+
+    // Sign token
+    jwt.sign(
+      payload,
+      config.auth.jwtSecret,
+      { expiresIn: "7d", algorithm: "HS512" },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      },
+    );
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Server error", error: err.message });
+  }
 });
 
 // Update the listen so we can sync to our database
