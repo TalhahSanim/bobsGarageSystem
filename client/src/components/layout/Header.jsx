@@ -5,14 +5,33 @@ import { BiSolidCarMechanic } from "react-icons/bi";
 import { GrStatusInfo } from "react-icons/gr";
 
 import { IconContext } from "react-icons/lib";
-import { FaBars, FaPlus } from "react-icons/fa";
 import { MdPalette } from "react-icons/md";
 import { RiLoginBoxLine } from "react-icons/ri";
+import {
+  FaBars,
+  FaPlus,
+  FaDoorOpen,
+  FaSignInAlt,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 import logo from "../../assets/bobsLog.png";
 
+// the logout function from auth context
+import { useAuth } from "../../context/AuthContext";
+
 // export default function Header({ branding }) { //! outdated prop
 export default function Header() {
+  // logout from authContext
+  const { logout } = useAuth();
+
+  // Log out forget user and close menus
+  const leave = () => {
+    console.log("Logout Clicked");
+    logout();
+    closeMenus();
+  };
+
   // console.log(branding);  // test to see if it is functional
   const [menuOn, setMenuOn] = useState(false);
   const [themeOn, setThemeOn] = useState(false);
@@ -150,6 +169,11 @@ export default function Header() {
               >
                 Register
               </NavLink>
+            </li>
+            <li>
+              <button type="button" className={linkClass} onClick={leave}>
+                <FaSignOutAlt /> Logout
+              </button>
             </li>
           </ul>
         </div>
