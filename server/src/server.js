@@ -181,7 +181,7 @@ app.post("/api/auth/register", async (req, res) => {
     );
   } catch (err) {
     // Fail gracefully-> database error sends a 500 instead of crashing
-    console.err(err);
+    console.error(err);
     res.status(500).json({ msg: "Server error", error: err.message });
   }
 });
