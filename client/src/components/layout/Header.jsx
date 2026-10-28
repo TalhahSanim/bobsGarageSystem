@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Fragment, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import { BiSolidCarMechanic } from "react-icons/bi";
 import { GrStatusInfo } from "react-icons/gr";
@@ -13,6 +13,7 @@ import {
   FaDoorOpen,
   FaSignInAlt,
   FaSignOutAlt,
+  FaUsers,
 } from "react-icons/fa";
 
 import logo from "../../assets/bobsLog.png";
@@ -22,19 +23,12 @@ import { useAuth } from "../../context/AuthContext";
 
 // export default function Header({ branding }) { //! outdated prop
 export default function Header() {
-  // logout from authContext
-  const { logout } = useAuth();
-
-  // Log out forget user and close menus
-  const leave = () => {
-    console.log("Logout Clicked");
-    logout();
-    menuClose();
-  };
-
   // console.log(branding);  // test to see if it is functional
   const [menuOn, setMenuOn] = useState(false);
   const [themeOn, setThemeOn] = useState(false);
+
+  // From authContext is anyone logged in, are they admin status and logout
+  const { isAuth, isAdmin, logout } = useAuth();
 
   //  lose menus after link pressed
   const menuClose = () => {
@@ -42,10 +36,58 @@ export default function Header() {
     setThemeOn(false);
   };
 
+  // Log out forget user and close menus
+  const leave = () => {
+    console.log("Logout Clicked");
+    logout();
+    menuClose();
+  };
   // Class shared for every every nave to  prevent repetition
   const linkClass =
     "relative flex items-center gap-1 pb-1 after:absolute after:bottom-0 after:left-0 after:h-1 after:bg-pink-700 after:transition-all after:duration-300 hover:after:w-full motion-reduce:after:transition-none";
   const itemClass = "block w-full px-4 py-2 text-left hover:bg-garage-dark";
+
+  const adminLinks = (
+    <Fragment key="admin">
+      <li>
+        <Link className={linkClass} to="/add-service" onClick={menuClose}>
+          <FaPlus /> Add Service
+        </Link>
+      </li>
+
+      <li>
+        <Link className={linkClass} to="/admin" onClick={menuClose}>
+          <FaUsers /> DashBoard
+        </Link>
+      </li>
+    </Fragment>
+  );
+  // Links for logged in users
+  const authLinks = (
+    <Fragment key="auth">
+      <li>
+        <button type="button" className={linkClass} onClick={leave}>
+          <FaSignOutAlt /> Logout
+        </button>
+      </li>
+    </Fragment>
+  );
+
+  const loginRegisterLinks = (
+    <Fragment key="guest">
+      <li>
+        <Link className={linkClass} to="/login" onClick={menuClose}>
+          <FaSignInAlt /> Login
+        </Link>
+      </li>
+      <li>
+        <Link className={linkClass} to="/register" onClick={menuClose}>
+          <FaSignInAlt /> Register
+        </Link>
+      </li>
+    </Fragment>
+  );
+
   return (
     <nav className="mb-4 bg-gradient text-white ">
       <IconContext.Provider
@@ -122,6 +164,11 @@ export default function Header() {
                 About
               </NavLink>
             </li>
+
+            {/* Admin links for logged in admins */}
+            {isAdmin && isAuth ? adminLinks : null}
+            {/* Loggedin-> logout. Guest -> Login and Register */}
+            {isAuth ? authLinks : loginRegisterLinks}
 
             {/* Theme options */}
             <li className="relative">

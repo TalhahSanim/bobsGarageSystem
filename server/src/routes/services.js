@@ -1,6 +1,5 @@
 // The routes for service-> add,getALL, getOne,edit & delete
 // server.js uses the file on /api/services so every path starts here starts after that
-
 import express from "express";
 import db from "../models/models.js";
 
