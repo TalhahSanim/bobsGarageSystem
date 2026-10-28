@@ -16,7 +16,7 @@ const { Service } = db.sequelize.models;
 // path: /api/services/add
 // request: POST
 // type: PUBLIC
-router.post("/api/services/add", async (req, res) => {
+router.post("/add", async (req, res) => {
   // log the path and request
   console.log("/api/services -> POST");
   // we can only have one res.send in an endpoint

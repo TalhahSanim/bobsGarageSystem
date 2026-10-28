@@ -55,7 +55,7 @@ router.put("/edit/:id", async (req, res) => {
   // a changed password must be hashed again
   const hashedPassword = await User.prototype.hashPwd(password);
   await User.update(
-    { firstName, lastName, email, image, password, isAdmin },
+    { firstName, lastName, email, image, password: hashedPassword, isAdmin },
     { where: { userId: id } },
   );
   // update() only returns count so get the saved user to send back
