@@ -8,7 +8,7 @@
 // using parameterised queries
 
 // Bring in JWT & bcrypt from the Users model's functions
-import jsw from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 import { Sequelize, DataTypes } from "sequelize";
