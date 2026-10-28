@@ -3,24 +3,17 @@
 // as it will automaticaly load in models.js
 import "dotenv/config";
 import db from "./models/models.js";
-
 import express from "express"; // bring in express and required mmodules
 import cors from "cors";
-// bring in bcrypt  which hashes and salts password and compare them upon login
-import bcrypt from "bcrypt";
-
-// bring in jsonwebtoken which creates the token we send back after login and register
-import jwt from "jsonwebtoken";
 
 // load the route files
 import servicesRoutes from "./routes/services.js";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
 
 import config from "./config/config.js";
 // intialise express app variable
 
-// Descructure the models from our db so we use them in our routes
-const { Service, User } = db.sequelize.models;
 const app = express();
 
 // Intialise Middleware
@@ -41,6 +34,7 @@ app.use(cors());
 // rember the route takes a path and callback function
 app.use("/api/services", servicesRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 
 // Update the listen so we can sync to our database
 // we use the sync() method
