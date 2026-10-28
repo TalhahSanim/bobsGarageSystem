@@ -163,7 +163,7 @@ export default function Header() {
             </li>
             <li>
               <NavLink
-                className="hover:text-pink-600 text-3xl bg-pink-800 px-4.5 py-3.5 "
+                className="hover:text-pink-600 text-3xl bg-pink-800 px-8 py-6 "
                 to="/register"
                 onClick={menuClose}
               >

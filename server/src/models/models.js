@@ -7,6 +7,10 @@
 // it will allows us to use functions to call the SQL for talking to the database
 // using parameterised queries
 
+// Bring in JWT & bcrypt from the Users model's functions
+import jsw from "jsonwebtoken";
+import bcrypt from "bcrypt";
+
 import { Sequelize, DataTypes } from "sequelize";
 
 // bring in the confi file
@@ -78,6 +82,24 @@ const User = sequelize.define("User", {
 db.sequelize = sequelize;
 // this will alow us to use the sequelize class
 db.Sequelize = Sequelize;
+
+// Database functions -> ModelName.prototype.functionName = function({...})
+// Sign a token and it takes in the payload , returns the token and experies in 7 days
+User.prototype.signToken = function (payload) {
+  console.log("Signing token....");
+  // without callback, jwt.sign returns the token straight away
+  return jwt.sign(payload, config.auth.jwtSecret, {
+    expiresIn: "7d",
+    algorithm: "HS512",
+  });
+};
+
+// Hash a password and it takes in plain-text password and returns it hashed and salted
+User.prototype.hashPwd = async function (password) {
+  console.log("Hashing password....");
+  const salt = await bcrypt.genSalt(12);
+  return await bcrypt.hash(password, salt);
+};
 
 // export variables
 export default db;
