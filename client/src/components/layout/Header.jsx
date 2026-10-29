@@ -12,6 +12,7 @@ import {
   FaSignOutAlt,
   FaUsers,
   FaTimes,
+  FaUserPlus,
 } from "react-icons/fa";
 
 import logo from "../../assets/bobsLog.png";
@@ -90,7 +91,7 @@ export default function Header() {
             className="flex items-center gap-3"
             onClick={menuClose}
           >
-            <img src={logo} alt="Bob's Garage logo" className="h-42 w-auto" />
+            <img src={logo} alt="Bob's Garage logo" className="h-32 w-auto" />
           </NavLink>
         </div>
         {/* Middle page links on desktop mode */}
@@ -117,11 +118,11 @@ export default function Header() {
                 <FaSignInAlt /> Login
               </Link>
               <Link
-                to="/login"
+                to="/register"
                 className="btn btn-ghost btn-sm"
                 onClick={menuClose}
               >
-                <FaSignInAlt /> Register
+                <FaUserPlus /> Register
               </Link>
             </>
           )}

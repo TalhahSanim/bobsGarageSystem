@@ -52,7 +52,7 @@ export default function SingleService({ service }) {
 
           <button
             type="button"
-            className="btn btn-primary p-3 text-shadow-pink-950"
+            className="btn btn-error"
             onClick={(e) => onDelete(serviceId, e)}
           >
             <RiDeleteBin6Line /> Delete

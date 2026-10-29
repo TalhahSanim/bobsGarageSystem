@@ -1,17 +1,37 @@
+// Site footer incluses brand links hours and contact and copyright
+import { Link } from "react-router-dom";
 import logo from "../../assets/bobsLog.png";
-
 export default function Footer() {
-  // Data Class in JavaScript
-  //Temporal API
-  const date = new Date();
+  const year = new Date().getFullYear();
   return (
-    <footer className="bg-linear-to-br from-cyan-300 to-blue-600 text-blue">
-      <p className="me-6 py-6 text end text-blue">
-        copyright {String.fromCharCode(169)}
-        {" " + date.getFullYear() + " "}
-        Bob's Garage
-      </p>
-      <img src={logo} alt="Bob's Garage logo" className="w-60 h-30" />
+    <footer className="mt-16 bg-neutral max-w-6xl p-10 sm:footer-horizontal">
+      {/* Brand */}
+      <aside>
+        <img src={logo} alt="Bob's Garage" className="h-14 w-auto" />
+        <p className="max-w-xs text-neutral-content/70">
+          Reliable Service provider and repairs custom for one stop stop
+        </p>
+      </aside>
+
+      {/* page links */}
+      <nav className="gap-4">
+        <h6 className="footer-title">Explore</h6>
+        <Link to="/services" className="link link-hover">
+          Services
+        </Link>
+        <Link to="/about" className="link link-hover">
+          About|Us
+        </Link>
+        <Link to="/register" className="link link-hover">
+          Create an Account
+        </Link>
+
+        {/* Copyright */}
+
+        <div className="border-t border-neutral-content/10 py-4 text-center text-sm text-neutral-content/60">
+          © {year} Bob's Garage. All rights reserved.
+        </div>
+      </nav>
     </footer>
   );
 }

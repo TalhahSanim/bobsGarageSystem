@@ -1,39 +1,39 @@
-import Card from "../layout/Card";
+// Landing Page such as hero key point as pop servcie from db and cta
+import { Link } from "react-router-dom";
+import { FaTools, FaShieldAlt, FaClock, FaDollarSign } from "react-icons/fa";
+import heroImage from "../../assets/herocar.jpg";
+//  the service list from. garage context
+import { useServices } from "../../context/GarageContext";
 
 export default function Home() {
   return (
-    <>
-      <h1 className="my-8 text-4xl font-bold md:text-5xl">
-        Hello, Bob's Garage is Here
-      </h1>
-      <p className="mb-6">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi voluptas
-        voluptate dolores nemo, quaerat blanditiis cum illo consequuntur, a
-        velit sequi expedita, ratione nam incidunt recusandae molestias
-        reprehenderit commodi!
-      </p>
-
-      <h2 className="mb-2 text-2xl font-semi-bold">Services</h2>
-      <ul className="mb-6 list-disc ps-6">
-        <li>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus,
-          amet.
-        </li>
-        <li>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita,
-          praesentium!
-        </li>
-        <li>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
-          totam.
-        </li>
-      </ul>
-
-      <div className="grid gird-cols-1 justify-items-center gap-6 md:grid-cols-3">
-        <Card src="https://placehold.co/600x400" />
-        <Card />
-        <Card />
-      </div>
-    </>
+    <div className="space-y-16">
+      {/* Hero with a phot with dark overlay and white text to make text readble */}
+      <section
+        className="hero relative  left-1/2 w-screen -translate-x-1/2 min-h-[70vh]  overflow-hidden rounded-box bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="hero-overlay bg-neutral/70"></div>
+        <div className="hero-content py-16 text-center text-neutral-content">
+          <div className="max-w-2xl">
+            <h1 className="mb-4 font-heading text-4xl font-bold tracking-wide uppercase md:text-6xl">
+              Speedy Service Always
+            </h1>
+            <p className="mb-8 text-lg md:text-xl">
+              Servicing and repairs and custom jobs mechanics who treat car with
+              top care
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link
+                to="/services"
+                className="btn btn-outline btn-lg border-neutral-content text-neutral-content"
+              >
+                Our Services
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

@@ -228,9 +228,7 @@ export default function EditService() {
   return (
     <>
       <title>Update a Car Service</title>
-      <h1 className="my-6 flex items-center gap-2 text-3xl font-bold text-red-600">
-        <FaEdit /> Update a Car Service
-      </h1>
+
       <div className="panel">
         <div className="panel-header">Update the Car Service Below:</div>
         <div className="panel-body">
