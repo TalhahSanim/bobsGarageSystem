@@ -14,6 +14,7 @@ import {
   FaSignInAlt,
   FaSignOutAlt,
   FaUsers,
+  FaTimes,
 } from "react-icons/fa";
 
 import logo from "../../assets/bobsLog.png";
@@ -87,21 +88,83 @@ export default function Header() {
       </li>
     </Fragment>
   );
+  const links = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `${linkClass} ${isActive ? "font-bold after:w-full " : "after:w-0"}`
+          }
+          onClick={menuClose}
+        >
+          <IoHome />
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/services"
+          className={({ isActive }) =>
+            `${linkClass} ${isActive ? "font-bold after:w-full " : "after:w-0"}`
+          }
+          onClick={menuClose}
+        >
+          {" "}
+          <BiSolidCarMechanic />
+          Services
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/add-service"
+          className={({ isActive }) =>
+            `${linkClass} ${isActive ? "font-bold after:w-full " : "after:w-0"}`
+          }
+          onClick={menuClose}
+        >
+          <FaPlus /> Add New Service
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            `${linkClass} ${isActive ? "font-bold after:w-full " : "after:w-0"}`
+          }
+          onClick={menuClose}
+        >
+          <GrStatusInfo />
+          About
+        </NavLink>
+      </li>
+    </>
+  );
 
   return (
-    <nav className="mb-4 bg-gradient text-white ">
-      <IconContext.Provider
-        value={{ size: "2.5rem", className: "react-icons " }}
-      >
-        <div className="flex flex-wrap items-center justify-between px-4 py-7 gap-11 ">
-          <NavLink to="/" className="text-xl font-semibold" onClick={menuClose}>
-            <img
-              src={logo}
-              alt="Bob's Garage logo"
-              className="w-full max-w-sm"
-            />
-          </NavLink>
+    <header className="sticky top-0 z-30 bg-neutral text-neutral-content shadow-md">
+      <nav className="navbar mx-auto max-w-6xl px-4 ">
+        <IconContext.Provider
+          value={{ size: "3rem", className: "react-icons " }}
+        >
+          <div className="navbar-start ">
+            <NavLink
+              to="/"
+              className="flex items-center gap-3"
+              onClick={menuClose}
+            >
+              <img
+                src={logo}
+                alt="Bob's Garage logo"
+                className="w-full max-w-sm"
+              />
+            </NavLink>
+          </div>
 
+          {/* Middle page links on desktop mode */}
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal gap-1 text-base">{links}</ul>
+          </div>
           {/* Hamburger only on the small screens like tablets and mobile */}
           <button
             className="rounded border border-white/40 px-3 py-1 md:hidden cursor-pointer"
@@ -112,59 +175,70 @@ export default function Header() {
             <FaBars />
           </button>
 
+          {/* Right -> login/logout,theme and mobile menu */}
+          <div className="navbar-end gap-2">
+            {isAuth ? (
+              <button
+                type="button"
+                className="btn btn-ghost btn-sm"
+                onClick={leave}
+              >
+                <FaSignOutAlt /> Logout
+              </button>
+            ) : (
+              <>
+                <Link className="btn btn-ghost btn-sm" onClick={menuClose}>
+                  <FaSignInAlt /> Login
+                </Link>
+                <Link className="btn btn-ghost btn-sm" onClick={menuClose}>
+                  <FaSignInAlt /> Register
+                </Link>
+              </>
+            )}
+
+            {/* Theme Dropdown */}
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-sm btn-square"
+                aria-label="choose a theme"
+              >
+                <MdPalette className="size-5" />
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content z-40 mt-3 w-36 rounded-box bg-base-100 p-2 text-base-content shadow-lg"
+              >
+                <li>
+                  <button type="button">Light</button>
+                </li>
+                <li>
+                  <button type="button">Dark</button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Mobile menu button which is hidden on large screens */}
+            <button
+              type="button"
+              className="btn btn-ghost btn-sm btn-square lg:hidden"
+              onClick={() => setMenuOn(!menuOn)}
+              aria-label="Navigation Toggle"
+              aria-expanded={menuOn}
+            >
+              {menuOn ? (
+                <FaTimes className="size-5" />
+              ) : (
+                <FaBars className="size-5" />
+              )}
+            </button>
+          </div>
+
           {/* Links will be hidden on mobile unless menuON set to always shown on md+ */}
           <ul
             className={`${menuOn ? "flex" : "hidden"} w-full flex-col gap-2 pt-3 md:flex md:w-auto md:flex-row md:items-center md:gap-4 md:pt-0 bg- px-4 p-6`}
           >
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold after:w-full " : "after:w-0"}`
-                }
-                onClick={menuClose}
-              >
-                <IoHome />
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/services"
-                className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold after:w-full " : "after:w-0"}`
-                }
-                onClick={menuClose}
-              >
-                {" "}
-                <BiSolidCarMechanic />
-                Services
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/add-service"
-                className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold after:w-full " : "after:w-0"}`
-                }
-                onClick={menuClose}
-              >
-                <FaPlus /> Add New Service
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  `${linkClass} ${isActive ? "font-bold after:w-full " : "after:w-0"}`
-                }
-                onClick={menuClose}
-              >
-                <GrStatusInfo />
-                About
-              </NavLink>
-            </li>
-
             {/* Admin links for logged in admins */}
             {isAdmin && isAuth ? adminLinks : null}
             {/* Loggedin-> logout. Guest -> Login and Register */}
@@ -195,37 +269,14 @@ export default function Header() {
               )}
             </li>
           </ul>
-          <ul
-            className={`${menuOn ? "flex" : "hidden"} w-full flex-col gap-2 pt-3 md:flex md:w-auto md:flex-row md:items-center   md:gap-4 md:pt-0`}
-          >
-            <li>
-              <NavLink
-                className="hover:text-pink-400 text-3xl  px-10.5 py-4  "
-                onClick={menuClose}
-                to="/login"
-              >
-                <RiLoginBoxLine />
-                Login
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="hover:text-pink-600 text-3xl bg-pink-800 px-8 py-6 "
-                to="/register"
-                onClick={menuClose}
-              >
-                Register
-                <FaDoorOpen />
-              </NavLink>
-            </li>
-            <li>
-              <button type="button" className={linkClass} onClick={leave}>
-                <FaSignOutAlt /> Logout
-              </button>
-            </li>
-          </ul>
-        </div>
-      </IconContext.Provider>
-    </nav>
+        </IconContext.Provider>
+      </nav>
+      {/* Mobile menu with same links stacked */}
+      {menuOn && (
+        <ul className="menu w-full border-t border-neutral-content/10 px-4 pb-4 lg:hidden">
+          {links}
+        </ul>
+      )}
+    </header>
   );
 }

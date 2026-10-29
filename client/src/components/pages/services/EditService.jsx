@@ -332,7 +332,7 @@ export default function EditService() {
               <input
                 type="submit"
                 value="Update Service"
-                className="btn-info"
+                className="btn btn-primary"
               />
             </div>
           </form>

@@ -310,7 +310,11 @@ export default function AddServices() {
             </div>
             {/* Submit button */}
             <div className="grid">
-              <input type="submit" value="Add Service" className="btn-info" />
+              <input
+                type="submit"
+                value="Add Service"
+                className="btn btn-primary"
+              />
             </div>
           </form>
         </div>

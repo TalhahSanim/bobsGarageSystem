@@ -96,7 +96,7 @@ export default function Login() {
 
             {/* Submit Button */}
             <div className="mb-4 grid">
-              <input type="submit" value="Login" className="btn-info" />
+              <input type="submit" value="Login" className="btn btn-primary" />
             </div>
             {/* link to the register auth page */}
             <p className="mt-4">

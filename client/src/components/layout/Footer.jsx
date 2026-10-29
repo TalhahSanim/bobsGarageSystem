@@ -5,7 +5,7 @@ export default function Footer() {
   //Temporal API
   const date = new Date();
   return (
-    <footer className="mt-130 bg-linear-to-br from-cyan-300 to-blue-600 text-blue">
+    <footer className="bg-linear-to-br from-cyan-300 to-blue-600 text-blue">
       <p className="me-6 py-6 text end text-blue">
         copyright {String.fromCharCode(169)}
         {" " + date.getFullYear() + " "}

@@ -26,7 +26,7 @@ export default function SingleService({ service }) {
   const { serviceId, name, type, description, image, fee } = service;
   return (
     <>
-      <div className="card bg-blue-100">
+      <div className="card card-lift bg-base-100 shadow-md ">
         <img src={image} alt={name} className="h-48 w-full object-cover" />
         <div className="p-4">
           <h5 className="text-lg font-semibold">{name}</h5>
@@ -34,10 +34,10 @@ export default function SingleService({ service }) {
           <p className="text-blue-600">{description}</p>
           <p className="my-2 text-end font-bold">${fee}</p>
           <div className="flex gap-4">
-            <a href="#" className=" btn-primary">
+            <a href="#" className=" btn btn-secondary">
               More Details
             </a>
-            <a href="#" className=" btn-primary ">
+            <a href="#" className=" btn btn-secondary ">
               Save to Favourites
             </a>
           </div>
@@ -47,14 +47,14 @@ export default function SingleService({ service }) {
           {/* Every icon same sizing */}
           <IconContext.Provider value={{ size: "2em" }}>
             <Link to={`/edit/${serviceId}`} className="grid">
-              <button type="button" className="btn-warning p-3 font-bold">
+              <button type="button" className="btn btn-outline btn-secondary ">
                 <FaRegEdit /> Edit
               </button>
             </Link>
 
             <button
               type="button"
-              className="btn-info p-3 text-shadow-pink-950"
+              className="btn btn-primary p-3 text-shadow-pink-950"
               onClick={(e) => onDelete(serviceId, e)}
             >
               <RiDeleteBin6Line /> Delete

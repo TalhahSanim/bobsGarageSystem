@@ -1,4 +1,89 @@
 @import "tailwindcss";
+/* Daisyui components. themes: fals turns of its built in themes due to added garage themes */
+@plugin "daisyui" {
+  themes: false;
+}
+
+@plugin "daisyui/theme" {
+  name: garage;
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  /* {page and card backgrounds and main text colors */
+  --color-base-100: #ffffff;
+  --color-base-200: #f3f6fa;
+  --color-base-300: #e2e8f0;
+  --color-base-content: #0f172a;
+
+  /* Brand colors */
+
+  --color-primary: #c0262d;
+  --color-primary-content: #ffffff;
+  --color-secondary: #2377ed;
+  --color-secondary-content: #ffffff;
+  --color-accent: #f59e0b;
+  --color-accent-content: #1f1300;
+  --color-neutral: #0f1f3a;
+  --color-neutral-content: #e5edf7;
+
+  /* Message */
+  --color-info: #0ea5e9;
+  --color-info-content: #ffffff;
+  --color-success: #16a34a;
+  --color-success-content: #ffffff;
+  --color-warning-content: #1f1300;
+  --color-error: #dc2626;
+  --color-error-content: #ffffff;
+
+  /* Shape */
+  --radius-selector: 1rem;
+  --radius-field: 0.3rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* Dark theme with brand colors */
+@plugin "daisyui/theme" {
+  name: "garage-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #0b1424;
+  --color-base-200: #111d33;
+  --color-base-300: #1b2a45;
+  --color-base-content: #e5edf7;
+
+  --color-primary: #e0484e;
+  --color-primay-content: #ffffff;
+  --color-secondary: #4f93f5;
+  --color-secondary-content: #ffffff;
+  --color-accent: #fbbf24;
+  --color-accent-content: #1f1300;
+  --color-neutral: #050b16;
+  --color-neutral-content: #e5edf7;
+
+  --color-info: #38bdf8;
+  --color-info-content: #04101f;
+  --color-success: #22c55e;
+  --color-success-content: #04101f;
+  --color-warning: #fbbf24;
+  --color-warning-content: #1f1300;
+  --color-error: #f87171;
+  --color-error-content: #1f0505;
+
+  --radius-selector: 1rem;
+  --radius-field: 0.3rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
 
 /* Custom theme which adds our page colors to tailwind */
 @theme {
@@ -9,6 +94,9 @@
     #dfecf8,
     #2563eb
   );
+
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Oswald", ui-sans-serif, sans-serif;
 
   /* Card animation fadding up when they appear */
   --animate-fade-up: fade-up 0.4s ease-out both;
@@ -23,65 +111,58 @@
     }
   }
 }
-/* Reusable tailwind utility class- component class */
 
-@utility card {
-  @apply w-full max-w-sm overflow-hidden  border-none bg-white shadow-md;
+/* Card lift up the foade up and hover */
+@utility card-lift {
   @apply animate-fade-up transition duration-200 hover:-translate-y-1 hover:shadow-xl;
   @apply motion-reduce:animate-none motion-reduce:transition-none;
 }
 
-/* Full-size cardfor forms */
+/* Full size card for forms ->  login register add edit */
 @utility panel {
-  @apply mb-4 overflow-hidden   bg-blue-300 shadow-md;
+  @apply mb-6 overflow-hidden rounded-box border border-base-300  bg-base-100 shadow-md;
 }
+
 @utility panel-header {
-  @apply border-b border-gray-200 bg-blue-900 px-4 py-7 text-pink-500 font-bold text-3xl;
+  @apply bg-neutral px-6 py-5 font-heading text-2xl font-bold tracking-wide text-neutral-content  uppercase;
 }
 
 @utility panel-body {
-  @apply p-4;
+  @apply p-6;
 }
 
-/* Form Fields */
+/* Form fields */
 @utility form-label {
   @apply mb-1 block font-medium;
 }
 @utility form-input {
-  @apply block w-full  border-3 border-blue-200 px-5 py-5 focus:border-garage focus:ring-2 focus:ring-garage focus:outline-none;
+  @apply block w-full rounded-field border border-base-300 bg-base-100 px-4 py-3 text-base-content transition-colors focus:border-primary focus:ring-primary/30 focus:outline-none;
 }
 
-/* Validation States */
+/* Validation */
 .is-valid {
-  @apply border-green-400 focus:border-green-400 focus:ring-green-400/30;
+  @apply border-success focus:border-success focus:ring-success/30;
 }
-.is-invalid {
-  @apply border-red-500 focus:border-red-500 focus:ring-red-500/30;
+is-invalid {
+  @apply border-error focus:border-error focus:ring-error/30;
 }
+
 .invalid-feedback {
-  @apply mt-1 text-lg text-red-600;
+  @apply mt-1 text-sm text-error;
 }
 
-/* Loading spinner */
-.spinner {
-  @apply inline-block size-7 animate-spin  border-4 border-gray-400 border-t-garage;
-}
-
-/* Alert box for errors */
+/* Error box */
 .alert-danger {
-  @apply rounded-none border border-red-200 bg-red-50 p-4 text-red-700;
+  @apply rounded-box border border-error/30 bg-error/10 p-4 text-error;
 }
 
-/* Pill link class */
+/* Login and register pills */
 @utility link-pill {
-  @apply rounded-xl bg-cyan-100 px-2 py-1 font-medium text-cyan-800 no-underline transition-colors hover:bg-yellow-100;
+  @apply ms-1 rounded-selector bg-secondary/10 px-3 py-1 font-medium text-secondary no-underline transition-colors hover:bg-secondary/20;
 }
-@utility btn-primary {
-  @apply inline-flex items-center justify-center gap-2  px-4 py-2 font-medium  transition-colors bg-blue-400 text-white hover:bg-blue-700 cursor-pointer;
-}
-@utility btn-info {
-  @apply inline-flex items-center justify-center gap-2  px-4 py-2 font-bold transition-colors bg-pink-700 text-white  hover:bg-pink-500 cursor-pointer;
-}
-@utility btn-warning {
-  @apply inline-flex items-center justify-center gap-2  px-4 py-2 font-medium  transition-colors bg-green-400 text-white hover:bg-green-500 cursor-pointer;
+
+/* Admin dash side links */
+
+.dashbaord-link {
+  @apply block border-b-[3px] border-blue-600 p-4 text-orange-600 no-underline transition-colors hover:border-orange-500 hover:bg-black hover:text-white;
 }

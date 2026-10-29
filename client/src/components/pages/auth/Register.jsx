@@ -161,7 +161,7 @@ export default function Register() {
                 value={
                   registerStatus === "pending" ? "Registering..." : "Register"
                 }
-                className="btn-info disabled:opacity-55"
+                className="btn btn-primary disabled:opacity-55"
                 disabled={registerStatus === "pending"}
               />
             </div>

@@ -11,6 +11,14 @@ import EditService from "./components/pages/services/EditService";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";
 
+// Dashboard Components
+import Dashboard from "./components/pages/admin/Dashboard";
+import Users from "./components/pages/admin/Users";
+import EditUser from "./components/pages/admin/EditUser";
+import AddUser from "./components/pages/admin/AddUser";
+import UploadImage from "./components/pages/admin/UploadImage";
+import ChangeImage from "./components/pages/admin/ChangeImage";
+
 // import GarageContext Provider from GarageContent Component
 import { GarageContextProvider } from "./context/GarageContextComponent";
 
@@ -24,21 +32,28 @@ function App() {
   return (
     <GarageContextProvider>
       <Router>
-        <div className="bg-garage-gradient ">
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="container mx-auto flex-1 px-4">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/add-service" element={<AddServices />} />
-                <Route path="/edit/:id" element={<EditService />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-              </Routes>
-            </main>
-          </div>
+        <div className="flex min-h-screen flex-col bg-base-200 text-base-content">
+          <Header />
+          <main className="container mx-auto w-full max-w-6xl flex-1 px-4 py-6 ">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/add-service" element={<AddServices />} />
+              <Route path="/edit/:id" element={<EditService />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+
+              {/* Admin dashboard and the child shows dashboards <Outlets */}
+              <Route path="/admin" element={<Dashboard />}>
+                <Route path="users" element={<Users />} />
+                <Route path="users/edit/:id" element={<EditUser />} />
+                <Route path="users-add" element={<AddUser />} />
+                <Route path="images-new" element={<UploadImage />} />
+                <Route path="images-update" element={<ChangeImage />} />
+              </Route>
+            </Routes>
+          </main>
           <Footer />
         </div>
       </Router>

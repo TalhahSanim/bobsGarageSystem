@@ -17,7 +17,10 @@ export default function Services() {
       // Placeholder cards on load
       <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {[1, 2, 3].map((n) => (
-          <div key={n} className="card animate-pulse">
+          <div
+            key={n}
+            className="card card-lift bg-base-100 shadow-md animate-pulse"
+          >
             <div className="h-48 bg-gray-300"></div>
             <div className="space-y-3 p-4">
               <div className="h-5 w-2/3 bg-gray-300"></div>
