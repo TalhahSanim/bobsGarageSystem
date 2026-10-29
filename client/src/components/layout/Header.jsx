@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import { BiSolidCarMechanic } from "react-icons/bi";
@@ -39,23 +39,52 @@ export default function Header() {
     menuClose();
   };
 
-  const linkClass = ({ isActive }) => (isActive ? "menu-active" : "");
+  // The page links, used in the desktop bar AND the mobile menu
+  const links = (
+    <>
+      <li>
+        <NavLink to="/" end className={links} onClick={menuClose}>
+          <IoHome /> Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/services" className={links} onClick={menuClose}>
+          <BiSolidCarMechanic /> Services
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/about" className={links} onClick={menuClose}>
+          <GrStatusInfo /> About
+        </NavLink>
+      </li>
+      {/* Admin links: only for logged in admins */}
+      {isAuth && isAdmin && (
+        <>
+          <li>
+            <NavLink to="/add-service" className={links} onClick={menuClose}>
+              <FaPlus /> Add Service
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/admin" className={links} onClick={menuClose}>
+              <FaUsers /> Dashboard
+            </NavLink>
+          </li>
+        </>
+      )}
+    </>
+  );
 
   return (
     <header className="sticky top-0 z-30 bg-neutral text-neutral-content shadow-md">
       <nav className="navbar mx-auto max-w-6xl px-4 ">
-        value={{ size: "3rem", className: "react-icons " }}
         <div className="navbar-start ">
           <NavLink
             to="/"
             className="flex items-center gap-3"
             onClick={menuClose}
           >
-            <img
-              src={logo}
-              alt="Bob's Garage logo"
-              className="w-full max-w-sm"
-            />
+            <img src={logo} alt="Bob's Garage logo" className="h-12 w-auto" />
           </NavLink>
         </div>
         {/* Middle page links on desktop mode */}
@@ -74,10 +103,18 @@ export default function Header() {
             </button>
           ) : (
             <>
-              <Link className="btn btn-ghost btn-sm" onClick={menuClose}>
+              <Link
+                to="/login"
+                className="btn btn-ghost btn-sm"
+                onClick={menuClose}
+              >
                 <FaSignInAlt /> Login
               </Link>
-              <Link className="btn btn-ghost btn-sm" onClick={menuClose}>
+              <Link
+                to="/login"
+                className="btn btn-ghost btn-sm"
+                onClick={menuClose}
+              >
                 <FaSignInAlt /> Register
               </Link>
             </>
@@ -121,40 +158,6 @@ export default function Header() {
             )}
           </button>
         </div>
-        {/* Links will be hidden on mobile unless menuON set to always shown on md+ */}
-        <ul
-          className={`${menuOn ? "flex" : "hidden"} w-full flex-col gap-2 pt-3 md:flex md:w-auto md:flex-row md:items-center md:gap-4 md:pt-0 bg- px-4 p-6`}
-        >
-          {/* Admin links for logged in admins */}
-          {isAdmin && isAuth ? adminLinks : null}
-          {/* Loggedin-> logout. Guest -> Login and Register */}
-          {isAuth ? authLinks : loginRegisterLinks}
-
-          {/* Theme options */}
-          <li className="relative">
-            <button
-              className={`${linkClass} after:w-0`}
-              onClick={() => setThemeOn(!themeOn)}
-              aria-expanded={themeOn}
-            >
-              <MdPalette />
-              Theme
-            </button>
-            {themeOn && (
-              <ul className="absolute right-0 z-10 mt-2 w-36 rounded-md bg-garage py-1 shadow-lg">
-                <li>
-                  <button className={itemClass}>Dark</button>
-                </li>
-                <li>
-                  <button className={itemClass}>Light</button>
-                </li>
-                <li>
-                  <hr className="my-1 border-white/30" />
-                </li>
-              </ul>
-            )}
-          </li>
-        </ul>
       </nav>
       {/* Mobile menu with same links stacked */}
       {menuOn && (
