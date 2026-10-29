@@ -39,21 +39,23 @@ export default function Header() {
     menuClose();
   };
 
+  // tel what page your on ysubg neby active to highlight it
+  const linkClass = ({ isActive }) => (isActive ? "menu-active" : "");
   // The page links, used in the desktop bar AND the mobile menu
   const links = (
     <>
       <li>
-        <NavLink to="/" end className={links} onClick={menuClose}>
+        <NavLink to="/" end className={linkClass} onClick={menuClose}>
           <IoHome /> Home
         </NavLink>
       </li>
       <li>
-        <NavLink to="/services" className={links} onClick={menuClose}>
+        <NavLink to="/services" className={linkClass} onClick={menuClose}>
           <BiSolidCarMechanic /> Services
         </NavLink>
       </li>
       <li>
-        <NavLink to="/about" className={links} onClick={menuClose}>
+        <NavLink to="/about" className={linkClass} onClick={menuClose}>
           <GrStatusInfo /> About
         </NavLink>
       </li>
@@ -61,12 +63,16 @@ export default function Header() {
       {isAuth && isAdmin && (
         <>
           <li>
-            <NavLink to="/add-service" className={links} onClick={menuClose}>
+            <NavLink
+              to="/add-service"
+              className={linkClass}
+              onClick={menuClose}
+            >
               <FaPlus /> Add Service
             </NavLink>
           </li>
           <li>
-            <NavLink to="/admin" className={links} onClick={menuClose}>
+            <NavLink to="/admin" className={linkClass} onClick={menuClose}>
               <FaUsers /> Dashboard
             </NavLink>
           </li>
@@ -84,7 +90,7 @@ export default function Header() {
             className="flex items-center gap-3"
             onClick={menuClose}
           >
-            <img src={logo} alt="Bob's Garage logo" className="h-12 w-auto" />
+            <img src={logo} alt="Bob's Garage logo" className="h-42 w-auto" />
           </NavLink>
         </div>
         {/* Middle page links on desktop mode */}
