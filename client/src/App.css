@@ -5,14 +5,14 @@
 }
 
 @plugin "daisyui/theme" {
-  name: garage;
+  name: "garage";
   default: true;
   prefersdark: false;
   color-scheme: light;
 
   /* {page and card backgrounds and main text colors */
   --color-base-100: #ffffff;
-  --color-base-200: #f3f6fa;
+  --color-base-200: #5898e7;
   --color-base-300: #e2e8f0;
   --color-base-content: #3869d9;
 
@@ -32,6 +32,7 @@
   --color-info-content: #ffffff;
   --color-success: #16a34a;
   --color-success-content: #ffffff;
+  --color-warning: #f59e0b;
   --color-warning-content: #1f1300;
   --color-error: #dc2626;
   --color-error-content: #ffffff;
@@ -59,7 +60,7 @@
   --color-base-content: #e5edf7;
 
   --color-primary: #e0484e;
-  --color-primay-content: #ffffff;
+  --color-primary-content: #ffffff;
   --color-secondary: #4f93f5;
   --color-secondary-content: #ffffff;
   --color-accent: #fbbf24;
@@ -89,11 +90,6 @@
 @theme {
   --color-garage: #2377ed;
   --color-garage-dark: #09203f;
-  --background-image-garage-gradient: linear-gradient(
-    to bottom right,
-    #dfecf8,
-    #2563eb
-  );
 
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
   --font-heading: "Oswald", ui-sans-serif, sans-serif;
@@ -136,14 +132,14 @@
   @apply mb-1 block font-medium;
 }
 @utility form-input {
-  @apply block w-full rounded-field border border-base-300 bg-base-100 px-4 py-3 text-base-content transition-colors focus:border-primary focus:ring-primary/30 focus:outline-none;
+  @apply block w-full rounded-field border border-base-300 bg-base-100 px-4 py-3 text-base-content transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none;
 }
 
 /* Validation */
 .is-valid {
   @apply border-success focus:border-success focus:ring-success/30;
 }
-is-invalid {
+.is-invalid {
   @apply border-error focus:border-error focus:ring-error/30;
 }
 
@@ -163,6 +159,6 @@ is-invalid {
 
 /* Admin dash side links */
 
-.dashbaord-link {
+.dashboard-link {
   @apply block border-b-[3px] border-blue-600 p-4 text-orange-600 no-underline transition-colors hover:border-orange-500 hover:bg-black hover:text-white;
 }

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
 // bring in IconContext
-import { IconContext } from "react-icons/lib";
 import { useServicesDelete } from "../../../context/GarageContext";
 // Import the useServiceDelete hook from context
 
@@ -45,21 +44,19 @@ export default function SingleService({ service }) {
         {/* // Card footer */}
         <div className="flex justify-center gap-12 bg-blue-400 p-4">
           {/* Every icon same sizing */}
-          <IconContext.Provider value={{ size: "2em" }}>
-            <Link to={`/edit/${serviceId}`} className="grid">
-              <button type="button" className="btn btn-outline btn-secondary ">
-                <FaRegEdit /> Edit
-              </button>
-            </Link>
-
-            <button
-              type="button"
-              className="btn btn-primary p-3 text-shadow-pink-950"
-              onClick={(e) => onDelete(serviceId, e)}
-            >
-              <RiDeleteBin6Line /> Delete
+          <Link to={`/edit/${serviceId}`} className="grid">
+            <button type="button" className="btn btn-outline btn-secondary ">
+              <FaRegEdit /> Edit
             </button>
-          </IconContext.Provider>
+          </Link>
+
+          <button
+            type="button"
+            className="btn btn-primary p-3 text-shadow-pink-950"
+            onClick={(e) => onDelete(serviceId, e)}
+          >
+            <RiDeleteBin6Line /> Delete
+          </button>
         </div>
       </div>
     </>
