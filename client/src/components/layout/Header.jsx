@@ -119,7 +119,7 @@ export default function Header() {
               </Link>
               <Link
                 to="/register"
-                className="btn btn-ghost btn-sm"
+                className="btn btn-ghost btn-sm "
                 onClick={menuClose}
               >
                 <FaUserPlus /> Register

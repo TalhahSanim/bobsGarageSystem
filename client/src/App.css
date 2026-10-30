@@ -13,7 +13,7 @@
   /* {page and card backgrounds and main text colors */
   --color-base-100: #ffffff;
   --color-base-200: #5898e7;
-  --color-base-300: #e2e8f0;
+  --color-base-300: #102b4d;
   --color-base-content: #3869d9;
 
   /* Brand colors */
@@ -24,7 +24,7 @@
   --color-secondary-content: #ffffff;
   --color-accent: #f59e0b;
   --color-accent-content: #1f1300;
-  --color-neutral: #0f1f3a;
+  --color-neutral: #22345d;
   --color-neutral-content: #e5edf7;
 
   /* Message */
@@ -91,7 +91,7 @@
 
 /* Custom theme which adds our page colors to tailwind */
 @theme {
-  --color-garage: #2377ed;
+  --color-garage: "bg-gradient-to-r from-blue-400 to-blue-500";
   --color-garage-dark: #09203f;
 
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;

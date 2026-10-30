@@ -7,10 +7,11 @@ import { useServices } from "../../context/GarageContext";
 
 export default function Home() {
   return (
-    <div className="space-y-16">
+    <div className="space-y-20  ">
       {/* Hero with a phot with dark overlay and white text to make text readble */}
       <section
-        className="hero relative  left-1/2 w-screen -translate-x-1/2 min-h-[70vh]  overflow-hidden rounded-box bg-cover bg-center"
+        className="hero relative left-1/2 w-screen -translate-x-1/2 -my-6 min-h-screen overflow-hidden bg-cover bg-center
+ "
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="hero-overlay bg-neutral/70"></div>

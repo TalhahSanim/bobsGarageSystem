@@ -10,6 +10,7 @@ import cors from "cors";
 import servicesRoutes from "./routes/services.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
+import adminRoutes from "./routes/admin.js";
 
 import config from "./config/config.js";
 // intialise express app variable
@@ -35,6 +36,9 @@ app.use(cors());
 app.use("/api/services", servicesRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+
+// serve files in server uploads -> /uploads
+app.use("/uploads", express.static("uploads"));
 
 // Update the listen so we can sync to our database
 // we use the sync() method

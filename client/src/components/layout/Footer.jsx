@@ -4,7 +4,7 @@ import logo from "../../assets/bobsLog.png";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-16 bg-neutral max-w-6xl p-10 sm:footer-horizontal">
+    <footer className=" bg-neutral max-w-8xl p-10 sm:footer-horizontal">
       {/* Brand */}
       <aside>
         <img src={logo} alt="Bob's Garage" className="h-14 w-auto" />
