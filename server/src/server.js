@@ -36,6 +36,7 @@ app.use(cors());
 app.use("/api/services", servicesRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/admin", adminRoutes);
 
 // serve files in server uploads -> /uploads
 app.use("/uploads", express.static("uploads"));

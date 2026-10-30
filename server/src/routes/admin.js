@@ -42,7 +42,7 @@ router.post("/uploadImage", auth, admin, upload.single("file"), (req, res) => {
 // description -> builds the public URL for an uploaded file
 router.get("/getImageURL/:filename", (req, res) => {
   console.log("/api/admin/getImageURL -> GET");
-  const url = `http:localhost:3000/uploads/${req.params.filename}`;
+  const url = `http//:localhost:3000/uploads/${req.params.filename}`;
   res.status(200).send(url);
 });
 
