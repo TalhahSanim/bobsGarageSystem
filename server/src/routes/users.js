@@ -56,8 +56,7 @@ router.put("/edit/:id", auth, admin, async (req, res) => {
 
   const id = Number(req.params.id);
   const { firstName, lastName, email, image, isAdmin } = req.body;
-  // a changed password must be hashed again
-  // const hashedPassword = await User.prototype.hashPwd(password);
+
   await User.update(
     { firstName, lastName, email, image, isAdmin },
     { where: { userId: id } },
