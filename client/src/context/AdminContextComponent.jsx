@@ -1,7 +1,7 @@
 //  The admin provider which is th elist of uploadd images, the home page banner
 // functions to upload images and changing banner apeparance
 import { useState } from "react";
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { AdminContext } from "./AdminContext";
 
 const adminURL = "http://localhost:3000/api/admin";
