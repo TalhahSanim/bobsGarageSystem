@@ -15,9 +15,9 @@ export default function Home() {
     <div className="space-y-20  ">
       {/* Hero with a photo with dark overlay and white text to make text readble */}
       <section
-        className="hero relative left-1/2 w-screen -translate-x-1/2 -my-6 min-h-screen overflow-hidden bg-cover bg-center
+        className="hero relative left-1/2 -my-6 min-h-screen w-screen translate-x-1/2 overflow-x-hidden bg-cover bg-center
  "
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url(${backImage || heroImage})` }}
       >
         <div className="hero-overlay bg-neutral/70"></div>
         <div className="hero-content py-16 text-center text-neutral-content">
@@ -42,14 +42,12 @@ export default function Home() {
                 </Link>
               </div>
             </header>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Link
-                to="/services"
-                className="btn btn-outline btn-lg border-neutral-content text-neutral-content"
-              >
-                Our Services
-              </Link>
-            </div>
+            <Link
+              to="/services"
+              className="btn btn-primary btn-lg border-neutral-content text-neutral-content"
+            >
+              Our Services
+            </Link>
           </div>
         </div>
       </section>
