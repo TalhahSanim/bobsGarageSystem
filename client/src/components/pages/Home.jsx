@@ -9,10 +9,15 @@ export default function Home() {
   return (
     <div className="space-y-20">
       {/* Hero with a photo with dark overlay and white text to make text readble */}
-      <section
-        className="hero relative left-1/2 -my-6 min-h-screen w-screen -translate-x-1/2 overflow-x-hidden bg-cover bg-center"
-        style={{ backgroundImage: `url(${backImage || heroImage})` }}
-      >
+      <section className="relative overflow-x-hidden rounded-box shadow-md">
+        <img
+          src={backImage}
+          alt=""
+          className="h-64 w-full object-cover md:h-80"
+        />
+        {/* dark gradient enable text to be readble  */}
+        <div className="absolute inset-0 bg-linear-to-r from-neutral/80 to-transparent"></div>
+        <div className="absolute inset-0 flex flex-col justify-center gap-3 p-8 text-neutral-content"></div>
         <div className="hero-overlay bg-neutral/70"></div>
         <div className="hero-content py-16 text-center text-neutral-content">
           <div className="max-w-2xl">
