@@ -34,10 +34,7 @@ export default function UploadImage() {
       <div className="panel">
         <div className="panel-header">Select an image to Uplaod:</div>
         <div className="panel-body">
-          <form
-            onSubmit={(e) => handleFileChange(e)}
-            encType="mulitpart/form-data"
-          >
+          <form onSubmit={(e) => handleUpload(e)} encType="mulitpart/form-data">
             <div className="mb-4">
               <label className="form-label" htmlFor="selectedFile">
                 Select image to upload
