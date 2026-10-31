@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 // banner image URL from admin context
 import { useAdmin } from "../../context/AdminContext";
 import heroImage from "../../assets/herocar.jpg";
-//  the service list from. garage context
 
 export default function Home() {
   const { homepageImage: backImage } = useAdmin();
@@ -17,18 +16,15 @@ export default function Home() {
         <div className="hero-overlay bg-neutral/70"></div>
         <div className="hero-content py-16 text-center text-neutral-content">
           <div className="max-w-2xl">
-            <div className="absolute inset-0 bg-black/40"></div>
-            <div className="relative px-4 text-center text-white">
-              <h1 className="mb-4 text-4xl font-bold drop-shadow-lg md:text-5xl">
-                Bob's Garage
-              </h1>
-              <p className="mx-auto mb-6 max-w-2xl drop-shadow">
-                Speed Service always with quality care in Mind
-              </p>
-              <Link to="/services" className="btn-info">
-                Our Services
-              </Link>
-            </div>
+            <h1 className="mb-4 text-4xl font-bold drop-shadow-lg md:text-5xl">
+              Bob's Garage
+            </h1>
+            <p className="mx-auto mb-6 max-w-2xl drop-shadow">
+              Speed Service always with quality care in Mind
+            </p>
+            <Link to="/services" className="btn btn-primary btn-lg">
+              Our Services
+            </Link>
           </div>
         </div>
       </section>
