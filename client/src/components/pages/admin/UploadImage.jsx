@@ -7,7 +7,7 @@ export default function UploadImage() {
   // state for the selected file and for a message
   const [selectedFile, setSelectedFile] = useState(null);
   const [message, setMessage] = useState("");
-  const { UploadImage } = useAdmin();
+  const { uploadImage } = useAdmin();
 
   // Runs when file is selected-> kepp first file and clear message
   const handleFileChange = (e) => {
@@ -22,7 +22,7 @@ export default function UploadImage() {
       setMessage("Please select an image first");
       return;
     }
-    const result = await UploadImage(selectedFile);
+    const result = await uploadImage(selectedFile);
     setMessage(result.msg);
   };
 
@@ -34,7 +34,7 @@ export default function UploadImage() {
       <div className="panel">
         <div className="panel-header">Select an image to Uplaod:</div>
         <div className="panel-body">
-          <form onSubmit={(e) => handleUpload(e)} encType="mulitpart/form-data">
+          <form onSubmit={(e) => handleUpload(e)} encType="mulipart/form-data">
             <div className="mb-4">
               <label className="form-label" htmlFor="selectedFile">
                 Select image to upload

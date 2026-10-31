@@ -29,7 +29,12 @@ export default function ChangeImage() {
           Select an Image:
         </label>
         {/* Dropdown for uploaded image */}
-        <select id="fileList" className="form-input bg-white">
+        <select
+          id="fileList"
+          value={image}
+          onChange={(e) => handleChange(e)}
+          className="form-input bg-white"
+        >
           <option value="">----- Please Select and Image -----</option>
           {imageList.map((imageName) => (
             <option key={imageName} value={imageName}>
