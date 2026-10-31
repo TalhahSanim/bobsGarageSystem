@@ -8,6 +8,25 @@ export default function Home() {
   const { homepageImage: backImage } = useAdmin();
   return (
     <div className="space-y-20">
+      <section
+        className="hero relative left-1/2 -my-6 min-h-screen w-screen -translate-x-1/2 overflow-x-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="hero-overlay bg-neutral/70"></div>
+        <div className="hero-content py-16 text-center text-neutral-content">
+          <div className="max-w-2xl">
+            <h1 className="mb-4 text-4xl font-bold drop-shadow lg md:text-5xl">
+              Bob's Garage
+            </h1>
+            <p className="mb-6 drop-shadow">
+              Speedy Service with top notch quality care
+            </p>
+            <Link to="/services" className="btn btn-primary btn-lg">
+              Our Services
+            </Link>
+          </div>
+        </div>
+      </section>
       {/* Hero with a photo with dark overlay and white text to make text readble */}
       <section className="relative overflow-x-hidden rounded-box shadow-md">
         <img
