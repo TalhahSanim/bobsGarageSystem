@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Dark -> classes follow  html data-theme = dark*/
-@custom-variant dark (&:where([data-theme="dark"],[data-theme="dark"]*));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 /* -- Design [LIGHT MODE] */
 @theme {
   --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
@@ -68,7 +68,7 @@
   --color-primary: #2a93be;
   --color-primary-hover: #3bb4db;
   --color-primary-light: #14303d;
-  --color-color-link: #6cc6e8;
+  --color-link: #6cc6e8;
   --color-accent: #ef5350;
   --color-gradient-end: #d84343;
 
