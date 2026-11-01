@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Dark -> classes follow  html data-theme = dark*/
-@custom-variant dark (&:where([data-theme="dark"],[data-theme="dark"]));
+@custom-variant dark (&:where([data-theme="dark"],[data-theme="dark"]*));
 /* -- Design [LIGHT MODE] */
 @theme {
   --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
@@ -43,193 +43,192 @@
   --color-danger: #dc2626;
 
   /* Cards fades up on appearance  */
-  --animate-fade-up {
-    @keyframes fade-up {
-      from {
-        opacity: 0;
-        transform: translateY(12px);
-      }
-      to {
-        opacity: 1;
-        transform: none;
-      }
+  --animate-fade-up: fade-up 0.4s ease-out both;
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
     }
   }
+}
+/* Dark Mode */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-page: #121417;
+  --color-surface: #1c1f24;
+  --color-nav: #1c1f24;
+  --color-line: #2e323a;
+  --color-ink: #f3f4f6;
+  --color-muted: #9ca3af;
 
-  /* Dark Mode */
-  [data-theme="dark"] {
-    color-scheme: dark;
-    --color-page: #121417;
-    --color-surface: #1c1f24;
-    --color-nav: #1c1f24;
-    --color-line: #2e323a;
-    --color-ink: #f3f4f6;
-    --color-muted: #9ca3af;
+  --color-primary: #2a93be;
+  --color-primary-hover: #3bb4db;
+  --color-primary-light: #14303d;
+  --color-color-link: #6cc6e8;
+  --color-accent: #ef5350;
+  --color-gradient-end: #d84343;
 
-    --color-primary: #2a93be;
-    --color-primary-hover: #3bb4db;
-    --color-primary-light: #14303d;
-    --color-accent: #ef5350;
-    --color-gradient-end: #d84343;
+  --color-footer: #0e1012;
+  --color-footer-end: #16303d;
+  --color-on-footer: #d1d5db;
 
-    --color-footer: #0e1012;
-    --color-footer-end: #16303d;
-    --color-on-footer: #d1d5db;
+  --color-success: #22c55e;
+  --color-success-light: #14532d;
+  --color-success-text: #86efac;
+  --color-warning: #fbbf24;
+  --color-warning-light: #78350f;
+  --color-warning-text: #fcd34d;
+  --color-danger: #f87171;
+}
 
-    --color-success: #22c55e;
-    --color-success-light: #14532d;
-    --color-success-text: #86efac;
-    --color-warning: #fbbf24;
-    --color-warning-light: #78350f;
-    --color-warning-text: #fcd34d;
-    --color-danger: #f87171;
+/* Base color fro page and heading fonts */
+@layer base {
+  body {
+    @apply bg-page font-sans font-light text-ink antialiased;
   }
+  h1,
+  h2 {
+    @apply font-heading font-medium;
+  }
+}
 
-  /* Base color fro page and heading fonts */
-  @layer base {
-    body {
-      @apply bg-page font-sans font-light text-ink antialiased;
-    }
-    h1,
-    h2 {
-      @apply font-heading font-medium;
-    }
-  }
+/* Buttons Component */
+@utility btn {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 px-5 py-3 text-base font-semibold no-underline transition;
+  @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  @apply disabled:cursor-not-allowed disabled:opacity-60;
+}
+@utility btn-sm {
+  @apply px-3.5 py-1.5 text-sm;
+}
+@utility btn-lg {
+  @apply px-7 py-4 text-lg;
+}
 
-  /* Buttons Component */
-  @utility btn {
-    @apply inline-flex cursor-pointer items-center justify-center gap-2 px-5 py-3 text-base font-semibold no-underline transition;
-    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
-    @apply disabled:cursor-not-allowed disabled:opacity-60;
-  }
-  @utility btn-sm {
-    @apply px-3.5 py-1.5 text-sm font-normal;
-  }
-  @utility btn-lg {
-    @apply px-7 py-4 text-lg;
-  }
+/* Make blue into red gradient */
+@utility btn-primary {
+  @apply bg-button text-on-primary shadow-sm hover:bg-button-hover;
+}
 
-  /* Make blue into red gradient */
-  @utility btn-primary {
-    @apply bg-button text-on-primary shadow-sm hover:bg-button-hover;
-  }
+/* Outline Button */
+@utility btn-outline {
+  @apply border border-line bg-surface text-link hover:bg-primary-light;
+}
 
-  /* Outline Button */
-  @utility btn-outline {
-    @apply border border-line bg-surface text-link hover:bg-primary-light;
-  }
+/* Danger */
+@utility btn-danger {
+  @apply border border-danger/40 bg-surface text-danger hover:bg-danger/10;
+}
 
-  /* Danger */
-  @utility btn-danger {
-    @apply border border-danger/40 bg-surface text-danger hover:bg-danger/10;
-  }
+/* Quiet button */
+@utility btn-ghost {
+  @apply bg-transparent text-ink hover:bg-ink/5;
+}
 
-  /* Quiet button */
-  @utility btn-ghost {
-    @apply bg-transparent text-ink hover:bg-ink/5;
-  }
+@utility btn-square {
+  @apply aspect-square p-2;
+}
 
-  @utility btn-square {
-    @apply aspect-square p-2;
-  }
+@utility btn-secondary {
+  @apply border border-line bg-surface text-link hover:bg-primary-light;
+}
+@utility btn-info {
+  @apply border border-line bg-surface text-link hover:bg-primary-light;
+}
+@utility btn-error {
+  @apply border border-danger/40 bg-surface text-danger hover:bg-danger/10;
+}
 
-  @utility btn-secondary {
-    @apply border border-line bg-surface text-link hover:bg-primary-light;
-  }
-  @utility btn-info {
-    @apply border border-line bg-surface text-link hover:bg-primary-light;
-  }
-  @utility btn-error {
-    @apply border border-danger/40 bg-surface text-danger hover:bg-danger/10;
-  }
+/* --------- Card and Panels ------------- */
+@utility card {
+  @apply overflow-hidden border border-line bg-surface shadow-sm;
+}
 
-  /* --------- Card and Panels ------------- */
-  @utility card {
-    @apply overflow-hidden border border-line bg-surface shadow-sm;
-  }
+@utility card-lift {
+  @apply animate-fade-up transition duration-200 hover:-translate-y-1 hover:shadow-lg;
+  @apply motion-reduce:animate-none motion-reduce:transition-none;
+}
 
-  @utility card-lift {
-    @apply animate-fade-up transition duration-200 hover:-translate-y-1 hover:shadow-lg;
-    @apply motion-reduce:animate-none motion-reduce:transition-none;
-  }
+/* Tile withot photo get blue  get blue box */
+@utility icon-tile {
+  @apply flex items-center justify-center bg-linear-135 from-footer to-footer-end text-white;
+}
+/* Forms -> Edit/add service & Edit/Add User, Upload images */
 
-  /* Tile withot photo get blue  get blue box */
-  @utility icon-tile {
-    @apply flex items-center justify-center bg-linear-135 from-footer to-footer-end text-white;
-  }
-  /* Forms -> Edit/add service & Edit/Add User, Upload images */
+@utility panel {
+  @apply mb-6 overflow-hidden border border-line bg-surface shadow-sm;
+}
+@utility panel-header {
+  @apply border-b border-line px-6 py-5 font-heading text-2xl font-medium text-ink;
+}
+@utility panel-body {
+  @apply p-6;
+}
 
-  @utility panel {
-    @apply mb-6 overflow-hidden border border-line bg-surface shadow-sm;
-  }
-  @utility panel-header {
-    @apply border-b border-line px-6 py-5 font-heading text-2xl font-medium text-ink;
-  }
-  @utility panel-body {
-    @apply p-6;
-  }
+/* -------- Fields Component */
+@utility form-label {
+  @apply mb-1.5 block text-sm font-semibold text-ink;
+}
 
-  /* -------- Fields Component */
-  @utility form-label {
-    @apply mb-1.5 block text-sm font-semibold text-ink;
-  }
+@utility form-input {
+  @apply block w-full border border-line bg-surface px-3.5 py-3 text-ink transition placeholder:text-muted;
+  @apply focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none;
+}
 
-  @utility form-input {
-    @apply block w-full border border-line bg-surface px-3.5 py-3 text-ink transition placeholder:text-muted;
-    @apply focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none;
-  }
+.is-valid {
+  @apply border-success focus:border-success focus:ring-success/30;
+}
 
-  .is-valid {
-    @apply border-success focus:border-success focus:ring-success/30;
-  }
+.is-invalid {
+  @apply border-danger focus:border-danger focus:ring-danger/30;
+}
+.invalid-feedback {
+  @apply mt-1 text-sm font-normal text-danger;
+}
 
-  .is-invalid {
-    @apply border-danger focus:border-danger focus:ring-danger/30;
-  }
-  .invalid-feedback {
-    @apply mt-1 text-sm font-normal text-danger;
-  }
+/* ------------ Messages, badges and Links */
+.alert-danger {
+  @apply border border-danger/30 bg-danger/10 p-4 text-danger;
+}
+/* StatusBadge */
+@utility badge {
+  @apply inline-flex items-center px-2.5 py-1 text-xs font-semibold;
+}
+@utility badge-pending {
+  @apply bg-warning-light text-warning-text;
+}
+@utility badge-responded {
+  @apply bg-success-light text-success-text;
+}
 
-  /* ------------ Messages, badges and Links */
-  .alert-danger {
-    @apply border border-danger/30 bg-danger/10 p-4 text-danger;
-  }
-  /* StatusBadge */
-  @utility badge {
-    @apply inline-flex items-center px-2.5 py-1 text-xs font-semibold;
-  }
-  @utility badge-pending {
-    @apply bg-warning-light text-warning-text;
-  }
-  @utility badge-responded {
-    @apply bg-success-light text-success-light;
-  }
+@utility link-pill {
+  @apply ms-1 bg-primary-light px-3 py-1 text-link no-underline hover:brightness-95;
+}
 
-  @utility link-pill {
-    @apply ms-1 bg-primary-light px-3 py-1 text-link no-underline hover:brightness-95;
-  }
+/* --------- Navigation -------------- */
+@utility nav-link {
+  @apply flex items-center gap-3 px-3 py-2 text-ink no-underline transition-colors hover:text-link;
+}
+@utility nav-link-active {
+  @apply text-link;
+}
+/*  Admin sidebar links */
+@utility dashboard-link {
+  @apply block px-3 py-2.5 text-on-footer no-underline transition-colors hover:bg-white/10;
+}
+@utility dashboard-link-active {
+  @apply bg-primary text-on-primary hover:bg-primary;
+}
 
-  /* --------- Navigation -------------- */
-  @utility nav-link {
-    @apply flex items-center gap-3 px-3 py-2 text-ink no-underline transition-colors hover:text-link;
-  }
-  @utility nav-link-active {
-    @apply text-link;
-  }
-  /*  Admin sidebar links */
-  @utility dashboard-link {
-    @apply block px-3 py-2.5 text-on-footer no-underline transition-colors hover:bg-white/10;
-  }
-  @utility dashboard-link-active {
-    @apply bg-primary text-on-primary hover:bg-primary;
-  }
-
-  /*  Helper Styles */
-  /* make home hero go left to right isnide page container */
-  @utility full-screen {
-    @apply relative left-1/2 w-screen -translate-x-1/2;
-  }
-  @utility spinner {
-    @apply inline-block size-5 animate-spin rounded-full border-2 border-line border-t-primary;
-  }
+/*  Helper Styles */
+/* make home hero go left to right isnide page container */
+@utility full-screen {
+  @apply relative left-1/2 w-screen -translate-x-1/2;
+}
+@utility spinner {
+  @apply inline-block size-5 animate-spin rounded-full border-2 border-line border-t-primary;
 }
