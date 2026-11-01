@@ -32,9 +32,9 @@ function App() {
   return (
     <GarageContextProvider>
       <Router>
-        <div className="flex min-h-screen flex-col bg-base-200 text-base-content">
+        <div className="flex min-h-screen flex-col bg-page text-ink">
           <Header />
-          <main className="container mx-auto w-full max-w-6xl flex-1 px-4 py-6 ">
+          <main className=" mx-auto w-full max-w-6xl flex-1 px-4 py-10 ">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services" element={<Services />} />
