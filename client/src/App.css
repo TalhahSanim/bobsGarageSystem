@@ -1,167 +1,235 @@
 @import "tailwindcss";
-/* Daisyui components. themes: fals turns of its built in themes due to added garage themes */
-@plugin "daisyui" {
-  themes: false;
-}
 
-@plugin "daisyui/theme" {
-  name: "garage";
-  default: true;
-  prefersdark: false;
-  color-scheme: light;
-
-  /* {page and card backgrounds and main text colors */
-  --color-base-100: #ffffff;
-  --color-base-200: #5898e7;
-  --color-base-300: #102b4d;
-  --color-base-content: #3869d9;
-
-  /* Brand colors */
-
-  --color-primary: #c0262d;
-  --color-primary-content: #ffffff;
-  --color-secondary: #2377ed;
-  --color-secondary-content: #ffffff;
-  --color-accent: #f59e0b;
-  --color-accent-content: #1f1300;
-  --color-neutral: #22345d;
-  --color-neutral-content: #e5edf7;
-
-  /* Message */
-  --color-info: #0ea5e9;
-  --color-info-content: #ffffff;
-  --color-success: #16a34a;
-  --color-success-content: #ffffff;
-  --color-warning: #f59e0b;
-  --color-warning-content: #1f1300;
-  --color-error: #dc2626;
-  --color-error-content: #ffffff;
-
-  /* Shape */
-  --radius-selector: 1rem;
-  --radius-field: 0.3rem;
-  --radius-box: 0.75rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-  --border: 1px;
-  --depth: 1;
-  --noise: 0;
-}
-
-/* Dark theme with brand colors */
-@plugin "daisyui/theme" {
-  name: "garage-dark";
-  default: false;
-  prefersdark: true;
-  color-scheme: dark;
-
-  --color-base-100: #0b1424;
-  --color-base-200: #111d33;
-  --color-base-300: #1b2a45;
-  --color-base-content: #e5edf7;
-
-  --color-primary: #e0484e;
-  --color-primary-content: #ffffff;
-  --color-secondary: #4f93f5;
-  --color-secondary-content: #ffffff;
-  --color-accent: #fbbf24;
-  --color-accent-content: #1f1300;
-  --color-neutral: #050b16;
-  --color-neutral-content: #e5edf7;
-
-  --color-info: #38bdf8;
-  --color-info-content: #04101f;
-  --color-success: #22c55e;
-  --color-success-content: #04101f;
-  --color-warning: #fbbf24;
-  --color-warning-content: #1f1300;
-  --color-error: #f87171;
-  --color-error-content: #1f0505;
-
-  --radius-selector: 1rem;
-  --radius-field: 0.3rem;
-  --radius-box: 0.75rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-
-  --border: 1px;
-  --depth: 1;
-  --noise: 0;
-}
-
-/* Custom theme which adds our page colors to tailwind */
+/* Dark -> classes follow  html data-theme = dark*/
+@custom-variant dark (&:where([data-theme="dark"],[data-theme="dark"]));
+/* -- Design [LIGHT MODE] */
 @theme {
-  --color-garage: "bg-gradient-to-r from-blue-400 to-blue-500";
-  --color-garage-dark: #09203f;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Barlow Condensed", ui-sans-serif, sans-serif;
 
-  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Oswald", ui-sans-serif, sans-serif;
+  --color-page: #c7e3ff;
+  --color-surface: #ffffff;
+  --color-nav: #e3f6ff;
+  --color-line: #d9dce0;
+  --color-ink: #1e2124;
+  --color-muted: #5d6368;
+  --color-on-primary: #ffffff;
 
-  /* Card animation fadding up when they appear */
-  --animate-fade-up: fade-up 0.4s ease-out both;
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(12px);
-    }
-    to {
-      opacity: 1;
-      transform: none;
+  --color-primary: #1f7fa8;
+  --color-primary-hover: #165e7d;
+  --color-primary-light: #d6eef7;
+  --color-link: #1f7fa8;
+  --color-accent: #c62828;
+  --color-gradient-end: #c62626;
+
+  --color-footer: #3f7aa0;
+  --color-footer-end: #9a4545;
+  --color-on-footer: #e5e7eb;
+
+  /* Solid red buttons  */
+  --color-button: #d95353;
+  --color-button-hover: #ac4a4a;
+
+  /* Hero Photo Overlay */
+  --color-hero: #171a1f;
+  --color-hero-red: #731717;
+
+  --color-success: #16a34a;
+  --color-success-light: #dcfce7;
+  --color-success-text: #15803d;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-warning-text: #b45309;
+  --color-danger: #dc2626;
+
+  /* Cards fades up on appearance  */
+  --animate-fade-up {
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
   }
-}
 
-/* Card lift up the foade up and hover */
-@utility card-lift {
-  @apply animate-fade-up transition duration-200 hover:-translate-y-1 hover:shadow-xl;
-  @apply motion-reduce:animate-none motion-reduce:transition-none;
-}
+  /* Dark Mode */
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --color-page: #121417;
+    --color-surface: #1c1f24;
+    --color-nav: #1c1f24;
+    --color-line: #2e323a;
+    --color-ink: #f3f4f6;
+    --color-muted: #9ca3af;
 
-/* Full size card for forms ->  login register add edit */
-@utility panel {
-  @apply mb-6 overflow-hidden rounded-box border border-base-300  bg-base-100 shadow-md;
-}
+    --color-primary: #2a93be;
+    --color-primary-hover: #3bb4db;
+    --color-primary-light: #14303d;
+    --color-accent: #ef5350;
+    --color-gradient-end: #d84343;
 
-@utility panel-header {
-  @apply bg-neutral px-6 py-5 font-heading text-2xl font-bold tracking-wide text-neutral-content  uppercase;
-}
+    --color-footer: #0e1012;
+    --color-footer-end: #16303d;
+    --color-on-footer: #d1d5db;
 
-@utility panel-body {
-  @apply p-6;
-}
+    --color-success: #22c55e;
+    --color-success-light: #14532d;
+    --color-success-text: #86efac;
+    --color-warning: #fbbf24;
+    --color-warning-light: #78350f;
+    --color-warning-text: #fcd34d;
+    --color-danger: #f87171;
+  }
 
-/* Form fields */
-@utility form-label {
-  @apply mb-1 block font-medium;
-}
-@utility form-input {
-  @apply block w-full rounded-field border border-base-300 bg-base-100 px-4 py-3 text-base-content transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none;
-}
+  /* Base color fro page and heading fonts */
+  @layer base {
+    body {
+      @apply bg-page font-sans font-light text-ink antialiased;
+    }
+    h1,
+    h2 {
+      @apply font-heading font-medium;
+    }
+  }
 
-/* Validation */
-.is-valid {
-  @apply border-success focus:border-success focus:ring-success/30;
-}
-.is-invalid {
-  @apply border-error focus:border-error focus:ring-error/30;
-}
+  /* Buttons Component */
+  @utility btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 px-5 py-3 text-base font-semibold no-underline transition;
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+    @apply disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  @utility btn-sm {
+    @apply px-3.5 py-1.5 text-sm font-normal;
+  }
+  @utility btn-lg {
+    @apply px-7 py-4 text-lg;
+  }
 
-.invalid-feedback {
-  @apply mt-1 text-sm text-error;
-}
+  /* Make blue into red gradient */
+  @utility btn-primary {
+    @apply bg-button text-on-primary shadow-sm hover:bg-button-hover;
+  }
 
-/* Error box */
-.alert-danger {
-  @apply rounded-box border border-error/30 bg-error/10 p-4 text-error;
-}
+  /* Outline Button */
+  @utility btn-outline {
+    @apply border border-line bg-surface text-link hover:bg-primary-light;
+  }
 
-/* Login and register pills */
-@utility link-pill {
-  @apply ms-1 rounded-selector bg-secondary/10 px-3 py-1 font-medium text-secondary no-underline transition-colors hover:bg-secondary/20;
-}
+  /* Danger */
+  @utility btn-danger {
+    @apply border border-danger/40 bg-surface text-danger hover:bg-danger/10;
+  }
 
-/* Admin dash side links */
+  /* Quiet button */
+  @utility btn-ghost {
+    @apply bg-transparent text-ink hover:bg-ink/5;
+  }
 
-.dashboard-link {
-  @apply block border-b-[3px] border-blue-600 p-4 text-orange-600 no-underline transition-colors hover:border-orange-500 hover:bg-black hover:text-white;
+  @utility btn-square {
+    @apply aspect-square p-2;
+  }
+
+  @utility btn-secondary {
+    @apply border border-line bg-surface text-link hover:bg-primary-light;
+  }
+  @utility btn-info {
+    @apply border border-line bg-surface text-link hover:bg-primary-light;
+  }
+  @utility btn-error {
+    @apply border border-danger/40 bg-surface text-danger hover:bg-danger/10;
+  }
+
+  /* --------- Card and Panels ------------- */
+  @utility card {
+    @apply overflow-hidden border border-line bg-surface shadow-sm;
+  }
+
+  @utility card-lift {
+    @apply animate-fade-up transition duration-200 hover:-translate-y-1 hover:shadow-lg;
+    @apply motion-reduce:animate-none motion-reduce:transition-none;
+  }
+
+  /* Tile withot photo get blue  get blue box */
+  @utility icon-tile {
+    @apply flex items-center justify-center bg-linear-135 from-footer to-footer-end text-white;
+  }
+  /* Forms -> Edit/add service & Edit/Add User, Upload images */
+
+  @utility panel {
+    @apply mb-6 overflow-hidden border border-line bg-surface shadow-sm;
+  }
+  @utility panel-header {
+    @apply border-b border-line px-6 py-5 font-heading text-2xl font-medium text-ink;
+  }
+  @utility panel-body {
+    @apply p-6;
+  }
+
+  /* -------- Fields Component */
+  @utility form-label {
+    @apply mb-1.5 block text-sm font-semibold text-ink;
+  }
+
+  @utility form-input {
+    @apply block w-full border border-line bg-surface px-3.5 py-3 text-ink transition placeholder:text-muted;
+    @apply focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none;
+  }
+
+  .is-valid {
+    @apply border-success focus:border-success focus:ring-success/30;
+  }
+
+  .is-invalid {
+    @apply border-danger focus:border-danger focus:ring-danger/30;
+  }
+  .invalid-feedback {
+    @apply mt-1 text-sm font-normal text-danger;
+  }
+
+  /* ------------ Messages, badges and Links */
+  .alert-danger {
+    @apply border border-danger/30 bg-danger/10 p-4 text-danger;
+  }
+  /* StatusBadge */
+  @utility badge {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-semibold;
+  }
+  @utility badge-pending {
+    @apply bg-warning-light text-warning-text;
+  }
+  @utility badge-responded {
+    @apply bg-success-light text-success-light;
+  }
+
+  @utility link-pill {
+    @apply ms-1 bg-primary-light px-3 py-1 text-link no-underline hover:brightness-95;
+  }
+
+  /* --------- Navigation -------------- */
+  @utility nav-link {
+    @apply flex items-center gap-3 px-3 py-2 text-ink no-underline transition-colors hover:text-link;
+  }
+  @utility nav-link-active {
+    @apply text-link;
+  }
+  /*  Admin sidebar links */
+  @utility dashboard-link {
+    @apply block px-3 py-2.5 text-on-footer no-underline transition-colors hover:bg-white/10;
+  }
+  @utility dashboard-link-active {
+    @apply bg-primary text-on-primary hover:bg-primary;
+  }
+
+  /*  Helper Styles */
+  /* make home hero go left to right isnide page container */
+  @utility full-screen {
+    @apply relative left-1/2 w-screen -translate-x-1/2;
+  }
+  @utility spinner {
+    @apply inline-block size-5 animate-spin rounded-full border-2 border-line border-t-primary;
+  }
 }
