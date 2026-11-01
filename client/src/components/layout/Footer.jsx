@@ -1,6 +1,6 @@
 // Site footer incluses brand links hours and contact and copyright
 import { Link } from "react-router-dom";
-import logo from "../../assets/bobsLog.png";
+import logo from "../../assets/logo-light.jpg";
 export default function Footer() {
   const year = new Date().getFullYear();
   return (

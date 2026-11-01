@@ -15,7 +15,7 @@ import {
   FaUserPlus,
 } from "react-icons/fa";
 
-import logo from "../../assets/bobsLog.png";
+import logo from "../../assets/logo-light.jpg";
 
 // the logout function from auth context
 import { useAuth } from "../../context/AuthContext";

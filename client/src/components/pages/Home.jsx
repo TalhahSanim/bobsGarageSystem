@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 // banner image URL from admin context
 import { useAdmin } from "../../context/AdminContext";
-import heroImage from "../../assets/herocar.jpg";
+import heroImage from "../../assets/hero-image.jpg";
 
 export default function Home() {
   const { homepageImage: backImage } = useAdmin();
