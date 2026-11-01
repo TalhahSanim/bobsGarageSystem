@@ -15,7 +15,7 @@ export default function Home() {
         <div className="hero-overlay bg-neutral/70"></div>
         <div className="hero-content py-16 text-center text-neutral-content">
           <div className="max-w-2xl">
-            <h1 className="mb-4 text-4xl font-bold drop-shadow lg md:text-5xl">
+            <h1 className="mb-4 text-4xl font-bold drop-shadow-lg md:text-5xl">
               Bob's Garage
             </h1>
             <p className="mb-6 drop-shadow">
