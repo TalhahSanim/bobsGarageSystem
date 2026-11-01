@@ -7,15 +7,15 @@ import { GrStatusInfo } from "react-icons/gr";
 import { MdPalette } from "react-icons/md";
 import {
   FaBars,
+  FaMoon,
   FaPlus,
-  FaSignInAlt,
-  FaSignOutAlt,
-  FaUsers,
+  FaSun,
   FaTimes,
-  FaUserPlus,
+  FaUsers,
 } from "react-icons/fa";
 
-import logo from "../../assets/logo-light.jpg";
+import logo from "../../assets/logo-light.png";
+import logoDark from "../../assets/logo-dark.png";
 
 // the logout function from auth context
 import { useAuth } from "../../context/AuthContext";
@@ -24,9 +24,17 @@ import { useAuth } from "../../context/AuthContext";
 export default function Header() {
   // console.log(branding);  // test to see if it is functional
   const [menuOn, setMenuOn] = useState(false);
-
   // From authContext is anyone logged in, are they admin status and logout
   const { isAuth, isAdmin, logout } = useAuth();
+  // temp theme switch
+  const [dark, setDark] = useState(
+    document.documentElement.dataset.theme === "dark",
+  );
+  const themeToggle = () => {
+    const next = !dark;
+    document.documentElement.dataset.theme = next ? "dark" : "light";
+    setDark(next);
+  };
 
   //  lose menus after link pressed
   const menuClose = () => {
@@ -41,7 +49,25 @@ export default function Header() {
   };
 
   // tel what page your on ysubg neby active to highlight it
-  const linkClass = ({ isActive }) => (isActive ? "menu-active" : "");
+  const linkClass = ({ isActive }) => (isActive ? "nav-link-active" : "");
+
+  // the logo -> light version or dark version when using data-them="dark"
+  const brand = (size) => {
+    <>
+      <img
+        src={logo}
+        alt="Bob's Garage"
+        className={`${size} w-auto dark:hidden`}
+      />
+
+      <img
+        src={logoDark}
+        alt="Bob's Garage"
+        className={`${size} hidden w-auto dark:block`}
+      />
+    </>;
+  };
+
   // The page links, used in the desktop bar AND the mobile menu
   const links = (
     <>
@@ -82,96 +108,108 @@ export default function Header() {
     </>
   );
 
+  //  Login and register or logout and wide make them fill mobile menu
+  const account = (wide) => {
+    isAuth ? (
+      <button
+        type="button"
+        className={`btn btn-outline btn-sm ${wide ? "flex-1 py-3" : ""}`}
+        onClick={leave}
+      >
+        Logout
+      </button>
+    ) : (
+      <>
+        <Link
+          to="/login"
+          className={`btn btn-sm ${wide ? "btn-outline" : "btn-ghost"}`}
+          onClick={menuClose}
+        >
+          Login
+        </Link>
+        <Link
+          to="/register"
+          className={`btn btn-primary btn-sm ${wide ? "flex-1 py-3" : ""}`}
+          onClick={menuClose}
+        >
+          Register
+        </Link>
+      </>
+    );
+  };
+
   return (
-    <header className="sticky top-0 z-30 bg-neutral text-neutral-content shadow-md">
-      <nav className="navbar mx-auto max-w-6xl px-4 ">
-        <div className="navbar-start ">
-          <NavLink
-            to="/"
-            className="flex items-center gap-3"
-            onClick={menuClose}
-          >
-            <img src={logo} alt="Bob's Garage logo" className="h-32 w-auto" />
-          </NavLink>
-        </div>
+    <header className="sticky top-0 z-30 bg-nav shadow-sm">
+      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4">
+        {/* Logo left */}
+        <NavLink to="/" onClick={menuClose} className="shrink-0">
+          {brand("h-14")}
+        </NavLink>
+
         {/* Middle page links on desktop mode */}
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal gap-1 text-base">{links}</ul>
-        </div>
+
+        <ul className="hidden items-center gap-1 lg:flex">{links}</ul>
+
         {/* Right -> login/logout,theme and mobile menu */}
-        <div className="navbar-end gap-2">
-          {isAuth ? (
+        <div className="flex items-center gap-2"></div>
+        <button
+          type="button"
+          className="btn btn-ghost btn-square"
+          onClick={themeToggle}
+          aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {dark ? <FaSun className="size-5" /> : <FaMoon className="size-5" />}
+        </button>
+        <div className="hidden items-center gap-2 lg:flex">
+          {account(false)}
+        </div>
+        <button
+          type="button"
+          className="btn btn-ghost btn-square lg-hidden"
+          onClick={() => setMenuOn(true)}
+          aria-label="Open Menu"
+          aria-expanded={menuOn}
+        >
+          <FaBars className="size-6" />
+        </button>
+      </nav>
+
+      {/* Gradient line under bar */}
+      <div className="h-0.75 bg-linear-to-r from-primary to-gradient-end"></div>
+      {/* Mobile menu with dark overlay and sliding from left */}
+      <div
+        className={`fixed inset-0 z-40 lg:hidden ${menuOn ? "" : "pointer-events-none"}`}
+        inert={!menuOn}
+      >
+        {/* // overlay */}
+        <button
+          type="button"
+          aria-label="Close Menu"
+          className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${menuOn ? "opacity-100" : "opacity-0"}`}
+          onClick={menuClose}
+        ></button>
+
+        {/* Panel -> Mobile */}
+        <aside
+          className={`absolute inset-y-0 left-0 flex w-77.5 max-w-[85vw] flex-col bg-surface p-5 shadow-2xl transition-transform duration-300 ${menuOn ? "translate-x-0" : "-translate-x-full"}`}
+        >
+          <div className="mb-6 flex items-center justify-between">
+            <NavLink to="/" onClick={menuClose}>
+              {brand("h-12")}
+            </NavLink>
             <button
               type="button"
-              className="btn btn-ghost btn-sm"
-              onClick={leave}
+              className="btn btn-ghost btn-square"
+              onClick={menuClose}
+              aria-label="Close Menu"
             >
-              <FaSignOutAlt /> Logout
+              <FaTimes className="size-6" />
             </button>
-          ) : (
-            <>
-              <Link
-                to="/login"
-                className="btn btn-ghost btn-sm"
-                onClick={menuClose}
-              >
-                <FaSignInAlt /> Login
-              </Link>
-              <Link
-                to="/register"
-                className="btn btn-ghost btn-sm "
-                onClick={menuClose}
-              >
-                <FaUserPlus /> Register
-              </Link>
-            </>
-          )}
-
-          {/* Theme Dropdown */}
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-sm btn-square"
-              aria-label="choose a theme"
-            >
-              <MdPalette className="size-5" />
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu dropdown-content z-40 mt-3 w-36 rounded-box bg-base-100 p-2 text-base-content shadow-lg"
-            >
-              <li>
-                <button type="button">Light</button>
-              </li>
-              <li>
-                <button type="button">Dark</button>
-              </li>
-            </ul>
           </div>
-
-          {/* Mobile menu button which is hidden on large screens */}
-          <button
-            type="button"
-            className="btn btn-ghost btn-sm btn-square lg:hidden"
-            onClick={() => setMenuOn(!menuOn)}
-            aria-label="Navigation Toggle"
-            aria-expanded={menuOn}
-          >
-            {menuOn ? (
-              <FaTimes className="size-5" />
-            ) : (
-              <FaBars className="size-5" />
-            )}
-          </button>
-        </div>
-      </nav>
-      {/* Mobile menu with same links stacked */}
-      {menuOn && (
-        <ul className="menu w-full border-t border-neutral-content/10 px-4 pb-4 lg:hidden">
-          {links}
-        </ul>
-      )}
+          <ul className="flex flex-col gap-1 text-lg">{links}</ul>
+          <div className="mt-auto flex gap-2">{account(true)}</div>
+        </aside>
+      </div>
     </header>
   );
 }
