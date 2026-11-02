@@ -1,37 +1,64 @@
-// Site footer incluses brand links hours and contact and copyright
+// Site Footer -> Logo, page links, account links,social links and copyright
 import { Link } from "react-router-dom";
+import { IoLogoFacebook } from "react-icons/io";
+import { FaSquareInstagram, FaLinkedin } from "react-icons/fa6";
+
 import logo from "../../assets/logo-light.png";
+
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className=" bg-neutral max-w-8xl p-10 sm:footer-horizontal">
-      {/* Brand */}
-      <aside>
-        <img src={logo} alt="Bob's Garage" className="h-14 w-auto" />
-        <p className="max-w-xs text-neutral-content/70">
-          Reliable Service provider and repairs custom for one stop stop
-        </p>
-      </aside>
-
-      {/* page links */}
-      <nav className="gap-4">
-        <h6 className="footer-title">Explore</h6>
-        <Link to="/services" className="link link-hover">
-          Services
-        </Link>
-        <Link to="/about" className="link link-hover">
-          About|Us
-        </Link>
-        <Link to="/register" className="link link-hover">
-          Create an Account
-        </Link>
-
-        {/* Copyright */}
-
-        <div className="border-t border-neutral-content/10 py-4 text-center text-sm text-neutral-content/60">
-          © {year} Bob's Garage. All rights reserved.
+    <footer className="bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        {/* Brand */}
+        <div className="col-span-2 md:col-span-1">
+          <img src={logo} alt="Bob's Garage" className="h-16 w-auto" />
+          <p className="mt-2 text-on-footer/80">
+            Speedy Service With Top Notch Care
+          </p>
         </div>
-      </nav>
+        {/* Page Links */}
+        <nav className="flex flex-col gap-2">
+          <h2 className="font-sans text-base font-semibold">Our Garage</h2>
+          <Link to="/" className="text-on-footer/80 hover:text-white">
+            Home
+          </Link>
+          <Link to="/services" className="text-on-footer/80 hover:text-white">
+            Services
+          </Link>
+          <Link to="/about" className="text-on-footer/80 hover:text-white">
+            About
+          </Link>
+        </nav>
+        {/* Account Links */}
+        <nav className="flex flex-col gap-2">
+          <h2 className="font-sans text-base font-semibold">Our Socials</h2>
+          <a
+            href="https://facebook.com"
+            className="text-on-footer/80 hover:text-white"
+          >
+            <IoLogoFacebook />
+            Facebook
+          </a>
+          <a
+            href="https://instagram.com"
+            className="text-on-footer/80 hover:text-white"
+          >
+            <FaSquareInstagram /> Instagram
+          </a>
+          <a
+            href="https://linkedin.com"
+            className="text-on-footer/80 hover:text-white"
+          >
+            <FaLinkedin />
+            Linkedin
+          </a>
+        </nav>
+      </div>
+      {/* Copyright */}
+      <div className="mx-auto max-w-6xl border-t border-white/10  px-4 text-sm font-normal text-on-footer/70">
+        All Rights Reserved. © Bob's Garage {year}
+      </div>
     </footer>
   );
 }
