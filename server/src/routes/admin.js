@@ -23,8 +23,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// name get image URL
-// path -> /api/admin/getImageURL/:filename
+// name -> upload image
+// path -> /api/admin/uploadImage/
 // request => POST
 // type -> admin
 // description -> multer reafds one file from the form filed "file" and save it
