@@ -57,7 +57,7 @@ export default function SingleService({ service }) {
             <button
               type="button"
               className="btn btn-danger btn-sm"
-              onClick={() => onDelete(serviceDelete)}
+              onClick={() => onDelete(serviceId)}
             >
               <RiDeleteBin6Line /> Delete
             </button>
