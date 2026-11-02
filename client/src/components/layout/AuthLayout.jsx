@@ -16,7 +16,7 @@ export default function AuthLayout({ title, subtitle, children }) {
       </div>
 
       {/* Form goes here ⬇️ */}
-      <div className="flex items-center p-8 md:p-12">
+      <div className="flex items-center justify-center p-8 md:p-12">
         <div className="w-full max-w-md">{children}</div>
       </div>
     </section>
