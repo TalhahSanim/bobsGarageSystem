@@ -16,8 +16,8 @@ export default function ToggleTheme({ className = "" }) {
       onClick={themeToggle}
       aria-label="toggle dark mode"
     >
-      <FaMoon className="size-5 dark-block" />
-      <FaSun className="hidden size-5 dark-hidden" />
+      <FaMoon className="size-5 dark:block" />
+      <FaSun className="hidden size-5 dark:hidden" />
     </button>
   );
 }
