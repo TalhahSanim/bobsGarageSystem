@@ -1,9 +1,10 @@
 // Register page -> form creating new account & registers with AuthContext
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // register from our authcontext
 import { useAuth } from "../../../context/AuthContext";
 // validation helper
+import AuthLayout from "../../layout/AuthLayout";
 import { is_Empty } from "../../../utils/validation";
 
 // Register component for creating a neew account
@@ -133,49 +134,44 @@ export default function Register() {
     </div>
   );
   return (
-    <Fragment>
-      <h1 className="my-6 text-3xl font-bold text-blue-600">
-        Register For System
-      </h1>
-      <div className="panel">
-        <div className="panel-header">Register</div>
-        <div className="panel-body">
-          {/* Form */}
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="grid gap-x-6 md:grid-cols-2">
-              {field("firstName", "First Name")}
-              {field("lastName", "Last Name")}
-            </div>
-            <div className="grid gap-x-6 md:grid-cols-2">
-              {field("email", "Email", "email", "email@someplace.com")}
-              {field("image", "Image", "text", "https://imagelocale.url")}
-            </div>
-            <div className="grid gap-x-6 md:grid-cols-2">
-              {field("password", "Password", "password")}
-              {field("passwordCompare", "Re-enter Password", "password")}
-            </div>
-            {/* Submit- disable when saving */}
-            <div className="mb-4 grid">
-              <input
-                type="submit"
-                value={
-                  registerStatus === "pending" ? "Registering..." : "Register"
-                }
-                className="btn btn-primary "
-                disabled={registerStatus === "pending"}
-              />
-            </div>
-
-            {/* Link to login auth page */}
-            <p className="mt-4">
-              Already Have Account?
-              <Link className="link-pill" to="/login">
-                Sign in
-              </Link>
-            </p>
-          </form>
+    <AuthLayout
+      title="Join Bob's Garage Today"
+      subtitle="Save Services and Enquiries and Replies Land directly at you"
+    >
+      <h1 className="text-3xl">Create An Account</h1>
+      <p className="mt-1 mb-6 text-muted">Enter your details to register</p>
+      {/* Form */}
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <div className="grid gap-x-6 md:grid-cols-2">
+          {field("firstName", "First Name")}
+          {field("lastName", "Last Name")}
         </div>
-      </div>
-    </Fragment>
+        <div className="grid gap-x-6 md:grid-cols-2">
+          {field("email", "Email", "email", "email@someplace.com")}
+          {field("image", "Image", "text", "https://imagelocale.url")}
+        </div>
+        <div className="grid gap-x-6 md:grid-cols-2">
+          {field("password", "Password", "password")}
+          {field("passwordCompare", "Re-enter Password", "password")}
+        </div>
+        {/* Submit- disable when saving */}
+        <div className="mb-4 grid">
+          <input
+            type="submit"
+            value={registerStatus === "pending" ? "Registering..." : "Register"}
+            className="btn btn-primary mt-2 w-full "
+            disabled={registerStatus === "pending"}
+          />
+        </div>
+
+        {/* Link to login auth page */}
+        <p className="mt-6 text-center text-sm font-normal text-muted">
+          Already Have Account?
+          <Link className="link-pill" to="/login">
+            Sign in
+          </Link>
+        </p>
+      </form>
+    </AuthLayout>
   );
 }

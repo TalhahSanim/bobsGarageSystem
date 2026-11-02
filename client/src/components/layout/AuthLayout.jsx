@@ -3,7 +3,7 @@ import heroImage from "../../assets/hero-image.jpg";
 
 export default function AuthLayout({ title, subtitle, children }) {
   return (
-    <section className="mx-auto grid max-w-5xl overflow-hidden border border-line bg-surface shadow-sm md:grid-cols-2">
+    <section className="full-screen -my-10 grid bg-surface md:min-h-170 md:grid-cols-2">
       {/* image like same with hero's tinting */}
       <div
         className="relative min-h-48 bg-cover bg-center md:min-h-140"
