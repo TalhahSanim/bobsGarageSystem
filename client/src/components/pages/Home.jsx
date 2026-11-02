@@ -1,57 +1,50 @@
-// Landing Page such as hero key point as pop servcie from db and cta
+// Landing Page -> full screen hero then four key services
 import { Link } from "react-router-dom";
-// banner image URL from admin context
 import { useAdmin } from "../../context/AdminContext";
+import { useServices } from "../../context/GarageContext";
+import SingleService from "./services/SingleService";
 import heroImage from "../../assets/hero-image.jpg";
-
 export default function Home() {
-  const { homepageImage: backImage } = useAdmin();
+  // Admin Selected image or own car image
+  const { homepageImage } = useAdmin();
+  const serviceList = useServices();
+  const trend = serviceList.slice(0, 4);
   return (
-    <div className="space-y-20">
+    <>
+      {/* mt removes mains top padding so it enables picture to toucher header */}
       <section
-        className="hero relative left-1/2 -my-6 min-h-screen w-screen -translate-x-1/2 overflow-x-hidden bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="full-screen -mt-10 bg-cover bg-center"
+        style={{ backgroundImage: `url(${homepageImage || heroImage})` }}
       >
-        <div className="hero-overlay bg-neutral/70"></div>
-        <div className="hero-content py-16 text-center text-neutral-content">
-          <div className="max-w-2xl">
-            <h1 className="mb-4 text-4xl font-bold drop-shadow-lg md:text-5xl">
-              Bob's Garage
+        {/* create the tint -> dakr on left and red on right to enable white text to be readable */}
+        <div className="bg-linear-135 from-hero-red/35 via-hero/85 to-primary/30">
+          <div className="mx-auto flex min-h-140 max-w-3xl flex-col items-center justify-center gap-5 px-4 py-20 text-center text-white">
+            <h1 className="text-5xl md:text-6xl">
+              Speedy Service, Top Notch Quality
             </h1>
-            <p className="mb-6 drop-shadow">
-              Speedy Service with top notch quality care
+            <p className="text-lg text-white/90 md:text-xl">
+              Enquire Now & Get Quality Service Today!
             </p>
-            <Link to="/services" className="btn btn-primary btn-lg">
-              Our Services
+            <Link to="/services" className="btn btn-primary btn-lg mt-2">
+              Explore Services
             </Link>
           </div>
         </div>
       </section>
-      {/* Hero with a photo with dark overlay and white text to make text readble */}
-      <section className="relative overflow-x-hidden rounded-box shadow-md">
-        <img
-          src={backImage}
-          alt=""
-          className="h-64 w-full object-cover md:h-80"
-        />
-        {/* dark gradient enable text to be readble  */}
-        <div className="absolute inset-0 bg-linear-to-r from-neutral/80 to-transparent"></div>
-        <div className="absolute inset-0 flex flex-col justify-center gap-3 p-8 text-neutral-content"></div>
-        <div className="hero-overlay bg-neutral/70"></div>
-        <div className="hero-content py-16 text-center text-neutral-content">
-          <div className="max-w-2xl">
-            <h1 className="mb-4 text-4xl font-bold drop-shadow-lg md:text-5xl">
-              Bob's Garage
-            </h1>
-            <p className="mx-auto mb-6 max-w-2xl drop-shadow">
-              Speed Service always with quality care in Mind
-            </p>
-            <Link to="/services" className="btn btn-primary btn-lg">
-              Our Services
-            </Link>
-          </div>
+      {/* Latest Trends on Service use */}
+      <section className="pt-14">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <h2 className="text-3xl">Trendy Services</h2>
+          <Link to="/services" className="text-link hover:underline">
+            View Our Services →
+          </Link>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {trend.map((service) => (
+            <SingleService key={service.serviceId} service={service} />
+          ))}
         </div>
       </section>
-    </div>
+    </>
   );
 }
