@@ -4,7 +4,6 @@ import { IoHome } from "react-icons/io5";
 import { BiSolidCarMechanic } from "react-icons/bi";
 import { GrStatusInfo } from "react-icons/gr";
 
-import { MdPalette } from "react-icons/md";
 import {
   FaBars,
   FaMoon,
@@ -122,7 +121,7 @@ export default function Header() {
       <>
         <Link
           to="/login"
-          className={`btn btn-sm ${wide ? "btn-outline" : "btn-ghost"}`}
+          className={`btn btn-sm ${wide ? "btn-outline flex-1 py-3" : "btn-ghost"}`}
           onClick={menuClose}
         >
           Login
@@ -163,19 +162,19 @@ export default function Header() {
               <FaMoon className="size-5" />
             )}
           </button>
+          <div className="hidden items-center gap-2 lg:flex">
+            {account(false)}
+          </div>
+          <button
+            type="button"
+            className="btn btn-ghost btn-square lg:hidden"
+            onClick={() => setMenuOn(true)}
+            aria-label="Open Menu"
+            aria-expanded={menuOn}
+          >
+            <FaBars className="size-6" />
+          </button>{" "}
         </div>
-        <div className="hidden items-center gap-2 lg:flex">
-          {account(false)}
-        </div>
-        <button
-          type="button"
-          className="btn btn-ghost btn-square lg-hidden"
-          onClick={() => setMenuOn(true)}
-          aria-label="Open Menu"
-          aria-expanded={menuOn}
-        >
-          <FaBars className="size-6" />
-        </button>
       </nav>
 
       {/* Gradient line under bar */}
