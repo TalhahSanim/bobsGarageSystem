@@ -130,7 +130,7 @@ export default function AddServices() {
       setFormData({ ...formData, errors: { description: "" } });
     }
     // image error
-    let defaultImage = "https://img.icons8.com/?size=512w&id=44471&format=png";
+    let defaultImage = "";
     if (is_Empty(image)) {
       console.log(defaultImage);
       setFormData({

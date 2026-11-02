@@ -1,64 +1,69 @@
+//  one service per card
 import { Link } from "react-router-dom";
-// bring in some icons
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit } from "react-icons/fa";
-// bring in IconContext
 import { useServicesDelete } from "../../../context/GarageContext";
-// Import the useServiceDelete hook from context
+import { useAuth } from "../../../context/AuthContext";
+// Backup photo for services with no image
+import fallbackImage from "../../../assets/hero-image.jpg";
 
 export default function SingleService({ service }) {
-  // use the useServiceDelete hook
-  const deleteService = useServicesDelete();
+  const serviceDelete = useServicesDelete();
+  // ONLY Admin enabled to delete and edit
+  const { isAdmin } = useAuth();
 
-  // create onDelete function
-  const onDelete = (id, e) => {
-    // Test that the function is called
-    console.log("OnDelete function has been invoked -> SingleService.jsx");
-    // validate id was passed thorugh
-    console.log(`ID clicked -> ${id}`);
-    console.log(e.type);
-    // calling deleteService function
-    deleteService(id);
-  };
-
-  // Destructure Service
+  // DeStructure
   const { serviceId, name, type, description, image, fee } = service;
-  return (
-    <>
-      <div className="card card-lift bg-base-100 shadow-md ">
-        <img src={image} alt={name} className="h-48 w-full object-cover" />
-        <div className="p-4">
-          <h5 className="text-lg font-semibold">{name}</h5>
-          <p className="text-sm text-gray-700">{type}</p>
-          <p className="text-blue-600">{description}</p>
-          <p className="my-2 text-end font-bold">${fee}</p>
-          <div className="flex gap-4">
-            <a href="#" className=" btn btn-secondary">
-              More Details
-            </a>
-            <a href="#" className=" btn btn-secondary ">
-              Save to Favourites
-            </a>
-          </div>
-        </div>
-        {/* // Card footer */}
-        <div className="flex justify-center gap-12 bg-blue-400 p-4">
-          {/* Every icon same sizing */}
-          <Link to={`/edit/${serviceId}`} className="grid">
-            <button type="button" className="btn btn-outline btn-secondary ">
-              <FaRegEdit /> Edit
-            </button>
-          </Link>
 
-          <button
-            type="button"
-            className="btn btn-error"
-            onClick={(e) => onDelete(serviceId, e)}
+  const onDelete = (id) => {
+    console.log(`Delete clicked for id ${id} -> SingleService.jsx`);
+    serviceDelete(id);
+  };
+  return (
+    <article className="card card-lift flex flex-col">
+      {/* Service phot or the backup one when no photo include in service during add or edit */}
+      <img
+        src={image || fallbackImage}
+        alt={name}
+        className="h-44 w-full object-cover"
+      />
+
+      <div className="flex flex-1 flex-col gap-1 p-4">
+        <p className="text-xs font-normal tracking-wide text-muted uppercase">
+          {type}
+        </p>
+        <h3 className="text-lg font-semibold">{name}</h3>
+        <p className="line-clamp-2 text-sm font-normal text-muted">
+          {description}
+        </p>
+        <p className="mt-1 font-semibold text-link">${fee}</p>
+
+        {/* mt auto makes buttons to buttom so card aligns nicely */}
+        <div className="mt-auto flex gap-2 pt-3">
+          <Link
+            to={`/services/${serviceId}`}
+            className="btn btn-primary flex-1"
           >
-            <RiDeleteBin6Line /> Delete
-          </button>
+            View Service
+          </Link>
         </div>
+
+        {/* ADMIN ONLY -> EDIT & DELETE */}
+        {isAdmin && (
+          <div className="flex gap-2 pt-2">
+            <Link to={`/edit/${serviceId}`} className="btn btn-outline btn-sm">
+              <FaRegEdit /> Edit
+            </Link>
+            <button
+              type="button"
+              className="btn btn-danger btn-sm"
+              onClick={() => onDelete(serviceDelete)}
+            >
+              <RiDeleteBin6Line /> Delete
+            </button>
+          </div>
+        )}
       </div>
-    </>
+    </article>
   );
 }
