@@ -1,24 +1,23 @@
-// Adminn sidebar links
-import { Fragment } from "react";
+// Admin Sidebar -> Active link gets highlighted
 import { NavLink } from "react-router-dom";
 
 export default function DashboardLinks() {
-  //  Highlink depending on page we are
   const linkClass = ({ isActive }) =>
-    `dashboard-link ${isActive ? "bg-black text-white" : ""}`;
+    `dashboard-link ${isActive ? "dashboard-link-active" : ""}`;
   return (
-    <Fragment>
+    <nav className="flex gap-1 overflow-x-auto whitespace-nowrap lg:flex-col">
+      <NavLink className={linkClass} to="/admin" end>
+        Dashboard
+      </NavLink>
       <NavLink className={linkClass} to="users">
-        User List
+        Users
       </NavLink>
-
       <NavLink className={linkClass} to="users-add">
-        Add New User
+        Add User
       </NavLink>
-
       <NavLink className={linkClass} to="images-new">
-        Upload images
+        Upload Image
       </NavLink>
-    </Fragment>
+    </nav>
   );
 }

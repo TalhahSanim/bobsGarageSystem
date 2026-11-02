@@ -1,22 +1,25 @@
-// the admin dashbaord -> sidebar of links and the chosen admin page in the <Outlet/>
-// ONLY logged in admins can view it
+// Admin Dashboard -> sidebar for links and  selected admin page in the <Outlet/>
+// Logged in ADMINS are only able to see it
 
 import { useEffect } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import { useUsers } from "../../../context/UsersContext";
 import { useAdmin } from "../../../context/AdminContext";
 import DashboardLinks from "./DashboardLinks";
+import ToggleTheme from "../../layout/ToggleTheme";
+import { FaArrowLeft } from "react-icons/fa";
 
 import logo from "../../../assets/logo-light.png";
 
-// dashboard component -> admin layour with a sidebar and an <Outlet />
+// Dashboard component -> admin layer with sidebar and Outlet
 export default function Dashboard() {
-  const { isAuth, isAdmin, status } = useAuth();
+  const { isAuth, isAdmin, status, user, logout } = useAuth();
   const { loadUsers } = useUsers();
   const { loadImages } = useAdmin();
+  const navigate = useNavigate();
 
-  // load users and images at once when admin opens the dashboard
+  // Load users & Images at oncewhen admin opens dashboard
   useEffect(() => {
     if (isAuth && isAdmin) {
       loadUsers();
@@ -24,39 +27,84 @@ export default function Dashboard() {
     }
   }, [isAuth, isAdmin]);
 
-  //  if its still  checking for saved token  wait instead of a redirect
+  // instead of checking for saved token we wait
   if (status === "loading") {
     return (
       <p className="flex items-center gap-3 text-gray-600">
-        Validating your credentials
+        Validating Your Credentials...
       </p>
     );
   }
 
-  //  not logged in or an admin send abck to home
+  // Not logged in or an admin then send back to home
   if (!isAuth || !isAdmin) {
     return <Navigate to="/login" replace />;
   }
 
-  //  onside dashboard then other is th eoutlet
-  // it renders the child page like users and add users....
+  // logout and go back to homepage
+  const leave = () => {
+    logout();
+    navigate("/");
+  };
+
+  // First letters of name when a user has no profile photo
+  const initials = `${user.firstName?.[0] ?? ""}${user.lastName?.[0] ?? ""}`;
+
   return (
-    <div className="grid min-h-[70vh] overflow-hidden border border-line bg-surface shadow-sm lg:grid-cols-[16rem_1fr]">
-      {/* Sidebar */}
-      <aside className="flex flex-col gap-1 bg-linear-to-b from-footer to-footer-end  p-2 text-on-footer lg:p-4">
-        <img
-          src={logo}
-          alt="Bob's Garage"
-          className="hidden h-16 w-auto self-start lg:block"
-        />
-        <p className="mb-4 hidden text-xs font-normal tracking-wide text-on-footer/60 uppercase lg:block ">
+    <div className="grid lg:full-screen lg:-my-10 lg:min h screen lg:grid-cols-[16rem_1fr]">
+      {/* SideBar-> Full Height on desktop and link row on mobile */}
+      <aside className="flex flex-col gap-1 bg-linear-to-b from-footer to-footer-end p-2 text-on-footer lg:sticky lg:top-0 lg:h-screen lg:p-4">
+        {/* Logo to return back home and theme button */}
+        <div className="hidden items-center justify-between lg:flex">
+          <Link to="/" aria-label="Return Home">
+            <img src={logo} alt="Bob's Garage " className="h-16 w-auto" />
+          </Link>
+          <ToggleTheme className="text-on-footer hover:bg-white/10" />
+        </div>
+        <p className="mb-4 hidden text-xs font-normal tracking-wide text-on-footer/60 uppercase lg:block">
           Admin
         </p>
         <DashboardLinks />
-      </aside>
 
-      {/* Admin Page */}
-      <section className="p-6 md:p-8">
+        {/* Back to home as header hidden on desktop */}
+        <Link
+          to="/"
+          className="mt-auto hidden items-center gap-2 px-3 py-2.5 text-on-footer no-underline transition-colors hover:bg-white/10 lg:flex"
+        >
+          <FaArrowLeft aria-hidden="true" /> Back Home
+        </Link>
+
+        {/* Confirm who logged in and logout attached to bottom */}
+        <div className="mt-2 hidden items-center gap-3 border-t  border-white/20 pt-4 lg:flex">
+          {user.image ? (
+            <img
+              src={user.image}
+              alt=""
+              className="size-9 shrink-0 object-cover"
+            />
+          ) : (
+            <span
+              className="flex size-9 shrink-0 items-center justify-center bg-white/20 text-sm font-semibold"
+              aria-hidden="true"
+            >
+              {initials}
+            </span>
+          )}
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm">{user.firstName} [Admin]</p>
+            <p className="truncate text xs text-on-footer/70">{user.email}</p>
+          </div>
+          <button
+            type="button"
+            className="text-sm hover:underline"
+            onClick={leave}
+          >
+            Logout
+          </button>
+        </div>
+      </aside>
+      {/* Admin  Page*/}
+      <section className="pt-6 lg:p-10">
         <Outlet />
       </section>
     </div>

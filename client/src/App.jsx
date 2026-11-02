@@ -17,6 +17,7 @@ import Users from "./components/pages/admin/Users";
 import EditUser from "./components/pages/admin/EditUser";
 import AddUser from "./components/pages/admin/AddUser";
 import UploadImage from "./components/pages/admin/UploadImage";
+import SystemOverview from "./components/pages/admin/SystemOverview";
 
 // import GarageContext Provider from GarageContent Component
 import { GarageContextProvider } from "./context/GarageContextComponent";
@@ -46,6 +47,7 @@ function App() {
 
               {/* Admin dashboard and the child shows dashboards <Outlets */}
               <Route path="/admin" element={<Dashboard />}>
+                <Route index element={<SystemOverview />} />
                 <Route path="users" element={<Users />} />
                 <Route path="users/edit/:id" element={<EditUser />} />
                 <Route path="users-add" element={<AddUser />} />

@@ -1,5 +1,5 @@
 // Site Footer -> Logo, page links, account links,social links and copyright
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoLogoFacebook } from "react-icons/io";
 import { FaSquareInstagram, FaLinkedin } from "react-icons/fa6";
 
@@ -7,8 +7,12 @@ import logo from "../../assets/logo-light.png";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { pathname } = useLocation();
+  const inAdmin = pathname.startsWith("/admin");
   return (
-    <footer className="bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer">
+    <footer
+      className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${inAdmin ? "lg:hidden" : ""}`}
+    >
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-[2fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div className="col-span-2 md:col-span-1">

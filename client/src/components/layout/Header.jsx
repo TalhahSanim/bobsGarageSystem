@@ -1,17 +1,11 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
 import { BiSolidCarMechanic } from "react-icons/bi";
 import { GrStatusInfo } from "react-icons/gr";
 
-import {
-  FaBars,
-  FaMoon,
-  FaPlus,
-  FaSun,
-  FaTimes,
-  FaUsers,
-} from "react-icons/fa";
+import { FaBars, FaPlus, FaTimes, FaUsers } from "react-icons/fa";
+import ToggleTheme from "./ToggleTheme";
 
 import logo from "../../assets/logo-light.png";
 import logoDark from "../../assets/logo-dark.png";
@@ -24,15 +18,10 @@ export default function Header() {
   const [menuOn, setMenuOn] = useState(false);
   // From authContext is anyone logged in, are they admin status and logout
   const { isAuth, isAdmin, logout } = useAuth();
-  // temp theme switch
-  const [dark, setDark] = useState(
-    document.documentElement.dataset.theme === "dark",
-  );
-  const themeToggle = () => {
-    const next = !dark;
-    document.documentElement.dataset.theme = next ? "dark" : "light";
-    setDark(next);
-  };
+
+  // Since admin dash has exclusive sidebar so we need to hide this bar
+  const { pathname } = useLocation();
+  const inAdmin = pathname.startsWith("/admin");
 
   //  lose menus after link pressed
   const menuClose = () => {
@@ -137,7 +126,9 @@ export default function Header() {
     );
 
   return (
-    <header className="sticky top-0 z-30 bg-nav shadow-sm">
+    <header
+      className={`sticky top-0 z-30 bg-nav shadow-sm ${inAdmin ? "lg:hidden" : ""}`}
+    >
       <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-4 px-4">
         {/* Logo left */}
         <NavLink to="/" onClick={menuClose} className="shrink-0">
@@ -150,18 +141,7 @@ export default function Header() {
 
         {/* Right -> login/logout,theme and mobile menu */}
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="btn btn-ghost btn-square"
-            onClick={themeToggle}
-            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {dark ? (
-              <FaSun className="size-5" />
-            ) : (
-              <FaMoon className="size-5" />
-            )}
-          </button>
+          <ToggleTheme />
           <div className="hidden items-center gap-2 lg:flex">
             {account(false)}
           </div>
