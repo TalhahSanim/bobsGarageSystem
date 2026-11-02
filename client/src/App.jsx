@@ -21,6 +21,7 @@ import ChangeImage from "./components/pages/admin/ChangeImage";
 
 // import GarageContext Provider from GarageContent Component
 import { GarageContextProvider } from "./context/GarageContextComponent";
+import BottomNav from "./components/layout/BottomNav";
 
 // App Component- sets up routes and page layout
 function App() {
@@ -32,7 +33,7 @@ function App() {
   return (
     <GarageContextProvider>
       <Router>
-        <div className="flex min-h-screen flex-col bg-page text-ink">
+        <div className="flex min-h-screen flex-col bg-page pb-18 text-ink lg:pb-0  ">
           <Header />
           <main className=" mx-auto w-full max-w-6xl flex-1 px-4 py-10 ">
             <Routes>
@@ -55,6 +56,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <BottomNav />
         </div>
       </Router>
     </GarageContextProvider>
