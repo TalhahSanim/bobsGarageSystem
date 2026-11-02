@@ -6,7 +6,6 @@ import SingleService from "./services/SingleService";
 import heroImage from "../../assets/hero-image.jpg";
 export default function Home() {
   // Admin Selected image or own car image
-  const { homepageImage } = useAdmin();
   const serviceList = useServices();
   const trend = serviceList.slice(0, 4);
   return (
@@ -14,7 +13,7 @@ export default function Home() {
       {/* mt removes mains top padding so it enables picture to toucher header */}
       <section
         className="full-screen -mt-10 bg-cover bg-center"
-        style={{ backgroundImage: `url(${homepageImage || heroImage})` }}
+        style={{ backgroundImage: `url(${heroImage})` }}
       >
         {/* create the tint -> dakr on left and red on right to enable white text to be readable */}
         <div className="bg-linear-135 from-hero-red/35 via-hero/85 to-primary/30">
