@@ -1,6 +1,5 @@
 // Landing Page -> full screen hero then four key services
 import { Link } from "react-router-dom";
-import { useAdmin } from "../../context/AdminContext";
 import { useServices } from "../../context/GarageContext";
 import SingleService from "./services/SingleService";
 import heroImage from "../../assets/hero-image.jpg";

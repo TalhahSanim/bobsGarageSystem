@@ -1,10 +1,11 @@
 // Login page -> email and password form logs in with AuthContext
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // login from our auth context
 import { useAuth } from "../../../context/AuthContext";
 // validation helper
 import { is_Empty } from "../../../utils/validation";
+import AuthLayout from "../../layout/AuthLayout";
 
 export default function Login() {
   // setup state for login form
@@ -50,64 +51,61 @@ export default function Login() {
     }
   };
   return (
-    <Fragment>
-      <h1 className="my-6 text-3xl font-bold text-blue-600">System Login</h1>
-      <div className="panel">
-        <div className="panel-header">Login</div>
-        <div className="panel-body">
-          {/* Form */}
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div className="mb-4">
-              {/* Email Field */}
-              <label className="form-label" htmlFor="email">
-                Email
-              </label>
-              <input
-                type="email"
-                className={`form-input ${errors.email ? "is-invalid" : "is-valid"}`}
-                id="email"
-                placeholder="email"
-                name="email"
-                value={email}
-                onChange={(e) => onChange(e)}
-              />
-              {errors.email && (
-                <div className="invalid-feedback">{errors.email}</div>
-              )}
-            </div>
-            {/* Password Field */}
-            <div className="mb-4">
-              <label className="form-label" htmlFor="password">
-                password
-              </label>
-              <input
-                type="password"
-                className={`form-input ${errors.password ? "is-invalid" : "is-valid"}`}
-                id="password"
-                placeholder="password"
-                name="password"
-                value={password}
-                onChange={(e) => onChange(e)}
-              />
-              {errors.password && (
-                <div className="invalid-feedback">{errors.password}</div>
-              )}
-            </div>
-
-            {/* Submit Button */}
-            <div className="mb-4 grid">
-              <input type="submit" value="Login" className="btn btn-primary" />
-            </div>
-            {/* link to the register auth page */}
-            <p className="mt-4">
-              No Account?
-              <Link className="link-pill" to="/register">
-                Sign Up
-              </Link>
-            </p>
-          </form>
+    <AuthLayout
+      title="Welcome"
+      subtitle="Login to view saved services and messages from our mechanics"
+    >
+      <h1 className="text-3xl">Login</h1>
+      <p className="mt-1 mb-6 text-muted">Enter Your Email & Password</p>
+      <form onSubmit={(e) => handleSubmit(e)}>
+        {/* email field */}
+        <div className="mb-4">
+          <label className="form-label" htmlFor="email">
+            Email
+          </label>
+          <input
+            type="email"
+            className={`form-input ${errors.email ? "is-invalid" : ""}`}
+            id="email"
+            placeholder="name@email.com"
+            name="email"
+            value={email}
+            onChange={(e) => onChange(e)}
+          />
+          {errors.email && (
+            <div className="invalid-feedback">{errors.email}</div>
+          )}
         </div>
-      </div>
-    </Fragment>
+
+        {/* Password Field */}
+        <div className="mb-4">
+          <label className="form-label" htmlFor="password">
+            Password
+          </label>
+          <input
+            type="password"
+            className={`form-input ${errors.password ? "is-invalid" : ""}`}
+            id="password"
+            placeholder="Enter Your Password"
+            name="password"
+            value={password}
+            onChange={(e) => onChange(e)}
+          />
+          {errors.password && (
+            <div className="invalid-feedback">{errors.password}</div>
+          )}
+        </div>
+
+        <input type="submit" value="Login" className="btn btn-primary w-full" />
+
+        {/* Register Page Link */}
+        <p className="mt-6 text-center text-sm font-normal text-muted">
+          No Account?
+          <Link className="link-pill" to="/register">
+            Register
+          </Link>
+        </p>
+      </form>
+    </AuthLayout>
   );
 }
