@@ -51,7 +51,6 @@ function App() {
                 <Route path="users/edit/:id" element={<EditUser />} />
                 <Route path="users-add" element={<AddUser />} />
                 <Route path="images-new" element={<UploadImage />} />
-                <Route path="images-update" element={<ChangeImage />} />
               </Route>
             </Routes>
           </main>

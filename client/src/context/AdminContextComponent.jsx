@@ -11,9 +11,6 @@ export const AdminContextProvider = ({ children }) => {
   // file name in server uploads
   const [imageList, setImageList] = useState([]);
   //  the banner URL -> start with one saved in localStorage so it  mainatinas one after a refresh
-  const [homepageImage, setHomepageImage] = useState(() =>
-    localStorage.getItem("backImage"),
-  );
 
   //  Get th elist of uploaded images -> ADMIN ONLY
   const loadImages = async () => {
@@ -45,29 +42,12 @@ export const AdminContextProvider = ({ children }) => {
     }
   };
 
-  // make uploaded image the homepage banner and it takes file name and returns {ok:,msg}
-  const changeBanner = async (imageName) => {
-    try {
-      // server turns file name into the full URL
-      const res = await axios.get(`${adminURL}/getImageURL/${imageName}`);
-      setHomepageImage(res.data);
-      // remember after refresh
-      localStorage.setItem("backImage", res.data);
-      return { ok: true, msg: "Banner Appearance changed" };
-    } catch (err) {
-      console.log("changeBanner failed", err.message);
-      return { ok: false, msg: "Banner unable to change" };
-    }
-  };
-
   return (
     <AdminContext.Provider
       value={{
         imageList,
-        homepageImage,
         loadImages,
         uploadImage,
-        changeBanner,
       }}
     >
       {children}
