@@ -69,7 +69,7 @@ export default function Dashboard() {
         {/* Back to home as header hidden on desktop */}
         <Link
           to="/"
-          className="mt-auto hidden items-center gap-2 px-3 py-2.5 text-on-footer no-underline transition-colors hover:bg-white/10 lg:flex"
+          className="mt-auto hidden items-center gap-2 bg-white/20 px-3 py-2.5 text-on-footer no-underline transition-colors hover:bg-white/10 lg:flex"
         >
           <FaArrowLeft aria-hidden="true" /> Back Home
         </Link>
@@ -96,7 +96,7 @@ export default function Dashboard() {
           </div>
           <button
             type="button"
-            className="text-sm hover:underline"
+            className="shrink-0 bg-danger/50 px-3 py-1.5 text-sm transition-colors hover:bg-danger/20 cursor-pointer"
             onClick={leave}
           >
             Logout
