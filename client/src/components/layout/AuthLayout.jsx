@@ -1,9 +1,9 @@
-// Login & Register on left -> Photo left and message on left and the form on right
+// Login & Register layout on the  left -> Photo left and message on left and the form on right
 import heroImage from "../../assets/hero-image.jpg";
 
 export default function AuthLayout({ title, subtitle, children }) {
   return (
-    <section className="mx-auto grid max-w-5xl overflow-hidden border border-line">
+    <section className="mx-auto grid max-w-5xl overflow-hidden border border-line bg-surface shadow-sm md:grid-cols-2">
       {/* image like same with hero's tinting */}
       <div
         className="relative min-h-48 bg-cover bg-center md:min-h-140"
@@ -16,7 +16,9 @@ export default function AuthLayout({ title, subtitle, children }) {
       </div>
 
       {/* Form goes here ⬇️ */}
-      <div className="items-center p-8 md:p-12">{children}</div>
+      <div className="flex items-center p-8 md:p-12">
+        <div className="w-full">{children}</div>
+      </div>
     </section>
   );
 }
