@@ -3,7 +3,40 @@
 import db from "../models/models.js";
 
 // pull service model to let controllers use them
+const { Service } = db.sequelize.models;
 
+// name: get All Services
+// path: /api/services
+// request: GET
+// type: public
+export const getAllServices = async (req, res) => {
+  console.log("/api/services/ -> GET");
+  // to get all data from a table in the database we use the findAll() method
+  // the model used too tells us the database which tale where getting the data from
+  const list = await Service.findAll();
+  console.log(list);
+  // send the response
+  res.status(200).send(list);
+};
+
+// name: get single service
+// path: /api/services/edit/:id
+// request : GET
+// Type: public
+export const getOneService = async (req, res) => {
+  console.log("/api/services/edit/:id - GET");
+  // URL params are strings so typecast the id to number
+  const id = Number(req.params.id);
+
+  // findByPk finds one row via primary key
+  const service = await Service.findByPk(id);
+  res.status(200).send(service);
+};
+
+// name: add a New Service
+// path: /api/services/add
+// request: POST
+// type: PUBLIC
 export const addService = async (req, res) => {
   // log the path and request
   console.log("/api/services -> POST");
@@ -26,16 +59,8 @@ export const addService = async (req, res) => {
   res.status(200).send(service);
 };
 
-export const getOneService = async (req, res) => {
-  console.log("/api/services/edit/:id - GET");
-  // URL params are strings so typecast the id to number
-  const id = Number(req.params.id);
-
-  // findByPk finds one row via primary key
-  const service = await Service.findByPk(id);
-  res.status(200).send(service);
-};
-
+//  name: edit a service
+// path : /api/services/edit/:id
 export const updateService = async (req, res) => {
   console.log("/api/services/edit/:id -> PUT");
   // get the id from params and typecast it to a number
@@ -64,6 +89,9 @@ export const updateService = async (req, res) => {
     res.status(200).send(service);
   }
 };
+
+// name: delete a service
+// path /api/services/edit/:id
 
 export const deleteService = async (req, res) => {
   console.log("/api/services/edit/:id -> DELETE");
