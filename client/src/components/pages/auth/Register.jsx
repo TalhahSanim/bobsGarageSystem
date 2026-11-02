@@ -123,7 +123,7 @@ export default function Register() {
       </label>
       <input
         type={type}
-        className={`form-input ${errors[name] ? "is-invalid" : "is-valid"}`}
+        className={`form-input ${errors[name] ? "is-invalid" : ""}`}
         id={name}
         placeholder={placeholder}
         name={name}
@@ -146,14 +146,10 @@ export default function Register() {
           {field("firstName", "First Name")}
           {field("lastName", "Last Name")}
         </div>
-        <div className="grid gap-x-6 md:grid-cols-2">
-          {field("email", "Email", "email", "email@someplace.com")}
-          {field("image", "Image", "text", "https://imagelocale.url")}
-        </div>
-        <div className="grid gap-x-6 md:grid-cols-2">
-          {field("password", "Password", "password")}
-          {field("passwordCompare", "Re-enter Password", "password")}
-        </div>
+        {field("email", "Email", "email", "email@someplace.com")}
+        {field("image", "Image", "text", "https://imagelocale.url")}
+        {field("password", "Password", "password")}
+        {field("passwordCompare", "Re-enter Password", "password")}
         {/* Submit- disable when saving */}
         <div className="mb-4 grid">
           <input
