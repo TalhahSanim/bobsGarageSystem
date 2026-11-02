@@ -1,59 +1,48 @@
-// import useEffect
+// Services -> title, then loading the cards, an error , empty message or card per service
+import { Link } from "react-router-dom";
 import SingleService from "./SingleService";
-// Services show card for every service
-
-// import useServices hook from context
 import { useServices, useServiceStatus } from "../../../context/GarageContext";
+import { useAuth } from "../../../context/AuthContext";
+
+const grid = "grid gap-6  sm:grid-cols-2 lg:grid-cols-4"; // grid used for card and loading card placeholder to ensure they lineup
+
 export default function Services() {
-  // using the useService hook to get the serviceList from context
   const serviceList = useServices();
   const { status, error } = useServiceStatus();
+  const { isAdmin } = useAuth();
 
-  // variable to hold markup for the component
-  let content;
+  let content = "";
   if (status === "loading") {
-    //when still loading load a spinner
+    // have gray loading cards as placeholder whilst cards load up
     content = (
-      // Placeholder cards on load
-      <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[1, 2, 3].map((n) => (
-          <div
-            key={n}
-            className="card card-lift bg-base-100 shadow-md animate-pulse"
-          >
-            <div className="h-48 bg-gray-300"></div>
-            <div className="space-y-3 p-4">
-              <div className="h-5 w-2/3 bg-gray-300"></div>
-              <div className="h-4 w-full bg-gray-200"></div>
-              <div className="h-4 w-1/2 bg-gray-200"></div>
+      <div className={grid}>
+        {[1, 2, 3, 4].map((n) => (
+          <div key={n} className="card animate-pulse">
+            <div className="h-44 bg-line"></div>
+            <div className="space-y-3 p 4">
+              <div className="h-5 w-2/3 bg-line"></div>
+              <div className="h-4 w-1/3 bg-line"></div>
             </div>
           </div>
         ))}
       </div>
-      // <p className="flex items-center gap-3 text-gray-600">
-      //   <span className="spinner" aria-hidden="true"></span> Loading ...
-      // </p>
     );
   } else if (status === "failed") {
-    // something gone amiss display error
     content = (
       <div className="alert-danger">
-        <p>Sorry we could not load service at this time</p>
+        <p>Sorry we're uable to load your service right now 😔</p>
         <p>{error}</p>
       </div>
     );
   } else if (serviceList.length === 0) {
-    // Loaded but no services at the moment
     content = (
-      <p className="rounded-none border border-dashed border-gray-300 p-8 text-center text-gray-500">
-        No Services Yet. Add one with{" "}
-        <span className="font-semibold">Add Service</span>
+      <p className="border border-dashed border-line p-8 text-center text-muted">
+        Sorry, No Services at the moment❤️‍🩹
       </p>
     );
   } else {
-    // Loaded one card per service
     content = (
-      <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className={grid}>
         {serviceList.map((service) => (
           <SingleService key={service.serviceId} service={service} />
         ))}
@@ -62,12 +51,24 @@ export default function Services() {
   }
 
   return (
-    <main>
-      <h2 className="mb-4 text-4xl font-semibold text-pink-500">
-        Bob's Garage
-      </h2>
-      {/* Show  spinner,an error, an empty message or cards*/}
+    <section>
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 className="text-4xl">Bob's Services</h1>
+          <p className="mt-2 text-muted">
+            Prices Fixed, Top Grade Mechanics and No Gotchas
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          {/* Sort lives here */}
+          {isAdmin && (
+            <Link to="add-service" className="btn btn-primary">
+              + Add Service
+            </Link>
+          )}
+        </div>
+      </div>
       {content}
-    </main>
+    </section>
   );
 }
