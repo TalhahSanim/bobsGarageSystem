@@ -17,7 +17,7 @@ export default function BottomNav() {
 
   // Icon over each link and active page highted on the top of nav
   const tabClass = ({ isActive }) =>
-    `relative flex flex-1 flex-col items-center gap-1 pt-2.5 pb-2 text-xs no-underline ${isActive ? "font-semibold text-link before:absolute before:top-0 before h-[3px] before:w-8 before:bg-button " : "font-normal text-muted"}`;
+    `relative flex flex-1 flex-col items-center gap-1 pt-2.5 pb-2 text-xs no-underline ${isActive ? "font-semibold text-link before:absolute before:top-0 before:h-[3px] before:w-8 before:bg-button " : "font-normal text-muted"}`;
 
   const tabbed = (to, Icon, label, end = false) => (
     <NavLink to={to} end={end} className={tabClass}>
@@ -31,8 +31,8 @@ export default function BottomNav() {
       {isAdmin ? (
         <>
           {tabbed("/admin", FaThLarge, "Dashboard", true)}
-          {tabbed("/services", FaWrench, "Services", true)}
-          {tabbed("/admin/users", FaUsers, "Users", true)}
+          {tabbed("/services", FaWrench, "Services")}
+          {tabbed("/admin/users", FaUsers, "Users")}
           {/* enquiries will be added here and tilise fa comments icon */}
           {/* {tabbed("/admin/enquiries",FaCommentDots,"Enquiries",true)} */}
         </>
