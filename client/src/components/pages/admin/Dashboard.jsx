@@ -8,6 +8,8 @@ import { useUsers } from "../../../context/UsersContext";
 import { useAdmin } from "../../../context/AdminContext";
 import DashboardLinks from "./DashboardLinks";
 
+import logo from "../../../assets/logo-light.png";
+
 // dashboard component -> admin layour with a sidebar and an <Outlet />
 export default function Dashboard() {
   const { isAuth, isAdmin, status } = useAuth();
@@ -39,16 +41,24 @@ export default function Dashboard() {
   //  onside dashboard then other is th eoutlet
   // it renders the child page like users and add users....
   return (
-    <main className="grid overflow-hidden rounded-lg border border-gray-600 md:grid-cols-[14rem_1fr">
+    <div className="grid min-h-[70vh] overflow-hidden border border-line bg-surface shadow-sm lg:grid-cols-[16rem_1fr]">
       {/* Sidebar */}
-      <aside className="bg-cyan-50">
+      <aside className="flex flex-col gap-1 bg-linear-to-b from-footer to-footer-end  p-2 text-on-footer lg:p-4">
+        <img
+          src={logo}
+          alt="Bob's Garage"
+          className="hidden h-16 w-auto self-start lg:block"
+        />
+        <p className="mb-4 hidden text-xs font-normal tracking-wide text-on-footer/60 uppercase lg:block ">
+          Admin
+        </p>
         <DashboardLinks />
       </aside>
-      {/* Selected admin page shows the <outlet /> */}
-      <section className="min-h-[60vh] bg-amber-50 p-4">
-        <h2 className="mb-4 text 2xl font-semibold">Admin Dashboard</h2>
+
+      {/* Admin Page */}
+      <section className="p-6 md:p-8">
         <Outlet />
       </section>
-    </main>
+    </div>
   );
 }
