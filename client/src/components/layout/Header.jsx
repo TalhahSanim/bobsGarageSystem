@@ -20,7 +20,6 @@ import logoDark from "../../assets/logo-dark.png";
 // the logout function from auth context
 import { useAuth } from "../../context/AuthContext";
 
-// export default function Header({ branding }) { //! outdated prop
 export default function Header() {
   // console.log(branding);  // test to see if it is functional
   const [menuOn, setMenuOn] = useState(false);
@@ -48,11 +47,12 @@ export default function Header() {
     menuClose();
   };
 
-  // tel what page your on ysubg neby active to highlight it
-  const linkClass = ({ isActive }) => (isActive ? "nav-link-active" : "");
+  // tells what page your on and active to highlight it
+  const linkClass = ({ isActive }) =>
+    `nav-link ${isActive ? "nav-link-active" : ""}`;
 
   // the logo -> light version or dark version when using data-them="dark"
-  const brand = (size) => {
+  const brand = (size) => (
     <>
       <img
         src={logo}
@@ -65,8 +65,8 @@ export default function Header() {
         alt="Bob's Garage"
         className={`${size} hidden w-auto dark:block`}
       />
-    </>;
-  };
+    </>
+  );
 
   // The page links, used in the desktop bar AND the mobile menu
   const links = (
@@ -109,7 +109,7 @@ export default function Header() {
   );
 
   //  Login and register or logout and wide make them fill mobile menu
-  const account = (wide) => {
+  const account = (wide) =>
     isAuth ? (
       <button
         type="button"
@@ -136,7 +136,6 @@ export default function Header() {
         </Link>
       </>
     );
-  };
 
   return (
     <header className="sticky top-0 z-30 bg-nav shadow-sm">
@@ -151,15 +150,20 @@ export default function Header() {
         <ul className="hidden items-center gap-1 lg:flex">{links}</ul>
 
         {/* Right -> login/logout,theme and mobile menu */}
-        <div className="flex items-center gap-2"></div>
-        <button
-          type="button"
-          className="btn btn-ghost btn-square"
-          onClick={themeToggle}
-          aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-        >
-          {dark ? <FaSun className="size-5" /> : <FaMoon className="size-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="btn btn-ghost btn-square"
+            onClick={themeToggle}
+            aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {dark ? (
+              <FaSun className="size-5" />
+            ) : (
+              <FaMoon className="size-5" />
+            )}
+          </button>
+        </div>
         <div className="hidden items-center gap-2 lg:flex">
           {account(false)}
         </div>
