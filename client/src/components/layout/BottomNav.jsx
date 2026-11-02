@@ -27,7 +27,7 @@ export default function BottomNav() {
   );
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-30 flex border-t border-line  bg-nav px-2 pb-[env(safe-area-inset-bottom)] shadow-[0_-2px_12px_rgb(0_0_0/0.08)] lg:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-20 flex border-t border-line  bg-nav px-2 pb-[env(safe-area-inset-bottom)] shadow-[0_-2px_12px_rgb(0_0_0/0.08)] lg:hidden">
       {isAdmin ? (
         <>
           {tabbed("/admin", FaThLarge, "Dashboard", true)}

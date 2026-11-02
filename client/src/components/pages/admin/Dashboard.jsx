@@ -53,7 +53,7 @@ export default function Dashboard() {
   return (
     <div className="grid lg:full-screen lg:-my-10 lg:min-h-screen lg:grid-cols-[16rem_1fr]">
       {/* SideBar-> Full Height on desktop and link row on mobile */}
-      <aside className="flex flex-col gap-1 bg-linear-to-b from-footer  to-footer-end p-2 text-on-footer lg:sticky lg:top-0 lg:h-screen lg:p-4">
+      <aside className="flex flex-col gap-1 bg-linear-to-r lg:bg-linear-to-b from-footer  to-footer-end p-2 text-on-footer lg:sticky lg:top-0 lg:h-screen lg:p-4">
         {/* Logo to return back home and theme button */}
         <div className="hidden items-center justify-between lg:flex">
           <Link to="/" aria-label="Return Home">
