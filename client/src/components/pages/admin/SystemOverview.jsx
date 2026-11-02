@@ -9,7 +9,7 @@ export default function SystemOverview() {
   const metrics = [
     ["Users", userList.length],
     ["Admins", userList.filter((user) => user.isAdmin).length],
-    ["Services", userList.length],
+    ["Services", serviceList.length],
   ];
   return (
     <>
