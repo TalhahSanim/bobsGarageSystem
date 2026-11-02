@@ -23,7 +23,7 @@ export default function Home() {
               Speedy Service, Top Notch Quality
             </h1>
             <p className="text-lg text-white/90 md:text-xl">
-              Enquire Now & Get Quality Service Today!
+              Enquire Now & Get Quality Service Today!!
             </p>
             <Link to="/services" className="btn btn-primary btn-lg mt-2">
               Explore Services
