@@ -3,25 +3,10 @@
 // getImageList -> GET /api/admin/getImageList -> ADMIN ONLY
 import express from "express";
 import fs from "fs";
-import multer from "multer";
 import auth from "../middleware/auth.js";
 import admin from "../middleware/admin.js";
 
 const router = express.Router();
-
-// Where multer saves uploads and what calls them
-const storage = multer.diskStorage({
-  // save in server/uploads relative where server runs
-  destination: function (req, file, cb) {
-    cb(null, "./uploads");
-  },
-  //  keep files original name
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  },
-});
-
-const upload = multer({ storage: storage });
 
 // name -> upload image
 // path -> /api/admin/uploadImage/
