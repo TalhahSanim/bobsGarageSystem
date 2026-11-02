@@ -7,6 +7,7 @@ import auth from "../middleware/auth.js";
 import admin from "../middleware/admin.js";
 import {
   addUser,
+  deleteUser,
   getUsers,
   updateUser,
 } from "../controllers/usersController.js";
@@ -18,6 +19,6 @@ router.post("/add", auth, admin, addUser);
 
 router.put("/edit/:id", auth, admin, updateUser);
 
-router.delete("/edit/:id", auth, admin);
+router.delete("/edit/:id", auth, admin, deleteUser);
 
 export default router;
