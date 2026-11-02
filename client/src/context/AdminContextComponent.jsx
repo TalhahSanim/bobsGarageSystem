@@ -1,18 +1,16 @@
-//  The admin provider which is th elist of uploadd images, the home page banner
-// functions to upload images and changing banner apeparance
+//  The admin provider ->  List of uploade images and function to upload
 import { useState } from "react";
 import axios from "axios";
 import { AdminContext } from "./AdminContext";
 
 const adminURL = "http://localhost:3000/api/admin";
 
-//  AdminContextProvider component -> wraps the app so admiin pages and home can use useAdmin()
+//  AdminContextProvider component -> wraps the app so admin pages and home can use useAdmin()
 export const AdminContextProvider = ({ children }) => {
   // file name in server uploads
   const [imageList, setImageList] = useState([]);
-  //  the banner URL -> start with one saved in localStorage so it  mainatinas one after a refresh
 
-  //  Get th elist of uploaded images -> ADMIN ONLY
+  //  Get the list of uploaded images -> ADMIN ONLY
   const loadImages = async () => {
     console.log("loadImages -> AdminCOntextComponent.jsx");
     try {

@@ -1,7 +1,6 @@
 // The admin dash image routes:
 // uploadImage -> POST /api/admin/uploadImage -> ADMIN ONLY
 // getImageList -> GET /api/admin/getImageList -> ADMIN ONLY
-// getImageUrl -> GET /api/admin/getImageURL/:filename public the homepage banner
 import express from "express";
 import fs from "fs";
 import multer from "multer";
@@ -33,17 +32,6 @@ router.post("/uploadImage", auth, admin, upload.single("file"), (req, res) => {
   console.log("/api/admin/uploadImage -> POST");
   console.log(req.file);
   res.status(200).send("Image Uploaded");
-});
-
-// name -> get image URL
-// path -> /api/admin/getImageURL/:filename
-// request -> GET
-// type -> public
-// description -> builds the public URL for an uploaded file
-router.get("/getImageURL/:filename", (req, res) => {
-  console.log("/api/admin/getImageURL -> GET");
-  const url = `http://localhost:3000/uploads/${req.params.filename}`;
-  res.status(200).send(url);
 });
 
 // name -> get image list

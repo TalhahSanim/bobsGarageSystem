@@ -19,9 +19,6 @@ export default function DashboardLinks() {
       <NavLink className={linkClass} to="images-new">
         Upload images
       </NavLink>
-      <NavLink className={linkClass} to="images-update">
-        Change Images on homepage
-      </NavLink>
     </Fragment>
   );
 }

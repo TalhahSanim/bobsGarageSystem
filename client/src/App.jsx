@@ -17,7 +17,6 @@ import Users from "./components/pages/admin/Users";
 import EditUser from "./components/pages/admin/EditUser";
 import AddUser from "./components/pages/admin/AddUser";
 import UploadImage from "./components/pages/admin/UploadImage";
-import ChangeImage from "./components/pages/admin/ChangeImage";
 
 // import GarageContext Provider from GarageContent Component
 import { GarageContextProvider } from "./context/GarageContextComponent";

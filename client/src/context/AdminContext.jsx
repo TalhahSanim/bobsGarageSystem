@@ -1,8 +1,8 @@
-// Creates the admin context -> uploaded images and home page banner and hook to use it
+// Creates the admin context -> uploaded images  and hook to use it
 import { createContext, useContext } from "react";
 
-// Holds {imageList,homepageImage,loadImages , uploadImage, changeBanner}
+// Holds {imageList,homepageImage,loadImages , uploadImage}
 export const AdminContext = createContext();
 
-// Custom hook -> th eimage list, the banner, and the functions to change them
+// Custom hook -> the image list and upload functionalty
 export const useAdmin = () => useContext(AdminContext);
