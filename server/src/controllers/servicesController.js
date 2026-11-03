@@ -116,5 +116,5 @@ export const deleteService = async (req, res) => {
   // use the destroy method to remove that row from the table.
   //we must send through a where clause with the id
   await Service.destroy({ where: { serviceId: id } });
-  res.status(204).send(`Id: ${id} deleted`);
+  res.status(204).send();
 };
