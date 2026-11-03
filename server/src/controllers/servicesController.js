@@ -109,6 +109,10 @@ export const deleteService = async (req, res) => {
   // params are strings but serviceId is number so typecast it
   const id = Number(req.params.id);
 
+  const service = await Service.findByPk(id);
+  if (!service) {
+    return res.status(400).json({ msg: "Service not found" });
+  }
   // use the destroy method to remove that row from the table.
   //we must send through a where clause with the id
   await Service.destroy({ where: { serviceId: id } });

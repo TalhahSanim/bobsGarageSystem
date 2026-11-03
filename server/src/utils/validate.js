@@ -12,10 +12,10 @@ const isFee = (value) => /^\d+(\.\d{1,2})?$/.test(String(value));
 // Simple email strucuture such as email@email.com
 const isEmail = (value) => /^[^\s@]+@[^\s@]+$/.test(String(value));
 
-// send 404 if errors object containe anything but otherwise run th erout
+// send 400 if errors object containe anything but otherwise run th erout
 const handleErrors = (errors, res, next) => {
   if (Object.keys(errors).length > 0) {
-    return res.status(404).json({ errors });
+    return res.status(400).json({ errors });
   }
   next();
 };
