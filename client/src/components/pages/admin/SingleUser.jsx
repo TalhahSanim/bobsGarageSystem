@@ -44,9 +44,9 @@ export default function SingleUser({ user }) {
         <div className="min-w-0 flex-1">
           <p className="truncate font-semibold">
             {user.firstName} {user.lastName}
-          </p>
-          <p className="truncate text-sm text-muted"> {user.email}</p>
+          </p>{" "}
           <p className="text-xs text-muted">ID:{user.userId}</p>
+          <p className="truncate text-sm text-muted"> {user.email}</p>
           {/* Admin badge */}
           {user.isAdmin && <span className="badge badge-responded">Admin</span>}
         </div>
@@ -55,10 +55,11 @@ export default function SingleUser({ user }) {
 
       <div className="mt-3 flex justify-end gap-2">
         <Link
-          to={`/admin/users/edit/${user.userId} `}
+          to={`/admin/users/edit/${user.userId}`}
           className="btn btn-outline btn-sm"
         >
-          <FaEdit aria-hidden="true" /> Edit
+          <FaEdit aria-hidden="true" />
+          Edit
         </Link>
         <button
           type="button"
