@@ -2,37 +2,14 @@
 // uploadImage -> POST /api/admin/uploadImage -> ADMIN ONLY
 // getImageList -> GET /api/admin/getImageList -> ADMIN ONLY
 import express from "express";
-import fs from "fs";
 import auth from "../middleware/auth.js";
 import admin from "../middleware/admin.js";
+import upload from "../middleware/upload.js";
+import fs from "fs";
+import { getImageList, uploadImage } from "../controllers/adminController.js";
 
 const router = express.Router();
 
-// name -> upload image
-// path -> /api/admin/uploadImage/
-// request => POST
-// type -> admin
-// description -> multer reafds one file from the form filed "file" and save it
-router.post("/uploadImage", auth, admin, upload.single("file"), (req, res) => {
-  console.log("/api/admin/uploadImage -> POST");
-  console.log(req.file);
-  res.status(200).send("Image Uploaded");
-});
-
-// name -> get image list
-// path -> /api/admin/getImageList
-// request -> GET
-// type -> admin
-// description -> reads the uploads folder and sends back the file names a an array
-router.get("/getImageList", auth, admin, async (req, res) => {
-  console.log("/api/admin/getImageList -> GET");
-  try {
-    const files = await fs.promises.readdir("./uploads");
-    res.status(200).send(files);
-  } catch (err) {
-    console.log(err.message);
-    res.status(500).send("Could not read the uploads folder");
-  }
-});
-
+(router.post("/uploadImage", auth, admin, upload.single("file", uploadImage)),
+  router.get("/getImageList", auth, admin, getImageList));
 export default router;
