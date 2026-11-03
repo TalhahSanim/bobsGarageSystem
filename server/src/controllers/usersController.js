@@ -69,7 +69,7 @@ export const updateUser = async (req, res) => {
   }
   const { firstName, lastName, email, image, isAdmin } = req.body;
 
-  await User.update(
+  await user.update(
     { firstName, lastName, email, image, isAdmin },
     { where: { userId: id } },
   );
