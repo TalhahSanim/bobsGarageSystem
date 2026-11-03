@@ -41,18 +41,11 @@ export default function Footer() {
             <span className="hover:text-white">
               52 Box Street, Melbourne, 3000
             </span>
-            <a
-              href="tel:6112345456"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white"
-            >
+            <a href="tel:61398439293" className="hover:text-white">
               (03) 398439293
             </a>
             <a
-              href="mailto:service@bobgarage.com"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:service@bobsgarage.com"
               className="hover:text-white"
             >
               {" "}
@@ -68,6 +61,8 @@ export default function Footer() {
           <h2 className="font-sans text-base font-semibold">Our Socials</h2>
           <a
             href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
           >
             <IoLogoFacebook aria-hidden="true" />
@@ -75,12 +70,16 @@ export default function Footer() {
           </a>
           <a
             href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
           >
             <FaSquareInstagram aria-hidden="true" /> Instagram
           </a>
           <a
             href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
           >
             <FaLinkedin aria-hidden="true" />
