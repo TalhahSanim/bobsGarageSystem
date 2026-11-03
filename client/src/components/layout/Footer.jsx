@@ -34,6 +34,16 @@ export default function Footer() {
           <Link to="/about" className="text-on-footer/80 hover:text-white">
             About
           </Link>
+        </nav>
+        {/* Accs */}
+        <nav className="flex flex-col gap-2">
+          <h2 className="font-sans text-base font-semibold">Accounts</h2>
+          <Link to="/login" className="text-on-footer/80 hover:text-white">
+            Login
+          </Link>
+          <Link to="/register" className="text-on-footer/80 hover:text-white">
+            Register
+          </Link>
         </nav>{" "}
         <div className="flex flex-col gap-2">
           <h2 className="font-sans text-base font-semibold">Contact Us</h2>
@@ -51,12 +61,19 @@ export default function Footer() {
               {" "}
               service@bobsgarage.com (03) 398439293
             </a>
-            <span>
-              Monday to Friday 7:00am - 7:00pm, Saturday & Sunday 7:00am 5:00pm
-            </span>
           </address>
         </div>
+        {/* Opening Hours */}
+        <div>
+          <h2 className="mb-2 text-lg font-semibold">Opening Hours</h2>
+          <p>Monday to Friday 7:00am - 7:00pm</p>
+          <p>Saturday & Sunday 7:00am 5:00pm</p>
+        </div>
         {/* Account Links */}
+        <div>
+          <h2 className="mb-2 text-lg font-semibold">Accounts</h2>
+        </div>
+        {/* Social Links */}
         <nav className="flex flex-col gap-2">
           <h2 className="font-sans text-base font-semibold">Our Socials</h2>
           <a
