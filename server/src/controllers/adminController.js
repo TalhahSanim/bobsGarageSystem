@@ -10,6 +10,11 @@ import fs from "fs";
 
 export const uploadImage = (req, res) => {
   console.log("/api/admin/uploadImage -> POST");
+  if (!req.file) {
+    return res
+      .status(400)
+      .json({ msg: "Please select an image such as( jpg,png,webp or gif)" });
+  }
   console.log(req.file);
   res.status(200).send("Image Uploaded");
 };
