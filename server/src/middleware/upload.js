@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads");
   },
-  //  keep files original name
+  //  keep file name and remove folder and other characters
   filename: function (req, file, cb) {
     const validName = path
       .basename(file.originalname)
