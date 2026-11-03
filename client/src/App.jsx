@@ -23,6 +23,9 @@ import SystemOverview from "./components/pages/admin/SystemOverview";
 import { GarageContextProvider } from "./context/GarageContextComponent";
 import BottomNav from "./components/layout/BottomNav";
 
+// Not found
+import NotFound from "./components/pages/NotFound";
+
 // App Component- sets up routes and page layout
 function App() {
   // Removed state and useState and event functions as provider manages our state
@@ -53,6 +56,8 @@ function App() {
                 <Route path="users-add" element={<AddUser />} />
                 <Route path="images-new" element={<UploadImage />} />
               </Route>
+              {/* Any other address triggers the 404 page */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />

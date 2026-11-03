@@ -45,6 +45,7 @@ export default function Footer() {
             Register
           </Link>
         </nav>
+        {/* Conatc us */}
         <div className="flex flex-col gap-2">
           <h2 className="font-sans text-base font-semibold">Contact Us</h2>
           <address className="flex flex-col gap-2 not-italic text-on-footer/80">
@@ -68,7 +69,7 @@ export default function Footer() {
             Opening Hours
           </h2>
           <p>Monday to Friday 7:00am - 7:00pm</p>
-          <p>Saturday & Sunday 7:00am 5:00pm</p>
+          <p>Saturday & Sunday 7:00am - 5:00pm</p>
         </div>
         {/* Social Links */}
         <nav className="flex flex-col gap-2">
