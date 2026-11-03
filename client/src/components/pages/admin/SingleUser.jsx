@@ -17,14 +17,14 @@ export default function SingleUser({ user }) {
     }
   };
   return (
-    <tr className="odd:bg-white event:bg-gray-50 hover:bg-yellow-50">
-      <td className="p-2">{user.userId}</td>
-      <td className="p-2">{user.firstName}</td>
-      <td className="p-2">{user.lastName}</td>
-      <td className="p-2">{user.email}</td>
-      <td className="p-2">{user.isAdmin ? "Yes" : "No"}</td>
-      <td className="max-w-40 truncate p-2">{user.image}</td>
-      <td className="p-2">
+    <div className="odd:bg-white event:bg-gray-50 hover:bg-yellow-50">
+      <div className="p-2">{user.userId}</div>
+      <div className="p-2">{user.firstName}</div>
+      <div className="p-2">{user.lastName}</div>
+      <div className="p-2">{user.email}</div>
+      <div className="p-2">{user.isAdmin ? "Yes" : "No"}</div>
+      <div className="max-w-40 truncate p-2">{user.image}</div>
+      <div className="p-2">
         {/* Link for editing this user */}
         <Link
           to={`/admin/users/edit/${user.userId}`}
@@ -33,7 +33,7 @@ export default function SingleUser({ user }) {
         >
           <FaPencilAlt />
         </Link>
-      </td>
+      </div>
       <td className="p-2">
         {/* Button for delete */}
         <button
@@ -45,6 +45,6 @@ export default function SingleUser({ user }) {
           <FaTimes />
         </button>
       </td>
-    </tr>
+    </div>
   );
 }
