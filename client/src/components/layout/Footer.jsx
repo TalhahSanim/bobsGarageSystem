@@ -13,6 +13,7 @@ export default function Footer() {
     <footer
       className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${inAdmin ? "lg:hidden" : ""}`}
     >
+      {/* Contact Form */}
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-[2fr_1fr_1fr_1fr]">
         {/* Brand */}
         <div className="col-span-2 md:col-span-1">
@@ -20,7 +21,7 @@ export default function Footer() {
           <p className="mt-2 text-on-footer/80">
             Speedy Service With Top Notch Care
           </p>
-        </div>
+        </div>{" "}
         {/* Page Links */}
         <nav className="flex flex-col gap-2">
           <h2 className="font-sans text-base font-semibold">Our Garage</h2>
@@ -33,32 +34,60 @@ export default function Footer() {
           <Link to="/about" className="text-on-footer/80 hover:text-white">
             About
           </Link>
-        </nav>
+        </nav>{" "}
+        <div className="flex flex-col gap-2">
+          <h2 className="font-sans text-base font-semibold">Contact Us</h2>
+          <address className="flex flex-col gap-2 not-italic text-on-footer/80">
+            <span className="hover:text-white">
+              52 Box Street, Melbourne, 3000
+            </span>
+            <a
+              href="tel:6112345456"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white"
+            >
+              (03) 398439293
+            </a>
+            <a
+              href="mailto:service@bobgarage.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white"
+            >
+              {" "}
+              service@bobsgarage.com (03) 398439293
+            </a>
+            <span>
+              Monday to Friday 7:00am - 7:00pm, Saturday & Sunday 7:00am 5:00pm
+            </span>
+          </address>
+        </div>
         {/* Account Links */}
         <nav className="flex flex-col gap-2">
           <h2 className="font-sans text-base font-semibold">Our Socials</h2>
           <a
             href="https://facebook.com"
-            className="text-on-footer/80 hover:text-white"
+            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
           >
-            <IoLogoFacebook />
+            <IoLogoFacebook aria-hidden="true" />
             Facebook
           </a>
           <a
             href="https://instagram.com"
-            className="text-on-footer/80 hover:text-white"
+            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
           >
-            <FaSquareInstagram /> Instagram
+            <FaSquareInstagram aria-hidden="true" /> Instagram
           </a>
           <a
             href="https://linkedin.com"
-            className="text-on-footer/80 hover:text-white"
+            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
           >
-            <FaLinkedin />
+            <FaLinkedin aria-hidden="true" />
             Linkedin
           </a>
         </nav>
-      </div>
+      </div>{" "}
       {/* Copyright */}
       <div className="mx-auto max-w-6xl border-t border-white/10  px-4 text-sm font-normal text-on-footer/70">
         All Rights Reserved. © Bob's Garage {year}
