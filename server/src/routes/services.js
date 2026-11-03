@@ -17,8 +17,8 @@ const router = express.Router();
 // ! Service Routes
 router.get("/", getAllServices);
 router.get("/edit/:id", getOneService);
-router.post("/add", admin, auth, addService);
-router.put("/edit/:id", admin, auth, updateService);
-router.delete("/edit/:id", admin, auth, deleteService);
+router.post("/add", auth, admin, addService);
+router.put("/edit/:id", auth, admin, updateService);
+router.delete("/edit/:id", auth, admin, deleteService);
 
 export default router;
