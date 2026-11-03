@@ -47,7 +47,7 @@ export const register = async (req, res) => {
   } catch (err) {
     // Fail gracefully-> database error sends a 500 instead of crashing
     console.error(err);
-    res.status(500).json({ msg: "Server error", error: err.message });
+    res.status(500).json({ msg: "Server Error" });
   }
 };
 
@@ -80,7 +80,7 @@ export const login = async (req, res) => {
     res.json({ token });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ msg: "Server error", error: err.message });
+    res.status(500).json({ msg: "Server Error" });
   }
 };
 
@@ -100,6 +100,6 @@ export const loadUser = async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).json({ msg: "Server Error", error: err.message });
+    res.status(500).json({ msg: "Server Error" });
   }
 };
