@@ -5,7 +5,6 @@ import express from "express";
 import auth from "../middleware/auth.js";
 import admin from "../middleware/admin.js";
 import upload from "../middleware/upload.js";
-import fs from "fs";
 import { getImageList, uploadImage } from "../controllers/adminController.js";
 
 const router = express.Router();

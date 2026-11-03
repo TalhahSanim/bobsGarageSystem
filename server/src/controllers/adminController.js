@@ -1,5 +1,6 @@
 // Admin image controllers -> uploadImage and getImageList
 // routes/admin.js adds auth, admin and multer uploads in front
+import fs from "fs";
 
 // name -> upload image
 // path -> /api/admin/uploadImage/
