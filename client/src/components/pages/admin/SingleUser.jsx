@@ -2,6 +2,7 @@
 import { FaTimes, FaPencilAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useUsers } from "../../../context/UsersContext";
+import { FaPencil } from "react-icons/fa6";
 
 // Single user component one table row and takes in user as prop
 export default function SingleUser({ user }) {
@@ -16,35 +17,56 @@ export default function SingleUser({ user }) {
       alert(result.msg);
     }
   };
+
+  const initials = `${user.firstName?.[0] ?? ""}${user.lastName?.[0] ?? ""}`;
   return (
-    <div className="odd:bg-white event:bg-gray-50 hover:bg-yellow-50">
-      <div className="p-2">{user.userId}</div>
-      <div className="p-2">{user.firstName}</div>
-      <div className="p-2">{user.lastName}</div>
-      <div className="p-2">{user.email}</div>
-      <div className="p-2">{user.isAdmin ? "Yes" : "No"}</div>
-      <div className="max-w-40 truncate p-2">{user.image}</div>
-      <div className="p-2">
-        {/* Link for editing this user */}
-        <Link
-          to={`/admin/users/edit/${user.userId}`}
-          className="inline-flex text-blue-600 hover:text-blue-800"
-          aria-label={`Edit ${user.firstName}`}
+    <li className="card flex items-center gap-4 p-4">
+      {/* IMage or initials on icon box */}
+      {user.image ? (
+        <img
+          src={user.image}
+          alt=""
+          className="size-12 shrink-0 border-2 border-line object-cover"
+        />
+      ) : (
+        <div
+          className="icon-tile size-12 shrink-0 font-heading text-lg font-semibold"
+          aria-hidden="true"
         >
-          <FaPencilAlt />
-        </Link>
+          {initials}
+        </div>
+      )}
+
+      {/* name, id and email */}
+      <div className="min-w-0 flex-1">
+        <p className="font-semibold">
+          {user.firstName}
+          {user.lastName}
+        </p>
+        <p className="truncate text-sm text-muted"> {user.email}</p>
+        <p className="text-xs text-muted">ID:{user.userId}</p>
       </div>
-      <td className="p-2">
-        {/* Button for delete */}
-        <button
-          type="button"
-          onClick={() => onDelete(user.userId)}
-          className="inline-flex cursor-pointer text-red-600 hover:text-red-800"
-          aria-label={`Delete ${user.firstName}`}
-        >
-          <FaTimes />
-        </button>
-      </td>
-    </div>
+
+      {/* Admin badge and edit and delete */}
+      <div className="flex shrink-0 flex-col items-end gap-2">
+        {user.isAdmin && <span className="badge badge-responded">Admin</span>}
+        <div className="flex gap-3">
+          <Link
+            to={`/admin/users/edit/${user.userId} `}
+            className="inline-flex text-black px-2 py-2 bg-primary hover:text-primary-hover"
+            aria-label={`Edit ${user.firstName}`}
+          >
+            <FaPencil aria-hidden="true" /> Edit
+          </Link>
+          <button
+            type="button"
+            onClick={() => onDelete(user.userId)}
+            className="inline-flex cursor-pointer px-2 py-2 bg-danger text-black hover:brightness-90"
+          >
+            <FaTimes aria-hidden="true" /> Delete
+          </button>
+        </div>
+      </div>
+    </li>
   );
 }

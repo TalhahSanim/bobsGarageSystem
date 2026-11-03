@@ -57,7 +57,7 @@ function App() {
                 <Route path="images-new" element={<UploadImage />} />
               </Route>
               {/* Any other address triggers the 404 page */}
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element= {<NotFound />} />
             </Routes>
           </main>
           <Footer />
