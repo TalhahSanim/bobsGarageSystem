@@ -21,7 +21,7 @@ const handleErrors = (errors, res, next) => {
 };
 
 // Check service before add (POST) & edit (PUT)
-function validateService(req, res, next) {
+export function validateService(req, res, next) {
   const { name, type, description, fee } = req.body;
   const errors = {};
 
@@ -35,8 +35,17 @@ function validateService(req, res, next) {
   handleErrors(errors, res, next);
 }
 
-// check user needs a password and to note that edit from does not send on so only check when its there
-function validateUser(req, res, next) {
+// Check user before admin adds post or edits puts one
+export function validateUser(req, res, next) {
+  const { firstName, lastName, email, password } = req.body;
+  const errors = {};
+  if (isEmpty(firstName)) errors.firstName = "First Name is required";
+  if (isEmpty(lastName)) errors.lastName = "Last Name is required";
+  if (isEmpty(email)) errors.email = "Email is required";
+  else if (!isEmail(email)) errors.email = "Email not valid";
+
+  // check user needs a password and to note that edit from does not send on so only check when its there
+
   if ((req.method === "POST") & isEmpty(password)) {
     errors.password = "Password is required";
   } else if (!isEmpty(password) && String(password).length < 8) {

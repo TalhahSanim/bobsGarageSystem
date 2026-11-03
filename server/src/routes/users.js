@@ -11,13 +11,14 @@ import {
   getUsers,
   updateUser,
 } from "../controllers/usersController.js";
+import { validateUser } from "../utils/validate.js";
 
 const router = express.Router();
 // ! User Routes
 router.get("/", auth, admin, getUsers);
-router.post("/add", auth, admin, addUser);
+router.post("/add", auth, admin, validateUser, addUser);
 
-router.put("/edit/:id", auth, admin, updateUser);
+router.put("/edit/:id", auth, admin, validateUser, updateUser);
 
 router.delete("/edit/:id", auth, admin, deleteUser);
 

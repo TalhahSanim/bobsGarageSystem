@@ -10,6 +10,7 @@ import {
   getOneService,
   updateService,
 } from "../controllers/servicesController.js";
+import { validateService } from "../utils/validate.js";
 
 // router path of express
 const router = express.Router();
@@ -18,7 +19,7 @@ const router = express.Router();
 router.get("/", getAllServices);
 router.get("/edit/:id", getOneService);
 router.post("/add", auth, admin, validateService, addService);
-router.put("/edit/:id", auth, admin, updateService);
+router.put("/edit/:id", auth, admin, validateService, updateService);
 router.delete("/edit/:id", auth, admin, deleteService);
 
 export default router;
