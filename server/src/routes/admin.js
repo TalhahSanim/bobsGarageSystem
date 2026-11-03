@@ -9,6 +9,6 @@ import { getImageList, uploadImage } from "../controllers/adminController.js";
 
 const router = express.Router();
 
-(router.post("/uploadImage", auth, admin, upload.single("file", uploadImage)),
-  router.get("/getImageList", auth, admin, getImageList));
+router.post("/uploadImage", auth, admin, upload.single("file"), uploadImage);
+router.get("/getImageList", auth, admin, getImageList);
 export default router;
