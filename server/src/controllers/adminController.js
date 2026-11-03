@@ -16,7 +16,7 @@ export const uploadImage = (req, res) => {
       .json({ msg: "Please select an image such as( jpg,png,webp or gif)" });
   }
   console.log(req.file);
-  res.status(200).send("Image Uploaded");
+  res.status(400).send("Image Uploaded");
 };
 
 // name -> get image list
