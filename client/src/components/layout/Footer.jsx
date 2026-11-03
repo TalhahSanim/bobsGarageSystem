@@ -51,21 +51,22 @@ export default function Footer() {
             <span className="hover:text-white">
               52 Box Street, Melbourne, 3000
             </span>
-            <a href="tel:61398439293" className="hover:text-white">
-              (03) 398439293
+            <a href="tel:6139843929" className="hover:text-white">
+              (03) 39843929
             </a>
             <a
               href="mailto:service@bobsgarage.com"
               className="hover:text-white"
             >
-              {" "}
-              service@bobsgarage.com (03) 398439293
+              service@bobsgarage.com
             </a>
           </address>
         </div>
         {/* Opening Hours */}
         <div className="flex flex-col gap-2 text-on-footer/80">
-          <h2 className="mb-2 text-lg font-semibold">Opening Hours</h2>
+          <h2 className="font-sans text-base font-semibold text-on-footer">
+            Opening Hours
+          </h2>
           <p>Monday to Friday 7:00am - 7:00pm</p>
           <p>Saturday & Sunday 7:00am 5:00pm</p>
         </div>
