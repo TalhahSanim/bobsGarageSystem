@@ -30,6 +30,10 @@ export const getOneService = async (req, res) => {
 
   // findByPk finds one row via primary key
   const service = await Service.findByPk(id);
+  // find byPK gives null when no row has id
+  if (!service) {
+    return res.status(404).json({ msg: "Service not found" });
+  }
   res.status(200).send(service);
 };
 
@@ -80,18 +84,23 @@ export const updateService = async (req, res) => {
   // update() returns and array with the number of rows altered eg. [1]
 
   console.log(updated);
-  // Send back upon sucessful update
-  if (updated) {
-    console.log("Service Updated...");
-    // get the updated service.
-    const service = await Service.findByPk(id);
-    // send updated service to the client
-    res.status(200).send(service);
+
+  // get the updated service.
+  const service = await Service.findByPk(id);
+  if (!service) {
+    return res.status(404).json({ msg: "Service not found" });
   }
+  console.log("Service Updated...");
+
+  // send updated service to the client
+  res.status(200).send(service);
 };
 
-// name: delete a service
+// name-> delete a service
 // path /api/services/edit/:id
+// request -> DELETE
+// type -> Admin
+// Description -> deletes one service or 404 if no product with that id
 
 export const deleteService = async (req, res) => {
   console.log("/api/services/edit/:id -> DELETE");

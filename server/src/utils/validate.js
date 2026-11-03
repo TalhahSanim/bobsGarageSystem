@@ -15,7 +15,7 @@ const isEmail = (value) => /^[^\s@]+@[^\s@]+$/.test(String(value));
 // send 404 if errors object containe anything but otherwise run th erout
 const handleErrors = (errors, res, next) => {
   if (Object.keys(errors).length > 0) {
-    return res.status(400).json({ errors });
+    return res.status(404).json({ errors });
   }
   next();
 };
@@ -46,7 +46,7 @@ export function validateUser(req, res, next) {
 
   // check user needs a password and to note that edit from does not send on so only check when its there
 
-  if ((req.method === "POST") & isEmpty(password)) {
+  if (req.method === "POST" && isEmpty(password)) {
     errors.password = "Password is required";
   } else if (!isEmpty(password) && String(password).length < 8) {
     errors.password = "Password must be at least 8 characters";
