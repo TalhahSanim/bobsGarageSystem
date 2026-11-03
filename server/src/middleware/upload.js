@@ -20,9 +20,9 @@ const storage = multer.diskStorage({
 });
 
 // Only let images pass through
-const allowedTypes = ["images/jpeg", "images/png", "images/webp", "images/gif"];
+const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
-const filterFile = (req, res, cb) => {
+const filterFile = (req, file, cb) => {
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true); // to accept the file
   } else {
@@ -33,7 +33,7 @@ const filterFile = (req, res, cb) => {
 const upload = multer({
   storage: storage,
   filterFile: filterFile,
-  limits: { fileSize: 2 * 2024 * 2024 }, // equates to 2MB
+  limits: { fileSize: 2 * 1024 * 1024 }, // equates to 2MB
 });
 
 export default upload;
