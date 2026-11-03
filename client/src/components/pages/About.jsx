@@ -26,13 +26,13 @@ export default function About() {
               alt="Bob Horizon , owner of this garage workshop  and the head mechanic"
               className="h-48 w-full object-cover md:h-auto md:w-72 md:shrink-0"
             />
-            <div className="flex flex-col justify-center gap-4 p-6 md:p-8">
+            <div className="flex flex-1 flex-col justify-between gap-4 p-6 md:p-8">
               <blockquote className="text-lg italic">
                 I have opened this facility to hand to a public a garage worthy
                 of offering the day person quality vehicle service boosting our
                 local community growth
               </blockquote>
-              <p>
+              <p className="text-right">
                 <span className="block font-semibold">Bob Horizons</span>
                 <span className="text-sm text-link">
                   Founder of{" "}
@@ -50,7 +50,7 @@ export default function About() {
               alt="Alice Green, at the front desk"
               className="h-48 w-full object-cover md:h-auto md:w-72 md:shrink-0"
             />
-            <div className="flex flex-col justify-center gap-4 p-6 md:p-8">
+            <div className="flex flex-1 flex-col justify-between gap-4 p-6 md:p-8">
               <blockquote className="text-lg italic">
                 "I book you service, answer enquries and ensure you're heard"
               </blockquote>
@@ -75,7 +75,7 @@ export default function About() {
             />
             <div className="p-6">
               <h3 className="text-lg font-semibold">James Sprint</h3>
-              <p className="text-sm text-muted">Mechanic</p>
+              <p className="text-sm text-link">Mechanic</p>
               <p className="mt-2">
                 Expertise on tyres, brakes, and wheel customiusation and
                 alignment with 8 years on job experience
@@ -91,7 +91,7 @@ export default function About() {
             />
             <div className="p-6">
               <h3 className="text-lg font-semibold">Tim Blu</h3>
-              <p className="text-sm text-muted">Mechanic</p>
+              <p className="text-sm text-link">Mechanic</p>
               <p className="mt-2">
                 Expert on diagnostics, servicing and air conditioner maintenence
                 and enjoy troubleshooting complex vehicle issues
