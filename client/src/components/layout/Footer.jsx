@@ -8,106 +8,123 @@ import logo from "../../assets/logo-light.png";
 export default function Footer({ embedded = false }) {
   const year = new Date().getFullYear();
   const { pathname } = useLocation();
-  const desktopHidden = pathname.startsWith("/admin") && !embedded;
   if (embedded) {
     return (
-      <footer
-        className={`flex flex-wrap items-center  justify-between gap-4 bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${desktopHidden ? "lg:hidden" : ""}`}
-      >
-        {/* Contact Form */}
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-3">
-          {/* Brand */}
-          <div className="col-span-full">
-            <img src={logo} alt="Bob's Garage" className="h-16 w-auto" />
-            <p className="mt-2 text-on-footer/80">
-              Speedy Service With Top Notch Care
-            </p>
-          </div>
-          {/* Page Links */}
-          <nav className="flex flex-col gap-2">
-            <h2 className="font-sans text-base font-semibold">Our Garage</h2>
-            <Link to="/" className="text-on-footer/80 hover:text-white">
-              Home
-            </Link>
-            <Link to="/services" className="text-on-footer/80 hover:text-white">
-              Services
-            </Link>
-            <Link to="/about" className="text-on-footer/80 hover:text-white">
-              About
-            </Link>
-          </nav>
-          {/* Accs */}
-          <nav className="flex flex-col gap-2">
-            <h2 className="font-sans text-base font-semibold">Accounts</h2>
-            <Link to="/login" className="text-on-footer/80 hover:text-white">
-              Login
-            </Link>
-            <Link to="/register" className="text-on-footer/80 hover:text-white">
-              Register
-            </Link>
-          </nav>
-          {/* Conatc us */}
-          <div className="flex flex-col gap-2">
-            <h2 className="font-sans text-base font-semibold">Contact Us</h2>
-            <address className="flex flex-col gap-2 not-italic text-on-footer/80">
-              <span className="hover:text-white">
-                52 Box Street, Melbourne, 3000
-              </span>
-              <a href="tel:6139843929" className="hover:text-white">
-                (03) 39843929
-              </a>
-              <a
-                href="mailto:service@bobsgarage.com"
-                className="hover:text-white"
-              >
-                service@bobsgarage.com
-              </a>
-            </address>
-          </div>
-          {/* Opening Hours */}
-          <div className="flex flex-col gap-2 text-on-footer/80">
-            <h2 className="font-sans text-base font-semibold text-on-footer">
-              Opening Hours
-            </h2>
-            <p>Monday to Friday 7:00am - 7:00pm</p>
-            <p>Saturday & Sunday 7:00am - 5:00pm</p>
-          </div>
-          {/* Social Links */}
-          <nav className="flex flex-col gap-2">
-            <h2 className="font-sans text-base font-semibold">Our Socials</h2>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
-            >
-              <IoLogoFacebook aria-hidden="true" />
-              Facebook
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
-            >
-              <FaSquareInstagram aria-hidden="true" /> Instagram
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
-            >
-              <FaLinkedin aria-hidden="true" />
-              Linkedin
-            </a>
-          </nav>
-        </div>{" "}
-        {/* Copyright */}
-        <div className="mx-auto max-w-6xl border-t border-white/10  px-4 text-sm font-normal text-on-footer/70">
-          All Rights Reserved. © Bob's Garage {year}
-        </div>
+      <footer className="flex flex-wrap items-center justify-between gap-4 bg-linear-to-r from-footer from-70% to-footer-end px-10 py-4 text-sm font-normal text-on-footer/80">
+        <p>All Rights Reserved. © Bob's Garage {year}</p>
+        <nav className="flex gap-6">
+          <Link to="/" className="hover:text-white">
+            Home
+          </Link>
+          <Link to="/services" className="hover:text-white">
+            Services
+          </Link>
+          <Link to="/about" className="hover:text-white">
+            About
+          </Link>
+        </nav>
       </footer>
     );
   }
+  const desktopHidden = pathname.startsWith("/admin") && !embedded;
+
+  return (
+    <footer
+      className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${desktopHidden ? "lg:hidden" : ""}`}
+    >
+      {/* Contact Form */}
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-3">
+        {/* Brand */}
+        <div className="col-span-full">
+          <img src={logo} alt="Bob's Garage" className="h-16 w-auto" />
+          <p className="mt-2 text-on-footer/80">
+            Speedy Service With Top Notch Care
+          </p>
+        </div>
+        {/* Page Links */}
+        <nav className="flex flex-col gap-2">
+          <h2 className="font-sans text-base font-semibold">Our Garage</h2>
+          <Link to="/" className="text-on-footer/80 hover:text-white">
+            Home
+          </Link>
+          <Link to="/services" className="text-on-footer/80 hover:text-white">
+            Services
+          </Link>
+          <Link to="/about" className="text-on-footer/80 hover:text-white">
+            About
+          </Link>
+        </nav>
+        {/* Accs */}
+        <nav className="flex flex-col gap-2">
+          <h2 className="font-sans text-base font-semibold">Accounts</h2>
+          <Link to="/login" className="text-on-footer/80 hover:text-white">
+            Login
+          </Link>
+          <Link to="/register" className="text-on-footer/80 hover:text-white">
+            Register
+          </Link>
+        </nav>
+        {/* Conatc us */}
+        <div className="flex flex-col gap-2">
+          <h2 className="font-sans text-base font-semibold">Contact Us</h2>
+          <address className="flex flex-col gap-2 not-italic text-on-footer/80">
+            <span className="hover:text-white">
+              52 Box Street, Melbourne, 3000
+            </span>
+            <a href="tel:6139843929" className="hover:text-white">
+              (03) 39843929
+            </a>
+            <a
+              href="mailto:service@bobsgarage.com"
+              className="hover:text-white"
+            >
+              service@bobsgarage.com
+            </a>
+          </address>
+        </div>
+        {/* Opening Hours */}
+        <div className="flex flex-col gap-2 text-on-footer/80">
+          <h2 className="font-sans text-base font-semibold text-on-footer">
+            Opening Hours
+          </h2>
+          <p>Monday to Friday 7:00am - 7:00pm</p>
+          <p>Saturday & Sunday 7:00am - 5:00pm</p>
+        </div>
+        {/* Social Links */}
+        <nav className="flex flex-col gap-2">
+          <h2 className="font-sans text-base font-semibold">Our Socials</h2>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
+          >
+            <IoLogoFacebook aria-hidden="true" />
+            Facebook
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
+          >
+            <FaSquareInstagram aria-hidden="true" /> Instagram
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
+          >
+            <FaLinkedin aria-hidden="true" />
+            Linkedin
+          </a>
+        </nav>
+      </div>{" "}
+      {/* Copyright */}
+      <div className="mx-auto max-w-6xl border-t border-white/10  px-4 text-sm font-normal text-on-footer/70">
+        All Rights Reserved. © Bob's Garage {year}
+      </div>
+    </footer>
+  );
 }
