@@ -7,6 +7,7 @@ import { useAuth } from "../../../context/AuthContext";
 import { useUsers } from "../../../context/UsersContext";
 import { useAdmin } from "../../../context/AdminContext";
 import DashboardLinks from "./DashboardLinks";
+import Footer from "../../layout/Footer";
 import ToggleTheme from "../../layout/ToggleTheme";
 import { FaArrowLeft } from "react-icons/fa";
 
@@ -59,7 +60,6 @@ export default function Dashboard() {
           <Link to="/" aria-label="Return Home">
             <img src={logo} alt="Bob's Garage " className="h-16 w-auto" />
           </Link>
-          <ToggleTheme className="text-on-footer hover:bg-white/10" />
         </div>
         <p className="mb-4 hidden text-xs font-normal tracking-wide text-on-footer/60 uppercase lg:block">
           Admin
@@ -104,9 +104,22 @@ export default function Dashboard() {
         </div>
       </aside>
       {/* Admin  Page*/}
-      <section className="pt-6 lg:p-10">
+      {/* Right -> admin on top and footer on bottom */}
+      <div className="flex min-w-0 flex-col">
+        <section className="flex-1 pt-6 lg:p-10">
+          {/* Top bar on top including backhome left and theme toggle on the right */}
+          <div className="mb-6 hidden items-center justify-between lg:flex">
+            <Link to="/" className="btn btn-outline btn-sm">
+              <FaArrowLeft aria-hidden="true" /> Back Home
+            </Link>
+          </div>
+        </section>{" "}
         <Outlet />
-      </section>
+        {/* Footer */}
+        <div className="hidden lg:block">
+          <Footer embedded />
+        </div>
+      </div>
     </div>
   );
 }

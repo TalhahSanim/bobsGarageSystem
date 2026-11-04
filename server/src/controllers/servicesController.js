@@ -1,6 +1,6 @@
 // Service Controllers route functions GET,getALL, getONE , edit and delete
 
-import db from "../models/models.js";
+import db, { Op } from "../models/models.js";
 
 // pull service model to let controllers use them
 const { Service } = db.sequelize.models;
@@ -118,3 +118,5 @@ export const deleteService = async (req, res) => {
   await Service.destroy({ where: { serviceId: id } });
   res.status(204).send();
 };
+
+// Only these columns

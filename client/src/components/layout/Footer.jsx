@@ -4,14 +4,14 @@ import { IoLogoFacebook } from "react-icons/io";
 import { FaSquareInstagram, FaLinkedin } from "react-icons/fa6";
 
 import logo from "../../assets/logo-light.png";
-
-export default function Footer() {
+// Embedded means it is pushed next ot admin sidebar to display more nicely
+export default function Footer({ embedded = false }) {
   const year = new Date().getFullYear();
   const { pathname } = useLocation();
-  const inAdmin = pathname.startsWith("/admin");
+  const desktopHidden = pathname.startsWith("/admin");
   return (
     <footer
-      className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${inAdmin ? "lg:hidden" : ""}`}
+      className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${desktopHidden ? "lg:hidden" : ""}`}
     >
       {/* Contact Form */}
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-3">

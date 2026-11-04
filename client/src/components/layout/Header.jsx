@@ -141,7 +141,7 @@ export default function Header() {
 
         {/* Right -> login/logout,theme and mobile menu */}
         <div className="flex items-center gap-2">
-          <ToggleTheme />
+          {" "}
           <div className="hidden items-center gap-2 lg:flex">
             {account(false)}
           </div>
@@ -153,7 +153,8 @@ export default function Header() {
             aria-expanded={menuOn}
           >
             <FaBars className="size-6" />
-          </button>{" "}
+          </button>
+          <ToggleTheme />
         </div>
       </nav>
 
@@ -171,7 +172,6 @@ export default function Header() {
           className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${menuOn ? "opacity-100" : "opacity-0"}`}
           onClick={menuClose}
         ></button>
-
         {/* Panel -> Mobile */}
         <aside
           className={`absolute inset-y-0 left-0 flex w-77.5 max-w-[85vw] flex-col bg-surface p-5 shadow-2xl transition-transform duration-300 ${menuOn ? "translate-x-0" : "-translate-x-full"}`}
@@ -190,8 +190,8 @@ export default function Header() {
             </button>
           </div>
           <ul className="flex flex-col gap-1 text-lg">{links}</ul>
-          <div className="mt-auto flex gap-2">{account(true)}</div>
-        </aside>
+          <div className="mt-auto flex gap-2">{account(true)}</div>{" "}
+        </aside>{" "}
       </div>
     </header>
   );
