@@ -27,5 +27,5 @@ export const useGetAll = () => useContext(GarageGetAllContext);
 // custom hook is the list loading , loaded or failed or any other error message
 export const useServiceStatus = () => useContext(GarageStatusContext);
 
-// Custom hook -> the current sort (default, fee-ASC) and functions to change it 
-
+// Custom hook -> the current sort (default, fee-ASC) and functions to change it
+export const useServicesSort = () => useContext(GarageSortContext);

@@ -49,7 +49,7 @@ export const GarageContextProvider = ({ children }) => {
   // How the list is sorted  -> default or field-Direction such as fee-ASC
   // Start with the vistor's saved choid or default-order
   const [sort, setSort] = useState(
-    () => localStorage.getItem("sort") || "default ",
+    () => localStorage.getItem("sort") || "default",
   );
 
   // Load the services once when application begins
