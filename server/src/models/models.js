@@ -101,6 +101,85 @@ User.prototype.hashPwd = async function (password) {
   return await bcrypt.hash(password, salt);
 };
 
+//  Prference  -> one row of display setings per user which is one to one with users
+const Preference = sequelize.define("Preference", {
+  preferenceId: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  // Only these themes are allowed and they have same names the theme toggle uses
+  theme: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "light",
+    validate: { isIn: [["light", "dark"]] },
+  },
+  fontSize: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "medium",
+    validate: { isIn: [["small", "medium", "large"]] },
+  },
+  // How user likes the service list sorted
+  sortOrder: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "default",
+    validate: {
+      isIn: [["default", "fee-ASC", "fee-DESC", "name-ASC", "name-DESC"]],
+    },
+  },
+});
+
+// Favourite -> junction table which links users and services which is a many to many relationship
+// Each row means this user interested in this service
+const Favourite = sequelize.define(
+  "Favourite",
+  {
+    // Primary Key
+    favouriteId: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    //  new -> not contacted yet  and contacted means business have been in touch
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "new",
+      validate: { isIn: [["new", "contacted"]] },
+    },
+  },
+  {
+    // A user canhave only favourite the same service once
+    indexes: [{ unique: true, fields: ["userId", "serviceId"] }],
+  },
+);
+
+// Relationships or Associations
+// One user has one Preference row and the foreign key of userId goes into Preferences
+User.hasOne(Preference, {
+  foreignKey: { name: "userId", allowNull: false, unique: true },
+  onDelete: "CASCADE",
+});
+Preference.belongsTo(User, { foreignKey: "userId" });
+
+// Users <--> Services is many to many through Favourites
+// Each side has many Favourite rows and each Favourite  to one of each
+User.hasMany(Favourite, {
+  foreignKey: { name: "userId", allowNull: false },
+  onDelete: "CASCADE",
+});
+
+Favourite.belongsTo(User, { foreignKey: "userId" });
+
+Service.hasMany(Favourite, {
+  foreignKey: { name: "serviceId", allowNull: false },
+  onDelete: "CASCADE",
+});
+Favourite.belongsTo(Service, { foreignKey: "serviceId" });
+
 // export variables
 export default db;
 // to allow database operations (like, and or others)

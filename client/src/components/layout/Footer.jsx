@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { IoLogoFacebook } from "react-icons/io";
 import { FaSquareInstagram, FaLinkedin } from "react-icons/fa6";
 
-import logo from "../../assets/logo-light.png";
+import lightLogo from "../../assets/logo-light.png";
+import darkLogo from "../../assets/logo-dark.png";
 export default function Footer({ embedded }) {
   const year = new Date().getFullYear();
   const { pathname } = useLocation();
@@ -28,9 +29,16 @@ export default function Footer({ embedded }) {
           className={compact ? "col-span-full lg:col-span-1" : "col-span-full"}
         >
           <img
-            src={logo}
+            src={lightLogo}
+            alt=""
             alt="Bob's Garage"
-            className={`w-auto ${compact ? "h-16 lg:h-10" : "h-16"}`}
+            className={`w-auto dark:hidden ${compact ? "h-16 lg:h-10" : "h-16"}`}
+          />
+          <img
+            src={darkLogo}
+            alt=""
+            alt="Bob's Garage"
+            className={`hidden w-auto dark:block ${compact ? "h-16 lg:h-10" : "h-16"}`}
           />
           <p className="mt-2 text-on-footer/80">
             Speedy Service With Top Notch Care

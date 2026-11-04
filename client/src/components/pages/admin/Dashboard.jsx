@@ -10,7 +10,8 @@ import DashboardLinks from "./DashboardLinks";
 import ToggleTheme from "../../layout/ToggleTheme";
 import { FaArrowLeft } from "react-icons/fa";
 import Footer from "../../layout/Footer";
-import logo from "../../../assets/logo-light.png";
+import lightLogo from "../../../assets/logo-light.png";
+import darkLogo from "../../../assets/logo-dark.png";
 
 // Dashboard component -> admin layer with sidebar and Outlet
 export default function Dashboard() {
@@ -57,7 +58,13 @@ export default function Dashboard() {
         {/* Logo to return back home and theme button */}
         <div className="hidden items-center justify-between lg:flex">
           <Link to="/" aria-label="Return Home">
-            <img src={logo} alt="Bob's Garage " className="h-16 w-auto" />
+            {/* Light logo normally and dark logo when data-theme-"dark" */}
+            <img src={lightLogo} alt="" className="h-16 w-auto dark:hidden" />
+            <img
+              src={darkLogo}
+              alt=""
+              className="hidden h-16 w-auto dark:block"
+            />
           </Link>
         </div>
         <p className="mb-4 hidden text-xs font-normal tracking-wide text-on-footer/60 uppercase lg:block">
