@@ -18,8 +18,11 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
       </p>
     );
   }
-
   // Not logged in -> go to login page
+  if (!isAuth) {
+    return <Navigate to="/login" replace />;
+  }
+  // Logged in but page meant for admin only
   if (adminOnly && !isAdmin) {
     return <Navigate to="/" replace />;
   }
