@@ -119,4 +119,45 @@ export const deleteService = async (req, res) => {
   res.status(204).send();
 };
 
-// Only these columns
+// Only these columns will be sorted
+const sortFields = ["name", "type", "fee", "createdAt"];
+const sortDirections = ["ASC", "DESC"];
+
+// name -> ordered services
+// path -> /api/services/o/:field/:direction
+// request -> GET
+// type -> public
+// description -> the service list sorted by a column , ASC for low to high and DESC for High to Low
+
+export const getOrderedServices = async (req, res) => {
+  console.log("/api/services/o/:field/:direction -> GET");
+  const field = req.params.field;
+  // Allows you to type desc or DESC
+  const direction = req.params.direction.toUpperCase();
+
+  // Anything not on the list -> is a 400
+
+  if (!sortFields.includes(field) || !sortDirections.includes(direction)) {
+    return res.status(400).json({ msg: "Invalid sort field or direction" });
+  }
+
+  const list = await Service.findAll({ order: [[field, direction]] });
+  res.status(200).send(list);
+};
+
+//  name -> search services
+// path -> /api/services/s/search
+// request -> GET
+// type -> public
+// description -> services whose name contains the search text
+
+export const searchServices = async (req, res) => {
+  console.log("/api/services/s/search -> GET");
+  const search = req.params.search;
+
+  // %text% = the name contains text any where
+  const list = await Service.findAll({
+    where: { name: { [Op.like]: `%${search}` } },
+  });
+  res.status(200).send(list);
+};
