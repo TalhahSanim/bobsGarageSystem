@@ -13,6 +13,7 @@ import servicesRoutes from "./routes/services.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import adminRoutes from "./routes/admin.js";
+import favouriteRoutes from "./routes/favourites.js";
 
 import config from "./config/config.js";
 // intialise express app variable
@@ -45,6 +46,7 @@ app.use("/api/services", servicesRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/favourites", favouriteRoutes);
 
 // serve files in server uploads -> /uploads
 app.use("/uploads", express.static("uploads"));
