@@ -10,7 +10,7 @@ const { combine, timestamp, json } = winston.format;
 // level 'http' log errors, warn,info and http (levels 0-3)
 export const logger = winston.createLogger({
   level: "http",
-  format: combine(timestamp({ format: "YYYY-MM-DD:ss:SSS A" }), json()),
+  format: combine(timestamp({ format: "YYYY-MM-DD hh:ss:SSS A" }), json()),
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({ filename: "log.json" }),
