@@ -11,6 +11,8 @@ export const GarageContextGetById = createContext();
 export const GarageGetAllContext = createContext();
 // holds {status, error} for services list
 export const GarageStatusContext = createContext();
+// Holds {sort, setSort}-> how the service list ordered
+export const GarageSortContext = createContext();
 
 // create custom hooks to use the context in our components
 // this will enable us to access the context values without an import
@@ -24,3 +26,6 @@ export const useGetServiceById = () => useContext(GarageContextGetById);
 export const useGetAll = () => useContext(GarageGetAllContext);
 // custom hook is the list loading , loaded or failed or any other error message
 export const useServiceStatus = () => useContext(GarageStatusContext);
+
+// Custom hook -> the current sort (default, fee-ASC) and functions to change it 
+

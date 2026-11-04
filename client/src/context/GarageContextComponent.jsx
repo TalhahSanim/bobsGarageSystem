@@ -11,6 +11,7 @@ import {
   GarageContextGetById,
   GarageGetAllContext,
   GarageStatusContext,
+  GarageSortContext,
 } from "./GarageContext";
 
 // the base Url for service request as onplace equates to less typos
@@ -25,13 +26,18 @@ export const GarageContextProvider = ({ children }) => {
   // status: loading, sucess or failed then start loading
   const [status, setStatus] = useState("loading");
   const [error, setError] = useState(null);
-  // get all services from the API
+  // get all services from the API  in order the vistor selected
   const getAllServices = async () => {
-    console.log("getAllServices -> GarageContextComponent.jsx");
+    console.log("getAllServices -> GarageContextComponent.jsx", sort);
+    // fee-ASC -> field "fee" and direction "ASC"
+    const [field, direction] = sort.split("-");
+    // The default order  uses the normal route and anythin else uses the ordered route
+    const url =
+      sort === "default" ? serviceURL : `${serviceURL}/o/${field}/${direction}`;
     try {
-      const res = await axios.get(serviceURL);
+      const res = await axios.get(url);
       setServiceList(res.data);
-      setStatus("success");
+      setStatus("succeeded");
       setError(null);
     } catch (err) {
       console.log(err.message);
@@ -40,10 +46,17 @@ export const GarageContextProvider = ({ children }) => {
     }
   };
 
+  // How the list is sorted  -> default or field-Direction such as fee-ASC
+  // Start with the vistor's saved choid or default-order
+  const [sort, setSort] = useState(
+    () => localStorage.getItem("sort") || "default ",
+  );
+
   // Load the services once when application begins
   useEffect(() => {
     getAllServices();
-  }, []);
+    localStorage.setItem("sort", sort);
+  }, [sort]);
   // get service by its id
   const getServiceById = async (id) => {
     console.log("getServiceById -> GarageContext.jsx", id);
@@ -116,20 +129,22 @@ export const GarageContextProvider = ({ children }) => {
   // Returm the providers with the state and functions as values.
   // The children prop is used to render the components wrapped in the providers.
   return (
-    <GarageContext.Provider value={serviceList}>
-      <GarageStatusContext.Provider value={{ status, error }}>
-        <GarageContextUpdate.Provider value={updateService}>
-          <GarageContextDelete.Provider value={deleteService}>
-            <GarageContextAdd.Provider value={addService}>
-              <GarageContextGetById.Provider value={getServiceById}>
-                <GarageGetAllContext.Provider value={getAllServices}>
-                  {children}
-                </GarageGetAllContext.Provider>
-              </GarageContextGetById.Provider>
-            </GarageContextAdd.Provider>
-          </GarageContextDelete.Provider>
-        </GarageContextUpdate.Provider>
-      </GarageStatusContext.Provider>
-    </GarageContext.Provider>
+    <GarageSortContext.Provider value={{ sort, setSort }}>
+      <GarageContext.Provider value={serviceList}>
+        <GarageStatusContext.Provider value={{ status, error }}>
+          <GarageContextUpdate.Provider value={updateService}>
+            <GarageContextDelete.Provider value={deleteService}>
+              <GarageContextAdd.Provider value={addService}>
+                <GarageContextGetById.Provider value={getServiceById}>
+                  <GarageGetAllContext.Provider value={getAllServices}>
+                    {children}
+                  </GarageGetAllContext.Provider>
+                </GarageContextGetById.Provider>
+              </GarageContextAdd.Provider>
+            </GarageContextDelete.Provider>
+          </GarageContextUpdate.Provider>
+        </GarageStatusContext.Provider>
+      </GarageContext.Provider>
+    </GarageSortContext.Provider>
   );
 };
