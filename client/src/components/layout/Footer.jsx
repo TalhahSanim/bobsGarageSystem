@@ -8,7 +8,7 @@ import logo from "../../assets/logo-light.png";
 export default function Footer({ embedded = false }) {
   const year = new Date().getFullYear();
   const { pathname } = useLocation();
-  const desktopHidden = pathname.startsWith("/admin");
+  const desktopHidden = pathname.startsWith("/admin") && !embedded;
   return (
     <footer
       className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${desktopHidden ? "lg:hidden" : ""}`}

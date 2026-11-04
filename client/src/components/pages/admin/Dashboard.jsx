@@ -112,9 +112,10 @@ export default function Dashboard() {
             <Link to="/" className="btn btn-outline btn-sm">
               <FaArrowLeft aria-hidden="true" /> Back Home
             </Link>
+            <ToggleTheme />
           </div>
+          <Outlet />
         </section>{" "}
-        <Outlet />
         {/* Footer */}
         <div className="hidden lg:block">
           <Footer embedded />
