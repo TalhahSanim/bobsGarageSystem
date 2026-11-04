@@ -37,8 +37,8 @@ export default function Footer({ embedded }) {
           </p>
         </div>
         {/* Page Links */}
-        <nav className="flex flex-col gap-2">
-          <h2 className="font-sans text-base font-semibold">Our Garage</h2>
+        <nav className={column}>
+          <h2 className={heading}>Our Garage</h2>
           <Link to="/" className="text-on-footer/80 hover:text-white">
             Home
           </Link>
@@ -117,7 +117,9 @@ export default function Footer({ embedded }) {
         </nav>
       </div>{" "}
       {/* Copyright */}
-      <div className="mx-auto max-w-6xl border-t border-white/10  px-4 text-sm font-normal text-on-footer/70">
+      <div
+        className={`border-t border-white/10 font-normal text-on-footer/70 ${compact ? "px-4 py-4 text-sm lg:px-10 lg:py-3 lg:text-xs" : "mx-auto max-w-6xl px-4 py-4 text-sm"} `}
+      >
         All Rights Reserved. © Bob's Garage {year}
       </div>
     </footer>
