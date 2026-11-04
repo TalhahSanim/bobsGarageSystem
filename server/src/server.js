@@ -6,6 +6,7 @@ import "dotenv/config";
 import db from "./models/models.js";
 import express from "express"; // bring in express and required mmodules
 import cors from "cors";
+import { morganMiddleware } from "./logger/logger.js";
 
 // load the route files
 import servicesRoutes from "./routes/services.js";
@@ -31,6 +32,9 @@ app.use(express.urlencoded({ extended: true }));
 // use cors middleware with all routes
 // remember cors is a function
 app.use(cors());
+
+// Log each request
+app.use(morganMiddleware);
 
 //  use the route
 
