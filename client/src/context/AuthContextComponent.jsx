@@ -53,7 +53,7 @@ export const AuthContextProvider = ({ children }) => {
       setUser(res.data);
       return res.data;
     } catch (err) {
-      // Toekn missing, expired or invalid [! WIll be created ]
+      // token missing, expired or invalid [WIll be created ]
 
       console.log("loadUser failed", err.message);
       clearUser("Could not load your details. Please log in again ");
@@ -73,9 +73,9 @@ export const AuthContextProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const res = await axios.post(`${authURL}/login`, { email, password });
-      const loaded = await saveToken(res.data.token);
-      return loaded
-        ? { ok: true }
+      const user = await saveToken(res.data.token);
+      return user
+        ? { ok: true, isAdmin: user.isAdmin }
         : { ok: false, msg: "Logged in but unable to load your details" };
     } catch (err) {
       const msg = err.response?.data?.msg || "Login failed";

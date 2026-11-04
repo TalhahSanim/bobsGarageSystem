@@ -53,7 +53,7 @@ export default function Login() {
   return (
     <AuthLayout
       title="Welcome"
-      subtitle="Login to view saved services and messages from our mechanics"
+      subtitle="Login to manage active services & enquiries"
     >
       <h1 className="text-3xl">Login</h1>
       <p className="mt-1 mb-6 text-muted">Enter Your Email & Password</p>
