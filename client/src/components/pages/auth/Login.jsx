@@ -45,7 +45,7 @@ export default function Login() {
     // login and if fails show servers message under email box
     const result = await login(email, password);
     if (result.ok) {
-      navigate("/services");
+      navigate(result.isAdmin ? "/admin" : "/");
     } else {
       setFormData({ ...formData, errors: { email: result.msg } });
     }

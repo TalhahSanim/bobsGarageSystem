@@ -51,7 +51,7 @@ export const AuthContextProvider = ({ children }) => {
     try {
       const res = await axios.get(authURL);
       setUser(res.data);
-      return true;
+      return res.data;
     } catch (err) {
       // Toekn missing, expired or invalid [! WIll be created ]
 
