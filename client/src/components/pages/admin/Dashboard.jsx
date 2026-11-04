@@ -7,10 +7,9 @@ import { useAuth } from "../../../context/AuthContext";
 import { useUsers } from "../../../context/UsersContext";
 import { useAdmin } from "../../../context/AdminContext";
 import DashboardLinks from "./DashboardLinks";
-import Footer from "../../layout/Footer";
 import ToggleTheme from "../../layout/ToggleTheme";
 import { FaArrowLeft } from "react-icons/fa";
-
+import Footer from "../../layout/Footer";
 import logo from "../../../assets/logo-light.png";
 
 // Dashboard component -> admin layer with sidebar and Outlet

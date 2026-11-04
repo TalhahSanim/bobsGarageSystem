@@ -4,21 +4,34 @@ import { IoLogoFacebook } from "react-icons/io";
 import { FaSquareInstagram, FaLinkedin } from "react-icons/fa6";
 
 import logo from "../../assets/logo-light.png";
-export default function Footer() {
+export default function Footer({ embedded }) {
   const year = new Date().getFullYear();
   const { pathname } = useLocation();
 
-  const compact = pathname.startsWith("/admin");
+  const hiddenOnDesktop = pathname.startsWith("/admin") && !embedded;
+  const compact = embedded;
+  const grid = compact
+    ? "grid grid-cols-2 gap-10 px-4 py-14 md:grid-cols-3 lg:grid-cols-6 lg:gap-6 lg:px-10 lg:py-7 lg:text-sm"
+    : "mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-3";
+
+  const heading = `font-sans font-semibold ${compact ? "text-base lg:text-sm" : "text-base"}`;
+  const column = `flex flex-col gap-2 ${compact ? "lg:gap-1" : ""}`;
 
   return (
     <footer
-      className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${compact ? "lg:hidden" : ""}`}
+      className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${hiddenOnDesktop ? "lg:hidden" : ""} `}
     >
       {/* Contact Form */}
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-3">
+      <div className={grid}>
         {/* Brand */}
-        <div className="col-span-full">
-          <img src={logo} alt="Bob's Garage" className="h-16 w-auto" />
+        <div
+          className={compact ? "col-span-full lg:col-span-1" : "col-span-full"}
+        >
+          <img
+            src={logo}
+            alt="Bob's Garage"
+            className={`w-auto ${compact ? "h-16 lg:h-10" : "h-16"}`}
+          />
           <p className="mt-2 text-on-footer/80">
             Speedy Service With Top Notch Care
           </p>
