@@ -4,33 +4,15 @@ import { IoLogoFacebook } from "react-icons/io";
 import { FaSquareInstagram, FaLinkedin } from "react-icons/fa6";
 
 import logo from "../../assets/logo-light.png";
-// Embedded means it is pushed next ot admin sidebar to display more nicely
-export default function Footer({ embedded = false }) {
+export default function Footer() {
   const year = new Date().getFullYear();
   const { pathname } = useLocation();
-  if (embedded) {
-    return (
-      <footer className="flex flex-wrap items-center justify-between gap-4 bg-linear-to-r from-footer from-70% to-footer-end px-10 py-4 text-sm font-normal text-on-footer/80">
-        <p>All Rights Reserved. © Bob's Garage {year}</p>
-        <nav className="flex gap-6">
-          <Link to="/" className="hover:text-white">
-            Home
-          </Link>
-          <Link to="/services" className="hover:text-white">
-            Services
-          </Link>
-          <Link to="/about" className="hover:text-white">
-            About
-          </Link>
-        </nav>
-      </footer>
-    );
-  }
-  const desktopHidden = pathname.startsWith("/admin") && !embedded;
+
+  const compact = pathname.startsWith("/admin");
 
   return (
     <footer
-      className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${desktopHidden ? "lg:hidden" : ""}`}
+      className={`bg-linear-to-r from-footer from-70% to-footer-end font-normal text-on-footer ${compact ? "lg:hidden" : ""}`}
     >
       {/* Contact Form */}
       <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 px-4 py-14 md:grid-cols-3">
