@@ -21,13 +21,13 @@ export const ThemeContextProvider = ({ children }) => {
 
   //   Change the theme and it takes in the theme name like light or dark
   const changeTheme = (name) => {
-    console.log("changeTheme -> ThemeContextCOmponent", name);
+    console.log("changeTheme -> ThemeContextComponent", name);
     setTheme(name);
   };
 
   return (
-    <ThemeContext.provider value={{ theme, changeTheme }}>
+    <ThemeContext.Provider value={{ theme, changeTheme }}>
       {children}
-    </ThemeContext.provider>
+    </ThemeContext.Provider>
   );
 };

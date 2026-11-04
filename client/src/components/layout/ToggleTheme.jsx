@@ -2,13 +2,12 @@
 // used in header and admin dash
 
 import { FaMoon, FaSun } from "react-icons/fa";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function ToggleTheme({ className = "" }) {
+  const { theme, changeTheme } = useTheme();
   // Turn on on data theme on html and it will be applied
-  const themeToggle = () => {
-    const root = document.documentElement;
-    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
-  };
+  const themeToggle = () => changeTheme(theme === "dark" ? "light" : "dark");
   return (
     <button
       type="button"
