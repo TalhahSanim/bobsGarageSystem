@@ -24,6 +24,6 @@ router.get("/", auth, getMyFavourites);
 router.get("/all", auth, admin, getAllFavourites);
 router.post("/:serviceId", auth, addFavourite);
 router.delete("/:serviceId", auth, removeFavourite);
-router.put("/favouriteId/status", auth, admin, updateFavouriteStatus);
+router.put("/:favouriteId/status", auth, admin, updateFavouriteStatus);
 
 export default router;

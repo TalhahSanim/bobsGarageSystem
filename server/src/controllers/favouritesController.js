@@ -100,7 +100,7 @@ export const removeFavourite = async (req, res) => {
   const serviceId = Number(req.params.serviceId);
   try {
     await Favourite.destroy({ where: { userId: req.user.userId, serviceId } });
-    res.status(204).send;
+    res.status(204).send();
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ msg: "Server Error" });
@@ -118,7 +118,7 @@ export const updateFavouriteStatus = async (req, res) => {
   const { status } = req.body;
 
   //  pm;u allow two statues
-  if (!["new", "contacted".includes(status)]) {
+  if (!["new", "contacted"].includes(status)) {
     return res.status(400).json({ msg: "Status Must be new or contacted" });
   }
   try {
