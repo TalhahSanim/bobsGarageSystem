@@ -16,7 +16,7 @@ export const getMyFavourites = async (req, res) => {
   console.log("/api/favourites -> GET");
   try {
     const list = await Favourite.findAll({
-      where: { userId: req.user.user.userId },
+      where: { userId: req.user.userId },
       include: [{ model: Service }],
       order: [["createdAt", "DESC"]],
     });
