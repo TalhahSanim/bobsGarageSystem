@@ -50,8 +50,8 @@ export default function Footer({ embedded }) {
           </Link>
         </nav>
         {/* Accs */}
-        <nav className="flex flex-col gap-2">
-          <h2 className="font-sans text-base font-semibold">Accounts</h2>
+        <nav className={column}>
+          <h2 className={heading}>Accounts</h2>
           <Link to="/login" className="text-on-footer/80 hover:text-white">
             Login
           </Link>
@@ -59,10 +59,10 @@ export default function Footer({ embedded }) {
             Register
           </Link>
         </nav>
-        {/* Conatc us */}
-        <div className="flex flex-col gap-2">
-          <h2 className="font-sans text-base font-semibold">Contact Us</h2>
-          <address className="flex flex-col gap-2 not-italic text-on-footer/80">
+        {/* contact us */}
+        <div className={column}>
+          <h2 className={heading}>Contact Us</h2>
+          <address className={`${column} not-italic text-on-footer/80`}>
             <span className="hover:text-white">
               52 Box Street, Melbourne, 3000
             </span>
@@ -78,16 +78,14 @@ export default function Footer({ embedded }) {
           </address>
         </div>
         {/* Opening Hours */}
-        <div className="flex flex-col gap-2 text-on-footer/80">
-          <h2 className="font-sans text-base font-semibold text-on-footer">
-            Opening Hours
-          </h2>
+        <div className={`${column} text-on-footer/80`}>
+          <h2 className={`${heading} text-on-footer`}>Opening Hours</h2>
           <p>Monday to Friday 7:00am - 7:00pm</p>
           <p>Saturday & Sunday 7:00am - 5:00pm</p>
         </div>
         {/* Social Links */}
-        <nav className="flex flex-col gap-2">
-          <h2 className="font-sans text-base font-semibold">Our Socials</h2>
+        <nav className={column}>
+          <h2 className={heading}>Our Socials</h2>
           <a
             href="https://facebook.com"
             target="_blank"
