@@ -157,7 +157,7 @@ export const searchServices = async (req, res) => {
 
   // %text% = the name contains text any where
   const list = await Service.findAll({
-    where: { name: { [Op.like]: `%${search}` } },
+    where: { name: { [Op.like]: `%${search}%` } },
   });
   res.status(200).send(list);
 };
