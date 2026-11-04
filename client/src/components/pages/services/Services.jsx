@@ -1,14 +1,25 @@
 // Services -> title, then loading the cards, an error , empty message or card per service
 import { Link } from "react-router-dom";
 import SingleService from "./SingleService";
-import { useServices, useServiceStatus } from "../../../context/GarageContext";
+import {
+  useServices,
+  useServiceStatus,
+  useServicesSort,
+} from "../../../context/GarageContext";
 import { useAuth } from "../../../context/AuthContext";
 
 const grid = "grid gap-6 sm:grid-cols-2 lg:grid-cols-4"; // grid used for card and loading card placeholder to ensure they lineup
 
+const sortOptions = [
+  { value: "default", label: "Default" },
+  { value: "fee-ASC", label: "Fee: Low to High" },
+  { value: "fee-DESC", label: "Fee: High to Low" },
+  { value: "name-ASC", label: "Name: A-Z" },
+];
 export default function Services() {
   const serviceList = useServices();
   const { status, error } = useServiceStatus();
+  const { sort, setSort } = useServicesSort();
   const { isAdmin } = useAuth();
 
   let content = "";
@@ -61,7 +72,26 @@ export default function Services() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          {/* Sort lives here */}
+          {/* Sort buttons -> the selected one is filled and aria press tells screen reader which one */}
+
+          <div
+            role="group"
+            aria-label="Sort services"
+            className="flex flex-wrap gap-2"
+          >
+            {sortOptions.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                aria-pressed={sort === option.value}
+                onClick={() => setSort(option.value)}
+                className={`btn btn-sm ${sort === option.value ? "btn-primary" : "btn-outline"}`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
+
           {isAdmin && (
             <Link to="/add-service" className="btn btn-primary">
               + Add Service
