@@ -21,7 +21,7 @@ export const logger = winston.createLogger({
 export const morganMiddleware = morgan(
   (tokens, req, res) =>
     JSON.stringify({
-      method: tokens(req, res),
+      method: tokens.method(req, res),
       url: tokens.url(req, res),
       status: Number.parseFloat(tokens.status(req, res)),
       content_length: tokens.res(req, res, "content-length"),
