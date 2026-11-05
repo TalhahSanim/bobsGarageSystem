@@ -39,7 +39,7 @@ export default function ServiceDetails() {
         }
       } catch (err) {
         console.log("loadService failed", err.message);
-        setStatus("failed");
+        setStatus(err.response?.status === 404 ? "notfound" : "failed");
       }
     };
     loadService();

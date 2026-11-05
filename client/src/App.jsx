@@ -8,6 +8,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import AddServices from "./components/pages/services/AddServices";
 import EditService from "./components/pages/services/EditService";
+import ServiceDetails from "./components/pages/services/ServiceDetails";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";
 
@@ -45,6 +46,8 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/add-service" element={<AddServices />} />
               <Route path="/edit/:id" element={<EditService />} />
+              <Route path="/services/:id" element={<ServiceDetails />} />
+
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
 
@@ -57,7 +60,7 @@ function App() {
                 <Route path="images-new" element={<UploadImage />} />
               </Route>
               {/* Any other address triggers the 404 page */}
-              <Route path="*" element= {<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
