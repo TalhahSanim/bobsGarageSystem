@@ -102,7 +102,6 @@ export default function SingleService({ service }) {
             </p>
           )}
         </div>
-
         {/* ADMIN ONLY -> EDIT & DELETE */}
         {isAdmin && (
           <div className="flex gap-2 pt-2">

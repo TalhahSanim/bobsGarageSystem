@@ -4,9 +4,11 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { FaHeart, FaRegHeart, FaArrowLeft } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useAuth } from "../../../context/AuthContext";
 import { useFavourites } from "../../../context/FavouritesContext";
+
+import fallbackImage from "../../../assets/hero-image.jpg";
 
 // Service Details Component which reads the id from the URL and loads that service
 
@@ -66,7 +68,7 @@ export default function ServiceDetails() {
 
   if (status === "loading") {
     return (
-      <p className="flex-items-center gap-3-text-muted">
+      <p className="flex items-center gap-3 text-muted">
         <span className="spinner" aria-hidden="true"></span> Loading....
       </p>
     );
@@ -79,7 +81,7 @@ export default function ServiceDetails() {
             ? "No service found!"
             : "Could'nt laod this service"}
         </h2>
-        <Link to="services" className="mt-2 inline-block underline">
+        <Link to="/services" className="mt-2 inline-block underline">
           Back to all services
         </Link>
       </section>
@@ -87,62 +89,59 @@ export default function ServiceDetails() {
   }
   return (
     <main className="my-6">
-      <title>{service.name} - Bob's Garage</title>
-      <Link
-        to="/services"
-        className="mb-4 inline-flex items-center gap-2 hover:underline"
-      >
-        <FaArrowLeft /> All Services
-      </Link>
+      <title>{`${service.name} - Bob's Garage`}</title>
 
-      {/* Two columns on wider screens image and details */}
-      <div className="grid gap-8 md:grid-cols-2">
+      {/* BreadCrumb */}
+      <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted">
+        <Link to="/services" className="hover:underline">
+          Services
+        </Link>{" "}
+        / <span aria-current="page">{service.name}</span>
+      </nav>
+
+      {/* Photo on left and details to the right */}
+      <div className="grid gap-14 border-b-5 border-primary md:grid-cols-2">
         <img
-          src={service.image}
+          src={service.image || fallbackImage}
           alt={service.name}
-          className="aspect-square w-full object-cover shadow-md"
+          className="aspect-[31-25] w-full object-cover shadow-md border-8 border-primary"
         />
         <div>
-          <h1 className="mb-2 text-4xl font-bold">{service.name}</h1>
-          <p className="mb-4 text-2xl font-semibold text-link">{service.fee}</p>
-          <p className="mb-6 leading-relaxed">{service.type}</p>
-          <p className="mb-6 leading-relaxed">{service.description}</p>
+          <h1 className="mb-3 text-4xl">{service.name}</h1>
+          <p className="mb-4 text-2xl font-semibold text-link">
+            ${Number(service.fee).toFixed(2)}
+          </p>
+          <p className="mb-6 leading-relaxed text-muted">{service.type}</p>
+          <p className="mb-6 leading-relaxed text-muted">
+            {service.description}
+          </p>
 
-          {/* For guest ask them to login and user is interested  or remove */}
+          {/* Guests are asked to login and logged in users can save or unsave */}
           {!isAuth ? (
             <p>
               <Link to="/login" className="link-pill">
-                Log in
+                Login
               </Link>
-              to let us know you're interested in this service
+              to save this service.
             </p>
-          ) : favourite ? (
-            <div className="grid gap-3">
-              <p className="alert-success flex items-center gap-2">
-                <FaHeart /> This service is in your favourites. We'll be in
-                touch soon
-              </p>
+          ) : (
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Send an enqury button will go here */}
               <button
                 type="button"
-                className="btn-warning"
-                onClick={handleRemove}
+                className="btn btn-ghost text-link"
+                aria-pressed={favourite}
+                onClick={favourite ? handleRemove : handleInterested}
               >
-                <FaRegHeart /> Remove from favourites
+                {favourite ? <FaHeart /> : <FaRegHeart />}
+                {favourite ? "Saved" : "Save"}
               </button>
             </div>
-          ) : (
-            <button
-              type="button"
-              className="btn-inf w-full py-3 text-lg "
-              onClick={handleInterested}
-            >
-              <FaHeart /> I'm interested
-            </button>
           )}
 
           {/* Thank You message from the server */}
           {message && (
-            <p className="alert-success mt-4" role="status">
+            <p className="mt-3 text-sm text-success-text" role="status">
               {message}
             </p>
           )}

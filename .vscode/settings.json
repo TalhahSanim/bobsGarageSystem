@@ -1,5 +1,14 @@
 {
   "files.associations": {
     "*.css": "tailwindcss"
+  },
+  "tailwindCSS.experimental.configFile": "client/src/App.css",
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact"
+  },
+  "tailwindCSS.classFunctions": ["clsx", "cn", "cva"],
+  "editor.quickSuggestions": {
+    "strings": "on"
   }
 }
