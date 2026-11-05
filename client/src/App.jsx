@@ -21,6 +21,7 @@ import EditUser from "./components/pages/admin/EditUser";
 import AddUser from "./components/pages/admin/AddUser";
 import UploadImage from "./components/pages/admin/UploadImage";
 import SystemOverview from "./components/pages/admin/SystemOverview";
+import Interest from "./components/pages/admin/Interest";
 
 // import GarageContext Provider from GarageContent Component
 import { GarageContextProvider } from "./context/GarageContextComponent";
@@ -68,6 +69,7 @@ function App() {
                 <Route path="users/edit/:id" element={<EditUser />} />
                 <Route path="users-add" element={<AddUser />} />
                 <Route path="images-new" element={<UploadImage />} />
+                <Route path="interests" element={<Interest />} />
               </Route>
               {/* Any other address triggers the 404 page */}
               <Route path="*" element={<NotFound />} />

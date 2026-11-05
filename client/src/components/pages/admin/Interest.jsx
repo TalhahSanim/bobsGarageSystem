@@ -29,19 +29,18 @@ export default function Interest() {
   }, []);
 
   //   Switch a favourite from new and contacted and it takes in the favourite
-  const contactedToggle = async (favourites) => {
-    const newStatus = favourites.status === "new" ? "contacted" : "new";
+  const contactedToggle = async (favourite) => {
+    const newStatus = favourite.status === "new" ? "contacted" : "new";
     try {
-      await axios.put(
-        `${favouritesURL}/${favourites.favourites.favouriteId}/status`,
-        { status: newStatus },
-      );
+      await axios.put(`${favouritesURL}/${favourite.favouriteId}/status`, {
+        status: newStatus,
+      });
       //   Update just that row within the list
       setList((prev) =>
         prev.map((item) =>
           (
-            item.favouriteId === favourites.favouriteId
-              ? { status: newStatus }
+            item.favouriteId === favourite.favouriteId
+              ? { ...item, status: newStatus }
               : item
           )
             ? { ...item, status: newStatus }
@@ -55,7 +54,7 @@ export default function Interest() {
 
   if (status === "loading") {
     return (
-      <p className="flex items-CgEnter gap-3 text-muted">
+      <p className="flex items-center  gap-3 text-muted">
         <span className="spinner" aria-hidden="true"></span> Loading....
       </p>
     );
@@ -77,12 +76,16 @@ export default function Interest() {
       <title>Interested Customers - Bob's Garage</title>
       <h1 className="mb-2 text-3xl font-bold">Interested Customers</h1>
       <p className="mb-6 text-muted">
-        {waiting} {waiting === 1 ? "customer is" : "customer are"} waiting to be
-        contacted
+        {waiting} {waiting === 1 ? "customer is" : "customers are"} waiting to
+        be contacted
       </p>
-
+      {list.length === 0 && (
+        <p className="border border-dashed border-line p-8 text-center text-muted">
+          No Customer has saved a service yet.
+        </p>
+      )}
       <div className="panel">
-        <div className="panel-body overflow x-auto">
+        <div className="panel-body overflow-x-auto">
           <table className="w-full text-left text-sm">
             {/* Table Headings */}
             <thead className="border-b-2 border-line">
@@ -116,12 +119,13 @@ export default function Interest() {
                     favourite.status === "new" ? "font-semibold" : "text-muted"
                   }
                 >
-                  <td className="p 2">
+                  <td className="p-2">
                     {new Date(favourite.createdAt).toLocaleDateString()}
                   </td>
                   <td className="p-2">
-                    {favourite.User.firstName}
-                    {favourite.User.lastName}
+                    {`${favourite.User.firstName}
+                   ${favourite.User.lastName}
+                   `}
                   </td>
                   <td className="p-2">
                     <a
@@ -142,7 +146,7 @@ export default function Interest() {
                   <td className="p-2">
                     <button
                       type="button"
-                      className="btn-primary text-xs"
+                      className="btn btn-primary text-xs"
                       onClick={() => contactedToggle(favourite)}
                     >
                       {favourite.status === "new"
