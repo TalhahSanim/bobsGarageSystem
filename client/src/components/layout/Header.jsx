@@ -106,19 +106,39 @@ export default function Header() {
           </li>
         </>
       )}
+      {/* // Customers only and their saved services */}
+      {isAuth &&
+        !isAdmin(
+          <li>
+            <NavLink to="/saved" className={linkClass} onClick={menuClose}>
+              <FaHeart /> Saved
+            </NavLink>
+          </li>,
+        )}
     </>
   );
 
   //  Login and register or logout and wide make them fill mobile menu
   const account = (wide) =>
     isAuth ? (
-      <button
-        type="button"
-        className={`btn btn-outline btn-sm ${wide ? "flex-1 py-3" : ""}`}
-        onClick={leave}
-      >
-        Logout
-      </button>
+      <>
+        {/* Name opens the profile page  */}
+        <Link
+          to="/profile"
+          className={`btn btn-ghost btn-sm ${wide ? "flex-1 py-3" : ""}`}
+          onClick={menuClose}
+        >
+          <FaUserCircle className="size-5" aria-hidden="true" />{" "}
+          {user?.firstName || "Profile"}
+        </Link>
+        <button
+          type="button"
+          className={`btn btn-outline btn-sm ${wide ? "flex-1 py-3" : ""}`}
+          onClick={leave}
+        >
+          Logout
+        </button>{" "}
+      </>
     ) : (
       <>
         <Link
