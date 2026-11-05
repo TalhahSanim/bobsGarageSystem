@@ -7,8 +7,6 @@ import { useFavourites } from "../../../context/FavouritesContext";
 
 import fallbackImage from "../../../assets/hero-image.jpg";
 
-import React from "react";
-
 export default function SavedServices() {
   const { favourites, removeFavourite } = useFavourites();
   return (
@@ -42,7 +40,7 @@ export default function SavedServices() {
               className="flex items-center gap-5  px-5 py-4"
             >
               <img
-                src={favourite.service?.image || fallbackImage}
+                src={favourite.Service?.image || fallbackImage}
                 alt=""
                 className="size-20 shrink-0 object-cover"
               />
