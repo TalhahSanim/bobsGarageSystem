@@ -1,32 +1,84 @@
 //  one service per card
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { FaRegEdit } from "react-icons/fa";
+import {
+  FaRegEdit,
+  FaTimes,
+  FaPencilAlt,
+  FaHeart,
+  FaRegHeart,
+} from "react-icons/fa";
 import { useServicesDelete } from "../../../context/GarageContext";
 import { useAuth } from "../../../context/AuthContext";
+import { useFavourites } from "../../../context/FavouritesContext";
 // Backup photo for services with no image
 import fallbackImage from "../../../assets/hero-image.jpg";
 
 export default function SingleService({ service }) {
   const serviceDelete = useServicesDelete();
   // ONLY Admin enabled to delete and edit
-  const { isAdmin } = useAuth();
+  const { isAuth, isAdmin } = useAuth();
+  const { isFavourite, addFavourite, removeFavourite } = useFavourites();
+  // Short message after adding a favourite such as we'll contact you shortly
+  const [note, setNote] = useState("");
 
   // DeStructure
   const { serviceId, name, type, description, image, fee } = service;
 
+  const favourite = isFavourite(serviceId);
+
+  // Runs when delete is clicked (ADMIN ONLY) Takes in id to delete
   const onDelete = (id) => {
     console.log(`Delete clicked for id ${id} -> SingleService.jsx`);
     serviceDelete(id);
   };
+
+  // Runs when the hear is clicked -> Add or Remove this service from my favourites
+  const favouriteToggle = async () => {
+    try {
+      if (favourite) {
+        await removeFavourite(serviceId);
+        setNote("");
+      } else {
+        const msg = await addFavourite(serviceId);
+        setNote(msg);
+        // Hide the message after 4 secondads
+        setTimeout(() => setNote(""), 4000);
+      }
+    } catch (err) {
+      console.log("favouriteToggle failed", err.message);
+      setNote("Apologies, something wen wrong. Please Try Again.");
+    }
+  };
   return (
     <article className="card card-lift flex flex-col">
       {/* Service phot or the backup one when no photo include in service during add or edit */}
-      <img
-        src={image || fallbackImage}
-        alt={name}
-        className="h-44 w-full object-cover"
-      />
+      <div className="relative">
+        <img
+          src={image || fallbackImage}
+          alt={name}
+          className="h-44 w-full object-cover"
+        />
+        {isAuth && (
+          <button
+            type="button"
+            onClick={favouriteToggle}
+            className="absolute top-3 right-3 bg-surface/90 p-2 text-accent shadow hover:scale-110 transition-transform"
+            aria-label={
+              favourite
+                ? `Remove ${name} from favourites`
+                : ` Add ${name} to favourites `
+            }
+          >
+            {favourite ? (
+              <FaHeart size={"1.5em"} />
+            ) : (
+              <FaRegHeart size="1.5em" />
+            )}
+          </button>
+        )}
+      </div>
 
       <div className="flex flex-1 flex-col gap-1 p-4">
         <p className="text-xs font-normal tracking-wide text-muted uppercase">

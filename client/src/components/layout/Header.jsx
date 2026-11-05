@@ -6,12 +6,7 @@ import { GrStatusInfo } from "react-icons/gr";
 
 import {
   FaBars,
-  FaHome,
-  FaQuestion,
   FaPlus,
-  FaDoorOpen,
-  FaSignInAlt,
-  FaSignOutAlt,
   FaTimes,
   FaUsers,
   FaHeart,
@@ -24,13 +19,12 @@ import logoDark from "../../assets/logo-dark.png";
 
 // the logout function from auth context
 import { useAuth } from "../../context/AuthContext";
-import { useTheme } from "../../context/ThemeContext";
 
 export default function Header() {
   // console.log(branding);  // test to see if it is functional
   const [menuOn, setMenuOn] = useState(false);
   // From authContext is anyone logged in, are they admin status and logout
-  const { isAuth, isAdmin, logout } = useAuth();
+  const { isAuth, isAdmin, user, logout } = useAuth();
 
   // Since admin dash has exclusive sidebar so we need to hide this bar
   const { pathname } = useLocation();
@@ -107,14 +101,13 @@ export default function Header() {
         </>
       )}
       {/* // Customers only and their saved services */}
-      {isAuth &&
-        !isAdmin(
-          <li>
-            <NavLink to="/saved" className={linkClass} onClick={menuClose}>
-              <FaHeart /> Saved
-            </NavLink>
-          </li>,
-        )}
+      {isAuth && !isAdmin && (
+        <li>
+          <NavLink to="/saved" className={linkClass} onClick={menuClose}>
+            <FaHeart /> Saved
+          </NavLink>
+        </li>
+      )}
     </>
   );
 

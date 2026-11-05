@@ -6,16 +6,19 @@ import { AuthContextProvider } from "./context/AuthContextComponent.jsx";
 import { UsersContextProvider } from "./context/UsersContextComponent.jsx";
 import { AdminContextProvider } from "./context/AdminContextComponent.jsx";
 import { ThemeContextProvider } from "./context/ThemeContextComponent.jsx";
+import { FavouritesContextProvider } from "./context/FavouritesContextComponent.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthContextProvider>
       <ThemeContextProvider>
-        <UsersContextProvider>
-          <AdminContextProvider>
-            <App />
-          </AdminContextProvider>
-        </UsersContextProvider>
+        <FavouritesContextProvider>
+          <UsersContextProvider>
+            <AdminContextProvider>
+              <App />
+            </AdminContextProvider>
+          </UsersContextProvider>
+        </FavouritesContextProvider>
       </ThemeContextProvider>
     </AuthContextProvider>
   </StrictMode>,
