@@ -2,13 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import {
-  FaRegEdit,
-  FaTimes,
-  FaPencilAlt,
-  FaHeart,
-  FaRegHeart,
-} from "react-icons/fa";
+import { FaRegEdit, FaHeart, FaRegHeart } from "react-icons/fa";
 import { useServicesDelete } from "../../../context/GarageContext";
 import { useAuth } from "../../../context/AuthContext";
 import { useFavourites } from "../../../context/FavouritesContext";
@@ -100,7 +94,10 @@ export default function SingleService({ service }) {
           </Link>
           {/* The thank you message after adding a favourite */}
           {note && (
-            <p className="mt-3 text-sm text-success-text" role="status">
+            <p
+              className="mt-3 text-sm font-bold text-success-text"
+              role="status"
+            >
               {note}
             </p>
           )}
