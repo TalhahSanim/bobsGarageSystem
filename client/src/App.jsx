@@ -9,8 +9,10 @@ import About from "./components/pages/About";
 import AddServices from "./components/pages/services/AddServices";
 import EditService from "./components/pages/services/EditService";
 import ServiceDetails from "./components/pages/services/ServiceDetails";
+import SavedServices from "./components/pages/services/SavedServices";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";
+import ProtectedRoute from "./components/layout/ProtectedRoute";
 
 // Dashboard Components
 import Dashboard from "./components/pages/admin/Dashboard";
@@ -47,6 +49,14 @@ function App() {
               <Route path="/add-service" element={<AddServices />} />
               <Route path="/edit/:id" element={<EditService />} />
               <Route path="/services/:id" element={<ServiceDetails />} />
+              <Route
+                path="/saved"
+                element={
+                  <ProtectedRoute>
+                    <SavedServices />
+                  </ProtectedRoute>
+                }
+              />
 
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />

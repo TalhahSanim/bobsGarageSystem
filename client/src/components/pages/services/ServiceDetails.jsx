@@ -100,18 +100,20 @@ export default function ServiceDetails() {
       </nav>
 
       {/* Photo on left and details to the right */}
-      <div className="grid gap-14 border-b-5 border-primary md:grid-cols-2">
+      <div className="grid gap-14  md:grid-cols-2 ">
         <img
           src={service.image || fallbackImage}
           alt={service.name}
-          className="aspect-[31-25] w-full object-cover shadow-md border-8 border-primary"
+          className="aspect-31/25 w-full object-cover shadow-md border-8 border-footer "
         />
         <div>
           <h1 className="mb-3 text-4xl">{service.name}</h1>
           <p className="mb-4 text-2xl font-semibold text-link">
             ${Number(service.fee).toFixed(2)}
           </p>
-          <p className="mb-6 leading-relaxed text-muted">{service.type}</p>
+          <p className="mb-6 leading-relaxed font-semibold text-muted">
+            {service.type}
+          </p>
           <p className="mb-6 leading-relaxed text-muted">
             {service.description}
           </p>
