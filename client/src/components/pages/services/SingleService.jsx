@@ -98,6 +98,12 @@ export default function SingleService({ service }) {
           >
             View Service
           </Link>
+          {/* The thank you message after adding a favourite */}
+          {note && (
+            <p className="mt-3 text-sm text-success-text" role="status">
+              {note}
+            </p>
+          )}
         </div>
 
         {/* ADMIN ONLY -> EDIT & DELETE */}
