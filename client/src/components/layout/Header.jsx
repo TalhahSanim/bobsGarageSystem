@@ -4,7 +4,19 @@ import { IoHome } from "react-icons/io5";
 import { BiSolidCarMechanic } from "react-icons/bi";
 import { GrStatusInfo } from "react-icons/gr";
 
-import { FaBars, FaPlus, FaTimes, FaUsers } from "react-icons/fa";
+import {
+  FaBars,
+  FaHome,
+  FaQuestion,
+  FaPlus,
+  FaDoorOpen,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaTimes,
+  FaUsers,
+  FaHeart,
+  FaUserCircle,
+} from "react-icons/fa";
 import ToggleTheme from "./ToggleTheme";
 
 import logo from "../../assets/logo-light.png";
@@ -12,6 +24,7 @@ import logoDark from "../../assets/logo-dark.png";
 
 // the logout function from auth context
 import { useAuth } from "../../context/AuthContext";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function Header() {
   // console.log(branding);  // test to see if it is functional
