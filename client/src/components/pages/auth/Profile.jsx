@@ -1,6 +1,7 @@
 // File -> client/components/pages/auth/Profile.jsx
 //  The logged in users profile-> Shows their details, preferences and number of favourites
-
+import { useState } from "react";
+import { imageSrc } from "../../../utils/imgSrc";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { PiUserSquareFill } from "react-icons/pi";
@@ -10,7 +11,45 @@ import { useFavourites } from "../../../context/FavouritesContext";
 
 // Profile Component which is shown to logged in users
 export default function Profile() {
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, avatarUpload, avatarRemove } = useAuth();
+
+  // Theimage upload whihc has the chosen file, preview and a message
+  const [avatarFile, setAvatarFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [avatarMsg, setAvatarMsg] = useState("");
+
+  // Runs when a file is selected and check it here first then show a preview
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    setAvatarMsg("");
+    if (!file) return;
+    // The same rule the server applied so user know straight away
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+      setAvatarMsg("Please select a JPG,PNG or WebP image");
+      return;
+    }
+    if (file.size > 25 * 1024 * 1024) {
+      setAvatarMsg("The image. must be 25mb or smaller");
+      return;
+    }
+    setAvatarFile(file);
+    // Temp address for selecte file as we can show prior to upload
+    setPreview(URL.createObjectURL(file));
+  };
+
+  // runs when upload is pressed
+  const handleAvatarUpload = async () => {
+    const result = await avatarUpload(avatarFile);
+    setAvatarMsg(result.msg);
+    if (result.ok) {
+      setAvatarFile(null);
+      setPreview(null);
+    }
+  };
+
+  // The imag to display which is the new choice else the saved one or none
+  const avatar = preview || imageSrc(user.image);
+  // Their
   const {
     theme,
     fontSize,
