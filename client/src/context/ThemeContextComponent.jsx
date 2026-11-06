@@ -35,7 +35,7 @@ export default function ThemeContextComponent({ children }) {
 
   // when user logged in then load their saved preferences from the database
   useEffect(() => {
-    if (!isAuth) {
+    if (isAuth) {
       // Get logged in users preferences
       const loadPreferences = async () => {
         try {
