@@ -107,6 +107,37 @@ export const AuthContextProvider = ({ children }) => {
     clearUser();
   };
 
+  // upload a new profile image and takes in the file and returns {ok,msg} for profile page
+  const avatarUpload = async (file) => {
+    // multer reads  multipart/form-data so send the file in a FormData
+    const formData = new FormData();
+    formData.append("avatar", file);
+    try {
+      const res = await axios.post(
+        "http://localhost:3000/api/users/me/avatar",
+        formData,
+      );
+      // Change just the image in the saved user and keep the rest
+      setAuth((prev) => ({
+        ...prev,
+        user: { ...prev.user, image: res.data.image },
+      }));
+      return { ok: true, msg: "Profile Image Updated" };
+    } catch (err) {
+      return { ok: false, msg: err.response?.data?.msg || "Upload failed" };
+    }
+  };
+
+  // Remove profile image back to profile placeeholder image icon
+  const avatarRemove = async () => {
+    try {
+      await axios.delete("http://localhost:3000/api/users/me/avatar");
+      setAuth((prev) => ({ ...prev, user: { ...prev.user, image: null } }));
+    } catch (err) {
+      console.log("avatarRemove failed", err.message);
+    }
+  };
+
   // When app starts if we save token use it to load the user to stay logged in upon refresh
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -116,7 +147,9 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, []);
   return (
-    <AuthContext.Provider value={{ ...auth, login, register, logout }}>
+    <AuthContext.Provider
+      value={{ ...auth, login, register, logout, avatarUpload, avatarRemove }}
+    >
       {children}
     </AuthContext.Provider>
   );

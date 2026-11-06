@@ -29,6 +29,7 @@ import BottomNav from "./components/layout/BottomNav";
 
 // Not found
 import NotFound from "./components/pages/NotFound";
+import Profile from "./components/pages/auth/Profile";
 
 // App Component- sets up routes and page layout
 function App() {
@@ -55,6 +56,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <SavedServices />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
                   </ProtectedRoute>
                 }
               />

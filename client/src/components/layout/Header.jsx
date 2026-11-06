@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
-import { BiSolidCarMechanic } from "react-icons/bi";
-import { GrStatusInfo } from "react-icons/gr";
+import { BiSolidCarMechanic, BiSolidInfoSquare } from "react-icons/bi";
 
 import {
   FaBars,
@@ -10,9 +9,14 @@ import {
   FaTimes,
   FaUsers,
   FaHeart,
-  FaUserCircle,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUserPlus,
 } from "react-icons/fa";
+import { PiUserSquareFill } from "react-icons/pi";
+
 import ToggleTheme from "./ToggleTheme";
+import { imgSrc } from "../../utils/imgSrc";
 
 import logo from "../../assets/logo-light.png";
 import logoDark from "../../assets/logo-dark.png";
@@ -78,7 +82,7 @@ export default function Header() {
       </li>
       <li>
         <NavLink to="/about" className={linkClass} onClick={menuClose}>
-          <GrStatusInfo /> About
+          <BiSolidInfoSquare /> About
         </NavLink>
       </li>
       {/* Admin links: only for logged in admins */}
@@ -121,15 +125,24 @@ export default function Header() {
           className={`btn btn-ghost btn-sm ${wide ? "flex-1 py-3" : ""}`}
           onClick={menuClose}
         >
-          <FaUserCircle className="size-5" aria-hidden="true" />{" "}
-          {user?.firstName || "Profile"}
+          {/* Their Image or person icon/image */}
+          {imgSrc(user?.image) ? (
+            <img
+              src={imgSrc(user.image)}
+              alt=""
+              className="size-8 object-cover ring-2 ring-line"
+            />
+          ) : (
+            <PiUserSquareFill className="size-8" aria-hidden="true" />
+          )}
+          Welcome, {user?.firstName}
         </Link>
         <button
           type="button"
           className={`btn btn-outline btn-sm ${wide ? "flex-1 py-3" : ""}`}
           onClick={leave}
         >
-          Logout
+          <FaSignOutAlt aria-hidden="true" /> Logout
         </button>{" "}
       </>
     ) : (
@@ -139,6 +152,7 @@ export default function Header() {
           className={`btn btn-sm ${wide ? "btn-outline flex-1 py-3" : "btn-ghost"}`}
           onClick={menuClose}
         >
+          <FaSignInAlt aria-hidden="true" />
           Login
         </Link>
         <Link
@@ -146,7 +160,7 @@ export default function Header() {
           className={`btn btn-primary btn-sm ${wide ? "flex-1 py-3" : ""}`}
           onClick={menuClose}
         >
-          Register
+          <FaUserPlus aria-hidden="true" /> Register
         </Link>
       </>
     );

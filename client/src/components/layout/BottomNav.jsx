@@ -2,13 +2,13 @@
 import { NavLink } from "react-router-dom";
 import {
   FaHome,
-  FaInfoCircle,
   FaSignInAlt,
   FaSignOutAlt,
   FaThLarge,
   FaUsers,
   FaWrench,
 } from "react-icons/fa";
+import { BiSolidInfoSquare } from "react-icons/bi";
 
 import { useAuth } from "../../context/AuthContext";
 
@@ -40,7 +40,7 @@ export default function BottomNav() {
         <>
           {tabbed("/", FaHome, "Home", true)}
           {tabbed("/services", FaWrench, "Services")}
-          {tabbed("/about", FaInfoCircle, "About")}
+          {tabbed("/about", BiSolidInfoSquare, "About")}
         </>
       )}
 

@@ -8,10 +8,11 @@ import { useUsers } from "../../../context/UsersContext";
 import { useAdmin } from "../../../context/AdminContext";
 import DashboardLinks from "./DashboardLinks";
 import ToggleTheme from "../../layout/ToggleTheme";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaSignOutAlt } from "react-icons/fa";
 import Footer from "../../layout/Footer";
 import lightLogo from "../../../assets/logo-light.png";
 import darkLogo from "../../../assets/logo-dark.png";
+import { imgSrc } from "../../../utils/imgSrc";
 
 // Dashboard component -> admin layer with sidebar and Outlet
 export default function Dashboard() {
@@ -52,7 +53,7 @@ export default function Dashboard() {
   const initials = `${user.firstName?.[0] ?? ""}${user.lastName?.[0] ?? ""}`;
 
   return (
-    <div className="grid lg:full-screen lg:-my-10 lg:min-h-screen lg:grid-cols-[16rem_1fr]">
+    <div className="grid lg:full-screen lg:-my-10 lg:min-h-screen lg:grid-cols-[20rem_1fr]">
       {/* SideBar-> Full Height on desktop and link row on mobile */}
       <aside className="flex flex-col gap-1 bg-linear-to-r lg:bg-linear-to-b from-footer  to-footer-end p-2 text-on-footer lg:sticky lg:top-0 lg:h-screen lg:p-4">
         {/* Logo to return back home and theme button */}
@@ -82,30 +83,46 @@ export default function Dashboard() {
 
         {/* Confirm who logged in and logout attached to bottom */}
         <div className="mt-2 hidden items-center gap-3 border-t  border-white/20 pt-4 lg:flex">
-          {user.image ? (
-            <img
-              src={user.image}
-              alt=""
-              className="size-9 shrink-0 object-cover"
-            />
-          ) : (
-            <span
-              className="flex size-9 shrink-0 items-center justify-center bg-white/20 text-sm font-semibold"
-              aria-hidden="true"
-            >
-              {initials}
-            </span>
-          )}
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm">{user.firstName} [Admin]</p>
-            <p className="truncate text-xs text-on-footer/70">{user.email}</p>
-          </div>
+          {/* Image and Link to open profile for admins */}
+          <Link
+            to="/profile"
+            className="flex minn-w-0 flex-1 items-center gap-3 text-on-footer no-underline hover:opacity-80"
+          >
+            {user.image ? (
+              <img
+                src={imgSrc(user.image)}
+                alt=""
+                className="size-9 shrink-0  object-cover ring-2 ring-line"
+              />
+            ) : (
+              <span
+                className="flex size-9 shrink-0 items-center justify-center bg-white/20 text-sm font-semibold"
+                aria-hidden="true"
+              >
+                {initials}
+              </span>
+            )}
+            <div className="min-w-0 ">
+              <p className="flex items-center gap-2 text-sm">
+                <span className="truncate">{user.firstName}</span>
+                <span className="badge shrink-0 bg-white/20 text-on-footer">
+                  Admin
+                </span>
+              </p>
+              <p
+                className="truncate text-xs text-on-footer/70"
+                title={user.email}
+              >
+                {user.email}
+              </p>
+            </div>
+          </Link>
           <button
             type="button"
-            className="shrink-0 bg-danger/50 px-3 py-1.5 text-sm transition-colors hover:bg-danger/20 cursor-pointer"
+            className="flex item-center gap-2 whitespace-nowrap shrink-0 bg-danger/50 px-2.5 py-3.5 text-sm transition-colors hover:bg-danger/20 cursor-pointer font-semibold"
             onClick={leave}
           >
-            Logout
+            <FaSignOutAlt className="size-4" aria-hidden="true" /> Logout
           </button>
         </div>
       </aside>

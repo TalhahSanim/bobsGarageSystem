@@ -185,6 +185,14 @@ html[data-font="large"] {
   @apply mb-1.5 block text-sm font-semibold text-ink;
 }
 
+/* Dropdown to floow theme colors */
+select.form-input option {
+  @apply bg-surface text-ink;
+}
+select.form-input option:checked {
+  @apply bg-primary/50 text-on-primary;
+}
+
 @utility form-input {
   @apply block w-full border border-line bg-surface px-3.5 py-3 text-ink transition placeholder:text-muted;
   @apply focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none;

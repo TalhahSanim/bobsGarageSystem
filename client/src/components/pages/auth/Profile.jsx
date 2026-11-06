@@ -2,7 +2,8 @@
 //  The logged in users profile-> Shows their details, preferences and number of favourites
 
 import { Link } from "react-router-dom";
-import { FaUserCircle, FaHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { PiUserSquareFill } from "react-icons/pi";
 import { useAuth } from "../../../context/AuthContext";
 import { useTheme } from "../../../context/ThemeContext";
 import { useFavourites } from "../../../context/FavouritesContext";
@@ -10,8 +11,15 @@ import { useFavourites } from "../../../context/FavouritesContext";
 // Profile Component which is shown to logged in users
 export default function Profile() {
   const { user, isAdmin } = useAuth();
-  const { theme, fontSize, changeTheme, changeFontSize } = useTheme();
-  const { favourites } = useFavourites;
+  const {
+    theme,
+    fontSize,
+    sortOrder,
+    changeTheme,
+    changeFontSize,
+    changeSort,
+  } = useTheme();
+  const { favourites } = useFavourites();
   return (
     <main className="my-6">
       <title>Personal Profile - Bob's Garage</title>
@@ -23,9 +31,16 @@ export default function Profile() {
           <div className="panel-header">About Me</div>
           <div className="panel-body flex items-center gap-4">
             {user.image ? (
-              <img src={user.image} alt="" className="size-20 object-cover" />
+              <img
+                src={user.image}
+                alt=""
+                className="size-60 shrink-0 object-cover ring-2 ring-line"
+              />
             ) : (
-              <FaUserCircle className="size-20 text-muted" aria-hidden="true" />
+              <PiUserSquareFill
+                className="size-20 text-muted"
+                aria-hidden="true"
+              />
             )}
             <div>
               <p className="text-xl font-semibold">
@@ -44,44 +59,62 @@ export default function Profile() {
         {/* My Preference which is saved to the database */}
         <section className="panel">
           <div className="panel-header">My Preferences</div>
-          <div className="mb-4">
-            <label className="form-label" htmlFor="theme">
-              Theme
-            </label>
-            <select
-              id="theme"
-              className="form-input bg-surface"
-              value={theme}
-              onChange={(e) => changeTheme(e.target.value)}
-            >
-              <option value="light"></option>
-              <option value="dark"></option>
-            </select>
+          <div className="panel-body">
+            <div className="mb-4">
+              <label className="form-label" htmlFor="theme">
+                Theme
+              </label>
+              <select
+                id="theme"
+                className="form-input bg-surface"
+                value={theme}
+                onChange={(e) => changeTheme(e.target.value)}
+              >
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="fontSize">
+                Font Size
+              </label>
+              <select
+                id="fontSize"
+                className="form-input bg-surface"
+                value={fontSize}
+                onChange={(e) => changeFontSize(e.target.value)}
+              >
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+            <div className="mb-4">
+              <label className="form-label" htmlFor="sortOrder">
+                Default Sort
+              </label>
+              <select
+                id="sortOrder"
+                className="form-input bg-surface"
+                value={sortOrder}
+                onChange={(e) => changeSort(e.target.value)}
+              >
+                <option value="default">Default</option>
+                <option value="fee-ASC">Fee: Low to High</option>
+                <option value="fee-ASC">Fee: High to Low</option>
+                <option value="name-ASC">Name: A-Z</option>
+              </select>
+            </div>
+            <p className="text-sm text-muted">
+              Automatically saved into your account.
+            </p>
           </div>
-          <div className="mb-4">
-            <label className="form-label" htmlFor="fontSize">
-              Font Size
-            </label>
-            <select
-              id="fontSize"
-              className="form-input bg-surface"
-              value={fontSize}
-              onChange={(e) => changeFontSize(e.target.value)}
-            >
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
-          </div>
-          <p className="text-sm text-muted">
-            Automatically saved into your account.
-          </p>
         </section>
       </div>
 
       {/* Favourites Overview */}
       <Link
-        to="/favorites"
+        to="/saved"
         className="mt-6 flex items-center gap-3 border border-line bg-surface p-4 shadow-sm hover:shadow-md"
       >
         <FaHeart className="text-accent" />
