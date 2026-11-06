@@ -9,13 +9,13 @@ import multer from "multer";
 const avatarTypes = {
   "image/jpeg": ".jpg",
   "image/png": ".png",
-  "image/webp": "webp",
+  "image/webp": ".webp",
 };
 
 const avatarUpload = multer({
   storage: multer.diskStorage({
     // save image into server/uploads
-    destination: (req, file, cb) => (null, "./uploads"),
+    destination: (req, file, cb) => cb(null, "./uploads"),
     // Own avatar name which includes user id, time, ending such as profile123.jpg
     filename: (req, file, cb) => {
       cb(
@@ -24,8 +24,8 @@ const avatarUpload = multer({
       );
     },
   }),
-  //   2MB Max
-  limits: { fileSize: 2 * 1024 * 1024 },
+  //   25MB Max
+  limits: { fileSize: 25 * 1024 * 1024 },
   //   Accept only image types like above and reject other types
   fileFilter: (req, file, cb) => cb(null, Boolean(avatarTypes[file.mimetype])),
 });

@@ -2,7 +2,7 @@
 // Logged in users profile image -> upload or remove one
 // routes/users.js puts auth in fonr of both that means req.user always set
 
-import path from "fs";
+import path from "path";
 import fs from "fs";
 import db from "../models/models.js";
 import avatarUpload from "../middleware/avatarUpload.js";
@@ -12,7 +12,7 @@ const { User } = db.sequelize.models;
 // delete old uploaded image which takes in the user's old image a value.
 // It only deletes uploaded avatars not URLS or admin uploads
 const deleteOutdatedAvatar = (image) => {
-  if (!image || !image.startsWith("/uploads/avartar-")) return;
+  if (!image || !image.startsWith("/uploads/avatar-")) return;
   //   basename() keeps file name as it never points outside uploads directory
   fs.promises
     .unlink(path.join("uploads", path.basename(image)))
@@ -31,7 +31,7 @@ export const uploadAvatar = (req, res) => {
     if (err) {
       const msg =
         err.code === "LIMIT_FILE_SIZE"
-          ? "The image MUST be 2mb or smaller"
+          ? "The image MUST be 25mb or smaller"
           : "Upload failed";
       return res.status(400).json({ msg });
     }
@@ -47,8 +47,8 @@ export const uploadAvatar = (req, res) => {
       const outdatedImage = user.image;
       await user.update({ image: `/uploads/${req.file.filename}` });
       //   Delete only outdated field when new one is saved
-      deleteOutdatedAvatar();
-      res.status(500).json({ image: user.image });
+      deleteOutdatedAvatar(outdatedImage);
+      res.status(200).json({ image: user.image });
     } catch (err) {
       console.log(err.message);
       res.status(500).json({ msg: "Server Error" });
