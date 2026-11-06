@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { AuthContextProvider } from "./context/AuthContextComponent.jsx";
 import { UsersContextProvider } from "./context/UsersContextComponent.jsx";
 import { AdminContextProvider } from "./context/AdminContextComponent.jsx";
-import { ThemeContextProvider } from "./context/ThemeContextComponent.jsx";
+import ThemeContextProvider from "./context/ThemeContextComponent.jsx";
 import { FavouritesContextProvider } from "./context/FavouritesContextComponent.jsx";
 
 createRoot(document.getElementById("root")).render(

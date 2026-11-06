@@ -14,6 +14,8 @@ import {
   GarageSortContext,
 } from "./GarageContext";
 
+import { useTheme } from "./ThemeContext";
+
 // the base Url for service request as onplace equates to less typos
 const serviceURL = "http://localhost:3000/api/services";
 
@@ -46,16 +48,13 @@ export const GarageContextProvider = ({ children }) => {
     }
   };
 
-  // How the list is sorted  -> default or field-Direction such as fee-ASC
-  // Start with the vistor's saved choid or default-order
-  const [sort, setSort] = useState(
-    () => localStorage.getItem("sort") || "default",
-  );
+  // sort order comes from the preferences provider
+  // Renamed to sort /setSort so file is same
+  const { sortOrder: sort, changeSort: setSort } = useTheme();
 
   // Load the services once when application begins
   useEffect(() => {
     getAllServices();
-    localStorage.setItem("sort", sort);
   }, [sort]);
   // get service by its id
   const getServiceById = async (id) => {
