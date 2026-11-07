@@ -1,13 +1,14 @@
 // File -> client/components/pages/auth/Profile.jsx
 //  The logged in users profile-> Shows their details, preferences and number of favourites
 import { useState } from "react";
-import { imageSrc } from "../../../utils/imgSrc";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { PiUserSquareFill } from "react-icons/pi";
 import { useAuth } from "../../../context/AuthContext";
 import { useTheme } from "../../../context/ThemeContext";
 import { useFavourites } from "../../../context/FavouritesContext";
+
+import { imgSrc } from "../../../utils/imgSrc";
 
 // Profile Component which is shown to logged in users
 export default function Profile() {
@@ -48,7 +49,7 @@ export default function Profile() {
   };
 
   // The imag to display which is the new choice else the saved one or none
-  const avatar = preview || imageSrc(user.image);
+  const avatar = preview || imgSrc(user.image);
   // Their
   const {
     theme,
@@ -69,11 +70,11 @@ export default function Profile() {
         <section className="panel">
           <div className="panel-header">About Me</div>
           <div className="panel-body flex items-center gap-4">
-            {user.image ? (
+            {/* Their image or person icon placeholder */}
+            {avatar ? (
               <img
-                src={user.image}
-                alt=""
-                className="size-60 shrink-0 object-cover ring-2 ring-line"
+                src={avatar}
+                className="size-20 object-cover ring-2 ring-line"
               />
             ) : (
               <PiUserSquareFill
@@ -91,6 +92,19 @@ export default function Profile() {
               >
                 {isAdmin ? "Admin" : "Customer"}
               </span>
+              {/* Change profile image */}
+              <div className="mt-4">
+                <label class-name="form-label " htmlFor="avatar">
+                  Profile Image (JPg, PNG or WebP up to 25mb)
+                </label>
+                <input
+                  type="file"
+                  id="avatar"
+                  accept="image/jpeg,image/png,image/webp"
+                  onChange={handleAvatarChange}
+                  className=""
+                />
+              </div>
             </div>
           </div>
         </section>
