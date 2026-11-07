@@ -171,6 +171,11 @@ const Enquiry = sequelize.define("Enquiry", {
     allowNull: true,
   },
   // Did the customer see reply
+  readByUser: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
 });
 
 // Relationships or Associations
@@ -195,6 +200,21 @@ Service.hasMany(Favourite, {
   onDelete: "CASCADE",
 });
 Favourite.belongsTo(Service, { foreignKey: "serviceId" });
+
+// Both Users and services have many enquiries so each enquiry belongs to one of each of them
+User.hasMany(Enquiry, {
+  foreignKey: { name: "userId", allowNull: false },
+  onDelete: "CASCADE",
+});
+
+Enquiry.belongsTo(User, { foreignKey: "userId" });
+
+Service.hasMany(Enquiry, {
+  foreignKey: { name: "serviceId", allowNull: false },
+  onDelete: "CASCADE",
+});
+
+Enquiry.belongsTo(Service, { foreignKey: "serviceId" });
 // Database functions -> ModelName.prototype.functionName = function({...})
 // Sign a token and it takes in the payload , returns the token and experies in 7 days
 User.prototype.signToken = function (payload) {
