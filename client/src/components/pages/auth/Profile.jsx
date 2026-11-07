@@ -95,15 +95,35 @@ export default function Profile() {
               {/* Change profile image */}
               <div className="mt-4">
                 <label class-name="form-label " htmlFor="avatar">
-                  Profile Image (JPg, PNG or WebP up to 25mb)
+                  Profile Image (JPG, PNG or WebP up to 25mb)
                 </label>
                 <input
                   type="file"
                   id="avatar"
                   accept="image/jpeg,image/png,image/webp"
                   onChange={handleAvatarChange}
-                  className=""
+                  className="block w-full text-sm file:mr-4 file:cursor-pointer file:border-0 file:bg-primary file:px-4 file:py-2 cursor-pointer file:text-on-primary"
                 />
+                <div className="mt-3 flex flex-wrap" gap-3>
+                  <button
+                    type="button"
+                    className="btn-info cursor-pointer"
+                    onClick={handleAvatarUpload}
+                    disabled={!avatarFile}
+                  >
+                    Upload Profile Image
+                  </button>
+                  {user.image && (
+                    <button
+                      type="button"
+                      className="btn-warning cursor-pointer"
+                      onClick={avatarRemove}
+                    >
+                      Remove Profile Image
+                    </button>
+                  )}
+                  {avatarMsg && <p className="mt-2 text-sm">{avatarMsg}</p>}
+                </div>
               </div>
             </div>
           </div>
