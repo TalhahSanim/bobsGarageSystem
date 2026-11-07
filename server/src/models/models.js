@@ -139,6 +139,40 @@ const Favourite = sequelize.define(
   },
 );
 
+// Enquiry whihc is customers question about a specfic service and contains th business rely
+const Enquiry = sequelize.define("Enquiry", {
+  // Primary key
+  enquiryId: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  // Business question -> required with reasonable text length for their message
+  message: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+    validate: { len: [10, 1000] },
+  },
+  response: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+    validate: { len: [1, 1000] },
+  },
+  // pending means the customer is waiting for business response and responded means business made a response
+  status: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    defaultValue: "pending",
+    validate: { isIn: [["pending", "responded"]] },
+  },
+  // Date business replied
+  repliedAt: {
+    type: DataTypes.DATE,
+    allowNull: true,
+  },
+  // Did the customer see reply
+});
+
 // Relationships or Associations
 // One user has one Preference row and the foreign key of userId goes into Preferences
 User.hasOne(Preference, {
