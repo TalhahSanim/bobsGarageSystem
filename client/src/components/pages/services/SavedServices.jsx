@@ -4,11 +4,13 @@
 import { Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { useFavourites } from "../../../context/FavouritesContext";
+import { useEnquiries } from "../../../context/EnquiriesContext";
 
 import fallbackImage from "../../../assets/hero-image.jpg";
 
 export default function SavedServices() {
   const { favourites, removeFavourite } = useFavourites();
+  const { latestOne } = useEnquiries();
   return (
     <main className="my-10">
       <title>Saved Services - Bob's Garage</title>
@@ -56,6 +58,29 @@ export default function SavedServices() {
                 </p>
               </div>
               {/* Status badge and view reply lives here and enquiry button goes here */}
+              {() => {
+                const enquiry = latestOne(favourite.serviceId);
+                if (!enquiry) {
+                  return (
+                    <Link
+                      to={`/services/${favourite.serviceId}`}
+                      className="badge border border-line text-link hover:bg-page"
+                    >
+                      Have an Enquiry?
+                    </Link>
+                  );
+                }
+                return enquiry.status === "responded" ? (
+                  <Link
+                    to="/inbox"
+                    className="badge badge-responded hover:brightness-95"
+                  >
+                    Responded: See Inbox
+                  </Link>
+                ) : (
+                  <span className="badge badge-pending">Pending</span>
+                );
+              }}
 
               <button
                 type="button"
