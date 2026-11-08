@@ -3,7 +3,6 @@
 // send, get my-enquiries,mark-read, get all (admin) and reply (admin)
 // routes/enquiries.js makes auth and adminin front of each route
 
-import { where } from "sequelize";
 import db from "../models/models.js";
 
 const { Enquiry, Service, User } = db.sequelize.models;
