@@ -57,5 +57,25 @@ export default function EnquiriesContextComponet({ children }) {
       };
     }
   };
-  return <div>EnquiriesContextComponet</div>;
+
+  // Tick one reply as read and takes in an enquiryId
+  const tickRead = async (enquiryId) => {
+    try {
+      await axios.put(`${enquiriesURL}/${enquiryId}/read`);
+      setEnquiries((prev) =>
+        prev.map((enquiry) =>
+          enquiry.enquiryId === enquiryId
+            ? { ...enquiry, readByUser: true }
+            : enquiry,
+        ),
+      );
+    } catch (err) {
+      console.log("tickRead failed", err.message);
+    }
+  };
+  return (
+    <EnquiriesContext.Provider value={enquiries,unreadCount,latestOne,sendEnquiry,tickRead,loadEnquiries}>
+      {children}
+    </EnquiriesContext.Provider>
+  )
 }

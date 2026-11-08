@@ -8,6 +8,8 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useAuth } from "../../../context/AuthContext";
 import { useFavourites } from "../../../context/FavouritesContext";
 
+import EnquiryForm from "./EnquiryForm";
+
 import fallbackImage from "../../../assets/hero-image.jpg";
 
 // Service Details Component which reads the id from the URL and loads that service
@@ -147,6 +149,8 @@ export default function ServiceDetails() {
               {message}
             </p>
           )}
+          {/* Logged  users can enquire about the server */}
+          {isAuth && <EnquiryForm service={service} />}
         </div>
       </div>
     </main>
