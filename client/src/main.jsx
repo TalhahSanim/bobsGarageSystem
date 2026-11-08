@@ -8,6 +8,7 @@ import { AdminContextProvider } from "./context/AdminContextComponent.jsx";
 import ThemeContextProvider from "./context/ThemeContextComponent.jsx";
 import { FavouritesContextProvider } from "./context/FavouritesContextComponent.jsx";
 import { GarageContextProvider } from "./context/GarageContextComponent.jsx";
+import EnquiriesContextProvider from "./context/EnquiriesContextComponent.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -17,7 +18,9 @@ createRoot(document.getElementById("root")).render(
           <UsersContextProvider>
             <AdminContextProvider>
               <GarageContextProvider>
-                <App />
+                <EnquiriesContextProvider>
+                  <App />
+                </EnquiriesContextProvider>
               </GarageContextProvider>
             </AdminContextProvider>
           </UsersContextProvider>

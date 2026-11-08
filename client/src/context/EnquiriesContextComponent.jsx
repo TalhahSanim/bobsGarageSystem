@@ -10,7 +10,7 @@ import { useAuth } from "./AuthContext";
 const enquiriesURL = "http://localhost:3000/api/enquiries";
 
 // EnquiriesContextProvider component -> must be INSIDE AuthContextProvider as it use useAuth()
-export default function EnquiriesContextComponet({ children }) {
+export default function EnquiriesContextComponent({ children }) {
   const { isAuth } = useAuth();
   const [enquiries, setEnquiries] = useState([]);
   // Retrieve enquiries from the api
@@ -25,7 +25,7 @@ export default function EnquiriesContextComponet({ children }) {
 
   //   Load them when the user logs in and empty the list when their logged out
   useEffect(() => {
-    if (useAuth) {
+    if (isAuth) {
       loadEnquiries();
     } else {
       setEnquiries([]);
@@ -74,8 +74,17 @@ export default function EnquiriesContextComponet({ children }) {
     }
   };
   return (
-    <EnquiriesContext.Provider value={enquiries,unreadCount,latestOne,sendEnquiry,tickRead,loadEnquiries}>
+    <EnquiriesContext.Provider
+      value={{
+        enquiries,
+        unreadCount,
+        latestOne,
+        sendEnquiry,
+        tickRead,
+        loadEnquiries,
+      }}
+    >
       {children}
     </EnquiriesContext.Provider>
-  )
+  );
 }
