@@ -170,7 +170,7 @@ export const enquryResponse = async (req, res) => {
     }
     // update on rows run models validation rules
     await enquiry.update({
-      reply,
+      response: reply,
       status: "responded",
       repliedAt: new Date(),
       readByUser: false,
@@ -180,7 +180,7 @@ export const enquryResponse = async (req, res) => {
     const wholeEnquiry = await Enquiry.findByPk(enquiryId, {
       include: [
         { model: User, attributes: customer },
-        { model: Seervice, attributes: ["serviceId", "name"] },
+        { model: Service, attributes: ["serviceId", "name"] },
       ],
     });
     res.status(200).json(wholeEnquiry);

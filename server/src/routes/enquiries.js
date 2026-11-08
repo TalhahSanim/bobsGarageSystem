@@ -15,11 +15,11 @@ import {
   tickRead,
   getAllEnquries,
   enquryResponse,
-} from "../controllers/enquiriesController";
+} from "../controllers/enquiriesController.js";
 
 const router = express.Router();
 
-router.get("/my-enquries", auth, getMyEnquries);
+router.get("/my-enquiries", auth, getMyEnquries);
 router.get("/", auth, admin, getAllEnquries);
 router.post("/:serviceId", auth, sendEnquiry);
 router.put("/:enquiryId/read", auth, tickRead);
