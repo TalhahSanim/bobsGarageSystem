@@ -10,6 +10,7 @@ import AddServices from "./components/pages/services/AddServices";
 import EditService from "./components/pages/services/EditService";
 import ServiceDetails from "./components/pages/services/ServiceDetails";
 import SavedServices from "./components/pages/services/SavedServices";
+import Inbox from "./components/pages/enquiries/Inbox";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
@@ -56,6 +57,15 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/inbox"
+              element={
+                <ProtectedRoute>
+                  <Inbox />
+                </ProtectedRoute>
+              }
+            />
+
             <Route
               path="/profile"
               element={
