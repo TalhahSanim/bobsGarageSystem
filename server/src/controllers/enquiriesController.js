@@ -117,3 +117,80 @@ export const tickRead = async (req, res) => {
     res.status(500).json({ msg: "Server Error" });
   }
 };
+
+// name -> Get All Enquries
+// path -> /api/enquiries
+// request -> GET
+// type -> admin
+// description -> every enquiry with customer and service sorted newest first
+
+export const getAllEnquries = async (req, res) => {
+  console.log("/api/enquiries -> GET");
+  // filter query  based on enquiry query status
+
+  const where = {};
+  if (["pending", "responded"].includes(req.query.status)) {
+    where.status = req.query.status;
+  }
+  try {
+    const list = await Enquiry.findAll({
+      where,
+      include: [
+        { model: User, attributes: customer },
+        { model: Service, attributes: ["serviceId", "name"] },
+      ],
+      order: [["createdAt", "DESC"]],
+    });
+    res.status(200).json(list);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: "Server Error" });
+  }
+};
+
+// name -> reply to enquiry
+// path -> /api/enquries/:enquiryId//reply
+// request -> PUT
+// type -> admin
+// description -> saves the businesses response and stick if responsed and make it unread for the customer
+
+export const enquryResponse = async (req, res) => {
+  console.log("/api/enquries/:enquiryId/reply -> PUT");
+  const enquiryId = Number(req.params.enquiryId);
+  const reply = (req.body.reply || "").trim();
+
+  if (!reply) {
+    return res.status(400).json({ msg: "The reply cannnot be empty" });
+  }
+
+  try {
+    const enquiry = await Enquiry.findByPk(enquiryId);
+    if (!enquiry) {
+      return res.status(404).json({ msg: "Enquiry Not Found" });
+    }
+    // update on rows run models validation rules
+    await enquiry.update({
+      reply,
+      status: "responded",
+      repliedAt: new Date(),
+      readByUser: false,
+    });
+
+    // Send back with customer and service details for admin page
+    const wholeEnquiry = await Enquiry.findByPk(enquiryId, {
+      include: [
+        { model: User, attributes: customer },
+        { model: Seervice, attributes: ["serviceId", "name"] },
+      ],
+    });
+    res.status(200).json(wholeEnquiry);
+  } catch (err) {
+    if (err.name === "SequelizeValidationError") {
+      return res
+        .status(400)
+        .json({ msg: "Reply must be 1000 characters or less" });
+    }
+    console.error(err.message);
+    res.status(500).json({ msg: "Server Error" });
+  }
+};
