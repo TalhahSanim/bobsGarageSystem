@@ -30,13 +30,11 @@ export default function Footer({ embedded }) {
         >
           <img
             src={lightLogo}
-            alt=""
             alt="Bob's Garage"
             className={`w-auto dark:hidden ${compact ? "h-16 lg:h-10" : "h-16"}`}
           />
           <img
             src={darkLogo}
-            alt=""
             alt="Bob's Garage"
             className={`hidden w-auto dark:block ${compact ? "h-16 lg:h-10" : "h-16"}`}
           />

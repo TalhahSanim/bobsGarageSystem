@@ -23,8 +23,6 @@ import UploadImage from "./components/pages/admin/UploadImage";
 import SystemOverview from "./components/pages/admin/SystemOverview";
 import Interest from "./components/pages/admin/Interest";
 
-// import GarageContext Provider from GarageContent Component
-import { GarageContextProvider } from "./context/GarageContextComponent";
 import BottomNav from "./components/layout/BottomNav";
 
 // Not found
@@ -32,64 +30,60 @@ import NotFound from "./components/pages/NotFound";
 import Profile from "./components/pages/auth/Profile";
 
 // App Component- sets up routes and page layout
-function App() {
+export default function App() {
   // Removed state and useState and event functions as provider manages our state
   // Provider will manage the state
   // wrap our app in GaraageContextComponent
   // this enables children to access the context
 
   return (
-    <GarageContextProvider>
-      <Router>
-        <div className="flex min-h-screen flex-col bg-page pb-18 text-ink lg:pb-0  ">
-          <Header />
-          <main className=" mx-auto w-full max-w-6xl flex-1 px-4 py-10 ">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/add-service" element={<AddServices />} />
-              <Route path="/edit/:id" element={<EditService />} />
-              <Route path="/services/:id" element={<ServiceDetails />} />
-              <Route
-                path="/saved"
-                element={
-                  <ProtectedRoute>
-                    <SavedServices />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                }
-              />
+    <Router>
+      <div className="flex min-h-screen flex-col bg-page pb-18 text-ink lg:pb-0  ">
+        <Header />
+        <main className=" mx-auto w-full max-w-6xl flex-1 px-4 py-10 ">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/add-service" element={<AddServices />} />
+            <Route path="/edit/:id" element={<EditService />} />
+            <Route path="/services/:id" element={<ServiceDetails />} />
+            <Route
+              path="/saved"
+              element={
+                <ProtectedRoute>
+                  <SavedServices />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
 
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
 
-              {/* Admin dashboard and the child shows dashboards <Outlets */}
-              <Route path="/admin" element={<Dashboard />}>
-                <Route index element={<SystemOverview />} />
-                <Route path="users" element={<Users />} />
-                <Route path="users/edit/:id" element={<EditUser />} />
-                <Route path="users-add" element={<AddUser />} />
-                <Route path="images-new" element={<UploadImage />} />
-                <Route path="interests" element={<Interest />} />
-              </Route>
-              {/* Any other address triggers the 404 page */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-          <BottomNav />
-        </div>
-      </Router>
-    </GarageContextProvider>
+            {/* Admin dashboard and the child shows dashboards <Outlets */}
+            <Route path="/admin" element={<Dashboard />}>
+              <Route index element={<SystemOverview />} />
+              <Route path="users" element={<Users />} />
+              <Route path="users/edit/:id" element={<EditUser />} />
+              <Route path="users-add" element={<AddUser />} />
+              <Route path="images-new" element={<UploadImage />} />
+              <Route path="interests" element={<Interest />} />
+            </Route>
+            {/* Any other address triggers the 404 page */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+        <BottomNav />
+      </div>
+    </Router>
   );
 }
-
-export default App;

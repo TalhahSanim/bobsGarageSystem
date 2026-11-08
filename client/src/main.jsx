@@ -7,7 +7,6 @@ import { UsersContextProvider } from "./context/UsersContextComponent.jsx";
 import { AdminContextProvider } from "./context/AdminContextComponent.jsx";
 import ThemeContextProvider from "./context/ThemeContextComponent.jsx";
 import { FavouritesContextProvider } from "./context/FavouritesContextComponent.jsx";
-import { GarageContext } from "./context/GarageContext.jsx";
 import { GarageContextProvider } from "./context/GarageContextComponent.jsx";
 
 createRoot(document.getElementById("root")).render(

@@ -22,7 +22,7 @@ export default function Services() {
   const { sort, setSort } = useServicesSort();
   const { isAdmin } = useAuth();
 
-  let content = "";
+  let content;
   if (status === "loading") {
     // have gray loading cards as placeholder whilst cards load up
     content = (

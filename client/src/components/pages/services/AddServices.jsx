@@ -7,7 +7,6 @@ import { useServicesAdd } from "../../../context/GarageContext";
 import { alpha, is_Empty, isValidFee } from "../../../utils/validation";
 
 // bring in icon from react icon
-import { FaPlus } from "react-icons/fa";
 
 export default function AddServices() {
   //  build the state from our form and set intial state

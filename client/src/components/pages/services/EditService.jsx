@@ -9,7 +9,6 @@ import {
 
 // Bring in the custom validation
 import { alpha, is_Empty, isValidFee } from "../../../utils/validation";
-import { FaEdit } from "react-icons/fa";
 
 //  EditService component : form for updating our servuce
 export default function EditService() {
