@@ -5,6 +5,7 @@ import { MdDeleteForever } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 import { useUsers } from "../../../context/UsersContext";
+import { imgSrc } from "../../../utils/imgSrc";
 
 // Single user component one table row and takes in user as prop
 export default function SingleUser({ user }) {
@@ -27,7 +28,7 @@ export default function SingleUser({ user }) {
         {/* IMage or initials on icon box */}
         {user.image ? (
           <img
-            src={user.image}
+            src={imgSrc(user.image)}
             alt=""
             className="size-12 shrink-0 border-2 border-line object-cover"
           />

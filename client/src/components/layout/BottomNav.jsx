@@ -7,7 +7,9 @@ import {
   FaThLarge,
   FaUsers,
   FaWrench,
+  FaHeart,
 } from "react-icons/fa";
+import { PiUserSquareFill } from "react-icons/pi";
 import { BiSolidInfoSquare } from "react-icons/bi";
 
 import { useAuth } from "../../context/AuthContext";
@@ -40,7 +42,10 @@ export default function BottomNav() {
         <>
           {tabbed("/", FaHome, "Home", true)}
           {tabbed("/services", FaWrench, "Services")}
-          {tabbed("/about", BiSolidInfoSquare, "About")}
+          {isAuth
+            ? tabbed("/saved", FaHeart, "Saved")
+            : tabbed("/about", BiSolidInfoSquare, "About")}
+          {isAuth && tabbed("/profile", PiUserSquareFill, "Profile")}
         </>
       )}
 
