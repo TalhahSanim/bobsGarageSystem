@@ -5,6 +5,7 @@ import {
   useServices,
   useServiceStatus,
   useServicesSort,
+  useServicesSearch,
 } from "../../../context/GarageContext";
 import { useAuth } from "../../../context/AuthContext";
 
@@ -20,6 +21,7 @@ export default function Services() {
   const serviceList = useServices();
   const { status, error } = useServiceStatus();
   const { sort, setSort } = useServicesSort();
+  const { search, setSearch } = useServicesSearch(); // currrent search text and function to change
   const { isAdmin } = useAuth();
 
   let content;
@@ -49,7 +51,9 @@ export default function Services() {
   } else if (serviceList.length === 0) {
     content = (
       <p className="border border-dashed border-line p-8 text-center text-muted">
-        Sorry, No Services at the moment❤️‍🩹
+        {search.trim()
+          ? `No matching services "${search.trim()}`
+          : "Sorry, No Services at the moment❤️‍🩹"}
       </p>
     );
   } else {
@@ -70,6 +74,18 @@ export default function Services() {
           <p className="mt-2 text-muted">
             Prices Fixed, Top Grade Mechanics and No Gotchas
           </p>
+          {/* Search Box -> the label hidden but screen readers still abled to */}
+          <label className="sr-only" htmlFor="searchService">
+            Search Services
+          </label>
+          <input
+            type="search"
+            id="searchService"
+            placeholder="Search Services..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="form-input mt-4 w-full sm:w-72"
+          />
         </div>
         <div className="flex items-center gap-3">
           {/* Sort buttons -> the selected one is filled and aria press tells screen reader which one */}

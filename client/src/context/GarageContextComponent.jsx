@@ -12,6 +12,7 @@ import {
   GarageGetAllContext,
   GarageStatusContext,
   GarageSortContext,
+  GarageSearchContext,
 } from "./GarageContext";
 
 import { useTheme } from "./ThemeContext";
@@ -28,14 +29,22 @@ export const GarageContextProvider = ({ children }) => {
   // status: loading, sucess or failed then start loading
   const [status, setStatus] = useState("loading");
   const [error, setError] = useState(null);
+
+  // Text in the search box. "" means no search -> display every service
+  const [search, setSearch] = useState("");
   // get all services from the API  in order the vistor selected
   const getAllServices = async () => {
     console.log("getAllServices -> GarageContextComponent.jsx", sort);
     // fee-ASC -> field "fee" and direction "ASC"
     const [field, direction] = sort.split("-");
     // The default order  uses the normal route and anythin else uses the ordered route
-    const url =
-      sort === "default" ? serviceURL : `${serviceURL}/o/${field}/${direction}`;
+
+    // Remove space at the start and end as " " counts as no search
+    const text = search.trim();
+    // Search text used in search route and then default route or ordered one
+    let url = serviceURL;
+    if (text) url = `${serviceURL}/s/${encodeURIComponent(text)}`;
+    else if (sort !== "default") url = `${serviceURL}/o/${field}/${direction}`;
     try {
       const res = await axios.get(url);
       setServiceList(res.data);
@@ -52,10 +61,12 @@ export const GarageContextProvider = ({ children }) => {
   // Renamed to sort /setSort so file is same
   const { sortOrder: sort, changeSort: setSort } = useTheme();
 
-  // Load the services once when application begins
+  // Load the services once when sort or search changed
+  // Wait 300ms after previos key press so typing oil just sends 1 request
   useEffect(() => {
-    getAllServices();
-  }, [sort]);
+    const timer = setTimeout(getAllServices, 300);
+    return () => clearTimeout(timer);
+  }, [sort, search]);
   // get service by its id
   const getServiceById = async (id) => {
     console.log("getServiceById -> GarageContext.jsx", id);
@@ -128,22 +139,24 @@ export const GarageContextProvider = ({ children }) => {
   // Returm the providers with the state and functions as values.
   // The children prop is used to render the components wrapped in the providers.
   return (
-    <GarageSortContext.Provider value={{ sort, setSort }}>
-      <GarageContext.Provider value={serviceList}>
-        <GarageStatusContext.Provider value={{ status, error }}>
-          <GarageContextUpdate.Provider value={updateService}>
-            <GarageContextDelete.Provider value={deleteService}>
-              <GarageContextAdd.Provider value={addService}>
-                <GarageContextGetById.Provider value={getServiceById}>
-                  <GarageGetAllContext.Provider value={getAllServices}>
-                    {children}
-                  </GarageGetAllContext.Provider>
-                </GarageContextGetById.Provider>
-              </GarageContextAdd.Provider>
-            </GarageContextDelete.Provider>
-          </GarageContextUpdate.Provider>
-        </GarageStatusContext.Provider>
-      </GarageContext.Provider>
-    </GarageSortContext.Provider>
+    <GarageSearchContext.Provider value={{ search, setSearch }}>
+      <GarageSortContext.Provider value={{ sort, setSort }}>
+        <GarageContext.Provider value={serviceList}>
+          <GarageStatusContext.Provider value={{ status, error }}>
+            <GarageContextUpdate.Provider value={updateService}>
+              <GarageContextDelete.Provider value={deleteService}>
+                <GarageContextAdd.Provider value={addService}>
+                  <GarageContextGetById.Provider value={getServiceById}>
+                    <GarageGetAllContext.Provider value={getAllServices}>
+                      {children}
+                    </GarageGetAllContext.Provider>
+                  </GarageContextGetById.Provider>
+                </GarageContextAdd.Provider>
+              </GarageContextDelete.Provider>
+            </GarageContextUpdate.Provider>
+          </GarageStatusContext.Provider>
+        </GarageContext.Provider>
+      </GarageSortContext.Provider>
+    </GarageSearchContext.Provider>
   );
 };

@@ -13,6 +13,8 @@ export const GarageGetAllContext = createContext();
 export const GarageStatusContext = createContext();
 // Holds {sort, setSort}-> how the service list ordered
 export const GarageSortContext = createContext();
+// Holds {search. setSearch} -> the typed text in services search box
+export const GarageSearchContext = createContext();
 
 // create custom hooks to use the context in our components
 // this will enable us to access the context values without an import
@@ -29,3 +31,5 @@ export const useServiceStatus = () => useContext(GarageStatusContext);
 
 // Custom hook -> the current sort (default, fee-ASC) and functions to change it
 export const useServicesSort = () => useContext(GarageSortContext);
+// Custom hook -> current search text and function to change it
+export const useServicesSearch = () => useContext(GarageSearchContext);
