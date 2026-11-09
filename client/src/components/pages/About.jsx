@@ -31,16 +31,16 @@ export default function About() {
           muted
           loop
           playsInline
-          aria-label="A ligght blue spors car drifting in a race strack next to dark sports car"
+          aria-label="A light blue spors car drifting in a race strack next to dark sports car"
           ref={videoRef}
         />
         {/* Video tint to make white text readble */}
-        <div className="absolute inset-0  bg-page/35" />
+        <div className="absolute inset-0 bg-linear-135 from-hero-red/25 via-hero/85 to-primary/20 " />
         {/* Text on top -> relative makes it above absolute video and the tinting */}
-        <div className="relative mx-auto flex min-h-120 max-w-6xl flex-col items-start gap-4 px-4 py-20  ">
+        <div className="relative mx-auto flex min-h-120 max-w-6xl flex-col items-start gap-4 px-4 py-20 text-white  ">
           {" "}
           <h1 className="text-6xl drop-shadow-6xl">About Bob's Garage</h1>
-          <p className="mt-2 font-semibold text-2xl drop-shadow-2xl">
+          <p className="mt-2 font-semibold text-2xl drop-shadow-2xl text-white/90">
             Bob's Garage is quality workshop with fixed fees, top quality
             mechanics and No Gothas: Meet the team taking care of your vehicle
             needs.
