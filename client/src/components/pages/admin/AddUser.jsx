@@ -140,7 +140,6 @@ export default function AddUser() {
   );
   return (
     <Fragment>
-      <h1 className="mb-4 text-2xl font-bold text-blue-600">Add New User</h1>
       <div className="panel">
         <div className="panel-header">New User</div>
         <div className="panel-body">

@@ -3,6 +3,8 @@ import bobPhoto from "../../assets/staff/bob.jpg";
 import alicePhoto from "../../assets/staff/alice.jpg";
 import jamesPhoto from "../../assets/staff/james.jpg";
 import timPhoto from "../../assets/staff/tim.jpg";
+
+import garageVideo from "../../assets/video-bob-about.mp4";
 export default function About() {
   return (
     <>
@@ -10,6 +12,19 @@ export default function About() {
         {/* Page Header */}
         <div className="mb-10 max-w-2xl">
           <h1 className="text-4xl">About Bob's Garage</h1>
+
+          {/* Muted to let it autoplay and loop along with controls to pause it */}
+          <video
+            src={garageVideo}
+            className="mt-4 aspect-video w-full object-cover shadow-sm"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label="A ligght blue spors car drifting in a race strack next to dark sports car"
+          >
+            Your Browser Cannot Play this
+          </video>
           <p className="mt-2 text-muted">
             Bob's Garage is quality workshop with fixed fees, top quality
             mechanics and No Gothas: Meet the team taking care of your vehicle

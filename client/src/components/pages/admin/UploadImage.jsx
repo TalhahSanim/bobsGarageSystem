@@ -28,9 +28,6 @@ export default function UploadImage() {
 
   return (
     <section>
-      <h2 className="mb-4 text-xl font-semibold text-blue-600">
-        Upload an Image
-      </h2>
       <div className="panel">
         <div className="panel-header">Select an image to Uplaod:</div>
         <div className="panel-body">
