@@ -9,10 +9,11 @@ import {
   getPreferences,
   updatePreferences,
 } from "../controllers/preferencesController.js";
+import { validatePreferences } from "../utils/validate.js";
 
 const router = express.Router();
 
 router.get("/", auth, getPreferences);
-router.put("/", auth, updatePreferences);
+router.put("/", auth, validatePreferences, updatePreferences);
 
 export default router;

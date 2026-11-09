@@ -6,6 +6,7 @@
 import express from "express";
 
 import auth from "../middleware/auth.js";
+import { validateRegister, validateLogin } from "../utils/validate.js";
 import { loadUser, login, register } from "../controllers/authController.js";
 
 // express router
@@ -13,10 +14,10 @@ const router = express.Router();
 
 // Auth Routes
 // !  Register Route
-router.post("/register", register);
+router.post("/register", validateRegister, register);
 
 // ! Login Route
-router.post("/login", login);
+router.post("/login", validateLogin, login);
 
 router.get("/", auth, loadUser);
 

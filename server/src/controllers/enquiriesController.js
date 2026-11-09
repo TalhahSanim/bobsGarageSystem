@@ -153,7 +153,7 @@ export const getAllEnquries = async (req, res) => {
 // type -> admin
 // description -> saves the businesses response and stick if responsed and make it unread for the customer
 
-export const enquryResponse = async (req, res) => {
+export const enquiryResponse = async (req, res) => {
   console.log("/api/enquries/:enquiryId/reply -> PUT");
   const enquiryId = Number(req.params.enquiryId);
   const reply = (req.body.reply || "").trim();

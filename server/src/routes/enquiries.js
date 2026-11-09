@@ -14,15 +14,16 @@ import {
   getMyEnquries,
   tickRead,
   getAllEnquries,
-  enquryResponse,
+  enquiryResponse,
 } from "../controllers/enquiriesController.js";
+import { validateEnquiry, validateResponse } from "../utils/validate.js";
 
 const router = express.Router();
 
 router.get("/my-enquiries", auth, getMyEnquries);
 router.get("/", auth, admin, getAllEnquries);
-router.post("/:serviceId", auth, sendEnquiry);
+router.post("/:serviceId", auth, validateEnquiry, sendEnquiry);
 router.put("/:enquiryId/read", auth, tickRead);
-router.put("/:enquiryId/reply", auth, admin, enquryResponse);
+router.put("/:enquiryId/reply", auth, admin, validateResponse, enquiryResponse);
 
 export default router;
