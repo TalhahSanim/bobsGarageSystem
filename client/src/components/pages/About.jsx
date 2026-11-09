@@ -5,7 +5,19 @@ import jamesPhoto from "../../assets/staff/james.jpg";
 import timPhoto from "../../assets/staff/tim.jpg";
 
 import garageVideo from "../../assets/video-bob-about.mp4";
+
+import { useRef, useState } from "react";
+import { FaPause, FaPlay } from "react-icons/fa";
 export default function About() {
+  // loopiong video makes i pause and ref reachers the video which state swaps the icon depending on play or pause
+  const videoRef = useRef(null);
+  const [play, setPlay] = useState(true);
+
+  const videoToggle = () => {
+    if (play) videoRef.current.pause();
+    else videoRef.current.play();
+    setPlay(!play);
+  };
   return (
     <>
       <section className="full-screen relative -mt-10 mb-12 overflow-hidden">
@@ -20,6 +32,7 @@ export default function About() {
           loop
           playsInline
           aria-label="A ligght blue spors car drifting in a race strack next to dark sports car"
+          ref={videoRef}
         />
         {/* Video tint to make white text readble */}
         <div className="absolute inset-0  bg-page/35" />
@@ -33,6 +46,14 @@ export default function About() {
             needs.
           </p>
         </div>
+        <button
+          type="button"
+          onClick={videoToggle}
+          aria-label={play ? "Pause Video" : "Play Video"}
+          className="absolute right-4 bottom-4 bg-black/50 p-2 text-white hover:bg-black/70"
+        >
+          {play ? <FaPause /> : <FaPlay />}
+        </button>
       </section>
       <section>
         {/* Our team -> Photo next to quote on desktop and on top on mobiles */}
