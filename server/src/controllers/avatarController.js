@@ -30,7 +30,7 @@ export const uploadAvatar = (req, res) => {
   avatarUpload.single("avatar")(req, res, async (err) => {
     if (err) {
       const msg =
-        err.code === "LIMIT_FILE_SIZE"
+        err.code === "limit_file_size"
           ? "The image MUST be 25mb or smaller"
           : "Upload failed";
       return res.status(400).json({ msg });

@@ -6,17 +6,19 @@ import fs from "fs";
 // path -> /api/admin/uploadImage/
 // request => POST
 // type -> admin
-// description -> multer reafds one file from the form filed "file" and save it
-
+// description -> multer saves one file from the form field "file" and save it
+// Send it back its path to let client save service image
 export const uploadImage = (req, res) => {
   console.log("/api/admin/uploadImage -> POST");
+  // No File -> none was selected or file filter has skipped ove due to being non image file
   if (!req.file) {
-    return res
-      .status(400)
-      .json({ msg: "Please select an image such as( jpg,png,webp or gif)" });
+    return res.status(400).json({
+      msg: "Please select an image such as( jpg,png,webp or gif Image)",
+    });
   }
-  console.log(req.file);
-  res.status(200).send("Image Uploaded");
+  res
+    .status(200)
+    .json({ msg: "Image Uploaded", image: `/uploads/${req.file.filename}` });
 };
 
 // name -> get image list
