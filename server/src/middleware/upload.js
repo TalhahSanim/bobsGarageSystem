@@ -1,5 +1,5 @@
 // Multer configuration -> where uploads saved and called
-// and which files allowed to be upload such as images up to 2mb
+// and which files allowed to be upload such as images up to 25mb
 // used by routes/admin.js
 import path from "path";
 import multer from "multer";

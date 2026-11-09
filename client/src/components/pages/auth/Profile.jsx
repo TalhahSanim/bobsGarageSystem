@@ -30,7 +30,7 @@ export default function Profile() {
       return;
     }
     if (file.size > 25 * 1024 * 1024) {
-      setAvatarMsg("The image. must be 25mb or smaller");
+      setAvatarMsg("The image must be 25mb or smaller");
       return;
     }
     setAvatarFile(file);
