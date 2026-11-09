@@ -108,7 +108,11 @@ export default function Header() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/enquiries" className={linkClass} onClick={menuClose}>
+            <NavLink
+              to="/enquiries/enqu"
+              className={linkClass}
+              onClick={menuClose}
+            >
               <FaComments /> Enquiries
             </NavLink>
           </li>

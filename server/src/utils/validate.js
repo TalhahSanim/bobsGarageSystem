@@ -6,7 +6,7 @@ const isEmpty = (value) =>
   value === undefined || value === null || String(value).trim() === "";
 
 // The fee -> Digits then optionally a dot and 1 to 2 digits such as
-// 12,3.9. 9.90 and "abc" Fail
+// 12,3.9. 9.90 and "abc"  will result as a Fail
 const isFee = (value) => /^\d+(\.\d{1,2})?$/.test(String(value));
 
 // Simple email strucuture such as email@email.com
