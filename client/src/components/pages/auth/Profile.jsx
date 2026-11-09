@@ -74,7 +74,8 @@ export default function Profile() {
             {avatar ? (
               <img
                 src={avatar}
-                className="size-20 object-cover ring-2 ring-line"
+                alt=""
+                className="size-50 object-cover ring-2 ring-line"
               />
             ) : (
               <PiUserSquareFill
@@ -94,7 +95,7 @@ export default function Profile() {
               </span>
               {/* Change profile image */}
               <div className="mt-4">
-                <label class-name="form-label " htmlFor="avatar">
+                <label className="form-label " htmlFor="avatar">
                   Profile Image (JPG, PNG or WebP up to 25mb)
                 </label>
                 <input
@@ -104,10 +105,10 @@ export default function Profile() {
                   onChange={handleAvatarChange}
                   className="block w-full text-sm file:mr-4 file:cursor-pointer file:border-0 file:bg-primary file:px-4 file:py-2 cursor-pointer file:text-on-primary"
                 />
-                <div className="mt-3 flex flex-wrap" gap-3>
+                <div className="mt-3 flex flex-wrap gap-3">
                   <button
                     type="button"
-                    className="btn-info cursor-pointer"
+                    className="btn btn-sm btn-primary"
                     onClick={handleAvatarUpload}
                     disabled={!avatarFile}
                   >
@@ -116,13 +117,15 @@ export default function Profile() {
                   {user.image && (
                     <button
                       type="button"
-                      className="btn-warning cursor-pointer"
+                      className="btn btn-sm btn-danger"
                       onClick={avatarRemove}
                     >
                       Remove Profile Image
                     </button>
                   )}
-                  {avatarMsg && <p className="mt-2 text-sm">{avatarMsg}</p>}
+                  {avatarMsg && (
+                    <p className="mt-2 w-full text-sm">{avatarMsg}</p>
+                  )}
                 </div>
               </div>
             </div>

@@ -99,7 +99,8 @@ export default function Header() {
               className={linkClass}
               onClick={menuClose}
             >
-              <FaPlus /> Add Service
+              <FaPlus />
+              Service
             </NavLink>
           </li>
           <li>

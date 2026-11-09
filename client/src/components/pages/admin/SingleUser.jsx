@@ -30,7 +30,7 @@ export default function SingleUser({ user }) {
           <img
             src={imgSrc(user.image)}
             alt=""
-            className="size-12 shrink-0 border-2 border-line object-cover"
+            className="size-20 shrink-0 border-2 border-line object-cover"
           />
         ) : (
           <div

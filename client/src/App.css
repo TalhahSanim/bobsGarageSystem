@@ -84,7 +84,13 @@
   --color-warning-text: #fcd34d;
   --color-danger: #f87171;
 }
-
+/* Give clickable button cursor pointers */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
 /* Font Size Preferences  */
 html[data-font="small"] {
   font-size: 14px;

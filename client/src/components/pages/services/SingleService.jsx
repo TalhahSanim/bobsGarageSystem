@@ -106,13 +106,16 @@ export default function SingleService({ service }) {
         </div>
         {/* ADMIN ONLY -> EDIT & DELETE */}
         {isAdmin && (
-          <div className="flex gap-2 pt-2">
-            <Link to={`/edit/${serviceId}`} className="btn btn-outline btn-sm">
+          <div className="flex justify-center gap-2 pt-2">
+            <Link
+              to={`/edit/${serviceId}`}
+              className="btn btn-outline btn-sm py-2.5 px-4.5"
+            >
               <FaRegEdit /> Edit
             </Link>
             <button
               type="button"
-              className="btn btn-danger btn-sm"
+              className="btn btn-danger btn-sm py-2.5 px-4.5"
               onClick={() => onDelete(serviceId)}
             >
               <RiDeleteBin6Line /> Delete
