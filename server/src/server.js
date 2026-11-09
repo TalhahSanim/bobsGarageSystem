@@ -66,7 +66,7 @@ app.use((err, req, res, next) => {
   // log details but never to browser
   console.error(err.message);
   //  Mullters size limit such as too big image user sends so 404 would be more appropriate then 500
-  if (err.code === "limit_file_size") {
+  if (err.code === "LIMIT_FILE_SIZE") {
     return res.status(400).json({ msg: "Images must be 25mb or smaller" });
   }
   // few eerors have own statues such as 400 badly formed json & request aborted  406 and this makes any without an status a 500
