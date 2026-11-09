@@ -16,11 +16,7 @@ import {
   getAllEnquries,
   enquiryResponse,
 } from "../controllers/enquiriesController.js";
-import {
-  validateEnquiry,
-  validateReply,
-  validateReply,
-} from "../utils/validate.js";
+import { validateEnquiry, validateReply } from "../utils/validate.js";
 
 const router = express.Router();
 
