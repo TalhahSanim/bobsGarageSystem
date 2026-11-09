@@ -19,7 +19,7 @@ import {
 import {
   validateEnquiry,
   validateReply,
-  validateResponse,
+  validateReply,
 } from "../utils/validate.js";
 
 const router = express.Router();
