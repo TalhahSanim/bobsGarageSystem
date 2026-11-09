@@ -16,7 +16,11 @@ import {
   getAllEnquries,
   enquiryResponse,
 } from "../controllers/enquiriesController.js";
-import { validateEnquiry, validateResponse } from "../utils/validate.js";
+import {
+  validateEnquiry,
+  validateReply,
+  validateResponse,
+} from "../utils/validate.js";
 
 const router = express.Router();
 
@@ -24,6 +28,6 @@ router.get("/my-enquiries", auth, getMyEnquries);
 router.get("/", auth, admin, getAllEnquries);
 router.post("/:serviceId", auth, validateEnquiry, sendEnquiry);
 router.put("/:enquiryId/read", auth, tickRead);
-router.put("/:enquiryId/reply", auth, admin, validateResponse, enquiryResponse);
+router.put("/:enquiryId/reply", auth, admin, validateReply, enquiryResponse);
 
 export default router;

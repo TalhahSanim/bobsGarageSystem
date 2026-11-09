@@ -102,8 +102,8 @@ const enquirySchema = Joi.object({
   message: Joi.string().trim().min(10).max(1000).required().label("Message"),
 });
 
-const responseSchema = Joi.object({
-  response: Joi.string().trim().min(1).max(1000).required().label("Reply"),
+const replySchema = Joi.object({
+  reply: Joi.string().trim().min(1).max(1000).required().label("Reply"),
 });
 
 // ------------------ The middleware the routes use-------------------
@@ -116,4 +116,4 @@ export const validateRegister = validate(registerSchema);
 export const validateLogin = validate(loginSchema);
 export const validatePreferences = validate(preferencesSchema);
 export const validateEnquiry = validate(enquirySchema);
-export const validateResponse = validate(responseSchema);
+export const validateReply = validate(replySchema);
