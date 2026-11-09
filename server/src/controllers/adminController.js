@@ -29,7 +29,7 @@ export const getImageList = async (req, res) => {
   console.log("/api/admin/getImageList -> GET");
   try {
     const files = await fs.promises.readdir("./uploads");
-    // Skipp profile images as they belong to user and should only see service image
+    // Skip profile images as they belong to user and should only see service image
     res.status(200).send(files);
   } catch (err) {
     console.log(err.message);

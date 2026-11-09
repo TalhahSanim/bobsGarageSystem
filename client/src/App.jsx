@@ -62,7 +62,6 @@ export default function App() {
               path="/inbox"
               element={
                 <ProtectedRoute>
-                  {" "}
                   <Inbox />
                 </ProtectedRoute>
               }

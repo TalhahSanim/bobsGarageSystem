@@ -8,14 +8,20 @@ import {
   FaUsers,
   FaWrench,
   FaHeart,
+  FaCommentDots,
+  FaInbox,
 } from "react-icons/fa";
 import { PiUserSquareFill } from "react-icons/pi";
 import { BiSolidInfoSquare } from "react-icons/bi";
 
 import { useAuth } from "../../context/AuthContext";
 
+import { useEnquiries } from "../../context/EnquiriesContext";
+
 export default function BottomNav() {
   const { isAuth, isAdmin, logout } = useAuth();
+
+  const { unreadCount } = useEnquiries();
 
   // Icon over each link and active page highted on the top of nav
   const tabClass = ({ isActive }) =>
@@ -35,12 +41,25 @@ export default function BottomNav() {
           {tabbed("/admin", FaThLarge, "Dashboard", true)}
           {tabbed("/services", FaWrench, "Services")}
           {tabbed("/admin/users", FaUsers, "Users")}
-          {/* enquiries will be added here and tilise fa comments icon */}
-          {/* {tabbed("/admin/enquiries",FaCommentDots,"Enquiries",true)} */}
+          {tabbed("/admin/enquiries", FaCommentDots, "Enquiries")}
         </>
       ) : (
         <>
-          {tabbed("/", FaHome, "Home", true)}
+          {isAuth ? (
+            <NavLink to="/inbox" className={tabClass}>
+              <span className="relative">
+                <FaInbox className="text-xl" />
+                Inbox
+                {unreadCount > 0 && (
+                  <span className="absolute -right-2 -to-1 bg-button px-1 text-[10px] leading-4 text-white">
+                    {unreadCount}
+                  </span>
+                )}
+              </span>
+            </NavLink>
+          ) : (
+            tabbed("/", FaHome, "Home", true)
+          )}
           {tabbed("/services", FaWrench, "Services")}
           {isAuth
             ? tabbed("/saved", FaHeart, "Saved")
