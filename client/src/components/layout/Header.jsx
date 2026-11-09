@@ -120,24 +120,26 @@ export default function Header() {
       )}
       {/* // Customers only and their saved services */}
       {isAuth && !isAdmin && (
-        <li>
-          <NavLink to="/saved" className={linkClass} onClick={menuClose}>
-            <FaHeart /> Saved
-          </NavLink>
-        </li>
-      )}{" "}
-      <li>
-        <Link className={linkClass} to="/inbox" onClick={menuClose}>
-          <FaInbox />
-          Inbox
-          {/* Unread replies -> tiny red count dot */}
-          {unreadCount > 0 && (
-            <span className="ms-1 bg-accent px-2 text-xs font-bold text-on-primary">
-              {unreadCount}
-            </span>
-          )}
-        </Link>
-      </li>
+        <>
+          <li>
+            <NavLink to="/saved" className={linkClass} onClick={menuClose}>
+              <FaHeart /> Saved
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={linkClass} to="/inbox" onClick={menuClose}>
+              <FaInbox />
+              Inbox
+              {/* Unread replies -> tiny red count dot */}
+              {unreadCount > 0 && (
+                <span className="ms-1 bg-accent px-2 text-xs font-bold text-on-primary">
+                  {unreadCount}
+                </span>
+              )}
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 

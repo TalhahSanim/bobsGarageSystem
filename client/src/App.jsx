@@ -58,6 +58,15 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
+            <Route
+              path="/inbox"
+              element={
+                <ProtectedRoute>
+                  {" "}
+                  <Inbox />
+                </ProtectedRoute>
+              }
+            />
 
             <Route
               path="/profile"
@@ -79,14 +88,7 @@ export default function App() {
               <Route path="users-add" element={<AddUser />} />
               <Route path="images-new" element={<UploadImage />} />
               <Route path="interests" element={<Interest />} />
-              <Route
-                path="inbox"
-                element={
-                  <ProtectedRoute>
-                    <Inbox />
-                  </ProtectedRoute>
-                }
-              />
+
               <Route
                 path="enquiries"
                 element={
