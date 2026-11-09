@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { TiTick } from "react-icons/ti";
 
 const favouritesURL = "http://localhost:3000/api/favourites";
 

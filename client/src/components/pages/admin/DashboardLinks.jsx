@@ -21,6 +21,9 @@ export default function DashboardLinks() {
       <NavLink className={linkClass} to="interests">
         Interests
       </NavLink>
+      <NavLink className={linkClass} to="enquires">
+        Enquiries
+      </NavLink>
     </nav>
   );
 }

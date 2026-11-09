@@ -33,7 +33,10 @@ export default function Home() {
       <section className="pt-14">
         <div className="mb-6 flex items-end justify-between gap-4">
           <h2 className="text-3xl">Trendy Services</h2>
-          <Link to="/services" className="text-link hover:underline">
+          <Link
+            to="/services"
+            className="text-link btn btn-info hover:underline"
+          >
             View Our Services →
           </Link>
         </div>

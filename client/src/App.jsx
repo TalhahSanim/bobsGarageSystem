@@ -11,6 +11,7 @@ import EditService from "./components/pages/services/EditService";
 import ServiceDetails from "./components/pages/services/ServiceDetails";
 import SavedServices from "./components/pages/services/SavedServices";
 import Inbox from "./components/pages/enquiries/Inbox";
+import Enquiries from "./components/pages/admin/Enquiries";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
@@ -86,6 +87,22 @@ export default function App() {
               <Route path="users-add" element={<AddUser />} />
               <Route path="images-new" element={<UploadImage />} />
               <Route path="interests" element={<Interest />} />
+              <Route
+                path="inbox"
+                element={
+                  <ProtectedRoute>
+                    <Inbox />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/enquiries"
+                element={
+                  <ProtectedRoute adminOnly>
+                    <Enquiries />
+                  </ProtectedRoute>
+                }
+              />
             </Route>
             {/* Any other address triggers the 404 page */}
             <Route path="*" element={<NotFound />} />

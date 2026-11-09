@@ -12,6 +12,8 @@ import {
   FaSignInAlt,
   FaSignOutAlt,
   FaUserPlus,
+  FaInbox,
+  FaComments,
 } from "react-icons/fa";
 import { PiUserSquareFill } from "react-icons/pi";
 
@@ -23,6 +25,7 @@ import logoDark from "../../assets/logo-dark.png";
 
 // the logout function from auth context
 import { useAuth } from "../../context/AuthContext";
+import { useEnquiries } from "../../context/EnquiriesContext";
 
 export default function Header() {
   // console.log(branding);  // test to see if it is functional
@@ -38,6 +41,8 @@ export default function Header() {
   const menuClose = () => {
     setMenuOn(false);
   };
+
+  const { unreadCount } = useEnquiries();
 
   // Log out forget user and close menus
   const leave = () => {
@@ -102,6 +107,11 @@ export default function Header() {
               <FaUsers /> Dashboard
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/enquiries" className={linkClass} onClick={menuClose}>
+              <FaComments /> Enquiries
+            </NavLink>
+          </li>
         </>
       )}
       {/* // Customers only and their saved services */}
@@ -112,6 +122,18 @@ export default function Header() {
           </NavLink>
         </li>
       )}
+      <li>
+        <Link className={linkClass} to="/inbox" onClick={menuClose}>
+          <FaInbox />
+          Inbox
+          {/* Unread replies -> tiny red count dot */}
+          {unreadCount > 0 && (
+            <span className="ms-1 bg-accent px-2 text-xs font-bold text-on-primary">
+              {unreadCount}
+            </span>
+          )}
+        </Link>
+      </li>
     </>
   );
 
