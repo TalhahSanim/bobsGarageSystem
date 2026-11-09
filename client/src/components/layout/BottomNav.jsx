@@ -51,7 +51,7 @@ export default function BottomNav() {
                 <FaInbox className="text-xl" />
 
                 {unreadCount > 0 && (
-                  <span className="absolute -right-2 -to-1 bg-button px-1 text-[10px] leading-4 text-white">
+                  <span className="absolute -right-2 -top-1 bg-button px-1 text-[10px] leading-4 text-white">
                     {unreadCount}
                   </span>
                 )}
