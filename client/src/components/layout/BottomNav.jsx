@@ -49,13 +49,14 @@ export default function BottomNav() {
             <NavLink to="/inbox" className={tabClass}>
               <span className="relative">
                 <FaInbox className="text-xl" />
-                Inbox
+
                 {unreadCount > 0 && (
                   <span className="absolute -right-2 -to-1 bg-button px-1 text-[10px] leading-4 text-white">
                     {unreadCount}
                   </span>
                 )}
               </span>
+              Inbox
             </NavLink>
           ) : (
             tabbed("/", FaHome, "Home", true)
