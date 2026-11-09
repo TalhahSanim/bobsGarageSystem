@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { FaReply, FaEnvelopeOpen } from "react-icons/fa";
 import { useEnquiries } from "../../../context/EnquiriesContext";
 
+import { imgSrc } from "../../../utils/imgSrc";
+
 // Inbox component which has expadable item each enquiry
 export default function Inbox() {
   const { enquiries, unreadCount, tickRead, loadEnquiries } = useEnquiries();
@@ -60,7 +62,7 @@ export default function Inbox() {
                   {/* always on row -> Service, date and status */}
                   <summary className="flex cursor-pointer list-none items-center gap-4">
                     <img
-                      src={enquiry.Service.image}
+                      src={imgSrc(enquiry.Service.image)}
                       alt=""
                       className="size-14 object-cover "
                     />
