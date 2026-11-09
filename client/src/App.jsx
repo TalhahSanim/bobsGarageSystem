@@ -96,7 +96,7 @@ export default function App() {
                 }
               />
               <Route
-                path="/enquiries"
+                path="enquiries"
                 element={
                   <ProtectedRoute adminOnly>
                     <Enquiries />
