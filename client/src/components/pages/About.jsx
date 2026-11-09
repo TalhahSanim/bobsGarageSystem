@@ -8,30 +8,33 @@ import garageVideo from "../../assets/video-bob-about.mp4";
 export default function About() {
   return (
     <>
-      <section>
+      <section className="full-screen relative -mt-10 mb-12 overflow-hidden">
         {/* Page Header */}
-        <div className="mb-10 max-w-2xl">
-          <h1 className="text-4xl">About Bob's Garage</h1>
 
-          {/* Muted to let it autoplay and loop along with controls to pause it */}
-          <video
-            src={garageVideo}
-            className="mt-4 aspect-video w-full object-cover shadow-sm"
-            autoPlay
-            muted
-            loop
-            playsInline
-            aria-label="A ligght blue spors car drifting in a race strack next to dark sports car"
-          >
-            Your Browser Cannot Play this
-          </video>
-          <p className="mt-2 text-muted">
+        {/* Muted to let it autoplay and loop along with controls to pause it */}
+        <video
+          src={garageVideo}
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-label="A ligght blue spors car drifting in a race strack next to dark sports car"
+        />
+        {/* Video tint to make white text readble */}
+        <div className="absolute inset-0  bg-page/35" />
+        {/* Text on top -> relative makes it above absolute video and the tinting */}
+        <div className="relative mx-auto flex min-h-120 max-w-6xl flex-col items-start gap-4 px-4 py-20  ">
+          {" "}
+          <h1 className="text-6xl drop-shadow-6xl">About Bob's Garage</h1>
+          <p className="mt-2 font-semibold text-2xl drop-shadow-2xl">
             Bob's Garage is quality workshop with fixed fees, top quality
             mechanics and No Gothas: Meet the team taking care of your vehicle
             needs.
           </p>
         </div>
-
+      </section>
+      <section>
         {/* Our team -> Photo next to quote on desktop and on top on mobiles */}
         <h2 className="mb-4 text-3xl">Our Team</h2>
         <ul className="mb-12 flex flex-col gap-4">
