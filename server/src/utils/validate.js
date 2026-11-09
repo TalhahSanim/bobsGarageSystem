@@ -5,7 +5,6 @@
 // the middleware alsos waps req.body for jois clean record trimmed converted unknown fields removed
 
 import Joi from "joi";
-import joi from "joi";
 // options used for every check
 const options = {
   abortEarly: false, // collect each problem  not just first one
@@ -77,11 +76,11 @@ const registerSchema = Joi.object({
   firstName: Joi.string().trim().max(50).required().label("First Name"),
   lastName: Joi.string().trim().max(50).required().label("Last Name"),
   email: Joi.string().trim().lowercase().email().required().label("Email"),
-  password: Joi.string().min(8).max(72).label("Password"),
+  password: Joi.string().min(8).max(72).required().label("Password"),
   image: Joi.string().trim().allow("", null).label("Image"),
 });
 
-// Login -> just needs both boxes fukked ub. No min length here as a wrong password should get usual invalid credential  error no hints on validation rules
+// Login -> just needs both boxes filled in. No min length here as a wrong password should get usual invalid credential  error no hints on validation rules
 const loginSchema = Joi.object({
   email: Joi.string().trim().lowercase().email().required().label("Email"),
   password: Joi.string().required().label("Password"),
@@ -104,7 +103,7 @@ const enquirySchema = Joi.object({
 });
 
 const responseSchema = Joi.object({
-  response: Joi.string().trim().min(1).max(1000).required().label("Response"),
+  response: Joi.string().trim().min(1).max(1000).required().label("Reply"),
 });
 
 // ------------------ The middleware the routes use-------------------
