@@ -58,14 +58,6 @@ export default function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/inbox"
-              element={
-                <ProtectedRoute>
-                  <Inbox />
-                </ProtectedRoute>
-              }
-            />
 
             <Route
               path="/profile"

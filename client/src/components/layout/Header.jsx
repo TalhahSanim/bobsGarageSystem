@@ -109,13 +109,13 @@ export default function Header() {
           </li>
           <li>
             <NavLink
-              to="/enquiries/enqu"
+              to="/admin/enquiries"
               className={linkClass}
               onClick={menuClose}
             >
               <FaComments /> Enquiries
             </NavLink>
-          </li>
+          </li>{" "}
         </>
       )}
       {/* // Customers only and their saved services */}
@@ -125,7 +125,7 @@ export default function Header() {
             <FaHeart /> Saved
           </NavLink>
         </li>
-      )}
+      )}{" "}
       <li>
         <Link className={linkClass} to="/inbox" onClick={menuClose}>
           <FaInbox />
