@@ -9,6 +9,8 @@ import { useFavourites } from "../../../context/FavouritesContext";
 // Backup photo for services with no image
 import fallbackImage from "../../../assets/hero-image.jpg";
 
+import { imgSrc } from "../../../utils/imgSrc";
+
 export default function SingleService({ service }) {
   const serviceDelete = useServicesDelete();
   // ONLY Admin enabled to delete and edit
@@ -50,7 +52,7 @@ export default function SingleService({ service }) {
       {/* Service phot or the backup one when no photo include in service during add or edit */}
       <div className="relative">
         <img
-          src={image || fallbackImage}
+          src={imgSrc(image) || fallbackImage}
           alt={name}
           className="h-44 w-full object-cover"
         />

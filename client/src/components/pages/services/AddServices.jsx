@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 // import the useServicesAdd hook from the context
 import { useServicesAdd } from "../../../context/GarageContext";
 
+import ServiceImageField from "./ServiceImageField";
+
 // Bring in the custom validation
 import { alpha, is_Empty, isValidFee } from "../../../utils/validation";
 
@@ -269,23 +271,13 @@ export default function AddServices() {
               )}
             </div>
             {/* Image */}
-            <div className="mb-4">
-              <label className="form-label" htmlFor="image">
-                Service Image URL:
-              </label>
-              <input
-                className={`form-input ${errors.image ? "is-invalid" : "is-valid"}`}
-                type="text"
-                id="image"
-                placeholder="https://mycarservicebg.net.url/"
-                name="image"
-                value={image}
-                onChange={(e) => onChange(e)}
-              />
-              {errors.image && (
-                <div className="invalid-feedback">{errors.image}</div>
-              )}
-            </div>
+            <ServiceImageField
+              image={image}
+              error={errors.image}
+              onImageChange={(value) =>
+                setFormData((prev) => ({ ...prev, image: value }))
+              }
+            />
             {/* serviceFee */}
             <div className="mb-4">
               <label className="form-label" htmlFor="fee">

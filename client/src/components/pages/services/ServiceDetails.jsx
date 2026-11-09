@@ -12,6 +12,8 @@ import EnquiryForm from "./EnquiryForm";
 
 import fallbackImage from "../../../assets/hero-image.jpg";
 
+import { imgSrc } from "../../../utils/imgSrc";
+
 // Service Details Component which reads the id from the URL and loads that service
 
 export default function ServiceDetails() {
@@ -104,7 +106,7 @@ export default function ServiceDetails() {
       {/* Photo on left and details to the right */}
       <div className="grid gap-14  md:grid-cols-2 ">
         <img
-          src={service.image || fallbackImage}
+          src={imgSrc(service.image) || fallbackImage}
           alt={service.name}
           className="aspect-31/25 w-full object-cover shadow-md border-8 border-footer "
         />

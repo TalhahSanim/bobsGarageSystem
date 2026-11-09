@@ -8,6 +8,8 @@ import { useEnquiries } from "../../../context/EnquiriesContext";
 
 import fallbackImage from "../../../assets/hero-image.jpg";
 
+import { imgSrc } from "../../../utils/imgSrc";
+
 export default function SavedServices() {
   const { favourites, removeFavourite } = useFavourites();
   const { latestOne } = useEnquiries();
@@ -42,7 +44,7 @@ export default function SavedServices() {
               className="flex items-center gap-5  px-5 py-4"
             >
               <img
-                src={favourite.Service?.image || fallbackImage}
+                src={imgSrc(favourite.Service?.image) || fallbackImage}
                 alt=""
                 className="size-20 shrink-0 object-cover"
               />

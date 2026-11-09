@@ -21,22 +21,25 @@ export const AdminContextProvider = ({ children }) => {
     }
   };
 
-  // upload an image file to the sserver and takes in a file and rutrns {ok,msg}
+  // Upload an image file to server and it takes in a file
+  // returns {ok,msg,image} and image is saved path such as /uploads/123-car.jpg
   const uploadImage = async (file) => {
-    // multer reads mulipart/form-data so send file in FormData
+    // multer reads multipart/form-data as we send file inside FormData
+    // The name "file" must match upload.single("file") on the server
     const formData = new FormData();
-    formData.append("name", file.name);
     formData.append("file", file);
     try {
-      await axios.post(`${adminURL}/uploadImage`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      //  refresh the list  so new image can be slected straight away
+      const res = await axios.post(`${adminURL}/uploadImage`, formData);
+      // Refresh the list so new image is available right away
       await loadImages();
-      return { ok: true, msg: "Image Upload Successful" };
+      return { ok: true, msg: res.data.msg, image: res.data.image };
     } catch (err) {
       console.log("uploadImage failed", err.message);
-      return { ok: false, msg: "Image Upload Failed" };
+      // The servers message if it sent one -> ("images must be 25mb or less")
+      return {
+        ok: false,
+        msg: err.response?.data?.msg || "Upload image failed",
+      };
     }
   };
 
