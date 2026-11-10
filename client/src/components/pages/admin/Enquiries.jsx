@@ -131,8 +131,7 @@ export default function Enquiries() {
                   <div className="grid gap-1">
                     <p className="flex flex-wrap items-baseline gap-x-2">
                       <span className="font-semibold">
-                        {enquiry.User.firstName}
-                        {enquiry.User.lastName}
+                        {enquiry.User.firstName} {enquiry.User.lastName}
                       </span>
                       <a
                         href={`mailto:${enquiry.User.email}`}
