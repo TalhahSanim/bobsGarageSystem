@@ -16,27 +16,27 @@ export default function DashboardLinks() {
     <nav className="flex gap-1 overflow-x-auto whitespace-nowrap lg:flex-col">
       <NavLink className={linkClass} to="/admin" end>
         Dashboard
-        <MdDashboard />
+        <MdDashboard aria-hidden="true" />
       </NavLink>
       <NavLink className={linkClass} to="users">
         Users
-        <FaUsers />
+        <FaUsers aria-hidden="true" />
       </NavLink>
       <NavLink className={linkClass} to="users-add">
         Add User
-        <HiUserAdd />
+        <HiUserAdd aria-hidden="true" />
       </NavLink>
       <NavLink className={linkClass} to="images-new">
         Upload Image
-        <FaUpload />
+        <FaUpload aria-hidden="true" />
       </NavLink>
       <NavLink className={linkClass} to="favourites">
         Interested
-        <FaHeart />
+        <FaHeart aria-hidden="true" />
       </NavLink>
       <NavLink className={linkClass} to="enquiries">
         Enquiries
-        <LuMailQuestion />
+        <LuMailQuestion aria-hidden="true" />
       </NavLink>
     </nav>
   );

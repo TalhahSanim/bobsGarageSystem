@@ -53,8 +53,11 @@ export default function Footer({ embedded }) {
         </div>
         {/* Page Links */}
         <nav className={column}>
-          <h2 className={heading}>Our Garage</h2>
-          <MdGarage />
+          <h2 className={`${heading} flex items-center gap-2`}>
+            <MdGarage aria-hidden="true" />
+            Our Garage
+          </h2>
+
           <Link to="/" className="text-on-footer/80 hover:text-white">
             Home
           </Link>
@@ -67,8 +70,11 @@ export default function Footer({ embedded }) {
         </nav>
         {/* Accounts */}
         <nav className={column}>
-          <h2 className={heading}>Accounts</h2>
-          <MdAccountBox />
+          <h2 className={`${heading} flex items-center gap-2`}>
+            <MdAccountBox aria-hidden="true" />
+            Accounts
+          </h2>
+
           <Link to="/login" className="text-on-footer/80 hover:text-white">
             Login
           </Link>
@@ -78,9 +84,11 @@ export default function Footer({ embedded }) {
         </nav>
         {/* contact us */}
         <div className={column}>
-          <h2 className={heading}>Contact Us</h2>
+          <h2 className={`${heading} flex items-center gap-2`}>
+            <FaMapMarked aria-hidden="true" />
+            Contact Us
+          </h2>
 
-          <FaMapMarked />
           <address className={`${column} not-italic text-on-footer/80`}>
             <span className="hover:text-white">
               52 Box Street, Melbourne, 3000
@@ -98,15 +106,22 @@ export default function Footer({ embedded }) {
         </div>
         {/* Opening Hours */}
         <div className={`${column} text-on-footer/80`}>
-          <h2 className={`${heading} text-on-footer`}>Opening Hours</h2>
-          <IoTime />
+          <h2 className={`${heading} flex items-center gap-2 text-on-footer`}>
+            <IoTime aria-hidden="true" />
+            Opening Hours
+          </h2>
+
           <p>Monday to Friday 7:00am - 7:00pm</p>
           <p>Saturday & Sunday 7:00am - 5:00pm</p>
         </div>
         {/* Social Links */}
         <nav className={column}>
-          <h2 className={heading}>Our Socials</h2>
-          <IoMdChatboxes />
+          <h2 className={`${heading} flex items-center gap-2`}>
+            {" "}
+            <IoMdChatboxes aria-hidden="true" />
+            Our Socials
+          </h2>
+
           <a
             href="https://facebook.com"
             target="_blank"
