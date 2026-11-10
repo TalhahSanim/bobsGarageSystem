@@ -54,56 +54,28 @@ export default function Register() {
     e.preventDefault();
     console.log("Submit -> Register.jsx");
 
-    // Validation -> required field then password required to match
-    if (is_Empty(firstName)) {
-      setFormData({
-        ...formData,
-        errors: { firstName: "First Name Is Required" },
-      });
-      return;
-    }
-    if (is_Empty(lastName)) {
-      setFormData({
-        ...formData,
-        errors: { lastName: "Last Name Is Required" },
-      });
-      return;
-    }
-    if (is_Empty(email)) {
-      setFormData({
-        ...formData,
-        errors: { email: "Email Is Required" },
-      });
-      return;
-    }
-    if (is_Empty(password)) {
-      setFormData({
-        ...formData,
-        errors: { password: "Password Is Required" },
-      });
-      return;
-    }
-    if (is_Empty(passwordCompare)) {
-      setFormData({
-        ...formData,
-        errors: { passwordCompare: "Please Confirm Your Password" },
-      });
-      return;
-    }
+    // Check every field and collect all issues so admin sees them at once
+    const errors = {};
 
-    if (password !== passwordCompare) {
-      setFormData({
-        ...formData,
-        errors: { password: "Passwords Do Not Match!" },
-      });
-      return;
-    }
+    if (is_Empty(firstName)) errors.firstName = "First Name Is Required";
+    if (is_Empty(lastName)) errors.lastName = "Last Name Is Required";
+    if (is_Empty(email)) errors.email = "Email Is Required";
 
-    if (password.length < 8) {
-      setFormData({
-        ...formData,
-        errors: { password: "Passwords Must Be At Least 8 Characters" },
-      });
+    // password -> required and at least 8 characters
+    if (is_Empty(password)) errors.password = "Password Is Required";
+    else if (password.length < 8)
+      errors.password = "Password Must Be At Least 8 Characters";
+
+    // confirm -> required and must match the password
+    if (is_Empty(passwordCompare))
+      errors.passwordCompare = "Please Confirm Your Password";
+    else if (password !== passwordCompare)
+      errors.passwordCompare = "Passwords Do Not Match!";
+
+    // Any issues -> display them  and stop before saving
+    if (Object.keys(errors).length > 0) {
+      setFormData({ ...formData, errors });
+      return;
     }
 
     // Register also logs you in too

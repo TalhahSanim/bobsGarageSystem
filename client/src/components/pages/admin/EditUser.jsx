@@ -6,6 +6,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useUsers } from "../../../context/UsersContext";
+import { is_Empty } from "../../../utils/validation";
 
 // EditUser Component -> form fot admin to edit user
 export default function EditUser() {
@@ -44,7 +45,7 @@ export default function EditUser() {
   if (!user) {
     return (
       <section className="alert-danger">
-        <h2 className="text-xl font-semibold">User notfound!!!</h2>
+        <h2 className="text-xl font-semibold">User Not Found</h2>
       </section>
     );
   }
@@ -65,6 +66,18 @@ export default function EditUser() {
     e.preventDefault();
     console.log("handleSubmit -> EditUser.jsx");
     if (!canSave) return;
+
+    // Check every field and collect all issues so admin see them all at once
+    const errors = {};
+    if (is_Empty(firstName)) errors.firstName = "First Name Is Required";
+    if (is_Empty(lastName)) errors.lastName = "Last Name Is Required";
+    if (is_Empty(email)) errors.email = "Email Is Required";
+
+    // Any issues -> display them and stop before saving
+    if (Object.keys(errors).length > 0) {
+      setFormData({ ...formData, errors });
+      return;
+    }
 
     setRequestStatus("pending");
     const result = await updateUser({
@@ -90,7 +103,7 @@ export default function EditUser() {
       </label>
       <input
         type={type}
-        className={`form-input ${errors[name] ? "is-invalid" : "is-valid"}`}
+        className={`form-input ${errors[name] ? "is-invalid" : ""}`}
         id={name}
         placeholder={label}
         name={name}

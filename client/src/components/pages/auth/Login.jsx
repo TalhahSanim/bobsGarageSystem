@@ -34,16 +34,13 @@ export default function Login() {
     e.preventDefault();
     console.log("Submit Function -> Login.jsx");
 
-    // validation
-    if (is_Empty(email)) {
-      setFormData({ ...formData, errors: { email: "Email Is Required" } });
-      return;
-    }
-    if (is_Empty(password)) {
-      setFormData({
-        ...formData,
-        errors: { password: "Password Is Required" },
-      });
+    //  Check both fields so user see every issue at once
+    const errors = {};
+    if (is_Empty(email)) errors.email = "Email Is Required";
+    if (is_Empty(password)) errors.password = "Password Is Required";
+
+    if (Object.keys(errors).length > 0) {
+      setFormData({ ...formData, errors });
       return;
     }
     // login and if fails show servers message under email box

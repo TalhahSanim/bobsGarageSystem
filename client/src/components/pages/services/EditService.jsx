@@ -56,138 +56,36 @@ export default function EditService() {
     e.preventDefault();
     // Check the function is being invoked
     console.log(`handleSubmit -> EditService.jsx ->> Running`);
-    //  Check for errors
-    // Name errors
-    if (is_Empty(name)) {
-      console.log("Service Name Field Is Empty");
-      setFormData({
-        ...formData,
-        errors: {
-          name: "Name Is Required",
-        },
-      });
-      return;
-    } else {
-      setFormData({ ...formData, errors: { name: "" } });
-    }
-    // alphanumerical character check for name
+    // Check every field and collect all issues to let user see all at once
+    const errors = {};
 
-    if (alpha(name)) {
-      console.log("Service Name Contains Special Characters");
-      setFormData({
-        ...formData,
-        errors: {
-          name: "Name Can Only Contain Letters",
-        },
-      });
-      return;
-    } else {
-      setFormData({ ...formData, errors: { name: "" } });
-    }
+    // name -> required and letters only
+    if (is_Empty(name)) errors.name = "Name Is Required";
+    else if (alpha(name)) errors.name = "Name Can Only Contain Letters";
 
-    // Type error
-    if (is_Empty(type)) {
-      console.log("Type Field is Empty");
-      setFormData({
-        ...formData,
-        errors: {
-          type: "Type Is Required",
-        },
-      });
+    // type -> required and letters only
+    if (is_Empty(type)) errors.type = "Type Is Required";
+    else if (alpha(type)) errors.type = "Type Can Only Contain Letters";
+
+    // description -> required and letters only
+    if (is_Empty(description)) errors.description = "Description Is Required";
+    else if (alpha(description))
+      errors.description = "Description Can Only Contain Letters";
+
+    // fee -> required and more than 0 and two decimal places
+    if (is_Empty(fee)) errors.fee = "Fee Is Required";
+    else if (fee <= 0) errors.fee = "Fee Must Be More Than 0";
+    else if (!isValidFee)
+      errors.fee = "Fee Must Be Number With Two Decimal Places";
+
+    // Any issues -> display them and stop. Object keys lists the fields that failed
+    if (Object.keys(errors).length > 0) {
+      setFormData({ ...formData, errors });
       return;
-    } else {
-      setFormData({ ...formData, errors: { type: "" } });
-    }
-    // alphanumerical character check for type
-    if (alpha(type)) {
-      console.log("Service Type contains special characters");
-      setFormData({
-        ...formData,
-        errors: {
-          type: "Type Can Only Contain Letters",
-        },
-      });
-      return;
-    } else {
-      setFormData({ ...formData, errors: { type: "" } });
     }
 
-    // description error
-    if (is_Empty(description)) {
-      console.log("Description Field is Empty");
-      setFormData({
-        ...formData,
-        errors: {
-          description: "Description Is Required",
-        },
-      });
-      return;
-    } else {
-      setFormData({ ...formData, errors: { description: "" } });
-    }
-    // alphanumerical character check for description
-    if (alpha(description)) {
-      console.log("Description contains special characters");
-      setFormData({
-        ...formData,
-        errors: {
-          description: "Description Can Only Contain Letters",
-        },
-      });
-      return;
-    } else {
-      setFormData({ ...formData, errors: { description: "" } });
-    }
-    // image error
-    let defaultImage = "";
-    if (is_Empty(image)) {
-      console.log(defaultImage);
-      setFormData({
-        ...formData,
-        image: defaultImage,
-      });
-    } else {
-      defaultImage = image;
-      console.log(`image: ${defaultImage}`);
-    }
-
-    // fee error - not empty great than 0, 2decimal places
-    if (is_Empty(fee)) {
-      console.log("Fee is Empty");
-      setFormData({
-        ...formData,
-        errors: {
-          fee: "Fee Is Required",
-        },
-      });
-      return;
-    } else {
-      setFormData({ ...formData, errors: { fee: "" } });
-    }
-
-    if (fee <= 0) {
-      console.log("Fee is negative");
-      setFormData({
-        ...formData,
-        errors: { fee: "Fee Must Be More Than 0" },
-      });
-      return;
-    } else {
-      setFormData({ ...formData, errors: { fee: "" } });
-    }
-
-    if (!isValidFee(fee)) {
-      console.log("Fee is invalid");
-      setFormData({
-        ...formData,
-        errors: {
-          fee: "Fee Must Be A Number With Two Decimal Places",
-        },
-      });
-      return;
-    } else {
-      setFormData({ ...formData, errors: { fee: "" } });
-    }
+    // Image is optional -> an empty one uses the fallback image on the card
+    const defaultImage = is_Empty(image) ? "" : image;
 
     const updService = {
       serviceId,
@@ -245,7 +143,7 @@ export default function EditService() {
               </label>
               {/* Controlled input comes from state and onChange updates it */}
               <input
-                className={`form-input ${errors.name ? "is-invalid" : "is-valid"}`}
+                className={`form-input ${errors.name ? "is-invalid" : ""}`}
                 type="text"
                 id="name"
                 placeholder="New Service Name"
@@ -263,7 +161,7 @@ export default function EditService() {
                 Edit Service Type:
               </label>
               <input
-                className={`form-input ${errors.type ? "is-invalid" : "is-valid"}`}
+                className={`form-input ${errors.type ? "is-invalid" : ""}`}
                 type="text"
                 id="type"
                 placeholder="New Service Type"
@@ -281,7 +179,7 @@ export default function EditService() {
                 Edit Service Description:
               </label>
               <input
-                className={`form-input ${errors.description ? "is-invalid" : "is-valid"}`}
+                className={`form-input ${errors.description ? "is-invalid" : ""}`}
                 type="text"
                 id="description"
                 placeholder="New Service Description"
@@ -307,7 +205,7 @@ export default function EditService() {
                 Edit Service Fee:
               </label>
               <input
-                className={`form-input ${errors.fee ? "is-invalid" : "is-valid"}`}
+                className={`form-input ${errors.fee ? "is-invalid" : ""}`}
                 type="text"
                 id="fee"
                 placeholder="120.99"
