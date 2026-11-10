@@ -119,7 +119,7 @@ export default function EditUser() {
             <label className="mb-4 flex items-center gap-2">
               <input
                 type="checkbox"
-                className="size-4 accent-garage"
+                className="size-4 accent-primary"
                 checked={isAdmin}
                 onChange={(e) =>
                   setFormData({ ...formData, isAdmin: e.target.checked })

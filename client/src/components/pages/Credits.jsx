@@ -33,7 +33,7 @@ const mediaCredits = [
   {
     item: "About Page Video",
     author: "WeStarMoney Rec",
-    link: "PASTE THE PEXELS VIDEO LINK",
+    link: "https://www.pexels.com/video/cars-competing-on-a-racing-track-10825298/",
     licence: "Pexels",
   },
   // add the hero photo and each service photo from step 1 here

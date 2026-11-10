@@ -36,7 +36,7 @@ export default function Dashboard() {
   // instead of checking for saved token we wait
   if (status === "loading") {
     return (
-      <p className="flex items-center gap-3 text-gray-600">
+      <p className="flex items-center gap-3 text-muted">
         Validating Your Credentials...
       </p>
     );
