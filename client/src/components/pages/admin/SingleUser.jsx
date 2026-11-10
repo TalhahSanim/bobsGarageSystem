@@ -5,6 +5,9 @@
 // SingleUser -> one card for each user and takes user as a prop
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { useState } from "react";
+
+import ConfirmDelete from "../../layout/ConfirmDelete";
 
 import { Link } from "react-router-dom";
 import { useUsers } from "../../../context/UsersContext";
@@ -14,14 +17,20 @@ import { imgSrc } from "../../../utils/imgSrc";
 export default function SingleUser({ user }) {
   const { deleteUser } = useUsers();
 
-  // Runs when delete clicked and takes in the id of th euser to delete
-  const onDelete = async (id) => {
-    // delete confirmation -> deleting user cannot be undone
-    if (!window.confirm(`Delete ${user.firstName} ${user.lastName}`)) return;
-    const result = await deleteUser(id);
-    if (!result.ok) {
-      alert(result.msg);
-    }
+  // Is the are you sure box open and is the delete on the way and any error
+  const [askDelete, setAskDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [error, setError] = useState("");
+
+  // Runs on yes,delete -> delete  real and show why it failed on the card
+  const onConfirmDelete = async () => {
+    setDeleting(true);
+    // deleteUser returns {ok,msg}
+
+    const result = await deleteUser(user.userId);
+    setDeleting(false);
+    setAskDelete(false);
+    if (!result.ok) setError(result.msg);
   };
 
   const initials = `${user.firstName?.[0] ?? ""}${user.lastName?.[0] ?? ""}`;
@@ -67,12 +76,22 @@ export default function SingleUser({ user }) {
         </Link>
         <button
           type="button"
-          onClick={() => onDelete(user.userId)}
+          onClick={() => setAskDelete(true)}
           className="btn btn-danger btn-sm"
         >
           <MdDeleteForever aria-hidden="true" /> Delete
         </button>
       </div>
+      {/* Failed delete -> show why on card instead of alert */}
+      {error && <p className="alert-danger mt-3 text-sm">{error}</p>}
+
+      <ConfirmDelete
+        show={askDelete}
+        name={`${user.firstName} ${user.lastName}`}
+        busy={deleting}
+        onConfirm={onConfirmDelete}
+        onClose={() => setAskDelete(false)}
+      />
     </li>
   );
 }

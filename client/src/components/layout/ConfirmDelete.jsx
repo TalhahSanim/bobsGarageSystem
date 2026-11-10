@@ -7,7 +7,7 @@ import { Modal, ModalBody, ModalHeader } from "flowbite-react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 // Props -> show it is open or not, name is whats being deleted and busy is deleting now
-// onConfirm -> rims pm ues delete and onClose runs on Cancel,Esc, X or tinted background
+// onConfirm -> runs on yes, delete and onClose runs on Cancel,Esc, X or tinted background
 
 export default function ConfirmDelete({
   show,
@@ -18,6 +18,7 @@ export default function ConfirmDelete({
 }) {
   return (
     <Modal show={show} size="md" popup onClose={onClose}>
+      <ModalHeader />
       <ModalBody>
         <div className="text-center">
           <RiDeleteBin6Line
