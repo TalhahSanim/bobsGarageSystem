@@ -52,7 +52,7 @@ export const getOneService = async (req, res) => {
  * @route POST /api/services/add
  * @access Admin
  * @param {object} req - req.body has name,type,description,image and fee checked via validateService first
- * @param {*} res - sends 200 with the new service including serviceId
+ * @param {object} res - sends 200 with the new service including serviceId
  */
 export const addService = async (req, res) => {
   // log the path and request
@@ -148,8 +148,8 @@ const sortDirections = ["ASC", "DESC"];
  * Gets every service sorted by one field
  * @route GET /api/services/o/:field/:direction
  * @access Public
- * @param {object} req - req.params.filed is name,type,fee or createdAt; req.params.direction is asc or desc
- * @param {*} res - sends a 200 with sorted list or 400 if field or direction isn't allowed
+ * @param {object} req - req.params.field is name,type,fee or createdAt; req.params.direction is asc or desc
+ * @param {object} res - sends a 200 with sorted list or 400 if field or direction isn't allowed
  */
 
 export const getOrderedServices = async (req, res) => {

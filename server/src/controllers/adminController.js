@@ -12,7 +12,6 @@ import fs from "fs";
  * @access Admin
  * @param {object} req - req.file is the image multer saved from the form field "file"
  * @param {object} res - sends 200 with {msg, image} the /uploads or 400 if no image was sent
- * @returns
  */
 export const uploadImage = (req, res) => {
   console.log("/api/admin/uploadImage -> POST");

@@ -14,7 +14,7 @@ const { Favourite, Service, User } = db.sequelize.models;
  * @route GET /api/favourites
  * @access Logged In
  * @param {object} req - req.user is set by auth
- * @param {*} res - sends 200 with the list or 500 on server error
+ * @param {object} res - sends 200 with the list or 500 on server error
  */
 export const getMyFavourites = async (req, res) => {
   console.log("/api/favourites -> GET");
