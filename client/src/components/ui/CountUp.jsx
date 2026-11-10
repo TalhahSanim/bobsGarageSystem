@@ -1,4 +1,4 @@
-// CountUp -> copied from React Bits (reactbits.dev), JS + Tailwind versio
+// CountUp -> copied from React Bits (reactbits.dev), JS + Tailwind version
 
 "use client";
 

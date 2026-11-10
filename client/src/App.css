@@ -168,7 +168,7 @@ html[data-font="large"] {
 }
 
 @utility card-lift {
-  @apply animate-fade-up transition duration-200 hover:-translate-y-1 hover:shadow-lg;
+  @apply transition duration-200 hover:-translate-y-1 hover:shadow-lg;
   @apply motion-reduce:transition-none;
 }
 
