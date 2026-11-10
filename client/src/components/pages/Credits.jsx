@@ -33,32 +33,8 @@ const mediaCredits = [
   {
     item: "About Page Video",
     author: "WeStarMoney Rec",
-    link: "PASTE THE PEXELS VIDEO LINK",
+    link: "https://www.pexels.com/video/cars-competing-on-a-racing-track-10825298/",
     licence: "Pexels",
-  },
-  {
-    item: "Oil Changes (Service Photo)",
-    author: "Pho Tomass",
-    link: "https://www.pexels.com/photo/33535698/",
-    licence: "Pexels",
-  },
-  {
-    item: "Tyre Rotation (Service Photo)",
-    author: "Dextar Studio",
-    link: "https://unsplash.com/photos/gW34cv-Ojjs",
-    licence: "Unsplash",
-  },
-  {
-    item: "Garage Expansion (Service Photo)",
-    author: "Alex Suprun",
-    link: "PASTE THE UNSPLASH PAGE LINK",
-    licence: "Unsplash",
-  },
-  {
-    item: "Custom Wrap (Service Photo)",
-    author: "PHOTOGRAPHER NAME",
-    link: "PASTE THE UNSPLASH PAGE LINK",
-    licence: "Unsplash",
   },
   {
     item: "Home Hero Photo",
@@ -158,7 +134,8 @@ export default function Credits() {
       <title>Credits - Bob's Garage</title>
       <h1 className="mb-2 text-3xl font-bold">Credits</h1>
       <p className="mb-8 text-muted">
-        The Photos, Video and Icons Used on This Site and Who Made Them
+        The Photos, Video and Icons Used on This Site and Who Made Them. Service
+        Photos Are Added by the Admin and Belong to Their Owners
       </p>
 
       <h2 className="mb-4 text-2xl">Photos and Video</h2>
