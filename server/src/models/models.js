@@ -115,7 +115,7 @@ const Preference = sequelize.define("Preference", {
 });
 
 // Favourite -> junction table which links users and services which is a many to many relationship
-// Each row means this user interested in this service
+// Each row means this user favourited this service
 const Favourite = sequelize.define(
   "Favourite",
   {

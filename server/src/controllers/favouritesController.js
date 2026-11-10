@@ -57,7 +57,7 @@ export const getAllFavourites = async (req, res) => {
 // path -> /api/favourites/:serviceId
 // request -> POST
 // type -> private
-// Description -> saves this user is interest in this service and sends back thank you response
+// Description -> saves this service as favourite for this user and return a thank you response
 
 export const addFavourite = async (req, res) => {
   console.log("/api/favourites/:serviceId -> POST");

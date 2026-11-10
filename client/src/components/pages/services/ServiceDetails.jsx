@@ -56,7 +56,7 @@ export default function ServiceDetails() {
   const favourite = isFavourite(serviceId);
 
   //   Runs when i'm interested is clicked
-  const handleInterested = async () => {
+  const handleFavourite = async () => {
     try {
       const msg = await addFavourite(serviceId);
       setMessage(msg);
@@ -124,13 +124,13 @@ export default function ServiceDetails() {
             {service.description}
           </p>
 
-          {/* Guests are asked to login and logged in users can save or unsave */}
+          {/* Guests are asked to login and logged in users can favourite or unfavourite */}
           {!isAuth ? (
             <p>
               <Link to="/login" className="link-pill">
                 Login
               </Link>
-              to save this service.
+              to favourite this service.
             </p>
           ) : (
             <div className="flex flex-wrap items-center gap-3">
@@ -138,10 +138,10 @@ export default function ServiceDetails() {
                 type="button"
                 className="btn btn-ghost text-link"
                 aria-pressed={favourite}
-                onClick={favourite ? handleRemove : handleInterested}
+                onClick={favourite ? handleRemove : handleFavourite}
               >
                 {favourite ? <FaHeart /> : <FaRegHeart />}
-                {favourite ? "Saved" : "Save"}
+                {favourite ? "Favourited" : "I'm Interested"}
               </button>
             </div>
           )}

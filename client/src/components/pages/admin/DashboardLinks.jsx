@@ -22,8 +22,8 @@ export default function DashboardLinks() {
       <NavLink className={linkClass} to="images-new">
         Upload Image
       </NavLink>
-      <NavLink className={linkClass} to="interests">
-        Interests
+      <NavLink className={linkClass} to="favourites">
+        Interested
       </NavLink>
       <NavLink className={linkClass} to="enquiries">
         Enquiries
