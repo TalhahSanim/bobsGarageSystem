@@ -9,12 +9,13 @@ import db from "../models/models.js";
 
 const { Preference } = db.sequelize.models;
 
-// name -> Get my preferences
-// path -> /api/preferences
-// request -> GET
-// type -> private
-// Description -> gets the logged in user's preferences and if they dont have row yet
-// one is created with default values such as light theme and medium font
+/**
+ * Gets the logged-in user's preferences and creating defaults upon first time login
+ * @route GET /api/preferences
+ * @access Logged In
+ * @param {object} req - req.user is set by auth
+ * @param {object} res - sends 200 with {theme,fontSize,sortOrder} or 500 on a server error
+ */
 export const getPreferences = async (req, res) => {
   console.log("/api/preferences -> GET");
   try {
@@ -27,12 +28,13 @@ export const getPreferences = async (req, res) => {
     res.status(500).json({ msg: "Server Error" });
   }
 };
-
-// name -> update my preferences
-// path -> /api/preferences
-// request -> PUT
-// type -> private
-// description -> Changes theme, font size and or sort order and only fields sent get changed/updated
+/**
+ * Saves only the preferences that were sent
+ * @route PUT /api/preferences
+ * @access Logged In
+ * @param {object} req - req.user is et by auth and req.body may have theme, fontSize and sortOrder
+ * @param {object} res - sends 200 with the saved preferences and 400 if value isn't allowed or 500
+ */
 export const updatePreferences = async (req, res) => {
   console.log("/api/preferences -> PUT");
   // Only carry over the fields we allow and ignore anything different in body

@@ -9,11 +9,13 @@ import db from "../models/models.js";
 
 const { Favourite, Service, User } = db.sequelize.models;
 
-//  name -> get my favourites
-// path -> /api/favourites
-// request -> GET
-// type -> PRIVATE
-// Description -> gets the logged in users favorites newest first with each services details
+/**
+ * Gets the logged-in user's favourites withe ach service's details and newest first
+ * @route GET /api/favourites
+ * @access Logged In
+ * @param {object} req - req.user is set by auth
+ * @param {*} res - sends 200 with the list or 500 on server error
+ */
 export const getMyFavourites = async (req, res) => {
   console.log("/api/favourites -> GET");
   try {
@@ -29,11 +31,13 @@ export const getMyFavourites = async (req, res) => {
   }
 };
 
-//  name -> get all favourites
-// path -> /api/favourites/all
-// request -> GET
-// type -> admin
-// Description -> Each favorite with the customers contact details and the service to let the business know who to contact
+/**
+ * Gets customer's favourites with the customer and service details and newest first
+ * @route GET /api/favourites/all
+ * @access Admin
+ * @param {object} req -  the request nothing is read from it
+ * @param {object} res - sends 200 with the list or 500 on server error
+ */
 export const getAllFavourites = async (req, res) => {
   console.log("/api/favourites/all -> GET");
   try {
@@ -55,11 +59,13 @@ export const getAllFavourites = async (req, res) => {
   }
 };
 
-// name -> Add Favourite
-// path -> /api/favourites/:serviceId
-// request -> POST
-// type -> private
-// Description -> saves this service as favourite for this user and return a thank you response
+/**
+ * Favourites a service for the logged-in user and only once per service
+ * @route POST /api/favourites/:serviceId
+ * @access Logged In
+ * @param {object} req - req.user is set by auth and req.params.serviceId is the service
+ * @param {object} res - sends 201 with {msg, favourite} if new and 200 if already favourited and 404 if no such service exists or 500 error
+ */
 
 export const addFavourite = async (req, res) => {
   console.log("/api/favourites/:serviceId -> POST");
@@ -91,12 +97,13 @@ export const addFavourite = async (req, res) => {
   }
 };
 
-//  name -> Remove favourite
-// path -> /api/favourites/:serviceId
-// request -> DELETE
-// type -> private
-// Description -> removes one of the logged in  user's favourites
-// the where clause includes userId so only users can remove their favourites
+/**
+ * Removes a service from the logged-in user's favourites
+ * @route DELETE /api/favourites/:serviceId
+ * @access Logged In
+ * @param {object} req - req.user is set by auth and req.params.serviceId is the service
+ * @param {object} res - sends 204 with no body or 500 on a server error
+ */
 export const removeFavourite = async (req, res) => {
   console.log("/api/favourites/:serviceId -> DELETE");
   const serviceId = Number(req.params.serviceId);
@@ -109,11 +116,13 @@ export const removeFavourite = async (req, res) => {
   }
 };
 
-// name -> Update a favourite status
-// path -> /api/favourites/:favouriteId/status
-// request -> PUT
-// type -> admin
-// Description -> ticks/untick  favourites as new or contacted
+/**
+ * Ticks a favourite as new or contacted
+ * @route PUT /api/favourites/:favouriteId/status
+ * @access Admin
+ * @param {object} req - req.params.favouriteId is the favourite and req.body.status is new or contacted
+ * @param {object} res - sends 200 with the updated favourite and 400 for any other status io 404 if not found or 500
+ */
 export const updateFavouriteStatus = async (req, res) => {
   console.log("/api/favourites/:favouriteId/status -> PUT");
   const favouriteId = Number(req.params.favouriteId);

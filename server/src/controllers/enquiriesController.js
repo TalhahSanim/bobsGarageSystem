@@ -13,11 +13,13 @@ const { Enquiry, Service, User } = db.sequelize.models;
 // Key customer files and admin will utilise which is never password for security reasons
 const customer = ["userId", "firstName", "lastName", "email"];
 
-// name -> send enquiry
-// path -> api/enquiries/:serviceId
-// request -> POST
-// type -> private
-// description -> saves the logged in users question about service
+/**
+ * Sends an enquiry about a service from the logged-in user
+ * @route POST /api/enquiries/:serviceId
+ * @access Logged In
+ * @param {object} req - req.user is set by auth , req.params.serviceId is the service and req.body.message is the question or enquiry
+ * @param {object} res - sends 201 with {msg,enquiry} , 400 if the message isn't 10 to 1000 characters and 404 if no such service or 500
+ */
 
 export const sendEnquiry = async (req, res) => {
   console.log("/api/enquiries/:serviceId -> POST");
@@ -59,11 +61,13 @@ export const sendEnquiry = async (req, res) => {
   }
 };
 
-//  name -> get my enquiries
-// path -> /api/enquiries/my-enquiries
-// request -> GET
-// type -> private
-// description -> the logged in users enquiries with each service sorted by newest entries first
+/**
+ * Gets the logged in user's enquiries with each service's details newest first
+ * @route GET /api/enquiries/my-enquiries
+ * @access Logged In
+ * @param {object} req - req.user is set by auth
+ * @param {object} res - sends 200 with the list or 500 on a server error
+ */
 export const getMyEnquiries = async (req, res) => {
   console.log("/api/enquiries/my-enquiries -> GET");
   try {
@@ -91,11 +95,13 @@ export const getMyEnquiries = async (req, res) => {
   }
 };
 
-// name -> Tick a reply as read
-// path /api/enquiries/:enquiryId/read
-// request -> PUT
-// type -> private
-// description -> the user has seen the business's response and only applies to user's own enquiries
+/**
+ * Tick one of the logged-in user's replies as read
+ * @route PUT /api/enquiries/:enquiryId/read
+ * @access Logged In
+ * @param {object} req - req.user is set by auth and req.params.enquiryId is the enquiry
+ * @param {object} res - sends 200 with {enquiryId, readByUser:true}, 404 if it isn't theirs or doesn't exist or 500
+ */
 export const tickRead = async (req, res) => {
   console.log("/api/enquiries/:enquiryId/read -> PUT");
   const enquiryId = Number(req.params.enquiryId);
@@ -116,11 +122,12 @@ export const tickRead = async (req, res) => {
   }
 };
 
-// name -> Get All Enquiries
-// path -> /api/enquiries
-// request -> GET
-// type -> admin
-// description -> every enquiry with customer and service sorted newest first
+/**
+ * Gets every enquiry with customer and service newest first and optionally filtered via status
+ * @route GET /api/enquiries
+ * @param {object} req - req.query.status may be pending or responded and any other options shows all results
+ * @param {object} res - sends 200 with the list or 500 on a server error
+ */
 
 export const getAllEnquiries = async (req, res) => {
   console.log("/api/enquiries -> GET");
@@ -146,11 +153,13 @@ export const getAllEnquiries = async (req, res) => {
   }
 };
 
-// name -> reply to enquiry
-// path -> /api/enquiries/:enquiryId/reply
-// request -> PUT
-// type -> admin
-// description -> saves the businesses response and ticks it if responded and make it unread for the customer
+/**
+ * Saves the business's , ticks the enquiry as responded and unread for customer
+ * @route PUT /api/enquiries:enquiryId/reply
+ * @access Admin
+ * @param {object} req - req.params.enquiryId is the enquiry, req.body.reply is the reply checked by validateReply
+ * @param {object} res - sends 200 with the updated enquiry, 400 if reply is over 1000 characters and 404 if not found or 500
+ */
 
 export const enquiryResponse = async (req, res) => {
   console.log("/api/enquiries/:enquiryId/reply -> PUT");

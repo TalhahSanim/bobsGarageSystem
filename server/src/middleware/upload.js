@@ -25,7 +25,12 @@ const storage = multer.diskStorage({
 
 // Only let images pass through
 const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif"];
-
+/**
+ * Multer file filter and only accepts JPG,PNG,WebP or GIF Images
+ * @param {object} req - the request
+ * @param {object} file - the uploaded file and file.mimetype is its type
+ * @param {Function} cb - cb null,true keeps the file and  cb null, false skips it so req.file is undefined
+ */
 const filterFile = (req, file, cb) => {
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true); // to accept the file
@@ -34,6 +39,7 @@ const filterFile = (req, file, cb) => {
   }
 };
 
+//** Saves admin uploads to ./uploads directory with the time and file name - JPG/PNG/WebP/GIF 25MB max */
 const upload = multer({
   storage: storage,
   fileFilter: filterFile,

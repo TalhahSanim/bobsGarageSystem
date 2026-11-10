@@ -15,21 +15,27 @@ import { validateUser } from "../utils/validate.js";
 // Leave out password from column of every result
 const noPassword = { attributes: { exclude: ["password"] } };
 
-//  name -> Get all users
-// path -> /api/users
-// request -> GET
-// type -> admin
+/**
+ * Gets every user without passwords
+ * @route GET /api/users
+ * @access Admin
+ * @param {object} req - the request and nothing is read from it
+ * @param {object} res - sends 200 with the list of users
+ */
 export const getUsers = async (req, res) => {
   console.log("/api/users -> GET");
   const userList = await User.findAll(noPassword);
   res.status(200).send(userList);
 };
 
-// name -> add user
-// request -> POST
-// path -> /api/users/add
-// type-> admin
-// description -> admin adds user and might make user admin
+/**
+ * Adds a user -> customer or admin with a hashed password
+ * @route POST /api/users/add
+ * @access Admin
+ * @param {object} req - req.body has firstName,lastName,email,image,password and isAdmin is checked by validateUser
+ * @param {object} res - sends 200 with the new user  and no password or 400 if email is in use
+ * @returns
+ */
 
 export const addUser = async (req, res) => {
   console.log("/api/users/add -> POST");
@@ -56,11 +62,13 @@ export const addUser = async (req, res) => {
   const { password: hashed, ...safeUser } = user.toJSON();
   res.status(200).send(safeUser);
 };
-
-// name -> Edit User
-// path -> /api/users/edit/:id
-// request -> PUT
-// type -> admin
+/**
+ * Updates a user's details and not password
+ * @route PUT /api/users/edit/:id
+ * @access Admin
+ * @param {object} req - req.params.id is the user id , req.body has firstName,lastName,email, image and isAdmin
+ * @param {*} res - sends 200 with the updated user no password or 404 if no user has that id
+ */
 
 export const updateUser = async (req, res) => {
   console.log("/api/users/edit/:id -> PUT");
@@ -82,10 +90,13 @@ export const updateUser = async (req, res) => {
   res.status(200).send(user);
 };
 
-// name -> delete user
-// path -> /api/users/edit/:id
-// request -> Delete
-// type ->  admin
+/**
+ * Deletes a user
+ * @route DELETE /api/users/edit/:id
+ * @access Admin
+ * @param {object} req - req.params.id is the user id
+ * @param {object} res - sends 204 with no body when deleted or 404 if no user has that id
+ */
 export const deleteUser = async (req, res) => {
   console.log("/api/users/edit/:id -> DELETE");
   const id = Number(req.params.id);

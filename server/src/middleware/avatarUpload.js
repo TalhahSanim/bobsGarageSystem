@@ -16,6 +16,7 @@ const avatarTypes = {
   "image/webp": ".webp",
 };
 
+/** Saves profile images to ./uploads directory as avatar with user id, time and file extension - JPG/PNG/WebP 25MB max */
 const avatarUpload = multer({
   storage: multer.diskStorage({
     // save image into server/uploads

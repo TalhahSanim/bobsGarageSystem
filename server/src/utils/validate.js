@@ -26,8 +26,11 @@ const options = {
   },
 };
 
-// Middleware maker
-// Takes in a schema, returns a middleware function that check req.body against it
+/**
+ * Makes a middleware that checks req.body against a Joi schema
+ * @param {object} schema - the Joi schema to check against
+ * @returns {Function} middleware -> sends 400 with {msg,errors} listing every issue or clears req.body and calls next
+ */
 const validate = (schema) => (req, res, next) => {
   // req.body is undefined when no body was sent so check empty object
   const { error, value } = schema.validate(req.body ?? {}, options);
@@ -109,14 +112,20 @@ const replySchema = Joi.object({
   reply: Joi.string().trim().min(1).max(1000).required().label("Reply"),
 });
 
-// ------------------ The middleware the routes use-------------------
+/** Checks a user body and password is required when adding (POST) and optional when editing */
+/** Checks a service body (add and edit) */
 export const validateService = validate(serviceSchema);
 
 // Adding requires a password whilst editing does not
 export const validateUser = (req, res, next) =>
   validate(req.method === "POST" ? userAddSchema : userSchema)(req, res, next);
+/** Checks a register body */
 export const validateRegister = validate(registerSchema);
+/** Checks a login body */
 export const validateLogin = validate(loginSchema);
+/** Checks a preferences body */
 export const validatePreferences = validate(preferencesSchema);
+/** Checks an enquiry message */
 export const validateEnquiry = validate(enquirySchema);
+/** Checks an admin reply */
 export const validateReply = validate(replySchema);

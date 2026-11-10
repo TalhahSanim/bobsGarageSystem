@@ -6,12 +6,14 @@
 // routes/admin.js adds auth, admin and multer uploads in front
 import fs from "fs";
 
-// name -> upload image
-// path -> /api/admin/uploadImage/
-// request => POST
-// type -> admin
-// description -> multer saves one file from the form field "file" and save it
-// Send it back its path to let client save service image
+/**
+ * Saves one uploaded image and sends back its path
+ * @route POST /api/admin/uploadImage
+ * @access Admin
+ * @param {object} req - req.file is the image multer saved from the form field "file"
+ * @param {object} res - sends 200 with {msg, image} the /uploads or 400 if no image was sent
+ * @returns
+ */
 export const uploadImage = (req, res) => {
   console.log("/api/admin/uploadImage -> POST");
   // No File -> none was selected or file filter has skipped ove due to being non image file
@@ -25,11 +27,13 @@ export const uploadImage = (req, res) => {
     .json({ msg: "Image Uploaded", image: `/uploads/${req.file.filename}` });
 };
 
-// name -> get image list
-// path -> /api/admin/getImageList
-// request -> GET
-// type -> admin
-// description -> reads the uploads folder and sends back the file names a an array
+/**
+ * Lists the uploaded image file names and leaving out profile images
+ * @route GET /api/admin/getImageList
+ * @access Admin
+ * @param {object} req - the request and nothing read from it
+ * @param {object} res - sends 200 with the file names or 500 if uploads folder cannot be read
+ */
 
 export const getImageList = async (req, res) => {
   console.log("/api/admin/getImageList -> GET");

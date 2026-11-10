@@ -4,7 +4,13 @@
 
 //  Only let admins through and it must run after auth as auth sets req.user
 
-// Admin Middleware takes in req,res and next
+/**
+ * Allows the request through only if the logged-in user is an admin which always runs after auth
+ * @param {object} req - req.user is set by auth
+ * @param {object} res - sends 403 if the user isn't an admin
+ * @param {Function} next - goes on to the route
+ * @returns
+ */
 export default function admin(req, res, next) {
   // Don't log the user  as it exposes their details in the servers logs
   // console.log(req.user);

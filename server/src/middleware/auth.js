@@ -7,7 +7,13 @@
 import jwt from "jsonwebtoken";
 import config from "../config/config.js";
 
-// Auth middleware ->  takes in req,res, and next [All middleware requires next]
+/**
+ * Allows the request through only with a valid login token
+ * @param {object} req - reads the token from the x-auth-token header then sets req.user
+ * @param {object} res - sends 401 if there's no token or if it's invalid or expired
+ * @param {Function} next -> goes on to the route once the token checks out
+ * @returns
+ */
 export default function auth(req, res, next) {
   // get the token from header which setAuthToken on client adds it
   const token = req.header("x-auth-token");

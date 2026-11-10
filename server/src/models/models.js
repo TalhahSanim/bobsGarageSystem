@@ -220,7 +220,11 @@ Service.hasMany(Enquiry, {
 
 Enquiry.belongsTo(Service, { foreignKey: "serviceId" });
 // Database functions -> ModelName.prototype.functionName = function({...})
-// Sign a token and it takes in the payload , returns the token and expires in 7 days
+/**
+ * Signs a login token which expires in 7 days
+ * @param {object} payload - what goes in the token from make payload
+ * @returns {string} the signed JWT
+ */
 User.prototype.signToken = function (payload) {
   // console.log("Signing token...."); // Output token being signed
   // without callback, jwt.sign returns the token straight away
@@ -230,7 +234,11 @@ User.prototype.signToken = function (payload) {
   });
 };
 
-// Hash a password and it takes in plain-text password and returns it hashed and salted
+/**
+ * Hashes a password with salt -> 12 rounds
+ * @param {string} password - the plain-text password
+ * @returns {Promise<string>} the salted hash to save
+ */
 User.prototype.hashPwd = async function (password) {
   // console.log("Hashing password...."); // Output password being hashed
   const salt = await bcrypt.genSalt(12);

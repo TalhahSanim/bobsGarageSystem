@@ -9,10 +9,13 @@ import db, { Op } from "../models/models.js";
 // pull service model to let controllers use them
 const { Service } = db.sequelize.models;
 
-// name: get All Services
-// path: /api/services
-// request: GET
-// type: public
+/**
+ * Get Every Service
+ * @route GET /api/services
+ * @access Public
+ * @param {object} req - the request -> nothing read from it
+ * @param {object} res res - sends 200 with list of services
+ */
 export const getAllServices = async (req, res) => {
   console.log("/api/services/ -> GET");
   // to get all data from a table in the database we use the findAll() method
@@ -23,10 +26,13 @@ export const getAllServices = async (req, res) => {
   res.status(200).send(list);
 };
 
-// name: get single service
-// path: /api/services/edit/:id
-// request : GET
-// Type: public
+/**
+ * Get Single Service
+ * @route GET /api/services/edit/:id
+ * @access Public
+ * @param {object} req - req.params.id is the service id
+ * @param {object} res - sends 200 with the service or 404 if no service has that id
+ */
 export const getOneService = async (req, res) => {
   console.log("/api/services/edit/:id - GET");
   // URL params are strings so typecast the id to number
@@ -41,10 +47,13 @@ export const getOneService = async (req, res) => {
   res.status(200).send(service);
 };
 
-// name: add a New Service
-// path: /api/services/add
-// request: POST
-// type: PUBLIC
+/**
+ * Add a Service
+ * @route POST /api/services/add
+ * @access Admin
+ * @param {object} req - req.body has name,type,description,image and fee checked via validateService first
+ * @param {*} res - sends 200 with the new service including serviceId
+ */
 export const addService = async (req, res) => {
   // log the path and request
   console.log("/api/services -> POST");
@@ -68,8 +77,13 @@ export const addService = async (req, res) => {
   res.status(200).send(service);
 };
 
-//  name: edit a service
-// path : /api/services/edit/:id
+/**
+ * Update Service Details
+ * @route PUT /api/services/edit/:id
+ * @access Admin
+ * @param {object} req - req.params.id is the service id and req.body has new name,type,description,image and fee
+ * @param {object} res - sends 200 with the updated service or 404 if a service doesn't have that id
+ */
 export const updateService = async (req, res) => {
   console.log("/api/services/edit/:id -> PUT");
   // get the id from params and typecast it to a number
@@ -101,11 +115,14 @@ export const updateService = async (req, res) => {
   res.status(200).send(service);
 };
 
-// name-> delete a service
-// path /api/services/edit/:id
-// request -> DELETE
-// type -> Admin
-// Description -> deletes one service or 404 if no product with that id
+/**
+ * Deletes a service
+ * @route DELETE /api/services/edit/:id
+ * @access Admin
+ * @param {object} req - req.params.id is the service id
+ * @param {*} res - sends 204 with no body when deleted or 404 if no service has that id
+ * @returns
+ */
 
 export const deleteService = async (req, res) => {
   console.log("/api/services/edit/:id -> DELETE");
@@ -128,11 +145,13 @@ export const deleteService = async (req, res) => {
 const sortFields = ["name", "type", "fee", "createdAt"];
 const sortDirections = ["ASC", "DESC"];
 
-// name -> ordered services
-// path -> /api/services/o/:field/:direction
-// request -> GET
-// type -> public
-// description -> the service list sorted by a column , ASC for low to high and DESC for High to Low
+/**
+ * Gets every service sorted by one field
+ * @route GET /api/services/o/:field/:direction
+ * @access Public
+ * @param {object} req - req.params.filed is name,type,fee or createdAt; req.params.direction is asc or desc
+ * @param {*} res - sends a 200 with sorted list or 400 if field or direction isn't allowed
+ */
 
 export const getOrderedServices = async (req, res) => {
   console.log("/api/services/o/:field/:direction -> GET");
@@ -150,11 +169,13 @@ export const getOrderedServices = async (req, res) => {
   res.status(200).send(list);
 };
 
-//  name -> search services
-// path -> /api/services/s/search
-// request -> GET
-// type -> public
-// description -> services whose name contains the search text
+/**
+ * Find services whose name contains the search text
+ * @route GET /api/services/s/:search
+ * @access Public
+ * @param {object} req - req.params.search is the text typed in the search box
+ * @param {object} res - sends 200 with the matching service or empty list when none match
+ */
 
 export const searchServices = async (req, res) => {
   console.log("/api/services/s/search -> GET");

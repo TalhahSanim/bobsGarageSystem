@@ -9,7 +9,11 @@ import db from "../models/models.js";
 // Pull out user Model
 const { User } = db.sequelize.models;
 
-// Build the token payload from a user and never put password here
+/**
+ * Build what goes inside login token without password
+ * @param {object} user - the user from the database
+ * @returns {object} {user:{user,firstName,email,isAdmin}}
+ */
 const makePayload = (user) => ({
   user: {
     userId: user.userId,
@@ -19,11 +23,13 @@ const makePayload = (user) => ({
   },
 });
 
-// Name -> Register
-// path -> /api/auth/register
-// request -> POST
-// type -> PUBLIC
-// Description -> Saves a new user with a hashed password and then sends back a token
+/**
+ * Create a customer account and logs them in
+ * @route POST /api/auth/register
+ * @access Public
+ * @param {object} req - req.body has firstName,lastName,email,image and password checked by validateRegister
+ * @param {object} res - send 200 with a token and 400 if email already in use or 500 on server error
+ */
 export const register = async (req, res) => {
   console.log("/api/auth/register -> POST");
   // Destructure req.body. NOT isAdmin as can never make themselves admin
@@ -55,11 +61,13 @@ export const register = async (req, res) => {
   }
 };
 
-// Name -> Login
-// path -> /api/auth/login
-// request -> POST
-// Type -> Public
-// Description -> Checks the email and password , then sends back a token
+/**
+ * Logs a user in
+ * @route POST /api/auth/login
+ * @access Public
+ * @param {object} req - req.body has email and password checked by validateLogin
+ * @param {object} res - sends 200 with a token and 400 if the email or password is wrong or 500 on server error
+ */
 
 export const login = async (req, res) => {
   console.log("/api/auth/login -> POST");
@@ -88,11 +96,13 @@ export const login = async (req, res) => {
   }
 };
 
-// name -> loadUser
-// path -> /api/auth
-// request-> GET
-// type -> private which auth checks token first
-// description -> sends back the logged in user without the password
+/**
+ * Gets the logged-in user's details without password
+ * @route GET /api/auth
+ * @access Logged in
+ * @param {object} req - req.user is set by auth from the token
+ * @param {object} res - sends 200 with the user or 500 on a server error
+ */
 
 export const loadUser = async (req, res) => {
   console.log("/api/auth -> GET");

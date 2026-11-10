@@ -12,8 +12,11 @@ import avatarUpload from "../middleware/avatarUpload.js";
 
 const { User } = db.sequelize.models;
 
-// delete old uploaded image which takes in the user's old image a value.
-// It only deletes uploaded avatars not URLS or admin uploads
+/**
+ * Deletes an old profile from uploads if it is one of ours
+ * @param {string} image - the saved path such as /uploads/avatar-3-128484.jpg and anything else is skipped
+ * @returns {void}
+ */
 const deleteOutdatedAvatar = (image) => {
   if (!image || !image.startsWith("/uploads/avatar-")) return;
   //   basename() keeps file name as it never points outside uploads directory
@@ -22,11 +25,13 @@ const deleteOutdatedAvatar = (image) => {
     .catch(() => {});
 };
 
-// name -> upload profile image
-// path -> /api/users/me/avatar
-// request -> POST [form-data,field- avatar]
-// type -> private which is any logged in user
-// description -> saves the image and puts it's path in the users image and delete the outdated one
+/**
+ * Saves a new profile image for the logged-in user and delete their old one
+ * @route POST /api/users/me/avatar
+ * @access Logged In
+ * @param {object} req - req.user is set by auth; the image file comes in the form field "avatar"
+ * @param {object} res - sends 200 with {image} the new path and 400 if no file,wrong type or over 25mb or server error
+ */
 export const uploadAvatar = (req, res) => {
   console.log("/api/users/me/avatar -> POST");
   // Run multer so we can send nice message upon failure
@@ -59,11 +64,13 @@ export const uploadAvatar = (req, res) => {
   });
 };
 
-// name-> remove my profile image
-// path -> /api/users/me/avatar
-// request -> DELETE
-// type -> private
-// description -> clears the users image and get placeholder again
+/**
+ * Removes the logged-in user's profile image
+ * @route DELETE /api/users/me/avatar
+ * @access Logged In
+ * @param {object} req - req.user is set by auth
+ * @param {object} res - sends 200 with {image:null} or 500 on server error
+ */
 export const removeAvatar = async (req, res) => {
   console.log("/api/users/me/avatar -> DELETE");
   try {
