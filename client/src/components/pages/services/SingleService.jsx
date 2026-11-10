@@ -67,7 +67,7 @@ export default function SingleService({ service }) {
             aria-label={
               favourite
                 ? `Remove ${name} from favourites`
-                : `Add ${name} to favourites `
+                : `Add ${name} to favourites`
             }
           >
             {favourite ? (
