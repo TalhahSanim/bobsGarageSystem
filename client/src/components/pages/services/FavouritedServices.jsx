@@ -21,7 +21,7 @@ export default function FavouritedServices() {
       <title>Saved Services - Bob's Garage</title>
       <h1 className="text-4xl">Saved Services</h1>
       <p className="mt-2 mb-6 text-muted">
-        Services You Favourited And Statues Of Any Enquiries You Have Sent
+        Services You Favourited and the Status Of Any Enquiries You Have Sent
       </p>
 
       {/* Nothing saved yet */}
