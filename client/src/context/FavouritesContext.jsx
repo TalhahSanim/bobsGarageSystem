@@ -1,4 +1,4 @@
-// File -> src/client/context/FavouritesContext.jsx
+// File -> client/src/context/FavouritesContext.jsx
 // Author -> Talhah Sanim
 // Application Version -> 1.0
 

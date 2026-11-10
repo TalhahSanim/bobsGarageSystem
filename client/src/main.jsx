@@ -2,6 +2,8 @@
 // Author -> Talhah Sanim
 // Application Version -> 1.0
 
+// runs the app and puts app around all context providers
+
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
