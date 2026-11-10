@@ -21,7 +21,7 @@ export default function FavouritedServices() {
       <title>Saved Services - Bob's Garage</title>
       <h1 className="text-4xl">Saved Services</h1>
       <p className="mt-2 mb-6 text-muted">
-        Services you saved at their statues of any enquiries you have sent
+        Services You Favourited And Statues Of Any Enquiries You Have Sent
       </p>
 
       {/* Nothing saved yet */}
@@ -32,7 +32,7 @@ export default function FavouritedServices() {
             aria-hidden="true"
           />
           <p className="mb-4 text-muted">
-            You Have not saved any services so far
+            You Have Not Saved Any Services So Far
           </p>
           <Link to="/services" className="btn btn-primary">
             Browse Services
