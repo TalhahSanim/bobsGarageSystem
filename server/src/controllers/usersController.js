@@ -34,7 +34,6 @@ export const getUsers = async (req, res) => {
  * @access Admin
  * @param {object} req - req.body has firstName,lastName,email,image,password and isAdmin is checked by validateUser
  * @param {object} res - sends 200 with the new user  and no password or 400 if email is in use
- * @returns
  */
 
 export const addUser = async (req, res) => {
@@ -67,7 +66,7 @@ export const addUser = async (req, res) => {
  * @route PUT /api/users/edit/:id
  * @access Admin
  * @param {object} req - req.params.id is the user id , req.body has firstName,lastName,email, image and isAdmin
- * @param {*} res - sends 200 with the updated user no password or 404 if no user has that id
+ * @param {object} res - sends 200 with the updated user no password or 404 if no user has that id
  */
 
 export const updateUser = async (req, res) => {

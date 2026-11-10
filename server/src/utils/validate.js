@@ -116,7 +116,7 @@ const replySchema = Joi.object({
 /** Checks a service body (add and edit) */
 export const validateService = validate(serviceSchema);
 
-// Adding requires a password whilst editing does not
+/** Checks a user body and the  password is  required when adding (POST), optional when editing */
 export const validateUser = (req, res, next) =>
   validate(req.method === "POST" ? userAddSchema : userSchema)(req, res, next);
 /** Checks a register body */

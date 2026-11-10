@@ -39,7 +39,7 @@ const filterFile = (req, file, cb) => {
   }
 };
 
-//** Saves admin uploads to ./uploads directory with the time and file name - JPG/PNG/WebP/GIF 25MB max */
+/** Saves admin uploads to ./uploads directory with the time and file name - JPG/PNG/WebP/GIF 25MB max */
 const upload = multer({
   storage: storage,
   fileFilter: filterFile,

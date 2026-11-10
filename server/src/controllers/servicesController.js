@@ -120,8 +120,7 @@ export const updateService = async (req, res) => {
  * @route DELETE /api/services/edit/:id
  * @access Admin
  * @param {object} req - req.params.id is the service id
- * @param {*} res - sends 204 with no body when deleted or 404 if no service has that id
- * @returns
+ * @param {object} res - sends 204 with no body when deleted or 404 if no service has that id
  */
 
 export const deleteService = async (req, res) => {
