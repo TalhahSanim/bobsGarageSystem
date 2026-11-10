@@ -231,7 +231,7 @@ export default function EditService() {
 
   return (
     <>
-      <title>Update a Car Service</title>
+      <title>Edit Service - Bob's Garage</title>
 
       <div className="panel">
         <div className="panel-header">Update the Car Service Below:</div>

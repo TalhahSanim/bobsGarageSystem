@@ -82,7 +82,7 @@ export default function EnquiryForm({ service }) {
 
           <button
             type="submit"
-            className="btn-info mt-4 w-full"
+            className="btn btn-info mt-4 w-full"
             disabled={status === "sending"}
           >
             <FaPaperPlane />

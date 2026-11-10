@@ -32,6 +32,8 @@ export default function UploadImage() {
 
   return (
     <section>
+      <title>Upload Image - Bob's Garage</title>
+
       <div className="panel">
         <div className="panel-header">Select an image to Uplaod:</div>
         <div className="panel-body">
@@ -53,7 +55,11 @@ export default function UploadImage() {
               )}
             </div>
             <div className="grid">
-              <input type="submit" value="Upload Image" className="btn-info" />
+              <input
+                type="submit"
+                value="Upload Image"
+                className="btn btn-info"
+              />
             </div>
           </form>
         </div>

@@ -138,7 +138,7 @@ export default function AddUser() {
       </label>
       <input
         type={type}
-        className={`form-input ${errors[name]} ? "is-invalid: "is-valid"`}
+        className={`form-input ${errors[name]} ? "is-invalid: ""`}
         id={name}
         placeholder={placeholder}
         name={name}
@@ -151,6 +151,7 @@ export default function AddUser() {
   );
   return (
     <Fragment>
+      <title>Add User - Bob's Garage</title>
       <div className="panel">
         <div className="panel-header">New User</div>
         <div className="panel-body">
@@ -185,7 +186,7 @@ export default function AddUser() {
                 value={
                   registerStatus === "pending" ? "Adding..." : "Add New User"
                 }
-                className="btn-info disabled:opacity-60"
+                className="btn btn-info "
                 disabled={registerStatus === "pending"}
               />
             </div>

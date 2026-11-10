@@ -24,6 +24,8 @@ export default function About() {
   };
   return (
     <>
+      <title>About - Bob's Garage</title>
+
       <section className="full-screen relative -mt-10 mb-12 overflow-hidden">
         {/* Page Header */}
 
@@ -35,7 +37,7 @@ export default function About() {
           muted
           loop
           playsInline
-          aria-label="A light blue spors car drifting in a race strack next to dark sports car"
+          aria-hidden="true"
           ref={videoRef}
         />
         {/* Video tint to make white text readable */}

@@ -81,25 +81,25 @@ export default function Enquiries() {
   };
 
   return (
-    <main className="my-6">
+    <section className="my-6">
       <title>Enquiries - Bob's Garage</title>
       <h1 className="mb-4 text-3xl font-bold">Customer Enquiries</h1>
 
-      {/* Filter options */}
-      <div className="mb-4 flex gap-2" role="tablist">
-        {filters.map((filter) => (
+      {/* Filter Buttons -> the selected one is filled and aria-pressed tells screen reader which one was pressed */}
+      <div
+        className="mb-4 flex gap-2"
+        aria-label="Enquiry Filters"
+        role="group"
+      >
+        {filters.map((option) => (
           <button
-            key={filter.label}
+            key={option.label}
             type="button"
-            role="tab"
-            aria-selected={
-              filter === filter.value
-                ? "bg-primary text-on-primary"
-                : "border border-line bg-surface text-muted hover:bg-page"
-            }
-            onClick={() => setFilter(filter.value)}
+            aria-pressed={filter === option.value}
+            onClick={() => setFilter(option.value)}
+            className={`btn btn-sm ${filter === option.value ? "btn-primary" : "btn-outline"}`}
           >
-            {filter.value}
+            {option.label}
           </button>
         ))}
       </div>
@@ -180,7 +180,7 @@ export default function Enquiries() {
                     ></textarea>
                     <button
                       type="button"
-                      className="btn-info mt-2"
+                      className="btn btn-info mt-2"
                       onClick={() => sendReply(enquiry.enquiryId)}
                     >
                       <FaReply /> Send Reply
@@ -192,6 +192,6 @@ export default function Enquiries() {
           ))}
         </ul>
       )}
-    </main>
+    </section>
   );
 }

@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 export default function NotFound() {
   return (
     <section className="mx-auto max-w-md py-16 text-center">
+      <title>Not Found - Bob's Garage</title>
+
       <p className="text-6xl font-semibold text-primary">404</p>
       <h1 className="mt-2 text-3xl uppercase">Page Not Found</h1>
       <p className="mt-2 text-muted">

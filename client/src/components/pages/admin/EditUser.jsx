@@ -103,7 +103,8 @@ export default function EditUser() {
 
   return (
     <Fragment>
-      <h1 className="mb-4 text-2xl font-bold text-blue-600">Edit a User</h1>
+      <title>Edit User - Bob's Garage</title>
+
       <div className="panel">
         <div className="panel-header">Edit User</div>
         <div className="panel-body">
@@ -115,19 +116,23 @@ export default function EditUser() {
             {field("email", "Email", "email")}
             {field("image", "Image")}
             {/* Admin Checkbox */}
-            <label htmlFor="" className="mb-4 flex items-center gap-2">
+            <label className="mb-4 flex items-center gap-2">
               <input
                 type="checkbox"
                 className="size-4 accent-garage"
                 checked={isAdmin}
                 onChange={(e) =>
-                  setFormData({ ...formData, isAdmin: e.target.e.checked })
+                  setFormData({ ...formData, isAdmin: e.target.checked })
                 }
               />
               Admin
             </label>
             <div className="mb-4 grid">
-              <input type="submit" value="Edit User" className="btn-info " />
+              <input
+                type="submit"
+                value="Edit User"
+                className="btn btn-info "
+              />
             </div>
           </form>
         </div>

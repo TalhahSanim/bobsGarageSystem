@@ -18,6 +18,8 @@ export default function Home() {
         className="full-screen -mt-10 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
+        <title>Home - Bob's Garage</title>
+
         {/* create the tint -> dark on left and red on right to enable white text to be readable */}
         <div className="bg-linear-135 from-hero-red/35 via-hero/85 to-primary/30">
           <div className="mx-auto flex min-h-140 max-w-3xl flex-col items-center justify-center gap-5 px-4 py-20 text-center text-white">

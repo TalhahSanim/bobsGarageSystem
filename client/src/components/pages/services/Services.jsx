@@ -73,6 +73,8 @@ export default function Services() {
 
   return (
     <section>
+      <title>Our Services - Bob's Garage</title>
+
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-4xl">Bob's Services</h1>

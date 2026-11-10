@@ -149,6 +149,8 @@ export default function Register() {
       title="Join Bob's Garage Today"
       subtitle="Save Services and Enquiries and Replies Land directly at you"
     >
+      <title>Register - Bob's Garage</title>
+
       <h1 className="text-3xl">Create An Account</h1>
       <p className="mt-1 mb-6 text-muted">Enter your details to register</p>
       {/* Form */}

@@ -211,7 +211,7 @@ export default function AddServices() {
 
   return (
     <>
-      <title>Add a Car Service</title>
+      <title>Add Service - Bob's Garage</title>
 
       <div className="panel">
         <div className="panel-header">Car Service:</div>

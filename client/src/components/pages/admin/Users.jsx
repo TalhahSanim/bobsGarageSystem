@@ -22,6 +22,8 @@ export default function Users() {
   }
   return (
     <div className="panel">
+      <title>Users - Bob's Garage</title>
+
       <div className="panel-body overflow-x-auto">
         <h2 className="mb-4 text-xl font-semibold text-link">Users</h2>
         {/* 1 column on phones and 2 from md and 3 from large screens */}

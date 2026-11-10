@@ -64,7 +64,7 @@ export default function Profile() {
   } = useTheme();
   const { favourites } = useFavourites();
   return (
-    <main className="my-6">
+    <section className="my-6">
       <title>Personal Profile - Bob's Garage</title>
       <h1 className="mb-6 text-3xl">My Profile</h1>
 
@@ -200,6 +200,6 @@ export default function Profile() {
         You have {favourites.length} favourite{" "}
         {favourites.length === 1 ? "service" : "services"}
       </Link>
-    </main>
+    </section>
   );
 }

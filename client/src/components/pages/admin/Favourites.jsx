@@ -75,7 +75,7 @@ export default function Favourites() {
   const waiting = list.filter((favourite) => favourite.status === "new").length;
 
   return (
-    <main className="my-6">
+    <section className="my-6">
       <title>Interested Customers - Bob's Garage</title>
       <h1 className="mb-2 text-3xl font-bold">Interested Customers</h1>
       <p className="mb-6 text-muted">
@@ -163,6 +163,6 @@ export default function Favourites() {
           </table>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
