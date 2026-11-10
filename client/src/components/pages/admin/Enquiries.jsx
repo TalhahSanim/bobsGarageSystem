@@ -127,21 +127,27 @@ export default function Enquiries() {
               <div className="panel-body grid gap-3">
                 {/* Details of what, who and the date */}
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <p>
-                    <span className="font-semibold">
-                      {enquiry.User.firstName} {enquiry.User.lastName}
-                    </span>
-                    <a
-                      href={`mailto:${enquiry.User.email}`}
-                      className="text-sm underline"
-                    >
-                      {enquiry.User.email}
-                    </a>
-                    About{" "}
-                    <span className="font-semibold">
-                      {enquiry.Service.name}
-                    </span>
-                  </p>
+                  {/* Who sent it including the name, email and what service it is about */}
+                  <div className="grid gap-1">
+                    <p className="flex flex-wrap items-baseline gap-x-2">
+                      <span className="font-semibold">
+                        {enquiry.User.firstName}
+                        {enquiry.User.lastName}
+                      </span>
+                      <a
+                        href={`mailto:${enquiry.User.email}`}
+                        className="text-sm text-muted underline"
+                      >
+                        {enquiry.User.email}
+                      </a>
+                    </p>
+                    <p className="text-sm">
+                      About{" "}
+                      <span className="font-semibold">
+                        {enquiry.Service.name}
+                      </span>
+                    </p>
+                  </div>
                   <span className="text-sm text-muted">
                     {new Date(enquiry.createdAt).toLocaleDateString()}
                   </span>
