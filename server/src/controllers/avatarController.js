@@ -42,7 +42,7 @@ export const uploadAvatar = (req, res) => {
     if (!req.file) {
       return res
         .status(400)
-        .json({ msg: "Please Select a JPG,PNG or WebP Image" });
+        .json({ msg: "Please Select a JPG, PNG or WebP Image" });
     }
 
     try {
