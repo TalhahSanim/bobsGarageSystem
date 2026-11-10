@@ -1,4 +1,4 @@
-// File -> /src/controllers/favouritesController.js
+// File -> server/src/controllers/favouritesController.js
 // Author -> Talhah Sanim
 // Application Version -> 1.0
 // Favourite controllers -> Im interested in this service
