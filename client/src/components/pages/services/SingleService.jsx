@@ -3,6 +3,7 @@
 // Application Version -> 1.0
 //  one service per card
 import { useState } from "react";
+import ConfirmDelete from "../../layout/ConfirmDelete";
 import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaRegEdit, FaHeart, FaRegHeart } from "react-icons/fa";
@@ -14,7 +15,7 @@ import fallbackImage from "../../../assets/hero-image.jpg";
 
 import { imgSrc } from "../../../utils/imgSrc";
 
-export default function SingleService({ service }) {
+export default function SingleService({ service, onToast }) {
   const serviceDelete = useServicesDelete();
   // ONLY Admin enabled to delete and edit
   const { isAuth, isAdmin } = useAuth();
@@ -25,13 +26,23 @@ export default function SingleService({ service }) {
   // DeStructure
   const { serviceId, name, type, description, image, fee } = service;
 
-  const favourite = isFavourite(serviceId);
+  // Is the are you sure box open and is the delete on its way?
+  const [askDelete, setAskDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
-  // Runs when delete is clicked (ADMIN ONLY) Takes in id to delete
-  const onDelete = (id) => {
-    console.log(`Delete clicked for id ${id} -> SingleService.jsx`);
-    serviceDelete(id);
+  // Runs on yes Delete -> ADMIN ONLY and delete for real and tell the page and user
+  const onConfirmDelete = async () => {
+    setDeleting(true);
+    //deleteService returns true if it worked
+    const deleted = await serviceDelete(serviceId);
+    setDeleting(false);
+    setAskDelete(false);
+    // Tell the service page on what happened and only when toast gets passed in
+    onToast?.(
+      deleted ? `${name} Was Deleted` : `Sorry, ${name} Could Not Be Deleted`,
+    );
   };
+  const favourite = isFavourite(serviceId);
 
   // Runs when the hear is clicked -> Add or Remove this service from my favourites
   const favouriteToggle = async () => {
@@ -114,18 +125,26 @@ export default function SingleService({ service }) {
               to={`/edit/${serviceId}`}
               className="btn btn-outline btn-sm py-2.5 px-4.5"
             >
-              <FaRegEdit /> Edit
+              <FaRegEdit aria-hidden="true" /> Edit
             </Link>
             <button
               type="button"
               className="btn btn-danger btn-sm py-2.5 px-4.5"
-              onClick={() => onDelete(serviceId)}
+              onClick={() => setAskDelete(true)}
             >
-              <RiDeleteBin6Line /> Delete
+              <RiDeleteBin6Line aria-hidden="true" /> Delete
             </button>
           </div>
         )}
       </div>
+      {/* Are you sure box -> only open while askDelete is true */}
+      <ConfirmDelete
+        show={askDelete}
+        name={name}
+        busy={deleting}
+        onConfirm={onConfirmDelete}
+        onClose={() => setAskDelete(false)}
+      />
     </article>
   );
 }
