@@ -33,11 +33,10 @@ export default function UploadImage() {
   return (
     <section>
       <title>Upload Image - Bob's Garage</title>
-
       <div className="panel">
         <h1 className="panel-header">Select an image to Upload:</h1>
         <div className="panel-body">
-          <form onSubmit={(e) => handleUpload(e)} encType="mulipart/form-data">
+          <form onSubmit={(e) => handleUpload(e)} encType="multipart/form-data">
             <div className="mb-4">
               <label className="form-label" htmlFor="selectedFile">
                 Select image to upload
@@ -48,11 +47,9 @@ export default function UploadImage() {
                 accept="image/*"
                 id="selectedFile"
                 onChange={(e) => handleFileChange(e)}
-                className="block w-full rounded-md border border-gray-300 text-sm text-gray-600 file:mr-4 file:cursor-pointer file:border-0 file:bg-garage file:px-4 file:py-2 file:font-medium file:text-white hover:file:bg-garage-dark"
+                className="block w-full border border-line text-sm text-muted file:mr-4 file:cursor-pointer file:border-0 file:bg-button file:px-4 file:py-2 file:font-medium file:text-on-primary hover:file:bg-button-hover"
               />
-              {message && (
-                <p className="mt-2 text-sm text-gray-700">{message}</p>
-              )}
+              {message && <p className="mt-2 text-sm text-muted">{message}</p>}
             </div>
             <div className="grid">
               <input
@@ -64,6 +61,7 @@ export default function UploadImage() {
           </form>
         </div>
       </div>
+      <h2>This Page is Under Development</h2>
     </section>
   );
 }
