@@ -71,7 +71,7 @@ app.use((err, req, res, next) => {
   if (err.code === "LIMIT_FILE_SIZE") {
     return res.status(400).json({ msg: "Images Must Be 25MB Or Less" });
   }
-  // few errors have a status such as 400 badly formed json & request aborted  406 and this makes any without an statuses a 500
+  // Some errors already have a status (400 bad JSON, 406 request aborted). Any error without one becomes a 500
   const status = err.status || 500;
   res
     .status(status)

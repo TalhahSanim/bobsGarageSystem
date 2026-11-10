@@ -113,7 +113,7 @@ export const removeFavourite = async (req, res) => {
 // path -> /api/favourites/:favouriteId/status
 // request -> PUT
 // type -> admin
-// Description -> ticks of favourite as new or contacted
+// Description -> ticks/untick  favourites as new or contacted
 export const updateFavouriteStatus = async (req, res) => {
   console.log("/api/favourites/:favouriteId/status -> PUT");
   const favouriteId = Number(req.params.favouriteId);
