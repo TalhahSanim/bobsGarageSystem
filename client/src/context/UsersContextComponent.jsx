@@ -1,4 +1,4 @@
-// File -> client/src/context/UsersContext.jsx
+// File -> client/src/context/UsersContextComponent.jsx
 // Author -> Talhah Sanim
 // Application Version -> 1.0
 

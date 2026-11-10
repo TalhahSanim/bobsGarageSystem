@@ -1,4 +1,4 @@
-// File -> client/src/components/pages/services/EditServices.jsx
+// File -> client/src/components/pages/services/EditService.jsx
 // Author -> Talhah Sanim
 // Application Version -> 1.0
 

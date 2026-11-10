@@ -1,4 +1,4 @@
-// File -> client/src/utils/setAuth.js
+// File -> client/src/utils/setAuthToken.js
 // Author -> Talhah Sanim
 // Application Version -> 1.0
 
