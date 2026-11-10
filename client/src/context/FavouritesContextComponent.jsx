@@ -1,4 +1,6 @@
 // File -> client/src/context/FavouritesContextComponent.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 // The Favourites Provider -> Loads the logged in user's favourites
 // and adds or remove them through the API
 

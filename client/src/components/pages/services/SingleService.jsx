@@ -1,3 +1,6 @@
+// File -> client/src/components/pages/services/SingleService.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 //  one service per card
 import { useState } from "react";
 import { Link } from "react-router-dom";

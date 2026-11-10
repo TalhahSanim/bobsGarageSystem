@@ -1,3 +1,7 @@
+// File -> client/src/components/layout/ToggleTheme.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Theme Button -> switches html data theme light to dark
 // used in header and admin dash
 

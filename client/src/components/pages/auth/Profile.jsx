@@ -1,4 +1,7 @@
-// File -> client/components/pages/auth/Profile.jsx
+// File -> client/src/components/pages/auth/Profile.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 //  The logged in users profile-> Shows their details, preferences and number of favourites
 import { useState } from "react";
 import { Link } from "react-router-dom";

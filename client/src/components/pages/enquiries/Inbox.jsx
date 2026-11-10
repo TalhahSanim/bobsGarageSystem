@@ -1,4 +1,7 @@
-// File -> client/src/components/enquiries/Inbox.jsx
+// File -> client/src/components/pages/enquiries/Inbox.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // The logged in user's enquiries and businesses replies/responses
 // opening a replied enquiry makes it read
 

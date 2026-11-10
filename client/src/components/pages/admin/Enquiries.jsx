@@ -1,4 +1,7 @@
 // File -> client/src/components/pages/admin/Enquiries.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Admin page for customer enquiries which is filtered by status and reply
 
 import { useEffect, useState } from "react";

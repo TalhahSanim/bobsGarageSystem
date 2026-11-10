@@ -1,3 +1,7 @@
+// File -> client/src/context/GarageContextComponent.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Bring in the useState hook from react
 import { useState, useEffect } from "react";
 

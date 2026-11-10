@@ -1,3 +1,6 @@
+// File -> client/src/context/AdminContext.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 // Creates the admin context -> uploaded images  and hook to use it
 import { createContext, useContext } from "react";
 

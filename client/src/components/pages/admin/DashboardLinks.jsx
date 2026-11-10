@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/admin/DashboardLinks.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Admin Sidebar -> Active link gets highlighted
 import { NavLink } from "react-router-dom";
 

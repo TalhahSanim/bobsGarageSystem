@@ -1,3 +1,9 @@
+// File -> client/src/components/pages/services/AddServices.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
+// Add Services Page [ADMIN] -> form with client-side validation  that adds a new service
+
 import { useState } from "react"; // import use state
 import { useNavigate } from "react-router-dom";
 // import the useServicesAdd hook from the context

@@ -1,3 +1,7 @@
+// File -> client/src/context/AdminContextComponent.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 //  The admin provider ->  List of uploaded images and a function to upload
 import { useState } from "react";
 import axios from "axios";

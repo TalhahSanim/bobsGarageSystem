@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/auth/Register.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Register page -> form creating new account & registers with AuthContext
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";

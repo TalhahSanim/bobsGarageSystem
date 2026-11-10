@@ -1,5 +1,7 @@
-// File -> client/src/components/pages/admin/Interest.jsx
-// Admin Page -> each customer who favourited a service and whether they been contacted
+// File -> client/src/components/pages/admin/Favourites.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+// Admin Page -> each customer who favourites a service and whether they been contacted
 
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -7,9 +9,9 @@ import { TiTick } from "react-icons/ti";
 
 const favouritesURL = "http://localhost:3000/api/favourites";
 
-// INterest component which containes table of favorites newest first
+// Favourites component which contains table of favourites newest first
 
-export default function Interest() {
+export default function Favourites() {
   const [list, setList] = useState([]);
   const [status, setStatus] = useState("loading");
 
@@ -82,7 +84,7 @@ export default function Interest() {
       </p>
       {list.length === 0 && (
         <p className="border border-dashed border-line p-8 text-center text-muted">
-          No Customer has saved a service yet.
+          No Customer has favourited a service yet.
         </p>
       )}
       <div className="panel">

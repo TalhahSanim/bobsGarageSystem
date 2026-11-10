@@ -1,3 +1,6 @@
+// File -> client/src/components/pages/admin/SingleUser.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 // One card has a user with edit and delete
 // SingleUser -> one card for each user and takes user as a prop
 import { FaEdit } from "react-icons/fa";

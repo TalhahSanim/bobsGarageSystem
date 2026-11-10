@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/admin/UploadImage.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 //Admin -> pick image file and upload to server
 import { useState } from "react";
 import { useAdmin } from "../../../context/AdminContext";

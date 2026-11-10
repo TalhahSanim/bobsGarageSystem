@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/admin/Users.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Cards for every user -> ADMIN ONLY
 import { useUsers } from "../../../context/UsersContext";
 import SingleUser from "./SingleUser";

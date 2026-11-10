@@ -1,3 +1,7 @@
+// File -> client/src/components/layout/Footer.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Site Footer -> Logo, page links, account links,social links and copyright
 import { Link, useLocation } from "react-router-dom";
 import { IoLogoFacebook } from "react-icons/io";

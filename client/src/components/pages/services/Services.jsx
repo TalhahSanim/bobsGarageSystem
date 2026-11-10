@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/services/Services.jsx
+// Author -> Talhah Sanim
+// ApplicationVersion -> 1.0
+
 // Services -> title, then loading the cards, an error , empty message or card per service
 import { Link } from "react-router-dom";
 import SingleService from "./SingleService";
@@ -8,6 +12,7 @@ import {
   useServicesSearch,
 } from "../../../context/GarageContext";
 import { useAuth } from "../../../context/AuthContext";
+import { IoSearchSharp } from "react-icons/io5";
 
 const grid = "grid gap-6 sm:grid-cols-2 lg:grid-cols-4"; // grid used for card and loading card placeholder to ensure they lineup
 
@@ -87,6 +92,7 @@ export default function Services() {
             className="form-input mt-4 w-full sm:w-72"
           />
         </div>
+        <IoSearchSharp />
         <div className="flex items-center gap-3">
           {/* Sort buttons -> the selected one is filled and aria press tells screen reader which one */}
 

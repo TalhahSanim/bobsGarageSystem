@@ -1,4 +1,7 @@
 // File -> client/context/FavouritesContext.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Creates the favourites context and a custom hook to use it
 
 import { createContext, useContext } from "react";

@@ -1,4 +1,7 @@
 // File -> client/src/components/pages/services/ServiceImageField.jsx
+// Author -> Talhah Sanim
+// ApplicationVersion -> 1.0
+
 // The image part of add and edit Service forms.
 // Paste a URL, or upload a file from the computer. Either method fills in service's image
 

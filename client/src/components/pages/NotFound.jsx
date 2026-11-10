@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/NotFound.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 //  404 page -> shows for addresses don't match a route in  app.jsx
 import { Link } from "react-router-dom";
 

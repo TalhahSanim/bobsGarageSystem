@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/About.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // About -> which describes information about team, business and any other key business facts
 import bobPhoto from "../../assets/staff/bob.jpg";
 import alicePhoto from "../../assets/staff/alice.jpg";
@@ -76,7 +80,7 @@ export default function About() {
                 <span className="text-sm text-link">
                   Founder of{" "}
                   <strong className="font-extrabold">Bob's Garage</strong> &amp;
-                  Head Mechnaic
+                  Head Mechanic
                 </span>
               </p>
             </div>

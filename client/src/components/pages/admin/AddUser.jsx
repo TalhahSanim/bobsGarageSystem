@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/admin/AddUser.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Add User page -> form for an admin to add user and optionally assign as admin
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";

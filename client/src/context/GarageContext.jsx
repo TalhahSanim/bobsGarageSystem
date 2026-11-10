@@ -1,3 +1,7 @@
+// File -> client/src/context/GarageContext.jsx
+
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 //  Import createContext and useContext Hooks from react
 import { createContext, useContext } from "react";
 

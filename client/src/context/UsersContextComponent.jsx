@@ -1,3 +1,7 @@
+// File -> client/src/context/UsersContext.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 //  The users provider -> the admins list of users and functions to manage them
 
 import { useState } from "react";

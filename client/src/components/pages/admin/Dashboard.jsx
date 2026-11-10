@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/admin/Dashboard.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Admin Dashboard -> sidebar for links and  selected admin page in the <Outlet/>
 // Logged in ADMINS are only able to see it
 

@@ -1,4 +1,6 @@
 // File -> client/src/context/ThemeContextComponent.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 // The preferences provider -> theme , font-size and sort order
 // Saved in localStorage for guest and in the database for logged in users
 

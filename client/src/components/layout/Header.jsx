@@ -1,3 +1,8 @@
+// File -> client/src/components/layout/Header.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+// Website Header -> Logo, Page Links via role, Theme Toggle and Sliding Mobile Sidebar Menu
+
 import { useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { IoHome } from "react-icons/io5";

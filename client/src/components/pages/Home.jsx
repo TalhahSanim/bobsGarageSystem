@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/Home.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Landing Page -> full screen hero then four key services
 import { Link } from "react-router-dom";
 import { useServices } from "../../context/GarageContext";

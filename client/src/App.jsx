@@ -1,3 +1,8 @@
+// File -> client/src/App.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+// App -> Header, Every Route, Footer & mobile BottomNav
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // react router dom imports
 import "./App.css";
 // Import custom components
@@ -23,7 +28,7 @@ import EditUser from "./components/pages/admin/EditUser";
 import AddUser from "./components/pages/admin/AddUser";
 import UploadImage from "./components/pages/admin/UploadImage";
 import SystemOverview from "./components/pages/admin/SystemOverview";
-import Interest from "./components/pages/admin/Interest";
+import Interest from "./components/pages/admin/Favourites";
 
 import BottomNav from "./components/layout/BottomNav";
 

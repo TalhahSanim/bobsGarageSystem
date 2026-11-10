@@ -1,4 +1,8 @@
-// Phone ONly bar stuck to bottom of screen and dependant on role of user
+// File -> client/src/components/layout/BottomNav.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
+// Mobile ONly bar stuck to bottom of screen and dependant on role of user
 import { NavLink } from "react-router-dom";
 import {
   FaHome,

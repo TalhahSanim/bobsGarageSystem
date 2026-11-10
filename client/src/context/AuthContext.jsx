@@ -1,3 +1,7 @@
+// File -> client/src/context/AuthContext.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Creates the auth context and a custom hook to use it
 
 import { createContext, useContext } from "react";

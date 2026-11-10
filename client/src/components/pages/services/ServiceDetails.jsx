@@ -1,4 +1,6 @@
 // File -> client/src/components/pages/services/ServiceDetails.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 // One services details page with an i'm interested favourite button
 
 import { useState, useEffect } from "react";

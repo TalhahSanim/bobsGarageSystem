@@ -1,4 +1,9 @@
 // File -> client/src/components/layout/ProtectedRoute.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
+
+
 // Sends the guest to login  and non-admins away from admin pages
 // usage -> <ProtectedRoute><MyFavourites /></ProtectedRoute>
 // <ProtectedRoute adminOnly><AddService /></ProtectedRoute>

@@ -1,4 +1,7 @@
 // File -> client/src/context/EnquiriesContextComponent.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // The enquiries provide -> loads the logged in user's enquiries
 // sends new ones and ticks replies
 

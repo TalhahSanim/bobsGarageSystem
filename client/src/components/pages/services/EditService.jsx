@@ -1,3 +1,9 @@
+// File -> client/src/components/pages/services/EditServices.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
+// Edit Services Page [ADMIN] -> Loads a service into the form and saves the changes
+
 // import useState and  useEffect from react
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";

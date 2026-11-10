@@ -1,3 +1,7 @@
+// File -> client/src/context/UsersContext.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Create the users context for admin dashboard with a hook to use it
 
 import { createContext, useContext } from "react";

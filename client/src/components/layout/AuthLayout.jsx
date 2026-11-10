@@ -1,3 +1,7 @@
+// File -> client/src/components/layout/AuthLayout.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Login & Register layout on the  left -> Photo left and message on left and the form on right
 import heroImage from "../../assets/hero-image.jpg";
 

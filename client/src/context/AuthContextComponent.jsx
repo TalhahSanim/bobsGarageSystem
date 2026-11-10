@@ -1,3 +1,7 @@
+// File -> client/src/context/AuthContextComponent.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // The auth provider logs users in and out and remembers the token
 // loads the logged in user when the app starts
 

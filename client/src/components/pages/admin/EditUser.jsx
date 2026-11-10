@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/admin/EditUser.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Admin form for editing users details except user password
 import { useState, useEffect, Fragment } from "react";
 import { useParams, useNavigate } from "react-router-dom";

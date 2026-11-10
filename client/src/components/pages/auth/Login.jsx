@@ -1,3 +1,7 @@
+// File -> client/src/components/pages/auth/Login.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Login page -> email and password form logs in with AuthContext
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
