@@ -1,7 +1,7 @@
 // File -> client/src/components/pages/services/ServiceDetails.jsx
 // Author -> Talhah Sanim
 // Application Version -> 1.0
-// One services details page with an i'm interested favourite button
+// One services details page with an i'm interested and favourite button
 
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
