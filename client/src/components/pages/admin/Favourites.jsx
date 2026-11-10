@@ -120,13 +120,13 @@ export default function Favourites() {
                     favourite.status === "new" ? "font-semibold" : "text-muted"
                   }`}
                 >
-                  <td className={cell} label="Date">
+                  <td className={cell} data-label="Date">
                     {new Date(favourite.createdAt).toLocaleDateString()}
                   </td>
-                  <td className={cell} label="Customer">
+                  <td className={cell} data-label="Customer">
                     {favourite.User.firstName} {favourite.User.lastName}
                   </td>
-                  <td className={cell} label="Email">
+                  <td className={cell} data-label="Email">
                     <a
                       href={`mailto:${favourite.User.email}`}
                       className="underline"
@@ -134,17 +134,17 @@ export default function Favourites() {
                       {favourite.User.email}
                     </a>
                   </td>
-                  <td className={cell} label="Service">
+                  <td className={cell} data-label="Service">
                     {favourite.Service.name}
                   </td>
-                  <td className={cell} label="Status">
+                  <td className={cell} data-label="Status">
                     {favourite.status === "contacted" ? (
                       <span className="badge badge-responded">Contacted</span>
                     ) : (
                       <span className="badge badge-pending">New</span>
                     )}
                   </td>
-                  <td className={cell} label="Action">
+                  <td className={cell} data-label="Action">
                     <button
                       type="button"
                       className="btn btn-primary min-w-36 text-xs"
