@@ -91,7 +91,7 @@ export default function App() {
               <Route path="users/edit/:id" element={<EditUser />} />
               <Route path="users-add" element={<AddUser />} />
               <Route path="images-new" element={<UploadImage />} />
-              <Route path="interests" element={<Favourites />} />
+              <Route path="favourites" element={<Favourites />} />
 
               <Route
                 path="enquiries"
