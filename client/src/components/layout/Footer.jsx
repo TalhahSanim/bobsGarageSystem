@@ -47,7 +47,7 @@ export default function Footer({ embedded }) {
             alt="Bob's Garage"
             className={`hidden w-auto dark:block ${compact ? "h-16 lg:h-10" : "h-16"}`}
           />
-          <p className="mt-2 text-on-footer/80">
+          <p className="mt-2 text-on-footer">
             Speedy Service With Top Notch Care
           </p>
         </div>
@@ -58,13 +58,13 @@ export default function Footer({ embedded }) {
             Our Garage
           </h2>
 
-          <Link to="/" className="text-on-footer/80 hover:text-white">
+          <Link to="/" className="text-on-footer hover:text-white">
             Home
           </Link>
-          <Link to="/services" className="text-on-footer/80 hover:text-white">
+          <Link to="/services" className="text-on-footer hover:text-white">
             Services
           </Link>
-          <Link to="/about" className="text-on-footer/80 hover:text-white">
+          <Link to="/about" className="text-on-footer hover:text-white">
             About
           </Link>
         </nav>
@@ -75,10 +75,10 @@ export default function Footer({ embedded }) {
             Accounts
           </h2>
 
-          <Link to="/login" className="text-on-footer/80 hover:text-white">
+          <Link to="/login" className="text-on-footer hover:text-white">
             Login
           </Link>
-          <Link to="/register" className="text-on-footer/80 hover:text-white">
+          <Link to="/register" className="text-on-footer hover:text-white">
             Register
           </Link>
         </nav>
@@ -89,7 +89,7 @@ export default function Footer({ embedded }) {
             Contact Us
           </h2>
 
-          <address className={`${column} not-italic text-on-footer/80`}>
+          <address className={`${column} not-italic text-on-footer`}>
             <span className="hover:text-white">
               52 Box Street, Melbourne, 3000
             </span>
@@ -105,7 +105,7 @@ export default function Footer({ embedded }) {
           </address>
         </div>
         {/* Opening Hours */}
-        <div className={`${column} text-on-footer/80`}>
+        <div className={`${column} text-on-footer`}>
           <h2 className={`${heading} flex items-center gap-2 text-on-footer`}>
             <IoTime aria-hidden="true" />
             Opening Hours
@@ -125,7 +125,7 @@ export default function Footer({ embedded }) {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
+            className="text-on-footer hover:text-white inline-flex items-center gap-2"
           >
             <IoLogoFacebook aria-hidden="true" />
             Facebook
@@ -134,7 +134,7 @@ export default function Footer({ embedded }) {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
+            className="text-on-footer hover:text-white inline-flex items-center gap-2"
           >
             <FaSquareInstagram aria-hidden="true" /> Instagram
           </a>
@@ -142,7 +142,7 @@ export default function Footer({ embedded }) {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-on-footer/80 hover:text-white inline-flex items-center gap-2"
+            className="text-on-footer hover:text-white inline-flex items-center gap-2"
           >
             <FaLinkedin aria-hidden="true" />
             Linkedin
@@ -151,7 +151,7 @@ export default function Footer({ embedded }) {
       </div>{" "}
       {/* Copyright */}
       <div
-        className={`border-t border-white/10 font-normal text-on-footer/70 ${compact ? "px-4 py-4 text-sm lg:px-10 lg:py-3 lg:text-xs" : "mx-auto max-w-6xl px-4 py-4 text-sm"} `}
+        className={`border-t border-white/10 font-normal text-on-footer ${compact ? "px-4 py-4 text-sm lg:px-10 lg:py-3 lg:text-xs" : "mx-auto max-w-6xl px-4 py-4 text-sm"} `}
       >
         All Rights Reserved. © Bob's Garage {year} .{" "}
         <Link to="/credits" className="underline hover:text-white">

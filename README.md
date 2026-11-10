@@ -15,10 +15,7 @@ Full Credits available on the website's **/credits** page.
 - James: Artem Podrez, Pexels, https://www.pexels.com/photo/8985457/
 - Tim: Bulat843, Pexels, https://www.pexels.com/photo/38264261/
 - About video: "Cars Competing on a Racing Track", WeStarMoney Rec, Pexels, https://www.pexels.com/video/cars-competing-on-a-racing-track-10825298/
-- Oil Changes: Pho Tomass, Pexels, https://www.pexels.com/photo/33535698/
-- Tyre Rotation: Dextar Studio, Unsplash, https://unsplash.com/photos/gW34cv-Ojjs
-- Garage Expansion: Alex Suprun, Unsplash, https://unsplash.com/photos/several-vehicles-parked-beside-wall-AHnhdjyTNGM
-- Custom Wrap: (photographer), (page link)
+
 - Home hero photo: David Leonard, Unsplash, https://unsplash.com/photos/a-group-of-men-standing-next-to-a-blue-sports-car-EZaVE8yFLTQ
 
 ### Icons Used From React Icons

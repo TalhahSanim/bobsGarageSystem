@@ -72,7 +72,7 @@ export default function Dashboard() {
             />
           </Link>
         </div>
-        <p className="mb-4 hidden text-xs font-normal tracking-wide text-on-footer/60 uppercase lg:block">
+        <p className="mb-4 hidden text-xs font-normal tracking-wide text-on-footer uppercase lg:block">
           Admin
         </p>
         <DashboardLinks />
@@ -90,7 +90,7 @@ export default function Dashboard() {
           {/* Image and Link to open profile for admins */}
           <Link
             to="/profile"
-            className="flex minn-w-0 flex-1 items-center gap-3 text-on-footer no-underline hover:opacity-80"
+            className="flex min-w-0 flex-1 items-center gap-3 text-on-footer no-underline hover:opacity-80"
           >
             {user.image ? (
               <img
@@ -113,10 +113,7 @@ export default function Dashboard() {
                   Admin
                 </span>
               </p>
-              <p
-                className="truncate text-xs text-on-footer/70"
-                title={user.email}
-              >
+              <p className="truncate text-xs text-on-footer" title={user.email}>
                 {user.email}
               </p>
             </div>
@@ -134,7 +131,7 @@ export default function Dashboard() {
       {/* Right -> admin on top and footer on bottom */}
       <div className="flex min-w-0 flex-col">
         <section className="flex-1 pt-6 lg:p-10">
-          {/* Top bar on top including backhome left and theme toggle on the right */}
+          {/* Top bar on top including back home left and theme toggle on the right */}
           <div className="mb-6 hidden items-center justify-between lg:flex">
             <Link to="/" className="btn btn-outline btn-sm">
               <FaArrowLeft aria-hidden="true" /> Back Home

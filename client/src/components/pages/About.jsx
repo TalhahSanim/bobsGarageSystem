@@ -45,7 +45,7 @@ export default function About() {
         {/* Text on top -> relative makes it above absolute video and the tinting */}
         <div className="relative mx-auto flex min-h-120 max-w-6xl flex-col items-start gap-4 px-4 py-20 text-white  ">
           {" "}
-          <h1 className="text-6xl drop-shadow-6xl">About Bob's Garage</h1>
+          <h1 className="text-6xl drop-shadow-lg">About Bob's Garage</h1>
           <p className="mt-2 font-semibold text-2xl drop-shadow-2xl text-white/90">
             Bob's Garage is quality workshop with fixed fees, top quality
             mechanics and No Gothas: Meet the team taking care of your vehicle
