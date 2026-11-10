@@ -94,7 +94,7 @@ export default function Register() {
     if (password !== passwordCompare) {
       setFormData({
         ...formData,
-        errors: { password: "Passwords do not match" },
+        errors: { password: "Passwords Do Not Match!" },
       });
       return;
     }

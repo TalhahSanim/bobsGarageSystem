@@ -39,7 +39,7 @@ export default function Inbox() {
       <p className="mb-6 text-muted">
         {unreadCount > 0
           ? `${unreadCount} new ${unreadCount === 1 ? "reply" : "replies"}`
-          : "Your caught up"}
+          : "You're All Caught Up"}
       </p>
 
       {/* Empty state or empty list */}

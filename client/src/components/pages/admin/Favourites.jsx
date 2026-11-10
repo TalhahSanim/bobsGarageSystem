@@ -154,7 +154,7 @@ export default function Favourites() {
                     >
                       {favourite.status === "new"
                         ? "Tick Contacted"
-                        : "Tick as new"}
+                        : "Tick as New"}
                     </button>
                   </td>
                 </tr>

@@ -29,11 +29,11 @@ export default function Profile() {
     if (!file) return;
     // The same rule the server applied so user know straight away
     if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-      setAvatarMsg("Please Select An JPG,PNG or WebP Image");
+      setAvatarMsg("Please Select an JPG,PNG or WebP Image");
       return;
     }
     if (file.size > 25 * 1024 * 1024) {
-      setAvatarMsg("The image must be 25mb or smaller");
+      setAvatarMsg("The Image Must Be 25MB Or Less");
       return;
     }
     setAvatarFile(file);

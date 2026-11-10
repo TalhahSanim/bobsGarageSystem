@@ -30,7 +30,7 @@ export const sendEnquiry = async (req, res) => {
     // Ensure service exists?
     const service = await Service.findByPk(serviceId);
     if (!service) {
-      return res.status(404).json({ msg: "Service not found" });
+      return res.status(404).json({ msg: "Service Not Found" });
     }
     // User comes via the token not from body
     const enquiry = await Enquiry.create({
@@ -44,7 +44,7 @@ export const sendEnquiry = async (req, res) => {
       include: [{ model: Service }],
     });
     res.status(201).json({
-      msg: `Thanks For Your Enquiry ${req.user.firstName}! We will reply about details of this ${service.name} service in your Inbox.`,
+      msg: `Thanks For Your Enquiry ${req.user.firstName}! We Will Reply About Details Of This ${service.name} Service In Your Inbox.`,
       enquiry: wholeEnquiry,
     });
   } catch (err) {
@@ -52,7 +52,7 @@ export const sendEnquiry = async (req, res) => {
     if (err.name === "SequelizeValidationError") {
       return res
         .status(400)
-        .json({ msg: "Your message must be between 10 and 1000 characters" });
+        .json({ msg: "Your Message Must Be Between 10 and 1000 Characters" });
     }
     console.error(err.message);
     res.status(500).json({ msg: "Server Error" });
@@ -182,7 +182,7 @@ export const enquiryResponse = async (req, res) => {
     if (err.name === "SequelizeValidationError") {
       return res
         .status(400)
-        .json({ msg: "Reply must be 1000 characters or less" });
+        .json({ msg: "Reply Must Be 1000 Characters Or Less" });
     }
     console.error(err.message);
     res.status(500).json({ msg: "Server Error" });

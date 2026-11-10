@@ -25,7 +25,7 @@ export default function ServiceImageField({ image, error, onImageChange }) {
       onImageChange(result.image);
       setUpload({
         status: "complete",
-        msg: "Uploaded. Save the service to keep it",
+        msg: "Uploaded. Save The Service To Keep It",
       });
     } else {
       setUpload({ status: "failed", msg: result.msg });

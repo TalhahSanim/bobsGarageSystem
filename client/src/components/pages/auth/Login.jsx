@@ -36,7 +36,7 @@ export default function Login() {
 
     // validation
     if (is_Empty(email)) {
-      setFormData({ ...formData, errors: { email: "Email is required" } });
+      setFormData({ ...formData, errors: { email: "Email Is Required" } });
       return;
     }
     if (is_Empty(password)) {

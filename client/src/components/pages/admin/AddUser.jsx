@@ -183,7 +183,7 @@ export default function AddUser() {
               <input
                 type="submit"
                 value={
-                  registerStatus === "pending" ? "Adding..." : "Add new user"
+                  registerStatus === "pending" ? "Adding..." : "Add New User"
                 }
                 className="btn-info disabled:opacity-60"
                 disabled={registerStatus === "pending"}

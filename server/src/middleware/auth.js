@@ -30,6 +30,6 @@ export default function auth(req, res, next) {
     console.log(err.message);
     res
       .status(401)
-      .json({ msg: "Your Session Has Expired. Please Log in Again" });
+      .json({ msg: "Your Session Has Expired. Please Log In Again" });
   }
 }

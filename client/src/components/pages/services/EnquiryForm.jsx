@@ -30,7 +30,7 @@ export default function EnquiryForm({ service }) {
 
     // same rule as server-> at least 10 characters
     if (message.trim().length < 10) {
-      setError("Please type at least 10 characters");
+      setError("Please Type at Least 10 Characters");
       return;
     }
 
