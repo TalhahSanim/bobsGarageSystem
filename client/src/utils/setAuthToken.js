@@ -1,3 +1,7 @@
+// File -> client/src/utils/setAuth.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // sends our token to http headers with each axios request
 
 import axios from "axios";

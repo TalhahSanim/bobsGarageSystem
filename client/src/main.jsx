@@ -1,3 +1,7 @@
+// File -> client/src/main.jsx
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";

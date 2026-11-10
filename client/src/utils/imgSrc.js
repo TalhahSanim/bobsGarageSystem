@@ -1,4 +1,6 @@
 // File -> client/src/utils/imgSrc.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 // Makes image be something img can use
 
 // Server location where it displays uploaded files

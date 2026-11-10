@@ -1,3 +1,7 @@
+// File -> client/src/utils/validation.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // This file holds our client-side validation
 
 // Function: is_Empty
