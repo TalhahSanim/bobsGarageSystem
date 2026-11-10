@@ -1,3 +1,7 @@
+// File -> server/src/middleware/auth.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 //checks the token in x-auth-token header
 // when valid puts the user from the token on req.user and calls next()
 import jwt from "jsonwebtoken";

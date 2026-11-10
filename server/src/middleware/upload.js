@@ -1,3 +1,7 @@
+// File -> server/src/middleware/upload.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Multer configuration -> where uploads saved and called
 // and which files allowed to be upload such as images up to 25mb
 // used by routes/admin.js

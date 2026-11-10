@@ -1,4 +1,6 @@
-// File -> src/routes/favourites.js
+// File -> server/src/routes/favourites.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 // Routes for Favourites-> the code for each one is in the controllers/favouritesController.js
 // GET -> /api/favourites -> private - logged in users favourites
 // GET -> /api/favourites/all -> admin -> Every favourite with the customer and service

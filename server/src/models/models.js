@@ -1,3 +1,7 @@
+// File -> server/src/models/models.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // this file will hold database models
 // it will allow the server to create tables in the database if they do not exist
 // database must exist before table creation

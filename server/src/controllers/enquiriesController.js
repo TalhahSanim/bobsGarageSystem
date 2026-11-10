@@ -1,4 +1,8 @@
 // File -> src/controllers/enquiriesController.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
+
 // Enquiries controllers -> is a customers question/query about a service and business's response
 // send, get my-enquiries,mark-read, get all (admin) and reply (admin)
 // routes/enquiries.js makes auth and admin in front of each route

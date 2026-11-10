@@ -1,3 +1,7 @@
+// File -> server/src/middleware/admin.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 //  Only let admins through and it must run after auth as auth sets req.user
 
 // Admin Middleware takes in req,res and next

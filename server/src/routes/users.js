@@ -1,3 +1,7 @@
+// File -> server/src/routes/users.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // the admin routes for users -> getALL, add,edit, delete
 // auth and admin are added to every route
 import express from "express";

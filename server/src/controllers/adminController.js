@@ -1,3 +1,7 @@
+// File -> server/src/controllers/adminController.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Admin image controllers -> uploadImage and getImageList
 // routes/admin.js adds auth, admin and multer uploads in front
 import fs from "fs";

@@ -1,3 +1,7 @@
+// File -> server/src/middleware/avatarUpload.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // File -> src/middleware/avatarUpload.js
 // Multer settings fo profile images such as where to save or what to call it and the size and image types
 // Any logged  in user can upload

@@ -1,4 +1,7 @@
-// File -> src/utils/validate.js
+// File -> server/src/utils/validate.js
+// Author -> Talhah Sanim
+// ApplicationVersion -> 1.0
+
 // Server side validation with joi. Each Schema describes what good request body is
 // validate schema turns a schema into middleware -> it runs before the route and if the body
 // is bad it sends 400 with {msg,errors} and  the route never runs

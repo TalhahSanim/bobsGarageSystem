@@ -1,3 +1,7 @@
+// File -> server/src/routes/admin.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // The admin dash image routes:
 // uploadImage -> POST /api/admin/uploadImage -> ADMIN ONLY
 // getImageList -> GET /api/admin/getImageList -> ADMIN ONLY

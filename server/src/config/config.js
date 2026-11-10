@@ -1,3 +1,7 @@
+// File -> server/src/config/config.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // this file will hold our config options for our server
 
 // create export

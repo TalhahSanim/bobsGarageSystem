@@ -1,3 +1,7 @@
+// File -> server/src/routes/services.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // The routes for service-> add,getALL, getOne,edit & delete
 // server.js uses the file on /api/services so every path starts here starts after that
 import express from "express";
@@ -10,7 +14,7 @@ import {
   getOrderedServices,
   searchServices,
   updateService,
-  deleteService, 
+  deleteService,
 } from "../controllers/servicesController.js";
 import { validateService } from "../utils/validate.js";
 

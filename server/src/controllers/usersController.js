@@ -1,3 +1,7 @@
+// File -> server/src/controllers/usersController.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Users controllers [ADMIN]-> getALL, add,edit,delete
 // user routes add auth and admin in front for everyone
 

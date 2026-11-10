@@ -1,4 +1,7 @@
-// File -> src/routes/enquiries.js
+// File -> server/src/routes/enquiries.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Routes for enquiries and functions of each one is in controllers/enquiriesController.js
 // POST -> /api/enquiries/:serviceId -> private - send an enquiry about a service
 // GET -> /api/enquiries/my-enquiries -> private - my enquiries newest first in inbox

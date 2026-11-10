@@ -1,3 +1,7 @@
+// File -> server/src/controllers/servicesController.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Service Controllers route functions GET,getALL, getONE , edit and delete
 
 import db, { Op } from "../models/models.js";

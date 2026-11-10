@@ -1,3 +1,7 @@
+// File -> server/src/logger/logger.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Logs every request to the console and to log.json
 // winston -> the logger, morgan -> collects each requests details
 

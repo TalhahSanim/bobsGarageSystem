@@ -1,3 +1,7 @@
+// File -> server/src/controllers/authController.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 //  Auth Controller -> Register, Login and loadUser
 import bcrypt from "bcrypt";
 import db from "../models/models.js";

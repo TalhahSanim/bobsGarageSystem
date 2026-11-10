@@ -1,4 +1,6 @@
 // File -> /src/controllers/favouritesController.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
 // Favourite controllers -> Im interested in this service
 // get mine, get all [ADMIN], add, remove, and update the status [ADMIN]
 //  routes.favourites.js puts auth and ADMIN in front of each one

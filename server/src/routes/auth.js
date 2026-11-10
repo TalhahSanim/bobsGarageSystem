@@ -1,3 +1,7 @@
+// File -> server/src/routes/auth.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
 // Routes for authentication:
 // Login -> POST /api/auth/login, public -> checks the details and sends a token
 // Register -> POST /api/auth/register, public-> saves a user and sends a token

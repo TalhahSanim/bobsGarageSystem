@@ -1,4 +1,8 @@
 // File -> src/controllers/avatarController.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
+
 // Logged in users profile image -> upload or remove one
 // routes/users.js puts auth in front of both that means req.user always set
 
