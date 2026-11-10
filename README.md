@@ -1,4 +1,4 @@
-# Bob's Garage
+# Bob's Garage by Talhah Sanim
 
 A Full Stack Application for Bob's Garage where customers browse through services, save their favourite services or services their interested in; Admins easily manage Bob's services through service management, user management, view & manage enquiries from customers and image
 
@@ -14,7 +14,7 @@ Full Credits available on the website's **/credits** page.
 - Alice: Zulfugar Karimov, Unsplash, https://unsplash.com/@zulfugarkarimov
 - James: Artem Podrez, Pexels, https://www.pexels.com/photo/8985457/
 - Tim: Bulat843, Pexels, https://www.pexels.com/photo/38264261/
-- About video: "Cars Competing on a Racing Track", WeStarMoney Rec, Pexels
+- About video: "Cars Competing on a Racing Track", WeStarMoney Rec, Pexels, https://www.pexels.com/video/cars-competing-on-a-racing-track-10825298/
 - Oil Changes: Pho Tomass, Pexels, https://www.pexels.com/photo/33535698/
 - Tyre Rotation: Dextar Studio, Unsplash, https://unsplash.com/photos/gW34cv-Ojjs
 - Garage Expansion: Alex Suprun, Unsplash (page link)
