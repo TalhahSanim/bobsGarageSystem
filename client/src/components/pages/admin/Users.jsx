@@ -12,7 +12,7 @@ export default function Users() {
 
   if (status === "loading") {
     return (
-      <p className="flex items-center gap-3 text-gray-600">
+      <p className="flex items-center gap-3 text-muted">
         <span className="spinner" aria-hidden="true"></span> Loading users....
       </p>
     );

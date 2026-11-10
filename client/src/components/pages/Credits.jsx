@@ -33,10 +33,39 @@ const mediaCredits = [
   {
     item: "About Page Video",
     author: "WeStarMoney Rec",
-    link: "https://www.pexels.com/video/cars-competing-on-a-racing-track-10825298/",
+    link: "PASTE THE PEXELS VIDEO LINK",
     licence: "Pexels",
   },
-  // add the hero photo and each service photo from step 1 here
+  {
+    item: "Oil Changes (Service Photo)",
+    author: "Pho Tomass",
+    link: "https://www.pexels.com/photo/33535698/",
+    licence: "Pexels",
+  },
+  {
+    item: "Tyre Rotation (Service Photo)",
+    author: "Dextar Studio",
+    link: "https://unsplash.com/photos/gW34cv-Ojjs",
+    licence: "Unsplash",
+  },
+  {
+    item: "Garage Expansion (Service Photo)",
+    author: "Alex Suprun",
+    link: "PASTE THE UNSPLASH PAGE LINK",
+    licence: "Unsplash",
+  },
+  {
+    item: "Custom Wrap (Service Photo)",
+    author: "PHOTOGRAPHER NAME",
+    link: "PASTE THE UNSPLASH PAGE LINK",
+    licence: "Unsplash",
+  },
+  {
+    item: "Home Hero Photo",
+    author: "David Leonard",
+    link: "https://unsplash.com/photos/a-group-of-men-standing-next-to-a-blue-sports-car-EZaVE8yFLTQ",
+    licence: "Unsplash",
+  },
 ];
 
 // Icon sets -> the set, who made it, the link and the licence
