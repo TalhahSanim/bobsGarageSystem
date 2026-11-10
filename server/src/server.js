@@ -1,3 +1,8 @@
+// File -> server/src/server.js
+// Author -> Talhah Sanim
+// Application Version -> 1.0
+
+// Express Server -> includes security headers, middleware, api routes, 404 and errors handles which then syncs and listens
 import helmet from "helmet";
 // Bring in our database (models and Sequelize) from models.js
 import "dotenv/config";

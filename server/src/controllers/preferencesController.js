@@ -1,6 +1,7 @@
 // File -> server/src/controllers/preferencesController.js
 // Author -> Talhah Sanim
 // Application Version -> 1.0
+
 // The logged in users display preferences -> get them and change them
 //  routes/preferences.js puts auth in front of both
 
