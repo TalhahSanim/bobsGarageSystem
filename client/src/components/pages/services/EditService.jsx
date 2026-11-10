@@ -99,7 +99,9 @@ export default function EditService() {
     // send updated service to the API. only leave if it is saved
     const saved = await updateService(updService);
     if (saved) {
-      navigate("/services");
+      navigate("/services", {
+        state: { toast: `${updService.name} Was Saved` },
+      });
     } else {
       setFormData({
         ...formData,

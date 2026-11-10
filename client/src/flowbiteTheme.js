@@ -22,7 +22,7 @@ const flowbiteTheme = createTheme({
   // pop up message -> square with blue bar on left
   toast: {
     root: {
-      base: "rounded-none border-1-4 border-primary bg-surface text-ink shadow-lg dark:bg-surface dark:hover:bg-page dark:hover:text-ink",
+      base: "rounded-none border-l-4  border-primary bg-surface text-ink shadow-lg dark:bg-surface dark:hover:bg-page dark:hover:text-ink",
     },
     toggle: {
       base: "rounded-none bg-surface text-muted hover:bg-page hover:text-ink dark:bg-surface dark:hover:bg-page dark:hover:text-ink ",

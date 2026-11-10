@@ -95,7 +95,10 @@ export default function AddServices() {
     // send the new service to the api and only leave if saved
     const saved = await addService(newService);
     if (saved) {
-      navigate("/services");
+      // Back to list and ask it to display a message
+      navigate("/services", {
+        state: { toast: `${newService.name} Was Added` },
+      });
     } else {
       setFormData({
         ...formData,

@@ -17,7 +17,7 @@ export default function ConfirmDelete({
   onClose,
 }) {
   return (
-    <Modal show={show} size="md" popup onClose={onClose}>
+    <Modal show={show} size="md" popup dismissible onClose={onClose}>
       <ModalHeader />
       <ModalBody>
         <div className="text-center">

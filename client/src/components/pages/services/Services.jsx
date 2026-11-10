@@ -3,7 +3,13 @@
 // ApplicationVersion -> 1.0
 
 // Services -> title, then loading the cards, an error , empty message or card per service
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+// Flowbite's popup message
+import { Toast, ToastToggle } from "flowbite-react";
+import { FaCheck } from "react-icons/fa";
+// React Bits -> slides children when they come into view
+import AnimatedContent from "../../ui/AnimatedContent";
 import SingleService from "./SingleService";
 import {
   useServices,
@@ -14,7 +20,7 @@ import {
 import { useAuth } from "../../../context/AuthContext";
 import { IoSearchSharp } from "react-icons/io5";
 
-const grid = "grid gap-6 sm:grid-cols-2 lg:grid-cols-4"; // grid used for card and loading card placeholder to ensure they lineup
+const grid = "grid gap-6 sm:grid-cols-2 lg:grid-cols-4"; // grid used for card and loading card placeholder to ensure they line-up
 
 const sortOptions = [
   { value: "default", label: "Default" },
@@ -28,6 +34,27 @@ export default function Services() {
   const { sort, setSort } = useServicesSort();
   const { search, setSearch } = useServicesSearch(); // current search text and function to change
   const { isAdmin } = useAuth();
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Toast message which starts with one Add/Edit sent or nothing
+  const [toast, setToast] = useState(location.state?.toast || "");
+
+  // Clear the message from the browser history so refresh does not show it again
+  useEffect(() => {
+    if (location.state?.toast) {
+      navigate(location.pathname, { replace: true, state: null });
+    }
+  }, []);
+
+  // Hide toast after 4 seconds
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(""), 4000);
+    // Clear out old message from timer if new message comes out
+    return () => clearTimeout(timer);
+  });
 
   let content;
   if (status === "loading") {
@@ -57,15 +84,27 @@ export default function Services() {
     content = (
       <p className="border border-dashed border-line p-8 text-center text-muted">
         {search.trim()
-          ? `No Services Match "${search.trim()}`
+          ? `No Services Match "${search.trim()}"`
           : "Sorry, No Services At The Moment❤️‍🩹"}
       </p>
     );
   } else {
     content = (
       <div className={grid}>
-        {serviceList.map((service) => (
-          <SingleService key={service.serviceId} service={service} />
+        {serviceList.map((service, index) => (
+          <AnimatedContent
+            key={service.serviceId}
+            className="h-full"
+            distance={40}
+            duration={0.6}
+            delay={(index % 4) * 0.1}
+          >
+            <SingleService
+              key={service.serviceId}
+              service={service}
+              onToast={setToast}
+            />
+          </AnimatedContent>
         ))}
       </div>
     );
@@ -130,6 +169,17 @@ export default function Services() {
         </div>
       </div>
       {content}
+      {/* The toast on bottom right above mobile BottomNav only if there's a message  */}
+      <div className="fixed right-4 bottom-24 z-50 lg:bottom-4" role="status">
+        <Toast>
+          <FaCheck
+            className="size-5 shrink-0 text-success"
+            aria-hidden="true"
+          />
+          <p className="ms-3 text-sm font-normal">{toast}</p>
+          <ToastToggle onDismiss={() => setToast("")} />
+        </Toast>
+      </div>
     </section>
   );
 }
