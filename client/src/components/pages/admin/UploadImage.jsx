@@ -35,7 +35,7 @@ export default function UploadImage() {
       <title>Upload Image - Bob's Garage</title>
 
       <div className="panel">
-        <div className="panel-header">Select an image to Uplaod:</div>
+        <h1 className="panel-header">Select an image to Upload:</h1>
         <div className="panel-body">
           <form onSubmit={(e) => handleUpload(e)} encType="mulipart/form-data">
             <div className="mb-4">

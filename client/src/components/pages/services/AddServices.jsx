@@ -214,7 +214,7 @@ export default function AddServices() {
       <title>Add Service - Bob's Garage</title>
 
       <div className="panel">
-        <div className="panel-header">Car Service:</div>
+        <h1 className="panel-header">Car Service:</h1>
         <div className="panel-body">
           {/* Form */}
           <form onSubmit={(e) => handleSubmit(e)}>

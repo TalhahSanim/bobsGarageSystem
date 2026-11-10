@@ -17,7 +17,7 @@ export default function FavouritedServices() {
   const { favourites, removeFavourite } = useFavourites();
   const { latestOne } = useEnquiries();
   return (
-    <main className="my-10">
+    <section className="my-10">
       <title>Saved Services - Bob's Garage</title>
       <h1 className="text-4xl">Saved Services</h1>
       <p className="mt-2 mb-6 text-muted">
@@ -91,7 +91,6 @@ export default function FavouritedServices() {
                 type="button"
                 className="btn btn-sm btn-ghost text-muted"
                 onClick={() => removeFavourite(favourite.serviceId)}
-                aria-label={`Remove ${favourite.Service?.name} from saved`}
               >
                 Remove
               </button>
@@ -99,6 +98,6 @@ export default function FavouritedServices() {
           ))}
         </ul>
       )}
-    </main>
+    </section>
   );
 }

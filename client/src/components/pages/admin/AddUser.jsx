@@ -138,7 +138,7 @@ export default function AddUser() {
       </label>
       <input
         type={type}
-        className={`form-input ${errors[name]} ? "is-invalid: ""`}
+        className={`form-input ${errors[name] ? "is-invalid" : ""}`}
         id={name}
         placeholder={placeholder}
         name={name}
@@ -153,7 +153,7 @@ export default function AddUser() {
     <Fragment>
       <title>Add User - Bob's Garage</title>
       <div className="panel">
-        <div className="panel-header">New User</div>
+        <h1 className="panel-header">New User</h1>
         <div className="panel-body">
           {/* Form */}
           <form onSubmit={(e) => handleSubmit(e)}>

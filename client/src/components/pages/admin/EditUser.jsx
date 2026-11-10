@@ -106,7 +106,7 @@ export default function EditUser() {
       <title>Edit User - Bob's Garage</title>
 
       <div className="panel">
-        <div className="panel-header">Edit User</div>
+        <h1 className="panel-header">Edit User</h1>
         <div className="panel-body">
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="grid gap-x-6 md:grid-cols-2">

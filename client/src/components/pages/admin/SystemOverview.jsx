@@ -41,7 +41,7 @@ export default function SystemOverview() {
       <title>System Overview - Bob's Garage</title>
 
       <h1 className="mb-6 text-3xl">Admin Dashboard</h1>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {metrics.map(([label, value]) => (
           <div key={label} className="card p-5">
             <p className="text-sm font-normal text-muted">{label}</p>

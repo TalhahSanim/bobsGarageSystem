@@ -94,7 +94,7 @@ export default function ServiceDetails() {
     );
   }
   return (
-    <main className="my-6">
+    <section className="my-6">
       <title>{`${service.name} - Bob's Garage`}</title>
 
       {/* BreadCrumb */}
@@ -156,6 +156,6 @@ export default function ServiceDetails() {
           {isAuth && <EnquiryForm service={service} />}
         </div>
       </div>
-    </main>
+    </section>
   );
 }

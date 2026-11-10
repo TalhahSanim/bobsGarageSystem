@@ -33,7 +33,7 @@ export default function Inbox() {
     }
   };
   return (
-    <main className="my-6">
+    <section className="my-6">
       <title>Inbox - Bob's Garage</title>
       <h1 className="mb-1 text-3xl font-bold">Inbox</h1>
       <p className="mb-6 text-muted">
@@ -127,6 +127,6 @@ export default function Inbox() {
           })}
         </ul>
       )}
-    </main>
+    </section>
   );
 }

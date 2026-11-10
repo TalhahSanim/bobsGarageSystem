@@ -234,7 +234,7 @@ export default function EditService() {
       <title>Edit Service - Bob's Garage</title>
 
       <div className="panel">
-        <div className="panel-header">Update the Car Service Below:</div>
+        <h1 className="panel-header">Edit Service</h1>
         <div className="panel-body">
           {/* Form */}
           <form onSubmit={(e) => handleSubmit(e)}>

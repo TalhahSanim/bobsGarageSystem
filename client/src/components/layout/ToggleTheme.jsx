@@ -17,7 +17,7 @@ export default function ToggleTheme({ className = "" }) {
       type="button"
       className={`btn btn-ghost  btn-square ${className}`}
       onClick={themeToggle}
-      aria-label="toggle dark mode"
+      aria-label="Toggle Dark Mode"
     >
       <FaMoon className="size-5 dark:hidden" />
       <FaSun className="hidden size-5 dark:block" />
