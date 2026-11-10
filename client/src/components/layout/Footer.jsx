@@ -7,6 +7,11 @@ import { Link, useLocation } from "react-router-dom";
 import { IoLogoFacebook } from "react-icons/io";
 import { FaSquareInstagram, FaLinkedin } from "react-icons/fa6";
 
+import { MdGarage, MdAccountBox } from "react-icons/md";
+import { FaMapMarked } from "react-icons/fa";
+import { IoTime } from "react-icons/io5";
+import { IoMdChatboxes } from "react-icons/io";
+
 import lightLogo from "../../assets/logo-light.png";
 import darkLogo from "../../assets/logo-dark.png";
 export default function Footer({ embedded }) {
@@ -49,6 +54,7 @@ export default function Footer({ embedded }) {
         {/* Page Links */}
         <nav className={column}>
           <h2 className={heading}>Our Garage</h2>
+          <MdGarage />
           <Link to="/" className="text-on-footer/80 hover:text-white">
             Home
           </Link>
@@ -62,6 +68,7 @@ export default function Footer({ embedded }) {
         {/* Accounts */}
         <nav className={column}>
           <h2 className={heading}>Accounts</h2>
+          <MdAccountBox />
           <Link to="/login" className="text-on-footer/80 hover:text-white">
             Login
           </Link>
@@ -72,6 +79,8 @@ export default function Footer({ embedded }) {
         {/* contact us */}
         <div className={column}>
           <h2 className={heading}>Contact Us</h2>
+
+          <FaMapMarked />
           <address className={`${column} not-italic text-on-footer/80`}>
             <span className="hover:text-white">
               52 Box Street, Melbourne, 3000
@@ -90,12 +99,14 @@ export default function Footer({ embedded }) {
         {/* Opening Hours */}
         <div className={`${column} text-on-footer/80`}>
           <h2 className={`${heading} text-on-footer`}>Opening Hours</h2>
+          <IoTime />
           <p>Monday to Friday 7:00am - 7:00pm</p>
           <p>Saturday & Sunday 7:00am - 5:00pm</p>
         </div>
         {/* Social Links */}
         <nav className={column}>
           <h2 className={heading}>Our Socials</h2>
+          <IoMdChatboxes />
           <a
             href="https://facebook.com"
             target="_blank"

@@ -123,10 +123,10 @@ export default function Dashboard() {
           </Link>
           <button
             type="button"
-            className="flex item-center gap-2 whitespace-nowrap shrink-0 bg-danger/50 px-2.5 py-3.5 text-sm transition-colors hover:bg-danger/20 cursor-pointer font-semibold"
+            className="flex item-center gap-2 whitespace-nowrap shrink-0 bg-danger/50 px-2.5 py-2.5 text-sm transition-colors hover:bg-danger/20 cursor-pointer font-semibold"
             onClick={leave}
           >
-            <FaSignOutAlt className="size-4" aria-hidden="true" /> Logout
+            <FaSignOutAlt className="size-4.5" aria-hidden="true" /> Logout
           </button>
         </div>
       </aside>
