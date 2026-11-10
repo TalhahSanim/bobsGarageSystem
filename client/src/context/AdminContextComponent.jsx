@@ -1,4 +1,4 @@
-//  The admin provider ->  List of uploade images and function to upload
+//  The admin provider ->  List of uploaded images and a function to upload
 import { useState } from "react";
 import axios from "axios";
 import { AdminContext } from "./AdminContext";
@@ -38,7 +38,7 @@ export const AdminContextProvider = ({ children }) => {
       // The servers message if it sent one -> ("images must be 25mb or less")
       return {
         ok: false,
-        msg: err.response?.data?.msg || "Upload image failed",
+        msg: err.response?.data?.msg || "Could Not Upload The Image",
       };
     }
   };

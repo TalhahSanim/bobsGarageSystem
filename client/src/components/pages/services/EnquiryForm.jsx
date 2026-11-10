@@ -70,7 +70,7 @@ export default function EnquiryForm({ service }) {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
-          {/* Chatavyers used to let user know limit before submission */}
+          {/* Character count used to let user know limit before submission */}
           <div className="mt-1 flex justify-between text-sm">
             <span className="text-danger">{error}</span>
             <span className="text-muted">

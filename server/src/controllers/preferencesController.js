@@ -46,7 +46,7 @@ export const updatePreferences = async (req, res) => {
     await preferences.update(updates);
     res.status(200).json(preferences);
   } catch (err) {
-    // A SequelizeValidationError means a value wasnt allowed
+    // A SequelizeValidationError means a value wasn't allowed
     if (err.name === "SequelizeValidationError") {
       return res.status(400).json({ msg: "Invalid Preference Value" });
     }

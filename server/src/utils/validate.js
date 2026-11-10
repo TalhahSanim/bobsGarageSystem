@@ -2,7 +2,7 @@
 // Server side validation with joi. Each Schema describes what good request body is
 // validate schema turns a schema into middleware -> it runs before the route and if the body
 // is bad it sends 400 with {msg,errors} and  the route never runs
-// the middleware alsos waps req.body for jois clean record trimmed converted unknown fields removed
+// the middleware also swaps req.body for Joi's clean copy, trimmed converted unknown fields removed
 
 import Joi from "joi";
 // options used for every check
@@ -10,23 +10,23 @@ const options = {
   abortEarly: false, // collect each problem  not just first one
   stripUnknown: true, // drop fields the schema doesnt list such as isAdmin on register
   errors: { wrap: { label: false } }, // Name is required and not "Name" is required
-  // Friendly meessage users will actually see
+  // Friendly messages the users will actually see
   messages: {
-    "any.required": "{#label} is required",
-    "string.empty": "{#label} is required",
-    "string.email": "{#label} is not valid",
-    "string.min": "{#label} must be at least {#limit} characters",
-    "string.max": "{#label} must be {#limit} characters or less",
-    "number.base": "{#label} must be a number",
-    "number.min": "{#label} cannot be negative",
-    "any.only": "{#label} must be one of {#valids}",
+    "any.required": "{#label} Is Required",
+    "string.empty": "{#label} Is Required",
+    "string.email": "{#label} Is Not Valid",
+    "string.min": "{#label} Must Be At Least {#limit} Characters",
+    "string.max": "{#label} Must Be {#limit} Characters Or Less",
+    "number.base": "{#label} Must Be A Number",
+    "number.positive": "{#label} Must Be More Than 0",
+    "any.only": "{#label} Must Be One Of {#valids}",
   },
 };
 
 // Middleware maker
 // Takes in a schema, returns a middleware function that check req.body against it
 const validate = (schema) => (req, res, next) => {
-  // req.body is undefined when no body was sent so scheck empty object
+  // req.body is undefined when no body was sent so check empty object
   const { error, value } = schema.validate(req.body ?? {}, options);
 
   if (error) {
@@ -36,7 +36,7 @@ const validate = (schema) => (req, res, next) => {
       const field = detail.path[0] ?? "body";
       if (!errors[field]) errors[field] = detail.message;
     }
-    // msg -> the first problellm so clients can read err.response.data.msg still outputing something useful
+    // msg -> the first problem so clients can read err.response.data.msg still outputting something useful
     return res.status(400).json({ msg: error.details[0].message, errors });
   }
   // Passed -> route gets the cleaned record
@@ -50,9 +50,9 @@ const serviceSchema = Joi.object({
   name: Joi.string().trim().max(100).required().label("Name"),
   type: Joi.string().trim().max(100).required().label("Type"),
   description: Joi.string().trim().max(1000).required().label("Description"),
-  // precision(2) rounds to 2 decimal palces (5.555 becomes 5.56)
-  fee: Joi.number().min(0).precision(2).required().label("Fee"),
-  // A URL or an /uploads/... pathand empty is allowed due to client having fallback image
+  // precision(2) rounds to 2 decimal places (5.555 becomes 5.56)
+  fee: Joi.number().positive().precision(2).required().label("Fee"),
+  // A URL or an /uploads/... path and empty is allowed due to client having fallback image
   image: Joi.string().trim().allow("", null).label("Image"),
 });
 
@@ -95,7 +95,7 @@ const preferencesSchema = Joi.object({
     .label("Sort Order"),
 })
   .min(1)
-  .messages({ "object.min": "Send at least one preference to change" });
+  .messages({ "object.min": "Send At Least One Preference To Change" });
 
 // Enquiries -> customers query and admins reply
 const enquirySchema = Joi.object({
@@ -109,7 +109,7 @@ const replySchema = Joi.object({
 // ------------------ The middleware the routes use-------------------
 export const validateService = validate(serviceSchema);
 
-// Adding requires a pasword whilst editing does not
+// Adding requires a password whilst editing does not
 export const validateUser = (req, res, next) =>
   validate(req.method === "POST" ? userAddSchema : userSchema)(req, res, next);
 export const validateRegister = validate(registerSchema);

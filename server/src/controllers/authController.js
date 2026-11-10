@@ -22,7 +22,7 @@ const makePayload = (user) => ({
 // Description -> Saves a new user with a hashed password and then sends back a token
 export const register = async (req, res) => {
   console.log("/api/auth/register -> POST");
-  // Destructure req.body. NOT isAdmin as user never have capcity make themselves admin
+  // Destructure req.body. NOT isAdmin as can never make themselves admin
   const { firstName, lastName, email, image, password } = req.body;
   try {
     //  First: does the user with this email already exist?
@@ -30,7 +30,7 @@ export const register = async (req, res) => {
     if (user) {
       return res
         .status(400)
-        .json({ msg: "Error occured while registering this user" });
+        .json({ msg: "That Email Already Exists. Try Logging In Again" });
     }
     //  Hash the password then save new user
     const hashedPassword = await User.prototype.hashPwd(password);
@@ -59,20 +59,20 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   console.log("/api/auth/login -> POST");
-  // Destruture req.body
+  // Destructure req.body
   const { email, password } = req.body;
   try {
     // is user in the database
     const user = await User.findOne({ where: { email: email } });
-    //  Keep the message general like dont tell attackers it exists
+    //  Keep the message general like don't tell attackers it exists
     if (!user) {
-      return res.status(400).json({ msg: "Invalid Credentails" });
+      return res.status(400).json({ msg: "Invalid Email Or Password" });
     }
 
     // Does the typed password match the hashed password in the database
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ msg: "Invalid Credentials" });
+      return res.status(400).json({ msg: "Invalid Email Or Password" });
     }
 
     // Sign token with model function

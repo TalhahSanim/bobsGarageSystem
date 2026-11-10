@@ -32,7 +32,7 @@ export default function EnquiriesContextComponent({ children }) {
     }
   }, [isAuth]);
 
-  //   number of repliesk that havent been read -> badge
+  //   number of replies that haven't been read -> badge
   const unreadCount = enquiries.filter(
     (enquiry) => enquiry.status === "responded" && !enquiry.readByUser,
   ).length;
@@ -53,7 +53,7 @@ export default function EnquiriesContextComponent({ children }) {
     } catch (err) {
       return {
         ok: false,
-        msg: err.response?.data?.msg || "Cannot Send Your Enquiry",
+        msg: err.response?.data?.msg || "Could Not Send Your Enquiry",
       };
     }
   };

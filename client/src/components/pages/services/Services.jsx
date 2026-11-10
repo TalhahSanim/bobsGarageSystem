@@ -21,7 +21,7 @@ export default function Services() {
   const serviceList = useServices();
   const { status, error } = useServiceStatus();
   const { sort, setSort } = useServicesSort();
-  const { search, setSearch } = useServicesSearch(); // currrent search text and function to change
+  const { search, setSearch } = useServicesSearch(); // current search text and function to change
   const { isAdmin } = useAuth();
 
   let content;
@@ -52,8 +52,8 @@ export default function Services() {
     content = (
       <p className="border border-dashed border-line p-8 text-center text-muted">
         {search.trim()
-          ? `No matching services "${search.trim()}`
-          : "Sorry, No Services at the moment❤️‍🩹"}
+          ? `No Services Match "${search.trim()}`
+          : "Sorry, No Services At The Moment❤️‍🩹"}
       </p>
     );
   } else {
@@ -74,7 +74,7 @@ export default function Services() {
           <p className="mt-2 text-muted">
             Prices Fixed, Top Grade Mechanics and No Gotchas
           </p>
-          {/* Search Box -> the label hidden but screen readers still abled to */}
+          {/* Search Box -> the label hidden but screen readers cans till read it */}
           <label className="sr-only" htmlFor="searchService">
             Search Services
           </label>

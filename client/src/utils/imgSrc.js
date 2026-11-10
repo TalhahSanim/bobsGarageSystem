@@ -1,5 +1,5 @@
 // File -> client/src/utils/imgSrc.js
-// Makes image be somthing img can use
+// Makes image be something img can use
 
 // Server location where it displays uploaded files
 

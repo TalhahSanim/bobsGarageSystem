@@ -1,5 +1,5 @@
 // File -> src/routes/favourites.js
-// Routes for Fovourites-> the code for each one is in the controllers/favouritesController.js
+// Routes for Favourites-> the code for each one is in the controllers/favouritesController.js
 // GET -> /api/favourites -> private - logged in users favourites
 // GET -> /api/favourites/all -> admin -> Every favourite with the customer and service
 // POST -> /api/favourites/:serviceId ->  private -> add a favourite

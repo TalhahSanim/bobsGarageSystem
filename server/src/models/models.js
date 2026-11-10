@@ -5,7 +5,7 @@
 // import the sequelize package
 // this is an ORM package (Object-Relational Mapping)
 // it will allows us to use functions to call the SQL for talking to the database
-// using parameterised queries
+// using parameterized queries
 
 // Bring in JWT & bcrypt from the Users model's functions
 import jwt from "jsonwebtoken";
@@ -13,15 +13,16 @@ import bcrypt from "bcrypt";
 
 import { Sequelize, DataTypes } from "sequelize";
 
-// bring in the confi file
+// bring in the config file
 import config from "../config/config.js";
 
 // create the db object
 let db = {};
-console.log(config.db.options);
+//don't log this on production as it will leak your configuration which is security risk
+// console.log(config.db.options);
 
 // Create new Sequelize object and pass in our database details
-// this will initialise our database with options  we specified in our config
+// this will initialize our database with options  we specified in our config
 
 const sequelize = new Sequelize(
   config.db.database,
@@ -34,12 +35,12 @@ const sequelize = new Sequelize(
 // Set up Services Model and the User Model for Sequelize
 // The define method tells sequelize we are creating a database model
 // Sequelize will add an 's' to the model name to create the table in the database.
-// DataTypes let the database know what type of data wee nee for each field  in our table
+// DataTypes let the database know what type of data we need for each field  in our table
 
 export const Service = sequelize.define("Service", {
   // this is our primary key.
   // use autoIncrement so the database adds it it
-  // we don not need to pass value when creating new servcies
+  // we do not need to pass value when creating new services
   serviceId: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -80,10 +81,10 @@ const User = sequelize.define("User", {
 
 // Set up access variables
 db.sequelize = sequelize;
-// this will alow us to use the sequelize class
+// this will allow us to use the sequelize class
 db.Sequelize = Sequelize;
 
-//  Prference  -> one row of display setings per user which is one to one with users
+//  Preference  -> one row of display settings per user which is one to one with users
 const Preference = sequelize.define("Preference", {
   preferenceId: {
     type: DataTypes.INTEGER,
@@ -134,12 +135,12 @@ const Favourite = sequelize.define(
     },
   },
   {
-    // A user canhave only favourite the same service once
+    // A user can only favourite the same service once
     indexes: [{ unique: true, fields: ["userId", "serviceId"] }],
   },
 );
 
-// Enquiry whihc is customers question about a specfic service and contains th business rely
+// Enquiry which is customers question about a specific service and contains the businesses reply
 const Enquiry = sequelize.define("Enquiry", {
   // Primary key
   enquiryId: {
@@ -216,9 +217,9 @@ Service.hasMany(Enquiry, {
 
 Enquiry.belongsTo(Service, { foreignKey: "serviceId" });
 // Database functions -> ModelName.prototype.functionName = function({...})
-// Sign a token and it takes in the payload , returns the token and experies in 7 days
+// Sign a token and it takes in the payload , returns the token and expires in 7 days
 User.prototype.signToken = function (payload) {
-  console.log("Signing token....");
+  // console.log("Signing token...."); // Output token being signed
   // without callback, jwt.sign returns the token straight away
   return jwt.sign(payload, config.auth.jwtSecret, {
     expiresIn: "7d",
@@ -228,7 +229,7 @@ User.prototype.signToken = function (payload) {
 
 // Hash a password and it takes in plain-text password and returns it hashed and salted
 User.prototype.hashPwd = async function (password) {
-  console.log("Hashing password....");
+  // console.log("Hashing password...."); // Output password being hashed
   const salt = await bcrypt.genSalt(12);
   return await bcrypt.hash(password, salt);
 };

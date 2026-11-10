@@ -7,14 +7,14 @@ import { FaReply } from "react-icons/fa";
 
 const enquiriesURL = "http://localhost:3000/api/enquiries";
 
-// The filter buttons _> lable and the ?status = value "" =all
+// The filter buttons -> label and the ?status = value "" =all
 const filters = [
   { label: "Pending", value: "pending" },
   { label: "Responded", value: "responded" },
   { label: "All", value: "" },
 ];
 
-// Enquiries componet whihc is list of enquires with reply boxex on each pending one
+// Enquiries component which is a list of enquires with reply boxes on each pending one
 export default function Enquiries() {
   const [list, setList] = useState([]);
   const [status, setStatus] = useState("loading");
@@ -55,7 +55,7 @@ export default function Enquiries() {
   const sendReply = async (enquiryId) => {
     const reply = (drafts[enquiryId] || "").trim();
     if (!reply) {
-      setError("Type reply first");
+      setError("Reply Is Required");
       return;
     }
     try {

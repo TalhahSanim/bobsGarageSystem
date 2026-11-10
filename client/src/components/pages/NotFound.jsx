@@ -1,4 +1,4 @@
-//  404 page -> shows for addreses doont match a route in  app.jsx
+//  404 page -> shows for addresses don't match a route in  app.jsx
 import { Link } from "react-router-dom";
 
 export default function NotFound() {

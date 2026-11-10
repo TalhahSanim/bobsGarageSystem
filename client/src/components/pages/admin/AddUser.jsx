@@ -1,7 +1,7 @@
-// Add User page -> form for an admin to add user and optionally asign as admin
+// Add User page -> form for an admin to add user and optionally assign as admin
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
-//  add user from useers context
+//  add user from users context
 import { useUsers } from "../../../context/UsersContext";
 // validation helper
 import { is_Empty } from "../../../utils/validation";
@@ -20,7 +20,7 @@ export default function AddUser() {
     errors: {},
   });
 
-  // Destructure the form datat
+  // Destructure the form data
   const {
     firstName,
     lastName,
@@ -35,11 +35,11 @@ export default function AddUser() {
   // ste state to show status of saving a new user
   const [registerStatus, setRegisterStatus] = useState("idle");
 
-  // addUser from our users context and navigate to return to the liist after
+  // addUser from our users context and navigate to return to the list after
   const { addUser } = useUsers();
   const navigate = useNavigate();
 
-  // update the field so that changed inputs name mathches key in the form data
+  // update the field so that changed inputs name matches key in the form data
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -56,7 +56,7 @@ export default function AddUser() {
     if (is_Empty(firstName)) {
       setFormData({
         ...formData,
-        errors: { firstName: "First Name is Required" },
+        errors: { firstName: "First Name Is Required" },
       });
       return;
     }
@@ -64,7 +64,7 @@ export default function AddUser() {
     if (is_Empty(lastName)) {
       setFormData({
         ...formData,
-        errors: { lastName: "Last Name is Required" },
+        errors: { lastName: "Last Name Is Required" },
       });
       return;
     }
@@ -72,7 +72,7 @@ export default function AddUser() {
     if (is_Empty(email)) {
       setFormData({
         ...formData,
-        errors: { email: "Email is Required" },
+        errors: { email: "Email Is Required" },
       });
       return;
     }
@@ -80,7 +80,7 @@ export default function AddUser() {
     if (is_Empty(password)) {
       setFormData({
         ...formData,
-        errors: { password: "Password is Required" },
+        errors: { password: "Password Is Required" },
       });
       return;
     }
@@ -88,16 +88,23 @@ export default function AddUser() {
     if (is_Empty(passwordCompare)) {
       setFormData({
         ...formData,
-        errors: { passwordCompare: "You have not re-entered your password" },
+        errors: { passwordCompare: "Please Confirm Your Password" },
       });
       return;
     }
     if (password !== passwordCompare) {
       setFormData({
         ...formData,
-        errors: { password: "Password do not match!" },
+        errors: { password: "Passwords Do Not Match!" },
       });
       return;
+    }
+
+    if (password.length < 8) {
+      setFormData({
+        ...formData,
+        errors: { password: "Passwords Must Be At Least 8 Characters" },
+      });
     }
     if (canSave) {
       setRegisterStatus("pending");
@@ -118,8 +125,8 @@ export default function AddUser() {
       }
     }
   };
-  // helper to enable each filed read same label input and error
-  // tkaes in the field name, label, input type and placeholder
+  // helper to enable each field read same label input and error
+  // takes in the field name, label, input type and placeholder
   const field = (name, label, type = "text", placeholder = label) => (
     <div className="mb-4">
       <label className="form-label" htmlFor={name}>
@@ -155,7 +162,7 @@ export default function AddUser() {
               {field("password", "Password", "password")}
               {field("passwordCompare", "Re-enter Password", "password")}
             </div>
-            {/* Enable admin to assign user to admin privledges */}
+            {/* Enable admin to assign user to admin privileges */}
             <label htmlFor="" className="mb-4 flex items-center gap-2">
               <input
                 type="checkbox"
@@ -167,7 +174,7 @@ export default function AddUser() {
               />
               Assign this user an admin
             </label>
-            {/* Submit button is diabled when saving */}
+            {/* Submit button is disabled when saving */}
             <div className="mb-4 grid">
               <input
                 type="submit"

@@ -1,10 +1,10 @@
 import helmet from "helmet";
 // Bring in sequelize and our db from our models folder
 // we do not need to include a file name with the folder,
-// as it will automaticaly load in models.js
+// as it will automatically load in models.js
 import "dotenv/config";
 import db from "./models/models.js";
-import express from "express"; // bring in express and required mmodules
+import express from "express"; // bring in express and required modules
 import cors from "cors";
 import { morganMiddleware } from "./logger/logger.js";
 
@@ -18,14 +18,14 @@ import preferenceRoutes from "./routes/preferences.js";
 import enquiryRoutes from "./routes/enquiries.js";
 
 import config from "./config/config.js";
-// intialise express app variable
+// initialise express app variable
 
 const app = express();
 
 // Security headers -> cross origin enables client port 5174 to display images from uploads on port 3000
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 
-// Intialise Middleware
+// Initialise Middleware
 // Setup the server to handle json data
 // setup server to handle urlencoded data
 
@@ -43,7 +43,7 @@ app.use(morganMiddleware);
 
 // Routes
 // can be post,get,put,delete
-// rember the route takes a path and callback function
+// remember the route takes a path and callback function
 app.use("/api/services", servicesRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
@@ -60,16 +60,16 @@ app.use((req, res) => {
   res.status(404).json({ msg: `Not Found: ${req.method} ${req.originalUrl}` });
 });
 
-// 500 -> any error produced in a route ends up hera nd catches error in async routes as well
-// it takes in four paremeters so express knows the error handler
+// 500 -> any error produced in a route ends up here and catches error in async routes as well
+// it takes in four parameters so express knows the error handler
 app.use((err, req, res, next) => {
   // log details but never to browser
   console.error(err.message);
-  //  Mullters size limit such as too big image user sends so 404 would be more appropriate then 500
+  //  Multers size limit such as too big image user sends so 404 would be more appropriate, then 500
   if (err.code === "LIMIT_FILE_SIZE") {
-    return res.status(400).json({ msg: "Images must be 25mb or smaller" });
+    return res.status(400).json({ msg: "Images Must Be 25MB Or Less" });
   }
-  // few eerors have own statues such as 400 badly formed json & request aborted  406 and this makes any without an status a 500
+  // few errors have a status such as 400 badly formed json & request aborted  406 and this makes any without an statuses a 500
   const status = err.status || 500;
   res
     .status(status)

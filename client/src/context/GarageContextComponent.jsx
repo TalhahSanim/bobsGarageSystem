@@ -17,29 +17,28 @@ import {
 
 import { useTheme } from "./ThemeContext";
 
-// the base Url for service request as onplace equates to less typos
+// the base Url for service request in one place means less typos
 const serviceURL = "http://localhost:3000/api/services";
 
 // Create the provider to pass the state and event function down to components
-// that require them. This is done by wraping them in the component tree
+// that require them. This is done by wrapping them in the component tree
 // in the provider and passing the state and functions as values to provider
 export const GarageContextProvider = ({ children }) => {
   // create state variable to hold the serviceList and a function to update it
   const [serviceList, setServiceList] = useState([]);
-  // status: loading, sucess or failed then start loading
+  // status: loading, succeeded or failed then start loading
   const [status, setStatus] = useState("loading");
   const [error, setError] = useState(null);
 
   // Text in the search box. "" means no search -> display every service
   const [search, setSearch] = useState("");
-  // get all services from the API  in order the vistor selected
+  // get all services from the API  -> The search matches, or every service in order the user selected
   const getAllServices = async () => {
     console.log("getAllServices -> GarageContextComponent.jsx", sort);
     // fee-ASC -> field "fee" and direction "ASC"
     const [field, direction] = sort.split("-");
-    // The default order  uses the normal route and anythin else uses the ordered route
 
-    // Remove space at the start and end as " " counts as no search
+    // Remove spaces at the start and so " " counts as no search
     const text = search.trim();
     // Search text used in search route and then default route or ordered one
     let url = serviceURL;
@@ -61,8 +60,8 @@ export const GarageContextProvider = ({ children }) => {
   // Renamed to sort /setSort so file is same
   const { sortOrder: sort, changeSort: setSort } = useTheme();
 
-  // Load the services once when sort or search changed
-  // Wait 300ms after previos key press so typing oil just sends 1 request
+  // Load the services at start-up and whenever the sort or search changes
+  // Wait 300ms after the last key press such as typing oil just sends 1 request
   useEffect(() => {
     const timer = setTimeout(getAllServices, 300);
     return () => clearTimeout(timer);
@@ -74,7 +73,7 @@ export const GarageContextProvider = ({ children }) => {
     if (found) return found;
     try {
       const res = await axios.get(`${serviceURL}/edit/${id}`);
-      //! findByPk sends back norhing id the id doesnt even exist
+      // findByPk sends back nothing if the id doesn't  exist
 
       return res.data || null;
     } catch (err) {
@@ -136,7 +135,7 @@ export const GarageContextProvider = ({ children }) => {
     }
   };
 
-  // Returm the providers with the state and functions as values.
+  // Return the providers with the state and functions as values.
   // The children prop is used to render the components wrapped in the providers.
   return (
     <GarageSearchContext.Provider value={{ search, setSearch }}>

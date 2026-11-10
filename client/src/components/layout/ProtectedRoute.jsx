@@ -1,7 +1,7 @@
 // File -> client/src/components/layout/ProtectedRoute.jsx
 // Sends the guest to login  and non-admins away from admin pages
 // usage -> <ProtectedRoute><MyFavourites /></ProtectedRoute>
-// <ProtectedRoute adminOnly><AddService>/></ProtecteRoute>
+// <ProtectedRoute adminOnly><AddService /></ProtectedRoute>
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 

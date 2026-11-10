@@ -12,13 +12,13 @@ import ServiceImageField from "./ServiceImageField";
 // Bring in the custom validation
 import { alpha, is_Empty, isValidFee } from "../../../utils/validation";
 
-//  EditService component : form for updating our servuce
+//  EditService component : form for updating our service
 export default function EditService() {
   // pull the id from url bar
   const { id } = useParams();
   console.log(id);
 
-  //  build the state from our form and set intial state
+  //  build the state from our form and set initial state
   const [formData, setFormData] = useState({
     serviceId: "",
     name: "",
@@ -51,14 +51,13 @@ export default function EditService() {
     // Check the function is being invoked
     console.log(`handleSubmit -> EditService.jsx ->> Running`);
     //  Check for errors
-    //  todo:Client side validation- LATER
     // Name errors
     if (is_Empty(name)) {
-      console.log("Service Name Field is Empty");
+      console.log("Service Name Field Is Empty");
       setFormData({
         ...formData,
         errors: {
-          name: "You are required to enter the name of service in the box above.",
+          name: "Name Is Required",
         },
       });
       return;
@@ -68,11 +67,11 @@ export default function EditService() {
     // alphanumerical character check for name
 
     if (alpha(name)) {
-      console.log("Service Name contains special characters");
+      console.log("Service Name Contains Special Characters");
       setFormData({
         ...formData,
         errors: {
-          name: "Your service name cannot include any special characters. Alpha Characters only",
+          name: "Name Can Only Contain Letters",
         },
       });
       return;
@@ -86,7 +85,7 @@ export default function EditService() {
       setFormData({
         ...formData,
         errors: {
-          type: "You are required to enter a type for this service in the box above.",
+          type: "Type Is Required",
         },
       });
       return;
@@ -99,7 +98,7 @@ export default function EditService() {
       setFormData({
         ...formData,
         errors: {
-          type: "Your service type cannot include any special characters. Alpha Characters only",
+          type: "Type Can Only Contain Letters",
         },
       });
       return;
@@ -113,8 +112,7 @@ export default function EditService() {
       setFormData({
         ...formData,
         errors: {
-          description:
-            "You are required to enter a description of service in the box above.",
+          description: "Description Is Required",
         },
       });
       return;
@@ -127,8 +125,7 @@ export default function EditService() {
       setFormData({
         ...formData,
         errors: {
-          description:
-            "Your description cannot include any special characters. Alpha Characters only",
+          description: "Description Can Only Contain Letters",
         },
       });
       return;
@@ -154,7 +151,7 @@ export default function EditService() {
       setFormData({
         ...formData,
         errors: {
-          fee: "You are required to enter a fee in the box above.",
+          fee: "Fee Is Required",
         },
       });
       return;
@@ -166,7 +163,7 @@ export default function EditService() {
       console.log("Fee is negative");
       setFormData({
         ...formData,
-        errors: { fee: "Fee is required to be greater than value of 0" },
+        errors: { fee: "Fee Must Be More Than 0" },
       });
       return;
     } else {
@@ -178,7 +175,7 @@ export default function EditService() {
       setFormData({
         ...formData,
         errors: {
-          fee: "Fee is required be formatted in number with two decimal places",
+          fee: "Fee Must Be A Number With Two Decimal Places",
         },
       });
       return;
@@ -203,7 +200,7 @@ export default function EditService() {
       setFormData({
         ...formData,
         errors: {
-          name: "Sorry, the changes could not be saved. Please try again.",
+          name: "Could Not Save Your Changes. Please Try Again",
         },
       });
     }

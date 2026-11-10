@@ -14,7 +14,7 @@ import { imgSrc } from "../../../utils/imgSrc";
 export default function Profile() {
   const { user, isAdmin, avatarUpload, avatarRemove } = useAuth();
 
-  // Theimage upload whihc has the chosen file, preview and a message
+  // The image upload which has the chosen file, preview and a message
   const [avatarFile, setAvatarFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [avatarMsg, setAvatarMsg] = useState("");
@@ -26,7 +26,7 @@ export default function Profile() {
     if (!file) return;
     // The same rule the server applied so user know straight away
     if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-      setAvatarMsg("Please select a JPG,PNG or WebP image");
+      setAvatarMsg("Please Select An JPG,PNG or WebP Image");
       return;
     }
     if (file.size > 25 * 1024 * 1024) {
@@ -34,7 +34,7 @@ export default function Profile() {
       return;
     }
     setAvatarFile(file);
-    // Temp address for selecte file as we can show prior to upload
+    // Temp address for selected file as we can show prior to upload
     setPreview(URL.createObjectURL(file));
   };
 
@@ -48,7 +48,7 @@ export default function Profile() {
     }
   };
 
-  // The imag to display which is the new choice else the saved one or none
+  // The image to display which is the new choice else the saved one or none
   const avatar = preview || imgSrc(user.image);
   // Their
   const {

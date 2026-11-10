@@ -4,7 +4,7 @@
 import winston from "winston";
 import morgan from "morgan";
 
-// format helperss live inside winston.format
+// format helpers live inside winston.format
 const { combine, timestamp, json } = winston.format;
 
 // level 'http' log errors, warn,info and http (levels 0-3)

@@ -31,7 +31,7 @@ export const AuthContextProvider = ({ children }) => {
     });
   };
 
-  //  forget user then remove th etoken form localSotrage and from axios
+  //  forget user then remove the token form localStorage and from axios
   // takes in optional error message to display
   const clearUser = (error = null) => {
     localStorage.removeItem("token");
@@ -56,12 +56,12 @@ export const AuthContextProvider = ({ children }) => {
       // token missing, expired or invalid [WIll be created ]
 
       console.log("loadUser failed", err.message);
-      clearUser("Could not load your details. Please log in again ");
+      clearUser("Could Not Load Your Details. Please Log in Again ");
       return false;
     }
   };
 
-  //  save the token and add it to axios and then load user which returns true when sucessfully working
+  //  save the token and add it to axios and then load user which returns true when successfully working
   const saveToken = async (token) => {
     localStorage.setItem("token", token);
     setAuthToken(token);
@@ -76,9 +76,10 @@ export const AuthContextProvider = ({ children }) => {
       const user = await saveToken(res.data.token);
       return user
         ? { ok: true, isAdmin: user.isAdmin }
-        : { ok: false, msg: "Logged in but unable to load your details" };
+        : { ok: false, msg: "Logged In, But Could Not Load Your Details" };
     } catch (err) {
-      const msg = err.response?.data?.msg || "Login failed";
+      const msg =
+        err.response?.data?.msg || "Could Not Login. Please Try Again";
       clearUser(msg);
       return { ok: false, msg };
     }
@@ -93,17 +94,18 @@ export const AuthContextProvider = ({ children }) => {
       const loaded = await saveToken(res.data.token);
       return loaded
         ? { ok: true }
-        : { ok: false, msg: "Registered but unable to load your details" };
+        : { ok: false, msg: "Registered, But Could Not Load Your Details" };
     } catch (err) {
-      const msg = err.response?.data?.msg || "Register failed";
+      const msg =
+        err.response?.data?.msg || "Could Not Register. Please Try Again";
       clearUser(msg);
       return { ok: false, msg };
     }
   };
 
-  // Log out and foget token and the user
+  // Log out and forget token and the user
   const logout = () => {
-    console.log("logout -> AuthConextComponent.jsx");
+    console.log("logout -> AuthContextComponent.jsx");
     clearUser();
   };
 
@@ -124,11 +126,14 @@ export const AuthContextProvider = ({ children }) => {
       }));
       return { ok: true, msg: "Profile Image Updated" };
     } catch (err) {
-      return { ok: false, msg: err.response?.data?.msg || "Upload failed" };
+      return {
+        ok: false,
+        msg: err.response?.data?.msg || "Could Not Upload Your Image",
+      };
     }
   };
 
-  // Remove profile image back to profile placeeholder image icon
+  // Remove profile image back to profile placeholder image icon
   const avatarRemove = async () => {
     try {
       await axios.delete("http://localhost:3000/api/users/me/avatar");

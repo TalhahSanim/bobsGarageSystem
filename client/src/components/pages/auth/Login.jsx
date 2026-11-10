@@ -38,7 +38,7 @@ export default function Login() {
     if (is_Empty(password)) {
       setFormData({
         ...formData,
-        errors: { password: "password is required" },
+        errors: { password: "Password Is Required" },
       });
       return;
     }

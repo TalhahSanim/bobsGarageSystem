@@ -9,12 +9,12 @@ export default function Home() {
   const trend = serviceList.slice(0, 4);
   return (
     <>
-      {/* mt removes mains top padding so it enables picture to toucher header */}
+      {/* mt removes main's top padding so it enables picture to touch header */}
       <section
         className="full-screen -mt-10 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
-        {/* create the tint -> dakr on left and red on right to enable white text to be readable */}
+        {/* create the tint -> dark on left and red on right to enable white text to be readable */}
         <div className="bg-linear-135 from-hero-red/35 via-hero/85 to-primary/30">
           <div className="mx-auto flex min-h-140 max-w-3xl flex-col items-center justify-center gap-5 px-4 py-20 text-center text-white">
             <h1 className="text-5xl md:text-6xl">

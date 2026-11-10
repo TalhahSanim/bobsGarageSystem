@@ -4,8 +4,8 @@
 
 import multer from "multer";
 
-// The image tpes we accept and the file ending we give every one
-// Never users own file nname or ending
+// The image types we accept and the file ending we give every one
+// Never the users own file name or ending
 const avatarTypes = {
   "image/jpeg": ".jpg",
   "image/png": ".png",

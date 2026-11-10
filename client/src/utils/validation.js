@@ -13,7 +13,7 @@ export const is_Empty = (value) =>
 // create a function to check if a string contains any special characters.
 // this function will use a regular expression to test a value.
 // Return true if there are special characters
-// return false if ther is only a-z or A-Z characters
+// return false if there is only a-z or A-Z characters
 export const alpha = (value) => {
   let ex = /[^a-zA-Z]+$/;
   const result = ex.test(value);

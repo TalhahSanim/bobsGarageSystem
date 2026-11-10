@@ -2,7 +2,7 @@
 import { createContext, useContext } from "react";
 
 // create new contexts using createContext
-// These contexts will hold data annd our functions
+// These contexts will hold data and our functions
 export const GarageContext = createContext();
 export const GarageContextUpdate = createContext();
 export const GarageContextDelete = createContext();
@@ -13,7 +13,7 @@ export const GarageGetAllContext = createContext();
 export const GarageStatusContext = createContext();
 // Holds {sort, setSort}-> how the service list ordered
 export const GarageSortContext = createContext();
-// Holds {search. setSearch} -> the typed text in services search box
+// Holds {search, setSearch} -> the typed text in services search box
 export const GarageSearchContext = createContext();
 
 // create custom hooks to use the context in our components

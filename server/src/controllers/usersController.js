@@ -60,7 +60,7 @@ export const addUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   console.log("/api/users/edit/:id -> PUT");
-  // Typecast becayse URL params are strings
+  // Typecast because URL params are strings
 
   const id = Number(req.params.id);
   const user = await User.findByPk(id, noPassword);

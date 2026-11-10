@@ -23,7 +23,7 @@ export default function BottomNav() {
 
   const { unreadCount } = useEnquiries();
 
-  // Icon over each link and active page highted on the top of nav
+  // Icon over each link and active page highlighted on the top of nav
   const tabClass = ({ isActive }) =>
     `relative flex flex-1 flex-col items-center gap-1 pt-2.5 pb-2 text-xs no-underline ${isActive ? "font-semibold text-link before:absolute before:top-0 before:h-[3px] before:w-8 before:bg-button " : "font-normal text-muted"}`;
 

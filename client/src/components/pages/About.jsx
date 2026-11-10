@@ -9,7 +9,7 @@ import garageVideo from "../../assets/video-bob-about.mp4";
 import { useRef, useState } from "react";
 import { FaPause, FaPlay } from "react-icons/fa";
 export default function About() {
-  // loopiong video makes i pause and ref reachers the video which state swaps the icon depending on play or pause
+  // looping video needs a pause and ref reaches the video which state swaps the icon depending on play or pause
   const videoRef = useRef(null);
   const [play, setPlay] = useState(true);
 
@@ -34,7 +34,7 @@ export default function About() {
           aria-label="A light blue spors car drifting in a race strack next to dark sports car"
           ref={videoRef}
         />
-        {/* Video tint to make white text readble */}
+        {/* Video tint to make white text readable */}
         <div className="absolute inset-0 bg-linear-135 from-hero-red/25 via-hero/85 to-primary/20 " />
         {/* Text on top -> relative makes it above absolute video and the tinting */}
         <div className="relative mx-auto flex min-h-120 max-w-6xl flex-col items-start gap-4 px-4 py-20 text-white  ">
@@ -82,7 +82,7 @@ export default function About() {
             </div>
           </li>
 
-          {/* md:flex-row reveser puts alice on the right */}
+          {/* md:flex-row reverses puts alice on the right */}
           <li className="card flex flex-col md:flex-row-reverse">
             <img
               src={alicePhoto}
@@ -103,7 +103,7 @@ export default function About() {
           </li>
         </ul>
 
-        {/* Our mechanics -> One colum on mobile & 2 from md */}
+        {/* Our mechanics -> One column on mobile & 2 from md */}
         <h2 className="mb-4 text-3xl">Our Mechanics</h2>
         <ul className="mb-12 grid gap-6 md:grid-cols-2">
           <li className="card">

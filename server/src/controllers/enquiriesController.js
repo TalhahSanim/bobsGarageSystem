@@ -1,7 +1,7 @@
 // File -> src/controllers/enquiriesController.js
-// Enquries controller5s is a customers question/query about a service and business's response
+// Enquiries controllers -> is a customers question/query about a service and business's response
 // send, get my-enquiries,mark-read, get all (admin) and reply (admin)
-// routes/enquiries.js makes auth and adminin front of each route
+// routes/enquiries.js makes auth and admin in front of each route
 
 import db from "../models/models.js";
 
@@ -20,12 +20,8 @@ export const sendEnquiry = async (req, res) => {
   console.log("/api/enquiries/:serviceId -> POST");
   // URL params are strings but serviceId is a number and it will be typecasted
   const serviceId = Number(req.params.serviceId);
-  //   trim() removes spoacing at start and ends and makes " " as empty
+  //   trim() removes spacing at start and ends and makes " " as empty
   const message = (req.body.message || "").trim();
-
-  if (message.length < 10) {
-    return res.status(400).json({ msg: "Please type at least 10 characters" });
-  }
 
   try {
     // Ensure service exists?
@@ -40,12 +36,12 @@ export const sendEnquiry = async (req, res) => {
       message,
     });
 
-    // send whole enquirty  back with service details which makes it inbox ready
+    // send whole enquiry  back with service details which makes it inbox ready
     const wholeEnquiry = await Enquiry.findByPk(enquiry.enquiryId, {
       include: [{ model: Service }],
     });
     res.status(201).json({
-      msg: `Thanks for your enquiry ${req.user.firstName}! We will reply about details of this ${service.name} service in your Inbox.`,
+      msg: `Thanks For Your Enquiry ${req.user.firstName}! We will reply about details of this ${service.name} service in your Inbox.`,
       enquiry: wholeEnquiry,
     });
   } catch (err) {
@@ -61,11 +57,11 @@ export const sendEnquiry = async (req, res) => {
 };
 
 //  name -> get my enquiries
-// path -> /api/enquiries/my-enquries
+// path -> /api/enquiries/my-enquiries
 // request -> GET
 // type -> private
-// description -> the logged in users enquries with each service sorted by newest entries first
-export const getMyEnquries = async (req, res) => {
+// description -> the logged in users enquiries with each service sorted by newest entries first
+export const getMyEnquiries = async (req, res) => {
   console.log("/api/enquiries/my-enquiries -> GET");
   try {
     const list = await Enquiry.findAll({
@@ -96,9 +92,9 @@ export const getMyEnquries = async (req, res) => {
 // path /api/enquiries/:enquiryId/read
 // request -> PUT
 // type -> private
-// description -> the user has seen the business's response and only applies to user's own enquries
+// description -> the user has seen the business's response and only applies to user's own enquiries
 export const tickRead = async (req, res) => {
-  console.log("/api/enquries/:enquiryId/read -> PUT");
+  console.log("/api/enquiries/:enquiryId/read -> PUT");
   const enquiryId = Number(req.params.enquiryId);
   try {
     //  userId in the where clause as you can only tick own enquiries
@@ -117,13 +113,13 @@ export const tickRead = async (req, res) => {
   }
 };
 
-// name -> Get All Enquries
+// name -> Get All Enquiries
 // path -> /api/enquiries
 // request -> GET
 // type -> admin
 // description -> every enquiry with customer and service sorted newest first
 
-export const getAllEnquries = async (req, res) => {
+export const getAllEnquiries = async (req, res) => {
   console.log("/api/enquiries -> GET");
   // filter query  based on enquiry query status
 
@@ -148,19 +144,15 @@ export const getAllEnquries = async (req, res) => {
 };
 
 // name -> reply to enquiry
-// path -> /api/enquries/:enquiryId//reply
+// path -> /api/enquiries/:enquiryId//reply
 // request -> PUT
 // type -> admin
-// description -> saves the businesses response and stick if responsed and make it unread for the customer
+// description -> saves the businesses response and stick if responded and make it unread for the customer
 
 export const enquiryResponse = async (req, res) => {
-  console.log("/api/enquries/:enquiryId/reply -> PUT");
+  console.log("/api/enquiries/:enquiryId/reply -> PUT");
   const enquiryId = Number(req.params.enquiryId);
   const reply = (req.body.reply || "").trim();
-
-  if (!reply) {
-    return res.status(400).json({ msg: "The reply cannnot be empty" });
-  }
 
   try {
     const enquiry = await Enquiry.findByPk(enquiryId);

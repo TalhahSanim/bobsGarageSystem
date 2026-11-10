@@ -35,7 +35,7 @@ import Profile from "./components/pages/auth/Profile";
 export default function App() {
   // Removed state and useState and event functions as provider manages our state
   // Provider will manage the state
-  // wrap our app in GaraageContextComponent
+  // wrap our app in GarageContextComponent
   // this enables children to access the context
 
   return (

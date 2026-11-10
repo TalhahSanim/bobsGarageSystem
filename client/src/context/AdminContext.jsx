@@ -4,5 +4,5 @@ import { createContext, useContext } from "react";
 // Holds {imageList,loadImages , uploadImage}
 export const AdminContext = createContext();
 
-// Custom hook -> the image list and upload functionalty
+// Custom hook -> the image list and upload functionality
 export const useAdmin = () => useContext(AdminContext);

@@ -12,7 +12,7 @@ const errorMessage = (err) => err.response?.data?.msg || err.message;
 // UsersContextProvider Component -> wraps around the app so admin pages can use useUsers()
 export const UsersContextProvider = ({ children }) => {
   const [userList, setUserList] = useState([]);
-  // status -> idle,loading , succeded or dailed
+  // status -> idle,loading , succeeded or failed
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState(null);
 

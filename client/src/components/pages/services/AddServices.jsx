@@ -11,7 +11,7 @@ import { alpha, is_Empty, isValidFee } from "../../../utils/validation";
 // bring in icon from react icon
 
 export default function AddServices() {
-  //  build the state from our form and set intial state
+  //  build the state from our form and set initial state
   const [formData, setFormData] = useState({
     name: "",
     type: "",
@@ -38,7 +38,7 @@ export default function AddServices() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // runs when the fomr is submited
+  // runs when the form is submitted
   const handleSubmit = async (e) => {
     // By default the submit button will refresh page
     e.preventDefault();
@@ -53,7 +53,7 @@ export default function AddServices() {
       setFormData({
         ...formData,
         errors: {
-          name: "You are required to enter the name of service in the box above.",
+          name: "Name Is Required",
         },
       });
       return;
@@ -67,7 +67,7 @@ export default function AddServices() {
       setFormData({
         ...formData,
         errors: {
-          name: "Your service name cannot include any special characters. Alpha Characters only",
+          name: "Name Can Only Contain Letters",
         },
       });
       return;
@@ -81,7 +81,7 @@ export default function AddServices() {
       setFormData({
         ...formData,
         errors: {
-          type: "You are required to enter a type for this service in the box above.",
+          type: "Type Is Required",
         },
       });
       return;
@@ -94,7 +94,7 @@ export default function AddServices() {
       setFormData({
         ...formData,
         errors: {
-          type: "Your service type cannot include any special characters. Alpha Characters only",
+          type: "Type Can Only Contain Letters",
         },
       });
       return;
@@ -108,8 +108,7 @@ export default function AddServices() {
       setFormData({
         ...formData,
         errors: {
-          description:
-            "You are required to enter a description of service in the box above.",
+          description: "Description Is Required",
         },
       });
       return;
@@ -122,8 +121,7 @@ export default function AddServices() {
       setFormData({
         ...formData,
         errors: {
-          description:
-            "Your description cannot include any special characters. Alpha Characters only",
+          description: "Description Can Only Contain Letters",
         },
       });
       return;
@@ -145,11 +143,11 @@ export default function AddServices() {
 
     // fee error - not empty great than 0, 2decimal places
     if (is_Empty(fee)) {
-      console.log("Fee is Empty");
+      // console.log("Fee is Empty"); // check if empty validation runs
       setFormData({
         ...formData,
         errors: {
-          fee: "You are required to enter a fee in the box above.",
+          fee: "Fee Is Required",
         },
       });
       return;
@@ -161,7 +159,7 @@ export default function AddServices() {
       console.log("Fee is negative");
       setFormData({
         ...formData,
-        errors: { fee: "Fee is required to be greater than value of 0" },
+        errors: { fee: "Fee Must Be More Than 0" },
       });
       return;
     } else {
@@ -173,7 +171,7 @@ export default function AddServices() {
       setFormData({
         ...formData,
         errors: {
-          fee: "Fee is required be formatted in number with two decimal places",
+          fee: "Fee Must Be A Number With Two Decimal Places",
         },
       });
       return;
@@ -182,7 +180,7 @@ export default function AddServices() {
     }
 
     // create newService object using es6 shorthand
-    // crypto.randomUUID is built in so no libary required
+    // crypto.randomUUID is built in so no library required
     const newService = {
       name,
       type,
@@ -200,7 +198,7 @@ export default function AddServices() {
       setFormData({
         ...formData,
         errors: {
-          name: "Sorry but this service could not be saved. Please try again.",
+          name: "Could Not Save This Service. Please Try Again",
         },
       });
     }
@@ -252,7 +250,7 @@ export default function AddServices() {
                 <div className="invalid-feedback">{errors.type}</div>
               )}
             </div>
-            {/* Service Desciption field */}
+            {/* Service Description field */}
             <div className="mb-4">
               <label className="form-label" htmlFor="description">
                 Service Description:

@@ -1,6 +1,6 @@
 // File -> src/controllers/avatarController.js
 // Logged in users profile image -> upload or remove one
-// routes/users.js puts auth in fonr of both that means req.user always set
+// routes/users.js puts auth in front of both that means req.user always set
 
 import path from "path";
 import fs from "fs";
@@ -20,10 +20,10 @@ const deleteOutdatedAvatar = (image) => {
 };
 
 // name -> upload profile image
-// path -> /api/userrs/me/avatar
-// request -> POST [fomr-data,field- avatar]
+// path -> /api/users/me/avatar
+// request -> POST [form-data,field- avatar]
 // type -> private which is any logged in user
-// desciption -> saves the image and puts it path in the users image and delete the outdated one
+// description -> saves the image and puts it path in the users image and delete the outdated one
 export const uploadAvatar = (req, res) => {
   console.log("/api/users/me/avatar -> POST");
   // Run multer so we can send nice message upon failure
@@ -35,7 +35,7 @@ export const uploadAvatar = (req, res) => {
           : "Upload failed";
       return res.status(400).json({ msg });
     }
-    // No files is when none was sent or fileFilere rejected it
+    // No files is when none was sent or fileFilter rejected it
     if (!req.file) {
       return res
         .status(400)

@@ -17,7 +17,7 @@ import { imgSrc } from "../../../utils/imgSrc";
 // Service Details Component which reads the id from the URL and loads that service
 
 export default function ServiceDetails() {
-  // URL params are sttrings but serviceId is a number
+  // URL params are strings but serviceId is a number
   const { id } = useParams();
   const serviceId = Number(id);
 
@@ -36,7 +36,7 @@ export default function ServiceDetails() {
         const res = await axios.get(
           `http://localhost:3000/api/services/edit/${serviceId}`,
         );
-        // findByPk sends back nothhing if the id doesnt exist
+        // findByPk sends back nothing if the id doesn't exist
         if (res.data) {
           setService(res.data);
           setStatus("succeeded");
@@ -60,7 +60,7 @@ export default function ServiceDetails() {
       setMessage(msg);
     } catch (err) {
       console.log("addFavourite failed", err.message);
-      setMessage("Apologies, something went wrong. Please try again.");
+      setMessage("Something Went Wrong, Please Try Again");
     }
   };
 
@@ -82,8 +82,8 @@ export default function ServiceDetails() {
       <section className="alert-danger mt-6">
         <h2 className="text-xl font-semibold">
           {status === "notfound"
-            ? "No service found!"
-            : "Could'nt laod this service"}
+            ? "No Service found!"
+            : "Could Not Load This Service"}
         </h2>
         <Link to="/services" className="mt-2 inline-block underline">
           Back to all services

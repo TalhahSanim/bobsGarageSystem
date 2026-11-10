@@ -1,4 +1,4 @@
-// tbale for every user -> ADMIN ONLY
+// Cards for every user -> ADMIN ONLY
 import { useUsers } from "../../../context/UsersContext";
 import SingleUser from "./SingleUser";
 

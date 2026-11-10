@@ -61,7 +61,7 @@ export const getAllFavourites = async (req, res) => {
 
 export const addFavourite = async (req, res) => {
   console.log("/api/favourites/:serviceId -> POST");
-  // URL params are strinfs but serviceId is a number
+  // URL params are strings but serviceId is a number
   const serviceId = Number(req.params.serviceId);
   try {
     // ensure service exists
@@ -94,7 +94,7 @@ export const addFavourite = async (req, res) => {
 // request -> DELETE
 // type -> private
 // Description -> removes one of the logged in  user's favourites
-// the where clause incluse userId so only users can remove their favourites
+// the where clause includes userId so only users can remove their favourites
 export const removeFavourite = async (req, res) => {
   console.log("/api/favourites/:serviceId -> DELETE");
   const serviceId = Number(req.params.serviceId);
@@ -111,15 +111,15 @@ export const removeFavourite = async (req, res) => {
 // path -> /api/favourites/:favouriteId/status
 // request -> PUT
 // type -> admin
-// Description -> ticks of favorite as new or contacted
+// Description -> ticks of favourite as new or contacted
 export const updateFavouriteStatus = async (req, res) => {
   console.log("/api/favourites/:favouriteId/status -> PUT");
   const favouriteId = Number(req.params.favouriteId);
   const { status } = req.body;
 
-  //  pm;u allow two statues
+  //  Only allow two statues
   if (!["new", "contacted"].includes(status)) {
-    return res.status(400).json({ msg: "Status Must be new or contacted" });
+    return res.status(400).json({ msg: "Status Must Be New Or Contacted" });
   }
   try {
     const [count] = await Favourite.update(
@@ -127,7 +127,7 @@ export const updateFavouriteStatus = async (req, res) => {
       { where: { favouriteId } },
     );
     if (!count) {
-      return res.status(404).json({ msg: "Favourite Not Found" });
+      return res.status(404).json({ msg: "Saved Service Not Found" });
     }
     const favourite = await Favourite.findByPk(favouriteId);
     res.status(200).json(favourite);

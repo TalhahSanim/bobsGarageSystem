@@ -1,15 +1,18 @@
-// Admin Overview  which conunts users,admin and services
+// Admin Overview  which counts users,admin and services
 import { useUsers } from "../../../context/UsersContext";
 import { useServices } from "../../../context/GarageContext";
+import { useEnquiries } from "../../../context/EnquiriesContext";
 
 export default function SystemOverview() {
   const { userList = [] } = useUsers();
   const serviceList = useServices();
+  const EnquiryList = useEnquiries();
 
   const metrics = [
     ["Users", userList.length],
     ["Admins", userList.filter((user) => user.isAdmin).length],
     ["Services", serviceList.length],
+    ["Enquiries", EnquiryList.length],
   ];
   return (
     <>

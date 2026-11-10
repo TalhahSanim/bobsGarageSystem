@@ -39,17 +39,17 @@ export default function SingleService({ service }) {
       } else {
         const msg = await addFavourite(serviceId);
         setNote(msg);
-        // Hide the message after 4 secondads
+        // Hide the message after 4 seconds
         setTimeout(() => setNote(""), 4000);
       }
     } catch (err) {
       console.log("favouriteToggle failed", err.message);
-      setNote("Apologies, something wen wrong. Please Try Again.");
+      setNote("Something Went Wrong. Please Try Again");
     }
   };
   return (
     <article className="card card-lift flex flex-col">
-      {/* Service phot or the backup one when no photo include in service during add or edit */}
+      {/* Service photo or the backup one when no photo included in service during add or edit */}
       <div className="relative">
         <img
           src={imgSrc(image) || fallbackImage}
@@ -86,7 +86,7 @@ export default function SingleService({ service }) {
         </p>
         <p className="mt-1 font-semibold text-link">${fee}</p>
 
-        {/* mt auto makes buttons to buttom so card aligns nicely */}
+        {/* mt auto makes buttons to bottom so card aligns nicely */}
         <div className="mt-auto flex gap-2 pt-3">
           <Link
             to={`/services/${serviceId}`}

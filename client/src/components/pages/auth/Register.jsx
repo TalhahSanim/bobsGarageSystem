@@ -7,7 +7,7 @@ import { useAuth } from "../../../context/AuthContext";
 import AuthLayout from "../../layout/AuthLayout";
 import { is_Empty } from "../../../utils/validation";
 
-// Register component for creating a neew account
+// Register component for creating a new account
 export default function Register() {
   // setup form State
   const [formData, setFormData] = useState({
@@ -42,7 +42,7 @@ export default function Register() {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // were only save if have firstname and email and were not saving
+  // were only save if have firstName and email and were not saving
   const canSave = firstName !== "" && email !== "" && registerStatus === "idle";
 
   // runs when form submits and check every field then register
@@ -54,35 +54,35 @@ export default function Register() {
     if (is_Empty(firstName)) {
       setFormData({
         ...formData,
-        errors: { firstName: "First Name is required" },
+        errors: { firstName: "First Name Is Required" },
       });
       return;
     }
     if (is_Empty(lastName)) {
       setFormData({
         ...formData,
-        errors: { lastName: "Last Name is required" },
+        errors: { lastName: "Last Name Is Required" },
       });
       return;
     }
     if (is_Empty(email)) {
       setFormData({
         ...formData,
-        errors: { email: "Email is required" },
+        errors: { email: "Email Is Required" },
       });
       return;
     }
     if (is_Empty(password)) {
       setFormData({
         ...formData,
-        errors: { password: "Password is required" },
+        errors: { password: "Password Is Required" },
       });
       return;
     }
     if (is_Empty(passwordCompare)) {
       setFormData({
         ...formData,
-        errors: { passwordCompare: "You have not re-entered your password" },
+        errors: { passwordCompare: "Please Confirm Your Password" },
       });
       return;
     }
@@ -93,6 +93,13 @@ export default function Register() {
         errors: { password: "Passwords do not match" },
       });
       return;
+    }
+
+    if (password.length < 8) {
+      setFormData({
+        ...formData,
+        errors: { password: "Passwords Must Be At Least 8 Characters" },
+      });
     }
 
     // Register also logs you in too
@@ -115,7 +122,7 @@ export default function Register() {
   };
 
   //  helper to ensure field reads same -> {label,input,error}
-  // it takes in field name,label, input type aand placeholder
+  // it takes in field name,label, input type and placeholder
   const field = (name, label, type = "text", placeholder = label) => (
     <div className="mb-4">
       <label className="form-label" htmlFor={name}>

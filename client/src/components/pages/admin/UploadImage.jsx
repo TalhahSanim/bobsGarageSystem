@@ -9,7 +9,7 @@ export default function UploadImage() {
   const [message, setMessage] = useState("");
   const { uploadImage } = useAdmin();
 
-  // Runs when file is selected-> kepp first file and clear message
+  // Runs when file is selected-> keep first file and clear message
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
     setMessage("");
@@ -19,7 +19,7 @@ export default function UploadImage() {
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!selectedFile) {
-      setMessage("Please select an image first");
+      setMessage("Please Select An Image First");
       return;
     }
     const result = await uploadImage(selectedFile);

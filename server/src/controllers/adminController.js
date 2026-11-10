@@ -13,7 +13,7 @@ export const uploadImage = (req, res) => {
   // No File -> none was selected or file filter has skipped ove due to being non image file
   if (!req.file) {
     return res.status(400).json({
-      msg: "Please select an image such as( jpg,png,webp or gif Image)",
+      msg: "Please Select a JPG,PNG or WebP Image",
     });
   }
   res
@@ -37,6 +37,6 @@ export const getImageList = async (req, res) => {
     res.status(200).send(files.filter((file) => !file.startsWith("avatar-")));
   } catch (err) {
     console.log(err.message);
-    res.status(500).send("Could not read the uploads folder");
+    res.status(500).send("Server Error");
   }
 };

@@ -21,7 +21,7 @@ export default function Dashboard() {
   const { loadImages } = useAdmin();
   const navigate = useNavigate();
 
-  // Load users & Images at oncewhen admin opens dashboard
+  // Load users & Images at once when admin opens dashboard
   useEffect(() => {
     if (isAuth && isAdmin) {
       loadUsers();

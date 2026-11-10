@@ -12,9 +12,10 @@ const { Service } = db.sequelize.models;
 export const getAllServices = async (req, res) => {
   console.log("/api/services/ -> GET");
   // to get all data from a table in the database we use the findAll() method
-  // the model used too tells us the database which tale where getting the data from
+  // the model used too tells us the database which tells ,the table where getting the data from
   const list = await Service.findAll();
-  console.log(list);
+  // Log services
+  // console.log(list);
   // send the response
   res.status(200).send(list);
 };
@@ -32,7 +33,7 @@ export const getOneService = async (req, res) => {
   const service = await Service.findByPk(id);
   // find byPK gives null when no row has id
   if (!service) {
-    return res.status(404).json({ msg: "Service not found" });
+    return res.status(404).json({ msg: "Service Not Found" });
   }
   res.status(200).send(service);
 };
@@ -46,7 +47,8 @@ export const addService = async (req, res) => {
   console.log("/api/services -> POST");
   // we can only have one res.send in an endpoint
   // log the req from client
-  console.log(req.body);
+  //  Note don't log this as it exposes body on browser which can leak sensitive information
+  // console.log(req.body);
 
   // Destructure the request
   const { name, type, description, image, fee } = req.body;
@@ -59,7 +61,7 @@ export const addService = async (req, res) => {
     fee,
   });
   console.log(service.toJSON());
-  // send the respons from the database to the client
+  // send the response from the database to the client
   res.status(200).send(service);
 };
 
@@ -76,21 +78,21 @@ export const updateService = async (req, res) => {
   const fee = Number(req.body.fee);
   // the update method takes in two objects:
   // 1.] the data we wish to save
-  // 2.] the where object so we know which record we are chanaging
+  // 2.] the where object so we know which record we are changing
   const updated = await Service.update(
     { name, type, description, image, fee },
     { where: { serviceId: id } },
   );
-  // update() returns and array with the number of rows altered eg. [1]
+  // update() returns an array with the number of rows altered eg. [1]
 
-  console.log(updated);
+  // console.log(updated); // output the rows that changed
 
   // get the updated service.
   const service = await Service.findByPk(id);
   if (!service) {
-    return res.status(404).json({ msg: "Service not found" });
+    return res.status(404).json({ msg: "Service Not Found" });
   }
-  console.log("Service Updated...");
+  // console.log("Service Updated..."); // output message a service got saved
 
   // send updated service to the client
   res.status(200).send(service);
@@ -104,14 +106,14 @@ export const updateService = async (req, res) => {
 
 export const deleteService = async (req, res) => {
   console.log("/api/services/edit/:id -> DELETE");
-  // to delete a service we need to know which service we are delting.
+  // to delete a service we need to know which service we are deleting.
   // we can get the edit from the params in the url: req.params.id
   // params are strings but serviceId is number so typecast it
   const id = Number(req.params.id);
 
   const service = await Service.findByPk(id);
   if (!service) {
-    return res.status(404).json({ msg: "Service not found" });
+    return res.status(404).json({ msg: "Service Not Found" });
   }
   // use the destroy method to remove that row from the table.
   //we must send through a where clause with the id
@@ -138,7 +140,7 @@ export const getOrderedServices = async (req, res) => {
   // Anything not on the list -> is a 400
 
   if (!sortFields.includes(field) || !sortDirections.includes(direction)) {
-    return res.status(400).json({ msg: "Invalid sort field or direction" });
+    return res.status(400).json({ msg: "Invalid Sort Field Or Direction" });
   }
 
   const list = await Service.findAll({ order: [[field, direction]] });

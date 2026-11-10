@@ -55,7 +55,7 @@ export default function Footer({ embedded }) {
             About
           </Link>
         </nav>
-        {/* Accs */}
+        {/* Accounts */}
         <nav className={column}>
           <h2 className={heading}>Accounts</h2>
           <Link to="/login" className="text-on-footer/80 hover:text-white">

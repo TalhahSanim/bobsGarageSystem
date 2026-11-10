@@ -2,12 +2,12 @@
 
 import axios from "axios";
 
-// addt he token to each axios request or remove it when theres no token
+// adds the token to each axios request or remove it when there's no token
 
 const setAuthToken = (token) => {
   console.log("setAuthToken -> utils");
   if (token) {
-    // creates the header x-auth-token -> <token> on each requets from now
+    // creates the header x-auth-token -> <token> on each request from now
     axios.defaults.headers.common["x-auth-token"] = token;
   } else {
     // No token logged out stop sending the header through

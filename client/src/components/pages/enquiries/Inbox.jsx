@@ -1,5 +1,5 @@
 // File -> client/src/components/enquiries/Inbox.jsx
-// The logged in use's enquiries and businesses replies/reponses
+// The logged in user's enquiries and businesses replies/responses
 // opening a replied enquiry makes it read
 
 import { useEffect } from "react";
@@ -9,7 +9,7 @@ import { useEnquiries } from "../../../context/EnquiriesContext";
 
 import { imgSrc } from "../../../utils/imgSrc";
 
-// Inbox component which has expadable item each enquiry
+// Inbox component which has expandable item each enquiry
 export default function Inbox() {
   const { enquiries, unreadCount, tickRead, loadEnquiries } = useEnquiries();
 

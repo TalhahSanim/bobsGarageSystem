@@ -1,5 +1,5 @@
 // File -> client/src/context/ThemeContextComponent.jsx
-// The preferences provide -> theme , font-size and sort roder
+// The preferences provider -> theme , font-size and sort order
 // Saved in localStorage for guest and in the database for logged in users
 
 import { useState, useEffect } from "react";
