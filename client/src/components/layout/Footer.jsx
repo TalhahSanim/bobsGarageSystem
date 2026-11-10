@@ -153,7 +153,10 @@ export default function Footer({ embedded }) {
       <div
         className={`border-t border-white/10 font-normal text-on-footer/70 ${compact ? "px-4 py-4 text-sm lg:px-10 lg:py-3 lg:text-xs" : "mx-auto max-w-6xl px-4 py-4 text-sm"} `}
       >
-        All Rights Reserved. © Bob's Garage {year}
+        All Rights Reserved. © Bob's Garage {year} .{" "}
+        <Link to="/credits" className="underline hover:text-white">
+          Credits
+        </Link>
       </div>
     </footer>
   );

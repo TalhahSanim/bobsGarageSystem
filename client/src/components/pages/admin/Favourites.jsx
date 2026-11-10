@@ -145,7 +145,7 @@ export default function Favourites() {
                   <td className="p-2">
                     <button
                       type="button"
-                      className="btn btn-primary text-xs"
+                      className="btn btn-primary min-w-36 text-xs"
                       onClick={() => contactedToggle(favourite)}
                     >
                       {favourite.status === "new" ? (
@@ -153,9 +153,7 @@ export default function Favourites() {
                           <TiTick aria-hidden="true" /> Tick Contacted
                         </>
                       ) : (
-                        <>
-                          <TiTick aria-hidden="true" /> Tick New
-                        </>
+                        "Tick New"
                       )}
                     </button>
                   </td>

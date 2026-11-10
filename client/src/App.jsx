@@ -20,6 +20,7 @@ import Enquiries from "./components/pages/admin/Enquiries";
 import Login from "./components/pages/auth/Login";
 import Register from "./components/pages/auth/Register";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
+import Credits from "./components/pages/Credits";
 
 // Dashboard Components
 import Dashboard from "./components/pages/admin/Dashboard";
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/about" element={<About />} />
+            <Route path="/credits" element={<Credits />} />
             <Route path="/add-service" element={<AddServices />} />
             <Route path="/edit/:id" element={<EditService />} />
             <Route path="/services/:id" element={<ServiceDetails />} />
