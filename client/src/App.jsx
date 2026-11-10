@@ -14,7 +14,7 @@ import About from "./components/pages/About";
 import AddServices from "./components/pages/services/AddServices";
 import EditService from "./components/pages/services/EditService";
 import ServiceDetails from "./components/pages/services/ServiceDetails";
-import SavedServices from "./components/pages/services/SavedServices";
+import FavouritedServices from "./components/pages/services/FavouritedServices";
 import Inbox from "./components/pages/enquiries/Inbox";
 import Enquiries from "./components/pages/admin/Enquiries";
 import Login from "./components/pages/auth/Login";
@@ -59,7 +59,7 @@ export default function App() {
               path="/saved"
               element={
                 <ProtectedRoute>
-                  <SavedServices />
+                  <FavouritedServices />
                 </ProtectedRoute>
               }
             />

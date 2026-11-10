@@ -1,7 +1,8 @@
-// File -> client/src/components/pages/services/SavedServices.jsx
+// File -> client/src/components/pages/services/FavouritedServices.jsx
 // Author -> Talhah Sanim
 //Application  Version -> 1.0
-// Customer saved services
+
+// Customer favourited services
 
 import { Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
@@ -12,7 +13,7 @@ import fallbackImage from "../../../assets/hero-image.jpg";
 
 import { imgSrc } from "../../../utils/imgSrc";
 
-export default function SavedServices() {
+export default function FavouritedServices() {
   const { favourites, removeFavourite } = useFavourites();
   const { latestOne } = useEnquiries();
   return (

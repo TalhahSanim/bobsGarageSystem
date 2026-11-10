@@ -2,10 +2,8 @@
 // Author -> Talhah Sanim
 // Application Version -> 1.0
 
-
-
 // Sends the guest to login  and non-admins away from admin pages
-// usage -> <ProtectedRoute><MyFavourites /></ProtectedRoute>
+// usage -> <ProtectedRoute><FavouritedServices /></ProtectedRoute>
 // <ProtectedRoute adminOnly><AddService /></ProtectedRoute>
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
