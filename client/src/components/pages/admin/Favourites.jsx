@@ -116,19 +116,17 @@ export default function Favourites() {
               {list.map((favourite) => (
                 <tr
                   key={favourite.favouriteId}
-                  className={`block py-3 md:table-row${
+                  className={`block py-3 md:table-row ${
                     favourite.status === "new" ? "font-semibold" : "text-muted"
                   }`}
                 >
-                  <td className={cell}>
+                  <td className={cell} label="Date">
                     {new Date(favourite.createdAt).toLocaleDateString()}
                   </td>
-                  <td className={cell}>
-                    {`${favourite.User.firstName}
-                   ${favourite.User.lastName}
-                   `}
+                  <td className={cell} label="Customer">
+                    {favourite.User.firstName} {favourite.User.lastName}
                   </td>
-                  <td className={cell}>
+                  <td className={cell} label="Email">
                     <a
                       href={`mailto:${favourite.User.email}`}
                       className="underline"
@@ -136,15 +134,17 @@ export default function Favourites() {
                       {favourite.User.email}
                     </a>
                   </td>
-                  <td className={cell}>{favourite.Service.name}</td>
-                  <td className={cell}>
+                  <td className={cell} label="Service">
+                    {favourite.Service.name}
+                  </td>
+                  <td className={cell} label="Status">
                     {favourite.status === "contacted" ? (
                       <span className="badge badge-responded">Contacted</span>
                     ) : (
                       <span className="badge badge-pending">New</span>
                     )}
                   </td>
-                  <td className={cell}>
+                  <td className={cell} label="Action">
                     <button
                       type="button"
                       className="btn btn-primary min-w-36 text-xs"
