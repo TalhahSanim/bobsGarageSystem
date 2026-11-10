@@ -147,10 +147,10 @@ export const getAllEnquiries = async (req, res) => {
 };
 
 // name -> reply to enquiry
-// path -> /api/enquiries/:enquiryId//reply
+// path -> /api/enquiries/:enquiryId/reply
 // request -> PUT
 // type -> admin
-// description -> saves the businesses response and stick if responded and make it unread for the customer
+// description -> saves the businesses response and ticks it if responded and make it unread for the customer
 
 export const enquiryResponse = async (req, res) => {
   console.log("/api/enquiries/:enquiryId/reply -> PUT");

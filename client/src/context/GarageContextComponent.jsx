@@ -42,7 +42,7 @@ export const GarageContextProvider = ({ children }) => {
     // fee-ASC -> field "fee" and direction "ASC"
     const [field, direction] = sort.split("-");
 
-    // Remove spaces at the start and so " " counts as no search
+    // Remove spaces at the start and end so " " counts as no search
     const text = search.trim();
     // Search text used in search route and then default route or ordered one
     let url = serviceURL;

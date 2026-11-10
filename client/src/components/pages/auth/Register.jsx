@@ -46,7 +46,7 @@ export default function Register() {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // were only save if have firstName and email and were not saving
+  // Only save if have firstName and email and were not already saving
   const canSave = firstName !== "" && email !== "" && registerStatus === "idle";
 
   // runs when form submits and check every field then register

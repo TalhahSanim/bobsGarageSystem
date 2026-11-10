@@ -16,9 +16,8 @@ const { Service } = db.sequelize.models;
 export const getAllServices = async (req, res) => {
   console.log("/api/services/ -> GET");
   // to get all data from a table in the database we use the findAll() method
-  // the model used too tells us the database which tells ,the table where getting the data from
+  // the model  tells  Sequelize which table we are getting our data from
   const list = await Service.findAll();
-  // Log services
   // console.log(list);
   // send the response
   res.status(200).send(list);
@@ -51,7 +50,7 @@ export const addService = async (req, res) => {
   console.log("/api/services -> POST");
   // we can only have one res.send in an endpoint
   // log the req from client
-  //  Note don't log this as it exposes body on browser which can leak sensitive information
+  //  Note don't log this as it exposes body in the server log
   // console.log(req.body);
 
   // Destructure the request

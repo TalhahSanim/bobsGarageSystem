@@ -35,7 +35,7 @@ export const AuthContextProvider = ({ children }) => {
     });
   };
 
-  //  forget user then remove the token form localStorage and from axios
+  //  forget user then remove the token from localStorage and from axios
   // takes in optional error message to display
   const clearUser = (error = null) => {
     localStorage.removeItem("token");

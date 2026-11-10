@@ -11,7 +11,7 @@ import config from "../config/config.js";
 export default function auth(req, res, next) {
   // get the token from header which setAuthToken on client adds it
   const token = req.header("x-auth-token");
-  // Do not log token on production as it security risk of unknown user logging in with someone elses credentials
+  // Do not log token on production as it security risk as anyone who reads the log can log in as that user
   // console.log(`Token in middleware: ${token}`);
   // no token : not logged equates to 401- UNAUTHORIZED
   if (!token) {

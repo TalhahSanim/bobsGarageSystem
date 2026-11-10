@@ -50,7 +50,7 @@ export default function EditService() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // runs when the fomr is submited
+  // runs when the form is submitted
   const handleSubmit = async (e) => {
     // By default the submit button will refresh page
     e.preventDefault();
@@ -275,7 +275,7 @@ export default function EditService() {
                 <div className="invalid-feedback">{errors.type}</div>
               )}
             </div>
-            {/* Service Desciption field */}
+            {/* Service Description field */}
             <div className="mb-4">
               <label className="form-label" htmlFor="description">
                 Edit Service Description:

@@ -26,7 +26,7 @@ const deleteOutdatedAvatar = (image) => {
 // path -> /api/users/me/avatar
 // request -> POST [form-data,field- avatar]
 // type -> private which is any logged in user
-// description -> saves the image and puts it path in the users image and delete the outdated one
+// description -> saves the image and puts it's path in the users image and delete the outdated one
 export const uploadAvatar = (req, res) => {
   console.log("/api/users/me/avatar -> POST");
   // Run multer so we can send nice message upon failure
