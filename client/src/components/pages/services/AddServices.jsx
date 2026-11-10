@@ -46,7 +46,6 @@ export default function AddServices() {
     console.log(`handleSubmit -> AddServices.jsx ->> Running`);
 
     //  Check for errors
-    //  todo:Client side validation- LATER
     // Name errors
     if (is_Empty(name)) {
       console.log("Service Name Field is Empty");

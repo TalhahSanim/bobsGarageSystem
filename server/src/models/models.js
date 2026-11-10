@@ -31,10 +31,9 @@ const sequelize = new Sequelize(
   config.db.options,
 );
 
-// todo: model placed here
-// Set up Services Model and the User Model for Sequelize
+// Set up models -> Service,User,Preference,Favourite,Enquiry
 // The define method tells sequelize we are creating a database model
-// Sequelize will add an 's' to the model name to create the table in the database.
+// Sequelize will makes model a plural for table such as Enquiry turns into Enquiries
 // DataTypes let the database know what type of data we need for each field  in our table
 
 export const Service = sequelize.define("Service", {

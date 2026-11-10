@@ -1,7 +1,5 @@
 import helmet from "helmet";
-// Bring in sequelize and our db from our models folder
-// we do not need to include a file name with the folder,
-// as it will automatically load in models.js
+// Bring in our database (models and Sequelize) from models.js
 import "dotenv/config";
 import db from "./models/models.js";
 import express from "express"; // bring in express and required modules
@@ -22,7 +20,7 @@ import config from "./config/config.js";
 
 const app = express();
 
-// Security headers -> cross origin enables client port 5174 to display images from uploads on port 3000
+// Security headers -> cross origin enables client port 5173 to display images from uploads on port 3000
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 
 // Initialise Middleware
@@ -42,8 +40,7 @@ app.use(morganMiddleware);
 //  use the route
 
 // Routes
-// can be post,get,put,delete
-// remember the route takes a path and callback function
+// Mount each router under each endpoint
 app.use("/api/services", servicesRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
@@ -65,7 +62,7 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   // log details but never to browser
   console.error(err.message);
-  //  Multers size limit such as too big image user sends so 404 would be more appropriate, then 500
+  //  Multer's size limit  ->  the file is too big, so 400 fits than a 500 error
   if (err.code === "LIMIT_FILE_SIZE") {
     return res.status(400).json({ msg: "Images Must Be 25MB Or Less" });
   }
@@ -77,8 +74,7 @@ app.use((err, req, res, next) => {
 });
 
 // Update the listen so we can sync to our database
-// we use the sync() method
-// we need to careful here as this method can delete all data in the database
+// sync() creates any missing tables. It never deletes data but (only sync({force:true})) would
 
 db.sequelize.sync().then(() => {
   app.listen(config.port, () =>

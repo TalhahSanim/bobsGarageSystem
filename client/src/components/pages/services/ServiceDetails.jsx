@@ -132,7 +132,6 @@ export default function ServiceDetails() {
             </p>
           ) : (
             <div className="flex flex-wrap items-center gap-3">
-              {/* Send an enqury button will go here */}
               <button
                 type="button"
                 className="btn btn-ghost text-link"
