@@ -6,7 +6,7 @@
 
 // Admin Middleware takes in req,res and next
 export default function admin(req, res, next) {
-  // Don't log the user out as it exposes their details in the servers logs
+  // Don't log the user  as it exposes their details in the servers logs
   // console.log(req.user);
   //  401 means NO VALID TOKEN, 403 means valid TOKEN NOT ALLOWED
   if (!req.user.isAdmin) {
