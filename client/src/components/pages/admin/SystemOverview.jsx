@@ -24,6 +24,7 @@ export default function SystemOverview() {
         console.log(err.message);
       }
     };
+    loadEnquiries();
   }, []);
 
   const metrics = [
