@@ -30,14 +30,20 @@ export default function SystemOverview() {
   }, []);
 
   const metrics = [
-    ["Users", userList.length],
-    ["Admins", userList.filter((user) => user.isAdmin).length],
-    ["Services", serviceList.length],
-    ["Enquiries", enquiryList.length],
-    [
-      "Pending Enquiries",
-      enquiryList.filter((enquiry) => enquiry.status === "pending").length,
-    ],
+    { label: "Users", value: userList.length, to: "users" },
+    {
+      label: "Admins",
+      value: userList.filter((user) => user.isAdmin).length,
+      to: "users",
+    },
+    { label: "Services", value: serviceList.length, to: "/services" },
+    { label: "Enquiries", value: enquiryList.length, to: "enquiries" },
+    {
+      label: "Pending Enquiries",
+      value: enquiryList.filter((enquiry) => enquiry.status === "pending")
+        .length,
+      to: "enquiries",
+    },
   ];
   return (
     <>

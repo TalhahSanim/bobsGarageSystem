@@ -13,7 +13,7 @@ export default function DashboardLinks() {
   const linkClass = ({ isActive }) =>
     `dashboard-link ${isActive ? "dashboard-link-active" : ""}`;
   return (
-    <nav className="flex gap-1 overflow-x-auto whitespace-nowrap lg:flex-col">
+    <nav className="gid grid-cols-3 gap-1 sm:grid-cols-6 lg:flex lg:flex-col">
       <NavLink className={linkClass} to="/admin" end>
         Dashboard
         <MdDashboard aria-hidden="true" />

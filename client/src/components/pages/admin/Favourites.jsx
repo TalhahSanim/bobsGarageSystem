@@ -70,6 +70,8 @@ export default function Favourites() {
   //   number of people still waiting to be contacted
   const waiting = list.filter((favourite) => favourite.status === "new").length;
 
+  const cell =
+    "flex items-center justify-between gap-4 px-2 py-1.5 md:table-cell md:p-2 before:font-semibold before:text-muted before:content-[attr(data-label)] md:before:content-none";
   return (
     <section className="my-6">
       <title>Interested Customers - Bob's Garage</title>
@@ -87,7 +89,7 @@ export default function Favourites() {
         <div className="panel-body overflow-x-auto">
           <table className="w-full text-left text-sm">
             {/* Table Headings */}
-            <thead className="border-b-2 border-line">
+            <thead className="hidden border-b-2 border-line md:table-header-group">
               <tr>
                 <th scope="col" className="p-2">
                   Date
@@ -114,19 +116,19 @@ export default function Favourites() {
               {list.map((favourite) => (
                 <tr
                   key={favourite.favouriteId}
-                  className={
+                  className={`block py-3 md:table-row${
                     favourite.status === "new" ? "font-semibold" : "text-muted"
-                  }
+                  }`}
                 >
-                  <td className="p-2">
+                  <td className={cell}>
                     {new Date(favourite.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="p-2">
+                  <td className={cell}>
                     {`${favourite.User.firstName}
                    ${favourite.User.lastName}
                    `}
                   </td>
-                  <td className="p-2">
+                  <td className={cell}>
                     <a
                       href={`mailto:${favourite.User.email}`}
                       className="underline"
@@ -134,15 +136,15 @@ export default function Favourites() {
                       {favourite.User.email}
                     </a>
                   </td>
-                  <td className="p-2">{favourite.Service.name}</td>
-                  <td className="p-2">
+                  <td className={cell}>{favourite.Service.name}</td>
+                  <td className={cell}>
                     {favourite.status === "contacted" ? (
                       <span className="badge badge-responded">Contacted</span>
                     ) : (
                       <span className="badge badge-pending">New</span>
                     )}
                   </td>
-                  <td className="p-2">
+                  <td className={cell}>
                     <button
                       type="button"
                       className="btn btn-primary min-w-36 text-xs"

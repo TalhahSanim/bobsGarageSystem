@@ -247,7 +247,8 @@ select.form-input option:checked {
 }
 /*  Admin sidebar links */
 @utility dashboard-link {
-  @apply flex items-center  gap-2 px-3 py-2.5 text-on-footer no-underline transition-colors hover:bg-white/10;
+  @apply flex flex-col-reverse items-center justify-center gap-1 px-2 py-2 text-center text-xs text-on-footer no-underline transition-colors hover:bg-white/10 [&_svg]:size-5 lg:[&_svg]:size-4;
+  @apply lg:flex-row lg:justify-start lg:gap-2 lg:px-3 lg:py-2.5 lg:text-left lg:text-base;
 }
 @utility dashboard-link-active {
   @apply bg-primary text-on-primary hover:bg-primary;
