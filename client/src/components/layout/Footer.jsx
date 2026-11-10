@@ -58,13 +58,13 @@ export default function Footer({ embedded }) {
             Our Garage
           </h2>
 
-          <Link to="/" className="text-on-footer hover:text-white">
+          <Link to="/" className="text-on-footer hover:underline">
             Home
           </Link>
-          <Link to="/services" className="text-on-footer hover:text-white">
+          <Link to="/services" className="text-on-footer hover:underline">
             Services
           </Link>
-          <Link to="/about" className="text-on-footer hover:text-white">
+          <Link to="/about" className="text-on-footer hover:underline">
             About
           </Link>
         </nav>
@@ -75,10 +75,10 @@ export default function Footer({ embedded }) {
             Accounts
           </h2>
 
-          <Link to="/login" className="text-on-footer hover:text-white">
+          <Link to="/login" className="text-on-footer hover:underline">
             Login
           </Link>
-          <Link to="/register" className="text-on-footer hover:text-white">
+          <Link to="/register" className="text-on-footer hover:underline">
             Register
           </Link>
         </nav>
@@ -90,16 +90,13 @@ export default function Footer({ embedded }) {
           </h2>
 
           <address className={`${column} not-italic text-on-footer`}>
-            <span className="hover:text-white">
+            <span className="hover:underline">
               52 Box Street, Melbourne, 3000
             </span>
-            <a href="tel:6139843929" className="hover:text-white">
+            <a href="tel:6139843929" className="hover:underline">
               (03) 39843929
             </a>
-            <a
-              href="mailto:service@bobsgarage.com"
-              className="hover:text-white"
-            >
+            <a href="mailto:service@bobsgarage.com" className="hover:underline">
               service@bobsgarage.com
             </a>
           </address>
@@ -125,7 +122,7 @@ export default function Footer({ embedded }) {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-on-footer hover:text-white inline-flex items-center gap-2"
+            className="text-on-footer hover:underline inline-flex items-center gap-2"
           >
             <IoLogoFacebook aria-hidden="true" />
             Facebook
@@ -134,7 +131,7 @@ export default function Footer({ embedded }) {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-on-footer hover:text-white inline-flex items-center gap-2"
+            className="text-on-footer hover:underline inline-flex items-center gap-2"
           >
             <FaSquareInstagram aria-hidden="true" /> Instagram
           </a>
@@ -142,7 +139,7 @@ export default function Footer({ embedded }) {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-on-footer hover:text-white inline-flex items-center gap-2"
+            className="text-on-footer hover:underline inline-flex items-center gap-2"
           >
             <FaLinkedin aria-hidden="true" />
             Linkedin
@@ -154,7 +151,7 @@ export default function Footer({ embedded }) {
         className={`border-t border-white/10 font-normal text-on-footer ${compact ? "px-4 py-4 text-sm lg:px-10 lg:py-3 lg:text-xs" : "mx-auto max-w-6xl px-4 py-4 text-sm"} `}
       >
         All Rights Reserved. © Bob's Garage {year} .{" "}
-        <Link to="/credits" className="underline hover:text-white">
+        <Link to="/credits" className="underline hover:underline">
           Credits
         </Link>
       </div>

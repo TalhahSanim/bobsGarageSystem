@@ -1,6 +1,6 @@
 # Bob's Garage by Talhah Sanim
 
-A Full Stack Application for Bob's Garage where customers browse through services, save their favourite services or services their interested in; Admins easily manage Bob's services through service management, user management, view & manage enquiries from customers and image
+A Full Stack Application for Bob's Garage where customers browse through services, save their favourite services or services they are interested in; Admins easily manage Bob's services through service management, user management, view & manage enquiries from customers and image
 
 Built with React utilising Vite & Tailwind CSS on client and Express, Sequelize and MySql on the server.
 
