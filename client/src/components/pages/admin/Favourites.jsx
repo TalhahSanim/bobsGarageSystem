@@ -41,11 +41,7 @@ export default function Favourites() {
       //   Update just that row within the list
       setList((prev) =>
         prev.map((item) =>
-          (
-            item.favouriteId === favourite.favouriteId
-              ? { ...item, status: newStatus }
-              : item
-          )
+          item.favouriteId === favourite.favouriteId
             ? { ...item, status: newStatus }
             : item,
         ),
@@ -152,9 +148,15 @@ export default function Favourites() {
                       className="btn btn-primary text-xs"
                       onClick={() => contactedToggle(favourite)}
                     >
-                      {favourite.status === "new"
-                        ? "Tick Contacted"
-                        : "Tick as New"}
+                      {favourite.status === "new" ? (
+                        <>
+                          <TiTick aria-hidden="true" /> Tick Contacted
+                        </>
+                      ) : (
+                        <>
+                          <TiTick aria-hidden="true" /> Tick New
+                        </>
+                      )}
                     </button>
                   </td>
                 </tr>

@@ -85,16 +85,22 @@ export default function Services() {
           <label className="sr-only" htmlFor="searchService">
             Search Services
           </label>
-          <input
-            type="search"
-            id="searchService"
-            placeholder="Search Services..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="form-input mt-4 w-full sm:w-72"
-          />
+          <div className="relative mt-4 w-full sm:w-72">
+            <IoSearchSharp
+              className="pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-muted"
+              aria-hidden="true"
+            />
+            <input
+              type="search"
+              id="searchService"
+              placeholder="Search Services..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="form-input  w-full pl-10"
+            />
+          </div>
         </div>
-        <IoSearchSharp />
+
         <div className="flex items-center gap-3">
           {/* Sort buttons -> the selected one is filled and aria press tells screen reader which one */}
 

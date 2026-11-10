@@ -117,7 +117,6 @@ export default function Footer({ embedded }) {
         {/* Social Links */}
         <nav className={column}>
           <h2 className={`${heading} flex items-center gap-2`}>
-            {" "}
             <IoMdChatboxes aria-hidden="true" />
             Our Socials
           </h2>
