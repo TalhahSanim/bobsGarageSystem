@@ -10,7 +10,7 @@ import { AdminContext } from "./AdminContext";
 const adminURL = "http://localhost:3000/api/admin";
 
 //  AdminContextProvider component -> wraps the app so admin pages and home can use useAdmin()
-export const AdminContextProvider = ({ children }) => {
+export default function AdminContextProvider({ children }) {
   // file name in server uploads
   const [imageList, setImageList] = useState([]);
 
@@ -58,4 +58,4 @@ export const AdminContextProvider = ({ children }) => {
       {children}
     </AdminContext.Provider>
   );
-};
+}

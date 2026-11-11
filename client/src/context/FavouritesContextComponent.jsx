@@ -12,7 +12,7 @@ import { useAuth } from "./AuthContext";
 const favouritesURL = "http://localhost:3000/api/favourites";
 
 // FavouritesContextProvider component -> must be inside AuthContextProvider -> as it uses useAuth
-export const FavouritesContextProvider = ({ children }) => {
+export default function FavouritesContextProvider({ children }) {
   const { isAuth } = useAuth();
   const [favourites, setFavourites] = useState([]);
 
@@ -65,4 +65,4 @@ export const FavouritesContextProvider = ({ children }) => {
       {children}
     </FavouritesContext.Provider>
   );
-};
+}

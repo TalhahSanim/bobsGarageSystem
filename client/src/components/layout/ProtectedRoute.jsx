@@ -9,7 +9,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 // ProtectedRoute component -> Takes in the page (children) and whether its admin only
-const ProtectedRoute = ({ children, adminOnly = false }) => {
+export default function ProtectedRoute({ children, adminOnly = false }) {
   const { isAuth, isAdmin, status } = useAuth();
 
   // Still checking for saved token : wait instead of redirecting
@@ -32,6 +32,4 @@ const ProtectedRoute = ({ children, adminOnly = false }) => {
 
   // Allowed -> Display Page
   return children;
-};
-
-export default ProtectedRoute;
+}

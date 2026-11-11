@@ -27,7 +27,7 @@ const serviceURL = "http://localhost:3000/api/services";
 // Create the provider to pass the state and event function down to components
 // that require them. This is done by wrapping them in the component tree
 // in the provider and passing the state and functions as values to provider
-export const GarageContextProvider = ({ children }) => {
+export default function GarageContextProvider({ children }) {
   // create state variable to hold the serviceList and a function to update it
   const [serviceList, setServiceList] = useState([]);
   // status: loading, succeeded or failed then start loading
@@ -162,4 +162,4 @@ export const GarageContextProvider = ({ children }) => {
       </GarageSortContext.Provider>
     </GarageSearchContext.Provider>
   );
-};
+}

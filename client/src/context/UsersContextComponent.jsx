@@ -14,7 +14,7 @@ const userURL = "http://localhost:3000/api/users";
 const errorMessage = (err) => err.response?.data?.msg || err.message;
 
 // UsersContextProvider Component -> wraps around the app so admin pages can use useUsers()
-export const UsersContextProvider = ({ children }) => {
+export default function UsersContextProvider({ children }) {
   const [userList, setUserList] = useState([]);
   // status -> idle,loading , succeeded or failed
   const [status, setStatus] = useState("idle");
@@ -97,4 +97,4 @@ export const UsersContextProvider = ({ children }) => {
       {children}
     </UsersContext.Provider>
   );
-};
+}

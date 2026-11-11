@@ -14,7 +14,7 @@ import setAuthToken from "../utils/setAuthToken"; // ! to be created
 const authURL = "http://localhost:3000/api/auth";
 
 // AuthCOntextProvider component wraps the app on every component can useAuth()
-export const AuthContextProvider = ({ children }) => {
+export default function AuthContextProvider({ children }) {
   // if token saved we started in loading till its checked
   const [auth, setAuth] = useState({
     user: null,
@@ -162,4 +162,4 @@ export const AuthContextProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
