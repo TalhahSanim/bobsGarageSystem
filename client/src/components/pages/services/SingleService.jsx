@@ -62,7 +62,7 @@ export default function SingleService({ service, onToast }) {
     }
   };
   return (
-    <article className="card card-lift flex flex-col">
+    <article className="card card-lift flex h-full flex-col">
       {/* Service photo or the backup one when no photo included in service during add or edit */}
       <div className="relative">
         <img
@@ -94,8 +94,10 @@ export default function SingleService({ service, onToast }) {
         <p className="text-xs font-normal tracking-wide text-muted uppercase">
           {type}
         </p>
-        <h3 className="text-lg font-semibold">{name}</h3>
-        <p className="line-clamp-2 text-sm font-normal text-muted">
+        <h3 className="line-clamp-1 text-lg font-semibold" title={name}>
+          {name}
+        </h3>
+        <p className="line-clamp-2 min-h-10 text-sm font-normal text-muted">
           {description}
         </p>
         <p className="mt-1 font-semibold text-link">${fee}</p>

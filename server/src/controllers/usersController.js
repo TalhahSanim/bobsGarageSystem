@@ -43,9 +43,7 @@ export const addUser = async (req, res) => {
   // Email is unique within the user table and to provide clear error message
   const exisiting = await User.findOne({ where: { email } });
   if (exisiting) {
-    return res
-      .status(400)
-      .json({ errors: { email: "Email is already in use" } });
+    return res.status(400).json({ errors: { msg: "Email is already in use" } });
   }
 
   const hashedPassword = await User.prototype.hashPwd(password);
