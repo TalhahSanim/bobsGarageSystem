@@ -79,7 +79,7 @@ export default function Login() {
             <div className="invalid-feedback">{errors.email}</div>
           )}
         </div>
-
+        {/* Privacy notice -> how login details are handled */}
         {/* Password Field */}
         <div className="mb-4">
           <label className="form-label" htmlFor="password">
@@ -98,15 +98,17 @@ export default function Login() {
             <div className="invalid-feedback">{errors.password}</div>
           )}
         </div>
-
         <input type="submit" value="Login" className="btn btn-primary w-full" />
-
         {/* Register Page Link */}
         <p className="mt-6 text-center text-sm font-normal text-muted">
           No Account?
           <Link className="link-pill" to="/register">
             Register
           </Link>
+        </p>{" "}
+        <p className="mt-3 mb-4 text-sm text-muted">
+          Your details are stored securely, your password is encrypted, and we
+          never share your information with anyone else without your permission.
         </p>
       </form>
     </AuthLayout>

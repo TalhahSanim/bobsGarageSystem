@@ -136,6 +136,12 @@ export default function Register() {
         {field("password", "Password", "password")}
         {field("passwordCompare", "Re-enter Password", "password")}
         {/* Submit- disable when saving */}
+        {/* Privacy notice -> what we keep and that it's never shared, agreeing by registering */}
+        <p className="mb-4 text-sm text-muted">
+          By registering, you agree to Bob's Garage storing your name, email and
+          enquiries to run your account. Your password is encrypted, and your
+          details are never shared with anyone else without your permission.
+        </p>
         <div className="mb-4 grid">
           <input
             type="submit"

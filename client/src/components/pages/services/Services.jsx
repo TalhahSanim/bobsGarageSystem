@@ -170,16 +170,19 @@ export default function Services() {
       </div>
       {content}
       {/* The toast on bottom right above mobile BottomNav only if there's a message  */}
-      <div className="fixed right-4 bottom-24 z-50 lg:bottom-4" role="status">
-        <Toast>
-          <FaCheck
-            className="size-5 shrink-0 text-success"
-            aria-hidden="true"
-          />
-          <p className="ms-3 text-sm font-normal">{toast}</p>
-          <ToastToggle onDismiss={() => setToast("")} />
-        </Toast>
-      </div>
+
+      {toast && (
+        <div className="fixed right-4 bottom-24 z-50 lg:bottom-4" role="status">
+          <Toast>
+            <FaCheck
+              className="size-5 shrink-0 text-success"
+              aria-hidden="true"
+            />
+            <p className="ms-3 text-sm font-normal">{toast}</p>
+            <ToastToggle onDismiss={() => setToast("")} />
+          </Toast>
+        </div>
+      )}
     </section>
   );
 }
