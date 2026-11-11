@@ -126,8 +126,8 @@ export default function ServiceDetails() {
 
           {/* Guests are asked to login and logged in users can favourite or unfavourite */}
           {!isAuth ? (
-            <p>
-              <Link to="/login" className="link-pill">
+            <p className="flex flex-wrap items-center gap-2">
+              <Link to="/login" className="link-pill ms-0!">
                 Login
               </Link>
               to favourite this service.
