@@ -6,8 +6,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { AdminContext } from "./AdminContext";
+import { API_URL } from "../utils/api";
 
-const adminURL = "http://localhost:3000/api/admin";
+const adminURL = `${API_URL}/admin`;
 
 //  AdminContextProvider component -> wraps the app so admin pages and home can use useAdmin()
 export default function AdminContextProvider({ children }) {

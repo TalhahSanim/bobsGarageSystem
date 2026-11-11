@@ -6,8 +6,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { TiTick } from "react-icons/ti";
+import { API_URL } from "../../../utils/api";
 
-const favouritesURL = "http://localhost:3000/api/favourites";
+const favouritesURL = `${API_URL}/favourites`;
 
 // Favourites component which contains table of favourites newest first
 

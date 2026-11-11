@@ -8,8 +8,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { FavouritesContext } from "./FavouritesContext";
 import { useAuth } from "./AuthContext";
+import { API_URL } from "../utils/api";
 
-const favouritesURL = "http://localhost:3000/api/favourites";
+const favouritesURL = `${API_URL}/favourites`;
 
 // FavouritesContextProvider component -> must be inside AuthContextProvider -> as it uses useAuth
 export default function FavouritesContextProvider({ children }) {

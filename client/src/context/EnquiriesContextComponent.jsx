@@ -9,8 +9,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { EnquiriesContext } from "./EnquiriesContext";
 import { useAuth } from "./AuthContext";
+import { API_URL } from "../utils/api";
 
-const enquiriesURL = "http://localhost:3000/api/enquiries";
+const enquiriesURL = `${API_URL}/enquiries`;
 
 // EnquiriesContextProvider component -> must be INSIDE AuthContextProvider as it use useAuth()
 export default function EnquiriesContextComponent({ children }) {

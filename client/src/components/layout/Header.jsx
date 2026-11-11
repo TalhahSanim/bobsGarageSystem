@@ -25,8 +25,8 @@ import { PiUserSquareFill } from "react-icons/pi";
 import ToggleTheme from "./ToggleTheme";
 import { imgSrc } from "../../utils/imgSrc";
 
-import logo from "../../assets/logo-light.png";
-import logoDark from "../../assets/logo-dark.png";
+import logo from "../../assets/logo-light.webp";
+import logoDark from "../../assets/logo-dark.webp";
 
 // the logout function from auth context
 import { useAuth } from "../../context/AuthContext";
@@ -66,12 +66,16 @@ export default function Header() {
       <img
         src={logo}
         alt="Bob's Garage"
+        width={484}
+        height={256}
         className={`${size} w-auto dark:hidden`}
       />
 
       <img
         src={logoDark}
         alt="Bob's Garage"
+        width={506}
+        height={256}
         className={`${size} hidden w-auto dark:block`}
       />
     </>

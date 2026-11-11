@@ -8,8 +8,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ThemeContext } from "./ThemeContext";
 import { useAuth } from "./AuthContext";
+import { API_URL } from "../utils/api";
 
-const preferenceURL = "http://localhost:3000/api/preferences";
+const preferenceURL = `${API_URL}/preferences`;
 
 // ThemeContextProvider component which is required to be inside  AuthContextProvider as it uses useAuth
 export default function ThemeContextComponent({ children }) {

@@ -10,8 +10,9 @@ import axios from "axios";
 import { AuthContext } from "./AuthContext";
 // adds or removes the x-auth-token header on each axios request
 import setAuthToken from "../utils/setAuthToken"; // ! to be created
+import { API_URL } from "../utils/api";
 
-const authURL = "http://localhost:3000/api/auth";
+const authURL = `${API_URL}/auth`;
 
 // AuthCOntextProvider component wraps the app on every component can useAuth()
 export default function AuthContextProvider({ children }) {
@@ -120,7 +121,7 @@ export default function AuthContextProvider({ children }) {
     formData.append("avatar", file);
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/users/me/avatar",
+        `${API_URL}/users/me/avatar`,
         formData,
       );
       // Change just the image in the saved user and keep the rest
@@ -140,7 +141,7 @@ export default function AuthContextProvider({ children }) {
   // Remove profile image back to profile placeholder image icon
   const avatarRemove = async () => {
     try {
-      await axios.delete("http://localhost:3000/api/users/me/avatar");
+      await axios.delete(`${API_URL}/users/me/avatar`);
       setAuth((prev) => ({ ...prev, user: { ...prev.user, image: null } }));
     } catch (err) {
       console.log("avatarRemove failed", err.message);

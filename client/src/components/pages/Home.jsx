@@ -6,7 +6,7 @@
 import { Link } from "react-router-dom";
 import { useServices } from "../../context/GarageContext";
 import SingleService from "./services/SingleService";
-import heroImage from "../../assets/hero-image.jpg";
+import heroImage from "../../assets/hero-image.webp";
 export default function Home() {
   // Admin Selected image or own car image
   const serviceList = useServices();

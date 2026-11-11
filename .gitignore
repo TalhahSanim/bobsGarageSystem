@@ -7,5 +7,5 @@ dist/
 server/uploads/*
 !server/uploads/.gitkeep
 log.json
-
+*.pem
 *.log

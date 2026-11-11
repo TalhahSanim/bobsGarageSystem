@@ -12,9 +12,10 @@ import { useFavourites } from "../../../context/FavouritesContext";
 
 import EnquiryForm from "./EnquiryForm";
 
-import fallbackImage from "../../../assets/hero-image.jpg";
+import fallbackImage from "../../../assets/hero-image.webp";
 
 import { imgSrc } from "../../../utils/imgSrc";
+import { API_URL } from "../../../utils/api";
 
 // Service Details Component which reads the id from the URL and loads that service
 
@@ -36,7 +37,7 @@ export default function ServiceDetails() {
     const loadService = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/services/edit/${serviceId}`,
+          `${API_URL}/services/edit/${serviceId}`,
         );
         // findByPk sends back nothing if the id doesn't exist
         if (res.data) {

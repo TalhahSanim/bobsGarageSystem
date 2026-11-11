@@ -12,8 +12,8 @@ import { FaMapMarked } from "react-icons/fa";
 import { IoTime } from "react-icons/io5";
 import { IoMdChatboxes } from "react-icons/io";
 
-import lightLogo from "../../assets/logo-light.png";
-import darkLogo from "../../assets/logo-dark.png";
+import lightLogo from "../../assets/logo-light.webp";
+import darkLogo from "../../assets/logo-dark.webp";
 export default function Footer({ embedded }) {
   const year = new Date().getFullYear();
   const { pathname } = useLocation();
@@ -40,11 +40,15 @@ export default function Footer({ embedded }) {
           <img
             src={lightLogo}
             alt="Bob's Garage"
+            width={484}
+            height={256}
             className={`w-auto dark:hidden ${compact ? "h-16 lg:h-10" : "h-16"}`}
           />
           <img
             src={darkLogo}
             alt="Bob's Garage"
+            width={506}
+            height={256}
             className={`hidden w-auto dark:block ${compact ? "h-16 lg:h-10" : "h-16"}`}
           />
           <p className="mt-2 text-on-footer">

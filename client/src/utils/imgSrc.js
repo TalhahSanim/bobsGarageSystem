@@ -3,9 +3,11 @@
 // Application Version -> 1.0
 // Makes image be something img can use
 
+import { SERVER_URL } from "./api";
+
 // Server location where it displays uploaded files
 
-const serverURL = "http://localhost:3000";
+const serverURL = SERVER_URL;
 
 // Takes in the image value and returns a full address or null if no image
 export const imgSrc = (image) => {

@@ -9,8 +9,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import CountUp from "../../ui/CountUp";
 import axios from "axios";
+import { API_URL } from "../../../utils/api";
 
-const enquiriesURL = "http://localhost:3000/api/enquiries";
+const enquiriesURL = `${API_URL}/enquiries`;
 export default function SystemOverview() {
   const { userList = [] } = useUsers();
   const serviceList = useServices();

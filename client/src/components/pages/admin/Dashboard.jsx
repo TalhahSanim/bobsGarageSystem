@@ -5,7 +5,7 @@
 // Admin Dashboard -> sidebar for links and  selected admin page in the <Outlet/>
 // Logged in ADMINS are only able to see it
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react"; // ⬅ added Suspense
 import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import { useUsers } from "../../../context/UsersContext";
@@ -14,8 +14,8 @@ import DashboardLinks from "./DashboardLinks";
 import ToggleTheme from "../../layout/ToggleTheme";
 import { FaArrowLeft, FaSignOutAlt } from "react-icons/fa";
 import Footer from "../../layout/Footer";
-import lightLogo from "../../../assets/logo-light.png";
-import darkLogo from "../../../assets/logo-dark.png";
+import lightLogo from "../../../assets/logo-light.webp";
+import darkLogo from "../../../assets/logo-dark.webp";
 import { imgSrc } from "../../../utils/imgSrc";
 
 // Dashboard component -> admin layer with sidebar and Outlet
@@ -64,10 +64,18 @@ export default function Dashboard() {
         <div className="hidden items-center justify-between lg:flex">
           <Link to="/" aria-label="Return Home">
             {/* Light logo normally and dark logo when data-theme-"dark" */}
-            <img src={lightLogo} alt="" className="h-16 w-auto dark:hidden" />
+            <img
+              src={lightLogo}
+              alt=""
+              width={484}
+              height={256}
+              className="h-16 w-auto dark:hidden"
+            />
             <img
               src={darkLogo}
               alt=""
+              width={506}
+              height={256}
               className="hidden h-16 w-auto dark:block"
             />
           </Link>
@@ -138,7 +146,10 @@ export default function Dashboard() {
             </Link>
             <ToggleTheme />
           </div>
-          <Outlet />
+          {/* ⬅ Shows Loading in the content area while an admin page downloads, sidebar stays on screen */}
+          <Suspense fallback={<p className="text-ink">Loading...</p>}>
+            <Outlet />
+          </Suspense>
         </section>{" "}
         {/* Footer */}
         <div className="hidden lg:block">

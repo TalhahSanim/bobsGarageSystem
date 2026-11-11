@@ -11,7 +11,7 @@ import { useServicesDelete } from "../../../context/GarageContext";
 import { useAuth } from "../../../context/AuthContext";
 import { useFavourites } from "../../../context/FavouritesContext";
 // Backup photo for services with no image
-import fallbackImage from "../../../assets/hero-image.jpg";
+import fallbackImage from "../../../assets/hero-image.webp";
 
 import { imgSrc } from "../../../utils/imgSrc";
 

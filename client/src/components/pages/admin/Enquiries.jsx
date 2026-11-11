@@ -7,8 +7,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaReply } from "react-icons/fa";
+import { API_URL } from "../../../utils/api";
 
-const enquiriesURL = "http://localhost:3000/api/enquiries";
+const enquiriesURL = `${API_URL}/enquiries`;
 
 // The filter buttons -> label and the ?status = value "" =all
 const filters = [

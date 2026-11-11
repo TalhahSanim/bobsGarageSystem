@@ -7,8 +7,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { UsersContext } from "./UsersContext";
+import { API_URL } from "../utils/api";
 
-const userURL = "http://localhost:3000/api/users";
+const userURL = `${API_URL}/users`;
 
 // Get the servers message from an axios error or general error
 const errorMessage = (err) => err.response?.data?.msg || err.message;

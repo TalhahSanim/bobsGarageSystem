@@ -3,7 +3,7 @@
 // Application Version -> 1.0
 
 // Login & Register layout on the  left -> Photo left and message on left and the form on right
-import heroImage from "../../assets/hero-image.jpg";
+import heroImage from "../../assets/hero-image.webp";
 
 export default function AuthLayout({ title, subtitle, children }) {
   return (

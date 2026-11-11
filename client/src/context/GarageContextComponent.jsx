@@ -20,9 +20,10 @@ import {
 } from "./GarageContext";
 
 import { useTheme } from "./ThemeContext";
+import { API_URL } from "../utils/api";
 
 // the base Url for service request in one place means less typos
-const serviceURL = "http://localhost:3000/api/services";
+const serviceURL = `${API_URL}/services`;
 
 // Create the provider to pass the state and event function down to components
 // that require them. This is done by wrapping them in the component tree

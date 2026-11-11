@@ -9,7 +9,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useFavourites } from "../../../context/FavouritesContext";
 import { useEnquiries } from "../../../context/EnquiriesContext";
 
-import fallbackImage from "../../../assets/hero-image.jpg";
+import fallbackImage from "../../../assets/hero-image.webp";
 
 import { imgSrc } from "../../../utils/imgSrc";
 

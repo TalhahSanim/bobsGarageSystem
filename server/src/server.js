@@ -37,7 +37,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // use cors middleware with all routes
 // remember cors is a function
-app.use(cors());
+// Only the client may call the API from a browser.
+// CLIENT_URL is the Render Static Site address; locally it's Vite's address
+app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
 
 // Log each request
 app.use(morganMiddleware);
