@@ -19,6 +19,7 @@ import adminRoutes from "./routes/admin.js";
 import favouriteRoutes from "./routes/favourites.js";
 import preferenceRoutes from "./routes/preferences.js";
 import enquiryRoutes from "./routes/enquiries.js";
+import testRoutes from "./routes/testRoute.js";
 
 import config from "./config/config.js";
 // initialise express app variable
@@ -46,6 +47,7 @@ app.use(morganMiddleware);
 
 // Routes
 // Mount each router under each endpoint
+app.use("/api", testRoutes);
 app.use("/api/services", servicesRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
