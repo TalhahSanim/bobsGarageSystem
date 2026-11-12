@@ -113,10 +113,9 @@ Access: **Public** = Anyone **User** = Logged in (`Authenticated & Authorized`) 
 | POST   | `/ `     | User   | My theme, font size and sort order |
 | PUT    | `/ `     | User   | Update any preference              |
 
-| Method | Endpoint        | Access | Description                                         |
-| ------ | --------------- | ------ | --------------------------------------------------- |
-| POST   | `/uploadImage`  | Admin  | Upload an image to `/uploads` **form field `file`** |
-| GET    | `/getImageList` | Admin  | List of the uploaded image file names               |
+| Method | Endpoint       | Access | Description                                         |
+| ------ | -------------- | ------ | --------------------------------------------------- |
+| POST   | `/uploadImage` | Admin  | Upload an image to `/uploads` **form field `file`** |
 
 ### Static files
 
