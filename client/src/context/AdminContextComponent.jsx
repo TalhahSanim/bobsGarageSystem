@@ -2,8 +2,7 @@
 // Author -> Talhah Sanim
 // Application Version -> 1.0
 
-//  The admin provider ->  List of uploaded images and a function to upload
-import { useState } from "react";
+//  The admin provider ->  a function to upload
 import axios from "axios";
 import { AdminContext } from "./AdminContext";
 
@@ -11,20 +10,6 @@ const adminURL = "http://localhost:3000/api/admin";
 
 //  AdminContextProvider component -> wraps the app so admin pages and home can use useAdmin()
 export default function AdminContextProvider({ children }) {
-  // file name in server uploads
-  const [imageList, setImageList] = useState([]);
-
-  //  Get the list of uploaded images -> ADMIN ONLY
-  const loadImages = async () => {
-    console.log("loadImages -> AdminCOntextComponent.jsx");
-    try {
-      const res = await axios.get(`${adminURL}/getImageList`);
-      setImageList(res.data);
-    } catch (err) {
-      console.log("loadImages failed", err.message);
-    }
-  };
-
   // Upload an image file to server and it takes in a file
   // returns {ok,msg,image} and image is saved path such as /uploads/123-car.jpg
   const uploadImage = async (file) => {
@@ -34,8 +19,7 @@ export default function AdminContextProvider({ children }) {
     formData.append("file", file);
     try {
       const res = await axios.post(`${adminURL}/uploadImage`, formData);
-      // Refresh the list so new image is available right away
-      await loadImages();
+
       return { ok: true, msg: res.data.msg, image: res.data.image };
     } catch (err) {
       console.log("uploadImage failed", err.message);
@@ -50,8 +34,6 @@ export default function AdminContextProvider({ children }) {
   return (
     <AdminContext.Provider
       value={{
-        imageList,
-        loadImages,
         uploadImage,
       }}
     >

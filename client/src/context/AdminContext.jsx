@@ -4,7 +4,7 @@
 // Creates the admin context -> uploaded images  and hook to use it
 import { createContext, useContext } from "react";
 
-// Holds {imageList,loadImages , uploadImage}
+// Holds { uploadImage}
 export const AdminContext = createContext();
 
 // Custom hook -> the image list and upload functionality

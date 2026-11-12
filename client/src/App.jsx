@@ -27,7 +27,6 @@ import Dashboard from "./components/pages/admin/Dashboard";
 import Users from "./components/pages/admin/Users";
 import EditUser from "./components/pages/admin/EditUser";
 import AddUser from "./components/pages/admin/AddUser";
-import UploadImage from "./components/pages/admin/UploadImage";
 import SystemOverview from "./components/pages/admin/SystemOverview";
 import Favourites from "./components/pages/admin/Favourites";
 
@@ -92,7 +91,6 @@ export default function App() {
               <Route path="users" element={<Users />} />
               <Route path="users/edit/:id" element={<EditUser />} />
               <Route path="users-add" element={<AddUser />} />
-              <Route path="images-new" element={<UploadImage />} />
               <Route path="favourites" element={<Favourites />} />
 
               <Route

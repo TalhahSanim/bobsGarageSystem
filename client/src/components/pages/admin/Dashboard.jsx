@@ -9,7 +9,6 @@ import { useEffect } from "react";
 import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
 import { useUsers } from "../../../context/UsersContext";
-import { useAdmin } from "../../../context/AdminContext";
 import DashboardLinks from "./DashboardLinks";
 import ToggleTheme from "../../layout/ToggleTheme";
 import { FaArrowLeft, FaSignOutAlt } from "react-icons/fa";
@@ -22,14 +21,12 @@ import { imgSrc } from "../../../utils/imgSrc";
 export default function Dashboard() {
   const { isAuth, isAdmin, status, user, logout } = useAuth();
   const { loadUsers } = useUsers();
-  const { loadImages } = useAdmin();
   const navigate = useNavigate();
 
-  // Load users & Images at once when admin opens dashboard
+  // Load users  once when admin opens dashboard
   useEffect(() => {
     if (isAuth && isAdmin) {
       loadUsers();
-      loadImages();
     }
   }, [isAuth, isAdmin]);
 

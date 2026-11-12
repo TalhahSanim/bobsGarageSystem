@@ -5,7 +5,7 @@
 // Admin Sidebar -> Active link gets highlighted
 import { NavLink } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
-import { FaUsers, FaUpload, FaHeart } from "react-icons/fa";
+import { FaUsers, FaHeart } from "react-icons/fa";
 import { HiUserAdd } from "react-icons/hi";
 import { LuMailQuestion } from "react-icons/lu";
 
@@ -26,10 +26,7 @@ export default function DashboardLinks() {
         Add User
         <HiUserAdd aria-hidden="true" />
       </NavLink>
-      <NavLink className={linkClass} to="images-new">
-        Upload Image
-        <FaUpload aria-hidden="true" />
-      </NavLink>
+
       <NavLink className={linkClass} to="favourites">
         Interested
         <FaHeart aria-hidden="true" />
