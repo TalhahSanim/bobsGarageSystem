@@ -122,3 +122,24 @@ Access: **Public** = Anyone **User** = Logged in (`Authenticated & Authorized`) 
 | Method | Endpoint          | Access | Description            |
 | ------ | ----------------- | ------ | ---------------------- |
 | GET    | `/uploads/<file>` | Public | Serves uploaded images |
+
+## Example: Adding a Service
+
+```http
+POST /api/services/add
+x-auth-token: <admin token>
+Content-Type: application/json
+
+{ "name": "Oil Change", "type": "Maintenance", "description": "Engine oil and filter replaced.", "fee": 89.99 }
+```
+
+Response `201`: the new service with its `serviceId`.
+
+## Security
+
+- **helmet** security headers
+- **CORS**
+- **bcrypt**-hashed passwords never return -**JWT** with seven day expiry
+- **Joi** validation on every request body
+- **Multer** file type and size limits (25MB)
+- secrets in `.env` never committed
